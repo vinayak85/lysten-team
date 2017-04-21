@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 import frappe
 import unittest
 
-# test_records = frappe.get_test_records('Salary History Master')
+# test_records = frappe.get_test_records('AppVersions')
 
-class TestSalaryHistoryMaster(unittest.TestCase):
+class TestAppVersions(unittest.TestCase):
 	pass
