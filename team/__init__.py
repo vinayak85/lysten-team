@@ -5,5 +5,5 @@ __version__ = '0.0.1'
 
 @frappe.whitelist(allow_guest=True)
 def ping():
-    return 'vinu patil9'
+    return 'vinu patil8'
 
