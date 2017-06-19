@@ -5,6 +5,6 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def ping():
- 	countries = frappe.db.sql_list("select name from tabCountry")
-    return countries
+ 	return frappe.db.sql_list("""select name from tabDocType
+		where allow_rename=1 and module!='Core' order by name""")
 
