@@ -5,5 +5,5 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def ping():
- 	return frappe.db.sql_list(""" SELECT doctor_name as 'dname',degree as 'degree' FROM 1bd3e0294da19198.`tabDoctor Master`""")
+ 	return frappe.db.sql(""" SELECT doctor_name as 'dname',degree as 'degree' FROM 1bd3e0294da19198.`tabDoctor Master`""")
 
