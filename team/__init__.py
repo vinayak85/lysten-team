@@ -5,5 +5,6 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def ping():
-    return 'vinu patil99'
+ 	countries = frappe.db.sql_list("select name from tabCountry")
+    return countries
 
