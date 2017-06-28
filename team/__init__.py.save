@@ -1,0 +1,9 @@
+return frappe.db.sql_list("""select name from tabDocType
+		where allow_rename=1 and module!='Core' order by name""")# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+__version__ = '0.0.1'
+
+@frappe.whitelist(allow_guest=True)
+def ping():
+    return 'pong'
