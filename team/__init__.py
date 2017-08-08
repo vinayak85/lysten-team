@@ -6,5 +6,5 @@ __version__ = '0.0.1'
 @frappe.whitelist(limit, offset)
 def ping():
  	return frappe.db.sql(""" SELECT doctor_name as dname,reg_no,pin_code,
-  per_mobile,per_phone,email FROM `tabDoctor Master` LIMIT %s OFFSET %s""", (limit,offset)as_dict=True )
+  per_mobile,per_phone,email FROM `tabDoctor Master` LIMIT %s OFFSET %s""", (limit,offset))
 
