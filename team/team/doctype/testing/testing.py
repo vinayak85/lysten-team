@@ -11,5 +11,5 @@ class testing(Document):
 @frappe.whitelist()
 def ching():
  	return frappe.db.sql(""" SELECT doctor_name as dname,reg_no,pin_code,
-  per_mobile,per_phone,email FROM `tabDoctor Master` LIMIT 5  OFFSET 0""",as_dict=True
+  per_mobile,per_phone,email FROM `tabDoctor Master` LIMIT 5  OFFSET 0""",as_dict=True)
 frappe.msgprint(_(""call me"))
