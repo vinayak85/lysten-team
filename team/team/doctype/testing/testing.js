@@ -7,5 +7,5 @@ frappe.ui.form.on("testing", {
 	},
 	refresh: function(frm) {
 
-	},
+	}
 });
