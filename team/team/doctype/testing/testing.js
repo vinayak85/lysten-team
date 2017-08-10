@@ -4,7 +4,7 @@ frappe.ui.form.on('testing', {
 	btn1: function(frm) {
 		
 			}
-		}
+		
 	},
 
 	refresh: function(frm) {
