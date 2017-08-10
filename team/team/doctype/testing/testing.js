@@ -3,10 +3,10 @@
 
 frappe.ui.form.on('testing', {
 	refresh: function(frm) {
-
+		alert('ref');
 	},
 	btn1: function(frm) {
-		
-			}
+		alert('hi');		
+	}
 	
 });
