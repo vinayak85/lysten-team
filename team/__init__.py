@@ -10,5 +10,5 @@ def ping(limit, offset):
  
 @frappe.whitelist()
 def pung(employee, designation):
-return frappe.db.sql(""" SELECT doctor_name as dname,reg_no,pin_code,
-  per_mobile,per_phone,email FROM `tabDoctor Master` LIMIT {0}  OFFSET {1} """.format(employee,designation),as_dict=True)
+ return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,modified 
+from 1bd3e0294da19198.`tabUser` where `tabUser`.`enabled`=1 """,as_dict=True)
