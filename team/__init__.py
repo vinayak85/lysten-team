@@ -42,5 +42,13 @@ def ting(employee, designation):
  ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
  )""".format(employee),as_dict=True)
+ elif designation == "ZBM":
+  return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,
+ modified from 1bd3e0294da19198.`tabUser` 
+ where `tabUser`.`enabled`=1 and `tabUser`.`zbm`={0}  or `tabUser`.`name` in(
+ ((select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
+ ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
+ ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
+ )""".format(employee),as_dict=True)
  else:
    frappe.msgprint(_("NN"))
