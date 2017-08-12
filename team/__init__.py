@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import frappe
+from frappe import msgprint, 
 __version__ = '0.0.1'
 
 @frappe.whitelist()
@@ -12,9 +13,8 @@ def ping(limit, offset):
 @frappe.whitelist()
 def ting(employee, designation):
  if designation == "TBM":
- return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,
- modified from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1  and `tabUser`.`name` in(
- (select abm from 1bd3e0294da19198.`tabUser` where `name`='riteshdiwan8@gmail.com')
- )""",as_dict=True)
+   frappe.msgprint(_("TT"))
+ else
+   frappe.msgprint(_("NN"))
+
 
