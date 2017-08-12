@@ -10,12 +10,11 @@ def ping(limit, offset):
  
 @frappe.whitelist()
 def pung(employee, designation):
-# if designation == "TBM":
    return frappe.db.sql(""" SELECT name,username,full_name,first_name,middle_name,last_name,
                             designation,mobile_no1,email,modified 
                             from `tabUser` 
                             where `tabUser`.`enabled`=1 
                             and `tabUser`.`name` in(
                             (SELECT abm from `tabUser` where `name`='riteshdiwan8@gmail.com')
-                            ) """,as_dict=True)
+                            ) """)
 
