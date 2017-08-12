@@ -14,7 +14,5 @@ def ping(limit, offset):
 def ting(employee, designation):
  if designation == "TBM":
    frappe.msgprint(_("TT"))
- else
+ else:
    frappe.msgprint(_("NN"))
-
-
