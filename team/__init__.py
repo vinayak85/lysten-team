@@ -11,7 +11,7 @@ def ping(limit, offset):
 
  
 @frappe.whitelist()
-def ting(employee, designation):
+def ting(employee, designation,limit, offset):
  if designation == 'TBM':
    return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,
  modified from 1bd3e0294da19198.`tabUser` 
@@ -22,7 +22,7 @@ def ting(employee, designation):
  ,(select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- )""".format(employee),as_dict=True)
+ ) LIMIT {1}  OFFSET {2} """.format(employee,limit,offset),as_dict=True)
  elif designation == "ABM":
   return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,
  modified from 1bd3e0294da19198.`tabUser` 
