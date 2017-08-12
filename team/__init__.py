@@ -9,6 +9,16 @@ def ping(limit, offset):
   per_mobile,per_phone,email FROM `tabDoctor Master` LIMIT {0}  OFFSET {1} """.format(limit,offset),as_dict=True)
  
 @frappe.whitelist()
-def pung(limit, offset):
- 	return frappe.db.sql(""" SELECT doctor_name as dname,reg_no,pin_code,
-  per_mobile,per_phone,email FROM `tabDoctor Master` LIMIT {0}  OFFSET {1} """.format(limit,offset),as_dict=True)
+def pung(employee, designation):
+ if designation == "TBM":
+   return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,
+                            email,modified rom 1bd3e0294da19198.`tabUser` 
+                            where `tabUser`.`enabled`=1 and `tabUser`.`name` in
+                            ((select abm from 1bd3e0294da19198.`tabUser`
+                            where `name`={}),(select rbm from 1bd3e0294da19198.`tabUser` 
+                            where `name`={}),(select zbm from 1bd3e0294da19198.`tabUser` 
+                            where `name`={}),(select crm from 1bd3e0294da19198.`tabUser` 
+                            where `name`={}),(select sm from 1bd3e0294da19198.`tabUser` 
+                            where `name`={}),(select nbm from 1bd3e0294da19198.`tabUser` 
+                            where `name`={}))""".format(employee),as_dict=True)
+
