@@ -8,7 +8,6 @@ __version__ = '0.0.1'
 # this method is used for android heirachy user
  #it will featch all top and down users of selected user
 @frappe.whitelist()
-
 def tree_user(employee, designation,limit, offset):
  
  if designation == 'TBM':
@@ -89,7 +88,6 @@ def tree_user(employee, designation,limit, offset):
   # this method is used for android heirachy get Hq based on user territory
  #it will featch all HQ of related to the user
 @frappe.whitelist()
-
 def tree_territory_get_hq(territory, designation,limit, offset):
  
 if designation == "ABM":
