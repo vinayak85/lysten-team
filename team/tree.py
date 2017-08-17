@@ -79,9 +79,7 @@ def tree_user(employee, designation,limit, offset):
  else:
    frappe.msgprint(_("No entry"))
    
-# this method is used for android heirachy get Hq based on user territory
-#it will featch all HQ of related to the user
 @frappe.whitelist()
-def tree_territory(territoryy, designation,limit, offset): 
-if designation == "ABM":
- frappe.msgprint(_("No entry"))
+def tree_territory(territoryy, designation,limit, offset):
+ if designation == "ABM":
+  frappe.msgprint(_("No entry"))
