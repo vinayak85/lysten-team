@@ -5,7 +5,7 @@ from frappe import msgprint, _
 
 @frappe.whitelist()
 def tttt(des,limit, offset):
- if des == 'ABM':
+# if des == 'ABM':
    frappe.msgprint(_("ABM"))
-   else:
-   frappe.msgprint(_("TBM"))
+#   else:
+#   frappe.msgprint(_("TBM"))
