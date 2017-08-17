@@ -5,8 +5,7 @@ from frappe import msgprint, _
 
 @frappe.whitelist()
 def tree_territory(b,limit, offset):
- if b == 'hi':
- return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
+ return frappe.db.sql(""" SELECT c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
                            FROM 1bd3e0294da19198.tabTerritory AS c1 
                            JOIN 1bd3e0294da19198.tabTerritory  AS c2 ON (c2.territory_name = c1.parent_territory)
