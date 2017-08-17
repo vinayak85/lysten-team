@@ -14,5 +14,5 @@ def tree_territory(b,limit, offset):
                            JOIN 1bd3e0294da19198.tabTerritory  AS c4 ON (c4.territory_name = c3.parent_territory)
                            JOIN 1bd3e0294da19198.tabTerritory  AS c5 ON (c5.territory_name = c4.parent_territory)
                            where 
-                           c1.parent_territory='Kolhapur(Area)' LIMIT {1}  OFFSET {2};
+                           c1.parent_territory='Kolhapur(Area)' 
                            """.format(a,limit,offset),as_dict=True)
