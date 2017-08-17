@@ -98,7 +98,7 @@ if designation == "ABM":
                            c1.parent_territory={0};
                            """.format(territory,limit,offset),as_dict=True)
  
-if designation == "RBM":
+elif designation == "RBM":
   return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
                            FROM 1bd3e0294da19198.tabTerritory  AS c1
@@ -110,7 +110,7 @@ if designation == "RBM":
                            c2.parent_territory={0};
                            """.format(territory,limit,offset),as_dict=True)
  
- if designation == "ZBM":
+elif designation == "ZBM":
   return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
                            FROM 1bd3e0294da19198.tabTerritory  AS c1
