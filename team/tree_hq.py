@@ -6,7 +6,7 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def tttt(des,limit, offset):
- 	if des == 'ABM':
+ if des == 'ABM':
    frappe.msgprint(_("ABM"))
-  else:
-    frappe.msgprint(_("TBM"))
+   else:
+   frappe.msgprint(_("TBM"))
