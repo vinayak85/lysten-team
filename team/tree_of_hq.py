@@ -4,8 +4,7 @@ from frappe import msgprint, _
 
 
 @frappe.whitelist()
-def tree_territory(a,b,c,limit, offset):
- if b=='hi':
+def tree_territory(b,limit, offset):
  return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
                            FROM 1bd3e0294da19198.tabTerritory AS c1 
@@ -16,5 +15,3 @@ def tree_territory(a,b,c,limit, offset):
                            where 
                            c1.parent_territory='Kolhapur(Area)' 
                            """.format(b,limit,offset),as_dict=True)
-else:
-   frappe.msgprint(_("No entry"))
