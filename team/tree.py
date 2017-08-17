@@ -80,6 +80,6 @@ def tree_user(employee, designation,limit, offset):
    frappe.msgprint(_("No entry"))
    
 @frappe.whitelist()
-def tree_territory(territoryy, designation,limit, offset):
+def tree_territory(designation,limit, offset):
  if designation == "ABM":
   frappe.msgprint(_("No entry"))
