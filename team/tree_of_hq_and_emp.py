@@ -120,9 +120,7 @@ if designation == "RBM":
                            JOIN 1bd3e0294da19198.tabTerritory  AS c5 ON (c5.territory_name = c4.parent_territory)
                            where 
                            c3.parent_territory={0};
-                           """.format(territory,limit,offset),as_dict=True) 
- 
-
+                           """.format(territory,limit,offset),as_dict=True)
  
  elif (designation == "HR Manager" or designation == "Head of Marketing and Sales"
        or designation == "SM" or designation == "CRM" or designation == "NBM"
