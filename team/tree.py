@@ -81,7 +81,6 @@ def tree_user(employee, designation,limit, offset):
    
 @frappe.whitelist()
 def tree_territory(territory,designation,limit, offset):
-if designation == "ABM":
  return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
                            FROM 1bd3e0294da19198.tabTerritory AS c1 
