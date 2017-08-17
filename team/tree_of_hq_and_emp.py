@@ -8,8 +8,7 @@ __version__ = '0.0.1'
 # this method is used for android heirachy user
  #it will featch all top and down users of selected user
 @frappe.whitelist()
-def tree_user(employee, designation,limit, offset):
- 
+def tree_user(employee, designation,limit, offset): 
  if designation == 'TBM':
    return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,
  modified from 1bd3e0294da19198.`tabUser` 
@@ -80,16 +79,13 @@ def tree_user(employee, designation,limit, offset):
  LIMIT {1}  OFFSET {2} """.format(employee,limit,offset),as_dict=True)
  
  else:
-   frappe.msgprint(_("No entry"))
-   
-  
+   frappe.msgprint(_("No entry")) 
 
   
-  # this method is used for android heirachy get Hq based on user territory
- #it will featch all HQ of related to the user
+# this method is used for android heirachy get Hq based on user territory
+#it will featch all HQ of related to the user
 @frappe.whitelist()
-def tree_territory_get_hq(territory, designation,limit, offset):
- 
+def tree_territory_get_hq(territory, designation,limit, offset): 
 if designation == "ABM":
   return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
