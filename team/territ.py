@@ -4,9 +4,7 @@ import frappe
 from frappe import msgprint, _ 
 __version__ = '0.0.1'
 
-@frappe.whitelist()
-# this method is used for android heirachy get Hq based on user territory
-#it will featch all HQ of related to the user
+
 @frappe.whitelist()
 def tttt(tt): 
 if tt == 'TBM':
