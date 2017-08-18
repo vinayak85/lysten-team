@@ -8,8 +8,8 @@ __version__ = '0.0.1'
 # this method is used for android heirachy get Hq based on user territory
 #it will featch all HQ of related to the user
 @frappe.whitelist()
-def tttt(territory, designation,limit, offset): 
- if designation == 'TBM':
+def tttt(tt): 
+ if tt == 'TBM':
    return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
                            FROM 1bd3e0294da19198.tabTerritory  AS c1
