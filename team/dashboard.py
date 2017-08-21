@@ -12,7 +12,11 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
   email_list = email_list + "'"+email_emp.name + "',"
  
  email_list=email_list[:-1]
- return email_list
+ 
+ #return email_list
+ return frappe.db.sql("""SELECT count(*) FROM 1bd3e0294da19198.tabObjective
+where 1bd3e0294da19198.tabObjective.user in ({0})""".format(email_list), as_dict=1)
+ 
  
 
 
@@ -21,7 +25,14 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
 
 def tree_user_bottom(employee, designation): 
  if designation == 'TBM':
-   return ""
+   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
+ where `tabUser`.`enabled`=1 and `tabUser`.`abm`={0}  or `tabUser`.`name` in(
+ (select rbm from 1bd3e0294da19198.`tabUser` where `name`={0})
+ ,(select zbm from 1bd3e0294da19198.`tabUser` where `name`={0})
+ ,(select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
+ ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
+ ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
+ )  """.format(employee), as_dict=1)
   
  elif designation == "ABM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
