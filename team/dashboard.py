@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 import frappe
-from frappe import utils
+from datetime import datetime
 from frappe import msgprint, _ 
 __version__ = '0.0.1'
 
@@ -9,7 +9,8 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
  #return tree_user_bottom(employee, designation)
  email_list=""
- test=frappe.utils.data.get_datetime_str
+ i = datetime.now()
+ test=i.strftime('%Y/%m/%d %H:%M:%S')
  for email_emp in tree_user_bottom(employee, designation):
   email_list = email_list + "'"+email_emp.name + "',"
  
