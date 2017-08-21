@@ -24,7 +24,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
 where 1bd3e0294da19198.tabObjective.select_date={0} and
 1bd3e0294da19198.tabObjective.user in ({1})""".format(today_date,email_list), as_dict=1)
  
- return (today_date,count_of_emp,count_of_emp_objective)
+ return (today_date,count_of_emp,email_list,count_of_emp_objective)
 
 
 # this method is used for android heirachy user
