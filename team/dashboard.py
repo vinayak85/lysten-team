@@ -20,8 +20,8 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
  email_list=email_list[:-1]
  
  #return email_list
- qry='SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date=
- '+ str(today_date) +' and 1bd3e0294da19198.tabObjective.user in '
+ qry="SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date="
+ + str(today_date) + " and 1bd3e0294da19198.tabObjective.user in "
  + str(email_list)
  
 
