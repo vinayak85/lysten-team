@@ -11,7 +11,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
  email_list=""
  i = datetime.now()
  #test=i.strftime('%Y/%m/%d %H:%M:%S')
- test = frappe.utils.data.get_datetime()
+ test = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
  for email_emp in tree_user_bottom(employee, designation):
   email_list = email_list + "'"+email_emp.name + "',"
  
