@@ -4,6 +4,10 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 
+def get_count_of_objectives_of_bottom_emp(employee, designation):
+ frappe.msgprint(_(tree_user_bottom(employee, designation)))
+
+
 # this method is used for android heirachy user
  #it will featch all top and down users of selected user
 @frappe.whitelist()
