@@ -6,7 +6,13 @@ __version__ = '0.0.1'
 @frappe.whitelist()
 def get_count_of_objectives_of_bottom_emp(employee, designation):
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
- return tree_user_bottom(employee, designation)
+ #return tree_user_bottom(employee, designation)
+ email_list=""
+ for email_emp in tree_user_bottom(employee, designation):
+  email_list+=email_emp
+ 
+ return email_list
+ 
 
 
 # this method is used for android heirachy user
