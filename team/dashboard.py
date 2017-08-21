@@ -9,19 +9,22 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
  #return tree_user_bottom(employee, designation)
  email_list=""
- i = datetime.now()
+ count=0
+ #i = datetime.now()
  #test=i.strftime('%Y/%m/%d %H:%M:%S')
- test = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
+ today_date = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
  for email_emp in tree_user_bottom(employee, designation):
   email_list = email_list + "'"+email_emp.name + "',"
+  count=count+1
  
  email_list=email_list[:-1]
  
  #return email_list
  count_of_emp= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
-where 1bd3e0294da19198.tabObjective.user in ({0})""".format(email_list), as_dict=1)
+where 1bd3e0294da19198.tabObjective.select_date={0} and
+1bd3e0294da19198.tabObjective.user in ({1})""".format(today_date,email_list), as_dict=1)
  
- return (test,count_of_emp)
+ return (test,count,count_of_emp)
 
 
 # this method is used for android heirachy user
