@@ -9,7 +9,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
  #return tree_user_bottom(employee, designation)
  email_list=""
  for email_emp in tree_user_bottom(employee, designation):
-  email_list = email_list + email_emp.name
+  email_list = email_list + email_emp.name + ","
  
  return email_list
  
