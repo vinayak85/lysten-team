@@ -43,43 +43,23 @@ def tree_user_bottom(employee, designation):
   
  elif designation == "ABM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and `tabUser`.`abm`={0}  or `tabUser`.`name` in(
- (select rbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select zbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- )  """.format(employee), as_dict=1)
+ where `tabUser`.`enabled`=1 and `tabUser`.`abm`={0} """.format(employee), as_dict=1)
  
  elif designation == "RBM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and `tabUser`.`rbm`={0}  or `tabUser`.`name` in(
- (select zbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- )""".format(employee), as_dict=1)
+ where `tabUser`.`enabled`=1 and `tabUser`.`rbm`={0} """.format(employee), as_dict=1)
  
  elif designation == "ZBM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and `tabUser`.`zbm`={0}  or `tabUser`.`name` in(
- (select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ) """.format(employee), as_dict=1)
+ where `tabUser`.`enabled`=1 and `tabUser`.`zbm`={0} """.format(employee), as_dict=1)
  
  elif designation == "SM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and `tabUser`.`sm`={0}  or `tabUser`.`name` in(
- (select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
-)""".format(employee), as_dict=1)
+ where `tabUser`.`enabled`=1 and `tabUser`.`sm`={0} """.format(employee), as_dict=1)
  
  elif designation == "NBM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and `tabUser`.`nbm`={0}  or `tabUser`.`name` in(
- (select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
-)""".format(employee), as_dict=1)
+ where `tabUser`.`enabled`=1 and `tabUser`.`nbm`={0} """.format(employee), as_dict=1)
  
  elif designation == "CRM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
