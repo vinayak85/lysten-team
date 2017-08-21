@@ -30,7 +30,7 @@ def tree_user_bottom(employee, designation):
  ,(select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- )  """.format(employee))
+ )  """.format(employee), as_dict=1)
  
  elif designation == "RBM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
@@ -39,7 +39,7 @@ def tree_user_bottom(employee, designation):
  ,(select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- )""".format(employee))
+ )""".format(employee), as_dict=1)
  
  elif designation == "ZBM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
@@ -47,30 +47,30 @@ def tree_user_bottom(employee, designation):
  (select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ) """.format(employee))
+ ) """.format(employee), as_dict=1)
  
  elif designation == "SM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
  where `tabUser`.`enabled`=1 and `tabUser`.`sm`={0}  or `tabUser`.`name` in(
  (select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
-)""".format(employee))
+)""".format(employee), as_dict=1)
  
  elif designation == "NBM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
  where `tabUser`.`enabled`=1 and `tabUser`.`nbm`={0}  or `tabUser`.`name` in(
  (select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
-)""".format(employee))
+)""".format(employee), as_dict=1)
  
  elif designation == "CRM":
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
  where `tabUser`.`enabled`=1 and `tabUser`.`crm`={0}
- """.format(employee))
+ """.format(employee), as_dict=1)
  
  elif (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
   return frappe.db.sql(""" select name from 1bd3e0294da19198.`tabUser` 
  where `tabUser`.`enabled`=1 and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
- """.format(employee))
+ """.format(employee), as_dict=1)
  
  else:
    return ""
