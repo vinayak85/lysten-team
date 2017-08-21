@@ -23,11 +23,11 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
  qry='SELECT select_date= '+str(today_date)
 
 
- count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
-where 1bd3e0294da19198.tabObjective.select_date={0} and
-1bd3e0294da19198.tabObjective.user in %s""".format(today_date),email_list, as_dict=1)
+# count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
+#where 1bd3e0294da19198.tabObjective.select_date={0} and
+#1bd3e0294da19198.tabObjective.user in %s""".format(today_date),email_list, as_dict=1)
  
- return (today_date,count_of_emp,email_list,count_of_emp_objective,qry)
+ return (today_date,count_of_emp,email_list,qry)
 
 
 # this method is used for android heirachy user
