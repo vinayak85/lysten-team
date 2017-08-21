@@ -8,16 +8,17 @@ def get_count_of_objectives_of_bottom_emp(employee, designation):
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
  #return tree_user_bottom(employee, designation)
  email_list=""
+ test="arjun"
  for email_emp in tree_user_bottom(employee, designation):
   email_list = email_list + "'"+email_emp.name + "',"
  
  email_list=email_list[:-1]
  
  #return email_list
- return frappe.db.sql("""SELECT count(*) FROM 1bd3e0294da19198.tabObjective
+ count_of_emp= frappe.db.sql("""SELECT count(*) FROM 1bd3e0294da19198.tabObjective
 where 1bd3e0294da19198.tabObjective.user in ({0})""".format(email_list), as_dict=1)
  
- 
+ return (test,count_of_emp)
 
 
 # this method is used for android heirachy user
