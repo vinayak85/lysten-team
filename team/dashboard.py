@@ -30,7 +30,11 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 
 
  
- dict = {'today_date': '', 'cnt_emp': '', 'count_of_emp_objective': ''}
+ dict = {'today_date': '',
+         'cnt_emp': '',
+         'count_of_emp_objective': ''
+         'count_of_emp_dcr':''
+        }
  dict['today_date'] = today_date;
  dict['cnt_emp'] = count_of_emp;
  dict['cnt_emp_objective'] = count_of_emp_objective[0].cnt_ob;
