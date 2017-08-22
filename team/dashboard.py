@@ -12,7 +12,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
  count_of_emp=0
  #i = datetime.now()
  #test=i.strftime('%Y/%m/%d %H:%M:%S')
- if(len(date_pass) == 0)
+ if((len(date_pass)) == 0)
  today_date = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
  else
  today_date=date_pass
