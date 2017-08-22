@@ -26,7 +26,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  
  dict = {'today_date': '', 'cnt_emp': '', 'count_of_emp_objective': ''}
  dict['today_date'] = today_date;
- dict['cnt_emp'] = cnt_emp;
+ dict['cnt_emp'] = count_of_emp;
  dict['count_of_emp_objective'] = count_of_emp_objective;
  return dict
  #return email_list
