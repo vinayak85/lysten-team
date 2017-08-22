@@ -5,14 +5,18 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
-def get_count_of_objectives_of_bottom_emp(employee, designation):
+def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
  #return tree_user_bottom(employee, designation)
  email_list=""
  count_of_emp=0
  #i = datetime.now()
  #test=i.strftime('%Y/%m/%d %H:%M:%S')
+ if(len(date_pass) == 0)
  today_date = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
+ else
+ today_date=date_pass
+ 
  today_date="'"+today_date+"'"
  for email_emp in tree_user_bottom(employee, designation):
   email_list = email_list + "'"+email_emp.name + "',"
