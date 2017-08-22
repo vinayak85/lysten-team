@@ -27,7 +27,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  dict = {'today_date': '', 'cnt_emp': '', 'count_of_emp_objective': ''}
  dict['today_date'] = today_date;
  dict['cnt_emp'] = count_of_emp;
- dict['count_of_emp_objective'] = count_of_emp_objective.cnt_ob;
+ dict['count_of_emp_objective'] = count_of_emp_objective[0];
  return dict
  #return email_list
 # qry='SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date=' + ''' +  str(today_date) + ''' + ' and 1bd3e0294da19198.tabObjective.user in (' + str(email_list) + ')' 
