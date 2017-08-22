@@ -24,7 +24,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.tabObjective.select_date={1}""".format(email_list,today_date), as_dict=1)
  #return (today_date, str(count_of_emp) as cnt_emp,count_of_emp_objective)
  
- dict = {'today_date': null, 'cnt_emp': null, 'count_of_emp_objective': null}
+ dict = {'today_date': '', 'cnt_emp': '', 'count_of_emp_objective': ''}
  dict['today_date'] = today_date;
  dict['cnt_emp'] = cnt_emp;
  dict['count_of_emp_objective'] = count_of_emp_objective;
