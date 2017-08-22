@@ -31,18 +31,30 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  count_of_emp_dcr= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
 1bd3e0294da19198.`tabDoctor Calls`.user_id in ({0}) and
 1bd3e0294da19198.`tabDoctor Calls`.date={1}""".format(email_list,today_date), as_dict=1)
+ 
+ count_of_emp_chem= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabChemist Call` where 
+1bd3e0294da19198.`tabChemist Call`.user_id in ({0}) and
+1bd3e0294da19198.`tabChemist Call`.date={1}""".format(email_list,today_date), as_dict=1)
+ 
+ count_of_emp_camp= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabcampaign_booking` where 
+1bd3e0294da19198.`tabcampaign_booking`.user_id in ({0}) and
+1bd3e0294da19198.`tabcampaign_booking`.date={1}""".format(email_list,today_date), as_dict=1)
 
 
  
  dict = {'today_date': '',
          'cnt_emp': '',
          'cnt_emp_objective': '',
-         'cnt_of_emp_dcr': ''
+         'cnt_of_emp_dcr': '',
+         'count_of_emp_chem': '',
+         'count_of_emp_camp':''
         }
  dict['today_date'] = today_date;
  dict['cnt_emp'] = count_of_emp;
  dict['cnt_emp_objective'] = count_of_emp_objective[0].cnt_ob;
- dict['cnt_of_emp_dcr'] = count_of_emp_dcr[0].cnt_ob; 
+ dict['cnt_of_emp_dcr'] = count_of_emp_dcr[0].cnt_ob;
+ dict['cnt_of_emp_chem'] = count_of_emp_chem[0].cnt_ob; 
+ dict['cnt_of_emp_camp'] = count_of_emp_camp[0].cnt_ob; 
  return dict
  #return email_list
 # qry='SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date=' + ''' +  str(today_date) + ''' + ' and 1bd3e0294da19198.tabObjective.user in (' + str(email_list) + ')' 
