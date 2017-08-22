@@ -46,8 +46,8 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
          'cnt_emp': '',
          'cnt_emp_objective': '',
          'cnt_of_emp_dcr': '',
-         'count_of_emp_chem': '',
-         'count_of_emp_camp':''
+         'cnt_of_emp_chem': '',
+         'cnt_of_emp_camp':''
         }
  dict['today_date'] = today_date;
  dict['cnt_emp'] = count_of_emp;
