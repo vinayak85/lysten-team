@@ -24,10 +24,17 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.tabObjective.select_date={1}""".format(email_list,today_date), as_dict=1)
  #return (today_date, str(count_of_emp) as cnt_emp,count_of_emp_objective)
  
+ count_of_emp_dcr= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
+1bd3e0294da19198.tabObjective.user in ({0}) and
+1bd3e0294da19198.tabDoctor Calls.date={1}""".format(email_list,today_date), as_dict=1)
+
+
+ 
  dict = {'today_date': '', 'cnt_emp': '', 'count_of_emp_objective': ''}
  dict['today_date'] = today_date;
  dict['cnt_emp'] = count_of_emp;
  dict['cnt_emp_objective'] = count_of_emp_objective[0].cnt_ob;
+ dict['count_of_emp_dcr'] = count_of_emp_dcr[0].cnt_ob; 
  return dict
  #return email_list
 # qry='SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date=' + ''' +  str(today_date) + ''' + ' and 1bd3e0294da19198.tabObjective.user in (' + str(email_list) + ')' 
