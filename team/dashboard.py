@@ -42,10 +42,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  
  objective= frappe.db.sql(""" SELECT objective as obj FROM 1bd3e0294da19198.`tabObjective` where 
 1bd3e0294da19198.`tabObjective`.user = {0} and
-1bd3e0294da19198.`tabObjective`.date={1}""".format(employee,today_date), as_dict=1
-
-
-
+1bd3e0294da19198.`tabObjective`.date={1}""".format(employee,today_date), as_dict=1)
  
  dict = {'today_date': '',
          'cnt_emp': '',
