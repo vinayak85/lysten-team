@@ -60,7 +60,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  dict['cnt_of_emp_dcr'] = count_of_emp_dcr[0].cnt_ob;
  dict['cnt_of_emp_chem'] = count_of_emp_chem[0].cnt_ob; 
  dict['cnt_of_emp_camp'] = count_of_emp_camp[0].cnt_ob;
- dict['obj'] = objective[0]; 
+ dict['obj'] = objective[0].obj; 
                           
  return dict
  #return email_list
