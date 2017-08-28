@@ -107,15 +107,14 @@ dict['actual_dcr_call_tbm']=actual_dcr_call_tbm;
 dict['percent_tbm_dcr_call']=percent_tbm_dcr_call;
 dict['expected_dcr_call_tbm']=expected_chem_call_tbm;
 dict['actual_dcr_call_tbm']=actual_chem_call_tbm;
-dict['percent_tbm_dcr_call']=percent_tbm_chem_call;
-                          
+dict['percent_tbm_dcr_call']=percent_tbm_chem_call;                          
 return dict
+
 #return email_list
 # qry='SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date=' + ''' +  str(today_date) + ''' + ' and 1bd3e0294da19198.tabObjective.user in (' + str(email_list) + ')' 
 #where 1bd3e0294da19198.tabObjective.select_date={0} and
 # this method is used for android heirachy user
  #it will featch all top and down users of selected user
-
 def tree_user_bottom(employee, designation): 
  if designation == 'TBM':
    return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
