@@ -61,44 +61,42 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.`tabcampaign_booking`.user_id in ({0}) and
 1bd3e0294da19198.`tabcampaign_booking`.date={1}""".format(email_list,today_date), as_dict=1)
  
- objective= frappe.db.sql(""" SELECT objective as obj FROM 1bd3e0294da19198.`tabObjective` where 
+objective= frappe.db.sql(""" SELECT objective as obj FROM 1bd3e0294da19198.`tabObjective` where 
 1bd3e0294da19198.`tabObjective`.user = {0} and
 1bd3e0294da19198.`tabObjective`.`select_date`={1} """.format(employee,today_date), as_dict=1)
- 
- if len(objective) > 0:
-  objj=objective[0].obj
- else:
-  objj='No Objective Today'
- 
+if len(objective) > 0:
+    objj=objective[0].obj
+else:
+    objj='No Objective Today'
 if (count_of_emp_tbm>0):
- expected_dcr_call_tbm=count_of_emp_tbm*10
- actual_dcr_call_tbm=count_of_emp_dcr_only_tbm[0].cnt_ob
- percent_tbm_dcr_call=(actual_dcr_call_tbm/expected_dcr_call_tbm)*100
- expected_chem_call_tbm=count_of_emp_tbm*10
- actual_chem_call_tbm=count_of_emp_chem_only_tbm[0].cnt_ob
- percent_tbm_chem_call=(actual_chem_call_tbm/expected_chem_call_tbm)*100
- 
+    expected_dcr_call_tbm=count_of_emp_tbm*10
+actual_dcr_call_tbm=count_of_emp_dcr_only_tbm[0].cnt_ob
+percent_tbm_dcr_call=(actual_dcr_call_tbm/expected_dcr_call_tbm)*100
+expected_chem_call_tbm=count_of_emp_tbm*10
+actual_chem_call_tbm=count_of_emp_chem_only_tbm[0].cnt_ob
+percent_tbm_chem_call=(actual_chem_call_tbm/expected_chem_call_tbm)*100
+
 #frappe.msgprint(_(objective))
 dict = {'today_date': '',
-         'cnt_emp': '',
-         'count_of_emp_only_TBM':'',
-         'cnt_emp_objective': '',
-         'cnt_of_emp_dcr': '',
-         'cnt_of_emp_chem': '',
-         'cnt_of_emp_camp':'',
-         'obj':'',
-         'expected_dcr_call_tbm':0,
-         'actual_dcr_call_tbm':0,
-         'percent_tbm_dcr_call':0,
-         'expected_chem_call_tbm':0,
-         'actual_chem_call_tbm':0,
-         'percent_tbm_chem_call':0
+        'cnt_emp': '',
+        'count_of_emp_only_TBM':'',
+        'cnt_emp_objective': '',
+        'cnt_of_emp_dcr': '',
+        'cnt_of_emp_chem': '',
+        'cnt_of_emp_camp':'',
+        'obj':'',
+        'expected_dcr_call_tbm':0,
+        'actual_dcr_call_tbm':0,
+        'percent_tbm_dcr_call':0,
+        'expected_chem_call_tbm':0,
+        'actual_chem_call_tbm':0,
+        'percent_tbm_chem_call':0
         }
 dict['today_date'] = today_date;
 dict['cnt_emp'] = count_of_emp;
 dict['cnt_emp_objective'] = count_of_emp_objective[0].cnt_ob;
 dict['cnt_of_emp_dcr'] = count_of_emp_dcr[0].cnt_ob;
-dict['cnt_of_emp_chem'] = count_of_emp_chem[0].cnt_ob; 
+dict['cnt_of_emp_chem'] = count_of_emp_chem[0].cnt_ob;
 dict['cnt_of_emp_camp'] = count_of_emp_camp[0].cnt_ob;
 dict['count_of_emp_only_TBM']=count_of_emp_tbm
 dict['obj'] = objj;
@@ -107,7 +105,7 @@ dict['actual_dcr_call_tbm']=actual_dcr_call_tbm;
 dict['percent_tbm_dcr_call']=percent_tbm_dcr_call;
 dict['expected_dcr_call_tbm']=expected_chem_call_tbm;
 dict['actual_dcr_call_tbm']=actual_chem_call_tbm;
-dict['percent_tbm_dcr_call']=percent_tbm_chem_call;                          
+dict['percent_tbm_dcr_call']=percent_tbm_chem_call;
 return dict
 
 #return email_list
