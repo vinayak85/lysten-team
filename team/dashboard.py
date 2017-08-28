@@ -47,7 +47,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  
  if len(objective) > 0:
   objj=objective[0].obj
- elif:
+ else:
   objj='No Objective Today'
   
  #frappe.msgprint(_(objective))
