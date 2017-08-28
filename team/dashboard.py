@@ -105,9 +105,9 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  dict['expected_dcr_call_tbm']=expected_dcr_call_tbm;
  dict['actual_dcr_call_tbm']=actual_dcr_call_tbm;
  dict['percent_tbm_dcr_call']=percent_tbm_dcr_call;
- dict['expected_dcr_call_tbm']=expected_chem_call_tbm;
- dict['actual_dcr_call_tbm']=actual_chem_call_tbm;
- dict['percent_tbm_dcr_call']=percent_tbm_chem_call;
+ dict['expected_chem_call_tbm']=expected_chem_call_tbm;
+ dict['actual_chem_call_tbm']=actual_chem_call_tbm;
+ dict['percent_tbm_chem_call']=percent_tbm_chem_call;
  
  return dict
 #return email_list
