@@ -45,7 +45,12 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.`tabObjective`.user = {0} and
 1bd3e0294da19198.`tabObjective`.`select_date`={1} """.format(employee,today_date), as_dict=1)
  
- frappe.msgprint(_(objective))
+ if len(objective) > 0:
+  objj=objective[0].obj
+ elif:
+  objj='No Objective Today'
+  
+ #frappe.msgprint(_(objective))
  dict = {'today_date': '',
          'cnt_emp': '',
          'cnt_emp_objective': '',
@@ -61,7 +66,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  dict['cnt_of_emp_dcr'] = count_of_emp_dcr[0].cnt_ob;
  dict['cnt_of_emp_chem'] = count_of_emp_chem[0].cnt_ob; 
  dict['cnt_of_emp_camp'] = count_of_emp_camp[0].cnt_ob;
- dict['obj'] = objective;
+ dict['obj'] = objj;
                           
  return dict
  #return email_list
