@@ -24,7 +24,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
   email_list = email_list + "'"+email_emp.name + "',"
   count_of_emp=count_of_emp+1
   if(email_emp.designation =='TBM'):
-   email_list_only_TBM=email_list_only_TBM + "'"+email_list_only_TBM.name + "',"
+   email_list_only_TBM=email_list_only_TBM + "'"+email_emp.name + "',"
    count_of_emp_tbm=count_of_emp_tbm+1
   
  
