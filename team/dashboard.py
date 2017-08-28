@@ -94,31 +94,25 @@ dict = {'today_date': '',
          'actual_chem_call_tbm':0,
          'percent_tbm_chem_call':0
         }
- 
- 
- dict['today_date'] = today_date;
- dict['cnt_emp'] = count_of_emp;
- dict['cnt_emp_objective'] = count_of_emp_objective[0].cnt_ob;
- dict['cnt_of_emp_dcr'] = count_of_emp_dcr[0].cnt_ob;
- dict['cnt_of_emp_chem'] = count_of_emp_chem[0].cnt_ob; 
- dict['cnt_of_emp_camp'] = count_of_emp_camp[0].cnt_ob;
- dict['count_of_emp_only_TBM']=count_of_emp_tbm
- dict['obj'] = objj;
- dict['expected_dcr_call_tbm']=expected_dcr_call_tbm;
- dict['actual_dcr_call_tbm']=actual_dcr_call_tbm;
- dict['percent_tbm_dcr_call']=percent_tbm_dcr_call;
- dict['expected_dcr_call_tbm']=expected_chem_call_tbm;
- dict['actual_dcr_call_tbm']=actual_chem_call_tbm;
- dict['percent_tbm_dcr_call']=percent_tbm_chem_call;
+dict['today_date'] = today_date;
+dict['cnt_emp'] = count_of_emp;
+dict['cnt_emp_objective'] = count_of_emp_objective[0].cnt_ob;
+dict['cnt_of_emp_dcr'] = count_of_emp_dcr[0].cnt_ob;
+dict['cnt_of_emp_chem'] = count_of_emp_chem[0].cnt_ob; 
+dict['cnt_of_emp_camp'] = count_of_emp_camp[0].cnt_ob;
+dict['count_of_emp_only_TBM']=count_of_emp_tbm
+dict['obj'] = objj;
+dict['expected_dcr_call_tbm']=expected_dcr_call_tbm;
+dict['actual_dcr_call_tbm']=actual_dcr_call_tbm;
+dict['percent_tbm_dcr_call']=percent_tbm_dcr_call;
+dict['expected_dcr_call_tbm']=expected_chem_call_tbm;
+dict['actual_dcr_call_tbm']=actual_chem_call_tbm;
+dict['percent_tbm_dcr_call']=percent_tbm_chem_call;
                           
- return dict
- #return email_list
+return dict
+#return email_list
 # qry='SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date=' + ''' +  str(today_date) + ''' + ' and 1bd3e0294da19198.tabObjective.user in (' + str(email_list) + ')' 
 #where 1bd3e0294da19198.tabObjective.select_date={0} and
-
-
-
-
 # this method is used for android heirachy user
  #it will featch all top and down users of selected user
 
