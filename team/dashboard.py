@@ -30,7 +30,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
  
  email_list=email_list[:-1]
  email_list_only_TBM=email_list_only_TBM[:-1]
- frappe.msgprint(_(email_list_only_TBM))
+ #frappe.msgprint(_(email_list_only_TBM))
  
  count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
 where 1bd3e0294da19198.tabObjective.user in ({0}) and
@@ -45,7 +45,9 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.`tabDoctor Calls`.user_id in ({0}) and
 1bd3e0294da19198.`tabDoctor Calls`.date={1}""".format(email_list,today_date), as_dict=1)
  
-
+ count_of_emp_dcr_only_tbm= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
+1bd3e0294da19198.`tabDoctor Calls`.user_id in ({0}) and
+1bd3e0294da19198.`tabDoctor Calls`.date={1}""".format(email_list_only_TBM,today_date), as_dict=1)
  
  count_of_emp_chem= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabChemist Call` where 
 1bd3e0294da19198.`tabChemist Call`.user_id in ({0}) and
@@ -64,6 +66,10 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  else:
   objj='No Objective Today'
   
+ expected_dcr_call_tbm=count_of_emp_tbm*10
+ actual_dcr_call_tbm=count_of_emp_dcr_only_tbm
+ percent_tbm_dcr_call=(actual_dcr_call_tbm/expected_dcr_call_tbm)*100
+  
  #frappe.msgprint(_(objective))
  dict = {'today_date': '',
          'cnt_emp': '',
@@ -73,7 +79,11 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
          'cnt_of_emp_chem': '',
          'cnt_of_emp_camp':'',
          'obj':''
+         'expected_dcr_call_tbm':0,
+         'actual_dcr_call_tbm':0
+         'percent_tbm_dcr_call':0
         }
+ 
  
  dict['today_date'] = today_date;
  dict['cnt_emp'] = count_of_emp;
@@ -83,6 +93,9 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  dict['cnt_of_emp_camp'] = count_of_emp_camp[0].cnt_ob;
  dict['count_of_emp_only_TBM']=count_of_emp_tbm
  dict['obj'] = objj;
+ dict['expected_dcr_call_tbm']=expected_dcr_call_tbm
+ dict['actual_dcr_call_tbm']=actual_dcr_call_tbm
+ dict['percent_tbm_dcr_call']=percent_tbm_dcr_call
                           
  return dict
  #return email_list
