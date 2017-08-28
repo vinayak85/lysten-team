@@ -35,7 +35,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.tabObjective.select_date={1}""".format(email_list,today_date), as_dict=1)
  #return (today_date, str(count_of_emp) as cnt_emp,count_of_emp_objective)
  
-  count_of_emp_only_TBM= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
+ count_of_emp_only_TBM= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
 1bd3e0294da19198.`tabDoctor Calls`.user_id in ({0}) and
 1bd3e0294da19198.`tabDoctor Calls`.date={1}""".format(email_list_only_TBM,today_date), as_dict=1)
  
