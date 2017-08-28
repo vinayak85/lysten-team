@@ -70,13 +70,13 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  else:
   objj='No Objective Today'
  
- if (count_of_emp_tbm>0):
- expected_dcr_call_tbm=count_of_emp_tbm*10
- actual_dcr_call_tbm=count_of_emp_dcr_only_tbm[0].cnt_ob
- percent_tbm_dcr_call=(actual_dcr_call_tbm/expected_dcr_call_tbm)*100 
- expected_chem_call_tbm=count_of_emp_tbm*10
- actual_chem_call_tbm=count_of_emp_chem_only_tbm[0].cnt_ob
- percent_tbm_chem_call=(actual_chem_call_tbm/expected_chem_call_tbm)*100
+if (count_of_emp_tbm>0):
+    expected_dcr_call_tbm=count_of_emp_tbm*10
+    actual_dcr_call_tbm=count_of_emp_dcr_only_tbm[0].cnt_ob
+    percent_tbm_dcr_call=(actual_dcr_call_tbm/expected_dcr_call_tbm)*100
+    expected_chem_call_tbm=count_of_emp_tbm*10
+    actual_chem_call_tbm=count_of_emp_chem_only_tbm[0].cnt_ob
+    percent_tbm_chem_call=(actual_chem_call_tbm/expected_chem_call_tbm)*100
 
   
  #frappe.msgprint(_(objective))
