@@ -41,7 +41,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.`tabcampaign_booking`.user_id in ({0}) and
 1bd3e0294da19198.`tabcampaign_booking`.date={1}""".format(email_list,today_date), as_dict=1)
  
- objective= frappe.db.sql(""" SELECT ISNULL(objective,'') as obj FROM 1bd3e0294da19198.`tabObjective` where 
+ objective= frappe.db.sql(""" SELECT IFNULL(objective,'') as obj FROM 1bd3e0294da19198.`tabObjective` where 
 1bd3e0294da19198.`tabObjective`.user = {0} and
 1bd3e0294da19198.`tabObjective`.`select_date`={1} """.format(employee,today_date), as_dict=1)
  
