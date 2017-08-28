@@ -78,9 +78,9 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
          'cnt_of_emp_dcr': '',
          'cnt_of_emp_chem': '',
          'cnt_of_emp_camp':'',
-         'obj':''
+         'obj':'',
          'expected_dcr_call_tbm':0,
-         'actual_dcr_call_tbm':0
+         'actual_dcr_call_tbm':0,
          'percent_tbm_dcr_call':0
         }
  
