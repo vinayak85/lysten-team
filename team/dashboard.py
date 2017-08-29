@@ -88,8 +88,8 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  if (count_of_emp_tbm>0):
   expected_dcr_call_tbm=count_of_emp_tbm*10
   actual_dcr_call_tbm=count_of_emp_dcr_only_tbm[0].cnt_ob
-  #percent_tbm_dcr_call=100.0 * 1 / 140
-  percent_tbm_dcr_call=(actual_dcr_call_tbm/expected_dcr_call_tbm)*100.0
+  #percent_tbm_dcr_call=(actual_dcr_call_tbm/expected_dcr_call_tbm)*100.0
+  percent_tbm_dcr_call=100.0 * 1 / 140
   expected_chem_call_tbm=count_of_emp_tbm*10
   actual_chem_call_tbm=count_of_emp_chem_only_tbm[0].cnt_ob
   percent_tbm_chem_call=(actual_chem_call_tbm/expected_chem_call_tbm)*100.0 
