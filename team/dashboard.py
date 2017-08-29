@@ -36,7 +36,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
  #return str(len(email_list)) + "ssss " + str(len(email_list_only_TBM))
  #frappe.msgprint(_(email_list_only_TBM))
  
- if(lem(email_list)>0):
+ if(len(email_list)>0):
   count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
 where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.tabObjective.select_date={1}""".format(email_list,today_date), as_dict=1)
@@ -63,7 +63,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.`tabObjective`.user = {0} and
 1bd3e0294da19198.`tabObjective`.`select_date`={1} """.format(employee,today_date), as_dict=1)
  ## TBM calculation
- if(lem(email_list_only_TBM)>0):
+ if(len(email_list_only_TBM)>0):
   count_of_emp_only_TBM= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
 1bd3e0294da19198.`tabDoctor Calls`.user_id in ({0}) and
 1bd3e0294da19198.`tabDoctor Calls`.date={1}""".format(email_list_only_TBM,today_date), as_dict=1)
