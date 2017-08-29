@@ -30,9 +30,10 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
  
  email_list=email_list[:-1]
  email_list_only_TBM=email_list_only_TBM[:-1]
- #frappe.msgprint(_(email_list_only_TBM))
+ frappe.msgprint(_(email_list))
+ frappe.msgprint(_(email_list_only_TBM))
  
- count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
+ '''count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
 where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.tabObjective.select_date={1}""".format(email_list,today_date), as_dict=1)
  #return (today_date, str(count_of_emp) as cnt_emp,count_of_emp_objective)
@@ -64,6 +65,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  objective= frappe.db.sql(""" SELECT objective as obj FROM 1bd3e0294da19198.`tabObjective` where 
 1bd3e0294da19198.`tabObjective`.user = {0} and
 1bd3e0294da19198.`tabObjective`.`select_date`={1} """.format(employee,today_date), as_dict=1)
+
  if len(objective) > 0:
   objj=objective[0].obj
  else:
@@ -109,7 +111,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  dict['actual_chem_call_tbm']=actual_chem_call_tbm;
  dict['percent_tbm_chem_call']=percent_tbm_chem_call;
  
- return dict
+ return dict'''
 #return email_list
 # qry='SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date=' + ''' +  str(today_date) + ''' + ' and 1bd3e0294da19198.tabObjective.user in (' + str(email_list) + ')' 
 #where 1bd3e0294da19198.tabObjective.select_date={0} and
