@@ -27,9 +27,12 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
    email_list_only_TBM=email_list_only_TBM + "'"+email_emp.name + "',"
    count_of_emp_tbm=count_of_emp_tbm+1
   
- 
  email_list=email_list[:-1]
  email_list_only_TBM=email_list_only_TBM[:-1]
+ 
+ if(designation == 'TBM'):
+  email_list=employee
+  email_list_only_TBM=employee
  return str(len(email_list)) + "ssss " + str(len(email_list_only_TBM))
  #frappe.msgprint(_(email_list_only_TBM))
  
