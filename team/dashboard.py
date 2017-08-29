@@ -73,7 +73,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 1bd3e0294da19198.`tabChemist Call`.date={1}""".format(email_list_only_TBM,today_date), as_dict=1)
   
   
- app_ver_count =f rappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabAppVersions` where 
+ app_ver_count =frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabAppVersions` where 
 1bd3e0294da19198.`tabAppVersions`.versionCode = {0} and
 1bd3e0294da19198.`tabAppVersions`.supported=true""".format(app_ver), as_dict=1)
   
