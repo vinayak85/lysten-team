@@ -5,7 +5,7 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
-def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
+def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ver):
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
  #return tree_user_bottom(employee, designation)
  email_list=""
@@ -71,6 +71,12 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
   count_of_emp_chem_only_tbm= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabChemist Call` where 
 1bd3e0294da19198.`tabChemist Call`.user_id in ({0}) and
 1bd3e0294da19198.`tabChemist Call`.date={1}""".format(email_list_only_TBM,today_date), as_dict=1)
+  
+  
+ app_ver_count =f rappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabAppVersions` where 
+1bd3e0294da19198.`tabAppVersions`.versionCode = {0} and
+1bd3e0294da19198.`tabAppVersions`.supported=true""".format(app_ver), as_dict=1)
+  
  
 
  if len(objective) > 0:
@@ -109,7 +115,8 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
          'percent_tbm_dcr_call':0,
          'expected_chem_call_tbm':0,
          'actual_chem_call_tbm':0,
-         'percent_tbm_chem_call':0
+         'percent_tbm_chem_call':0,
+         'app_ver_count':0
          }
  
  dict['today_date'] = today_date;
@@ -126,6 +133,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  dict['expected_chem_call_tbm']=expected_chem_call_tbm;
  dict['actual_chem_call_tbm']=actual_chem_call_tbm;
  dict['percent_tbm_chem_call']=frappe.utils.data.flt (percent_tbm_chem_call, precision=2);
+ dict['app_ver_count']=app_ver_count[0].cnt_ob;
  
  return dict
 #return email_list
