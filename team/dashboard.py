@@ -30,7 +30,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass):
  
  email_list=email_list[:-1]
  email_list_only_TBM=email_list_only_TBM[:-1]
- print(email_list)
+ return email_list
  #frappe.msgprint(_(email_list_only_TBM))
  
  '''count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
