@@ -92,7 +92,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
   percent_tbm_dcr_call=100.0 * actual_dcr_call_tbm / expected_dcr_call_tbm
   expected_chem_call_tbm=count_of_emp_tbm*10
   actual_chem_call_tbm=count_of_emp_chem_only_tbm[0].cnt_ob
-  percent_tbm_chem_call=(actual_chem_call_tbm/expected_chem_call_tbm)*100.0 
+  percent_tbm_chem_call=100.0 * actual_chem_call_tbm / expected_chem_call_tbm
   
   
  #frappe.msgprint(_(objective))
