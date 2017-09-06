@@ -44,19 +44,19 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  
  
   count_of_emp_dcr= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
-1bd3e0294da19198.`tabDoctor Calls`.user_id in ({0}) and
+1bd3e0294da19198.`tabDoctor Calls`.dr_call_by_user_id in ({0}) and
 1bd3e0294da19198.`tabDoctor Calls`.date={1}""".format(email_list,today_date), as_dict=1)
  
   count_of_emp_dcr_only_tbm= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
-1bd3e0294da19198.`tabDoctor Calls`.user_id in ({0}) and
+1bd3e0294da19198.`tabDoctor Calls`.dr_call_by_user_id in ({0}) and
 1bd3e0294da19198.`tabDoctor Calls`.date={1}""".format(email_list_only_TBM,today_date), as_dict=1)
  
   count_of_emp_chem= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabChemist Call` where 
-1bd3e0294da19198.`tabChemist Call`.user_id in ({0}) and
+1bd3e0294da19198.`tabChemist Call`.call_by_user_id in ({0}) and
 1bd3e0294da19198.`tabChemist Call`.date={1}""".format(email_list,today_date), as_dict=1) 
  
   count_of_emp_camp= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabcampaign_booking` where 
-1bd3e0294da19198.`tabcampaign_booking`.user_id in ({0}) and
+1bd3e0294da19198.`tabcampaign_booking`.call_by_user_id in ({0}) and
 1bd3e0294da19198.`tabcampaign_booking`.date={1}""".format(email_list,today_date), as_dict=1)
  
   objective= frappe.db.sql(""" SELECT objective as obj FROM 1bd3e0294da19198.`tabObjective` where 
@@ -65,11 +65,11 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
  ## TBM calculation
  if(len(email_list_only_TBM)>0):
   count_of_emp_only_TBM= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabDoctor Calls` where 
-1bd3e0294da19198.`tabDoctor Calls`.user_id in ({0}) and
+1bd3e0294da19198.`tabDoctor Calls`.dr_call_by_user_id in ({0}) and
 1bd3e0294da19198.`tabDoctor Calls`.date={1}""".format(email_list_only_TBM,today_date), as_dict=1)
   
   count_of_emp_chem_only_tbm= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.`tabChemist Call` where 
-1bd3e0294da19198.`tabChemist Call`.user_id in ({0}) and
+1bd3e0294da19198.`tabChemist Call`.call_by_user_id in ({0}) and
 1bd3e0294da19198.`tabChemist Call`.date={1}""".format(email_list_only_TBM,today_date), as_dict=1)
   
   
