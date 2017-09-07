@@ -108,7 +108,7 @@ def tree_territory_get_hq(territory, designation,limit, offset):
                            where 
                            c2.parent_territory={0} LIMIT {1}  OFFSET {2};
                            """.format(territory,limit,offset),as_dict=True)
- elif designation == "ZBM":
+ elif (designation == "ZBM" or designation == "SM") :
   return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
                            FROM 1bd3e0294da19198.tabTerritory  AS c1
@@ -119,8 +119,7 @@ def tree_territory_get_hq(territory, designation,limit, offset):
                            where 
                            c3.parent_territory={0} LIMIT {1}  OFFSET {2};
                            """.format(territory,limit,offset),as_dict=True)
- elif (designation == "HR Manager" or designation == "Head of Marketing and Sales"
-       or designation == "SM" or designation == "CRM" or designation == "NBM"
+ elif (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "CRM" or designation == "NBM"
        or designation == "Admin"):
   return frappe.db.sql(""" SELECT 	c1.name as 'headquarter_id', c1.territory_name as 'headquarter_name',
                            c1.parent_territory as 'headquarter_parent'
