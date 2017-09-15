@@ -24,17 +24,20 @@ def lock_master_forms(employee,formname):
   
 def lock_transaction_forms(employee,formname,date):
   lock_flag=0
+  frmdate=""
+  todate=""
+  locktime=""
   if(formname == 'T_Obj'):
-    return lock_flag= frappe.db.sql("""select m_pro from 1bd3e0294da19198.`tabUser` where name= {0}""".format(employee), as_dict=1)
+    return lock_flag= frappe.db.sql(""" select ifnull(t_obj_time,'')as obj_time,ifnull(t_obj1,'')as obj_frm_date,ifnull(t_obj2,'')as obj_to_date from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
   
   elif formname == "T_DrC":
-    return lock_flag= frappe.db.sql(""" select m_pat from 1bd3e0294da19198.`tabUser` where name= {0}""".format(employee), as_dict=1)
+    return lock_flag= frappe.db.sql(""" select ifnull(t_obj_time,'')as obj_time,ifnull(t_obj1,'')as obj_frm_date,ifnull(t_obj2,'')as obj_to_date from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
   
   elif formname == "T_ChC":
-    return lock_flag= frappe.db.sql(""" select m_doc from 1bd3e0294da19198.`tabUser` where name= {0}""".format(employee), as_dict=1)
+    return lock_flag= frappe.db.sql(""" select ifnull(t_obj_time,'')as obj_time,ifnull(t_obj1,'')as obj_frm_date,ifnull(t_obj2,'')as obj_to_date from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
   
   elif formname == "T_CmC":
-    return lock_flag= frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0}""".format(employee), as_dict=1)
+    return lock_flag= frappe.db.sql(""" select ifnull(t_obj_time,'')as obj_time,ifnull(t_obj1,'')as obj_frm_date,ifnull(t_obj2,'')as obj_to_date from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
   
   else:
     return lock_flag
