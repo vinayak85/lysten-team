@@ -22,7 +22,25 @@ def lock_master_forms(employee,formname):
   else:
     return lock_flag
   
- def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ver):
+def lock_transaction_forms(employee,formname,date):
+  lock_flag=0
+  if(formname == 'profile'):
+    return lock_flag= frappe.db.sql("""select m_pro from 1bd3e0294da19198.`tabUser` where name= {0}""".format(employee), as_dict=1)
+  
+  elif formname == "patch":
+    return lock_flag= frappe.db.sql(""" select m_pat from 1bd3e0294da19198.`tabUser` where name= {0}""".format(employee), as_dict=1)
+  
+  elif formname == "doctor":
+    return lock_flag= frappe.db.sql(""" select m_doc from 1bd3e0294da19198.`tabUser` where name= {0}""".format(employee), as_dict=1)
+  
+  elif formname == "chemist":
+    return lock_flag= frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0}""".format(employee), as_dict=1)
+  
+  else:
+    return lock_flag
+   
+
+def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ver):
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
  #return tree_user_bottom(employee, designation)
  email_list=""
