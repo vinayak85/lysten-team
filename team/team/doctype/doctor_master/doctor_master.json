@@ -1,5 +1,6 @@
 {
  "allow_copy": 0, 
+ "allow_guest_to_view": 0, 
  "allow_import": 1, 
  "allow_rename": 0, 
  "autoname": "Doc.#####", 
@@ -13,6 +14,7 @@
  "engine": "InnoDB", 
  "fields": [
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -23,7 +25,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 1, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Employee code", 
    "length": 0, 
    "no_copy": 0, 
@@ -41,6 +45,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -51,7 +56,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -67,6 +74,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -77,7 +85,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Employee Name", 
    "length": 0, 
    "no_copy": 0, 
@@ -95,6 +105,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -105,7 +116,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Patch", 
    "length": 0, 
    "no_copy": 0, 
@@ -123,6 +136,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -133,7 +147,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Doctor Information", 
    "length": 0, 
    "no_copy": 0, 
@@ -150,6 +166,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -160,7 +177,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 1, 
+   "in_global_search": 0, 
    "in_list_view": 1, 
+   "in_standard_filter": 0, 
    "label": "Doctor Name", 
    "length": 0, 
    "no_copy": 0, 
@@ -177,6 +196,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -187,7 +207,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 1, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Degree", 
    "length": 0, 
    "no_copy": 0, 
@@ -205,6 +227,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -215,7 +238,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": " Doctor Specialization", 
    "length": 0, 
    "no_copy": 0, 
@@ -233,6 +258,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -243,7 +269,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Doctor Type", 
    "length": 0, 
    "no_copy": 0, 
@@ -261,6 +289,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -271,7 +300,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Hospital Name", 
    "length": 0, 
    "no_copy": 0, 
@@ -288,6 +319,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -298,7 +330,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Reg No", 
    "length": 0, 
    "no_copy": 0, 
@@ -315,6 +349,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -325,7 +360,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Address", 
    "length": 0, 
    "no_copy": 0, 
@@ -342,6 +379,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -352,7 +390,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -368,6 +408,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -378,7 +419,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "City", 
    "length": 0, 
    "no_copy": 0, 
@@ -395,6 +438,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -405,7 +449,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Pin Code", 
    "length": 0, 
    "no_copy": 0, 
@@ -422,6 +468,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -432,7 +479,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Per Mobile", 
    "length": 0, 
    "no_copy": 0, 
@@ -449,6 +498,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -459,7 +509,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Per Phone", 
    "length": 0, 
    "no_copy": 0, 
@@ -476,6 +528,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -486,7 +539,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Email", 
    "length": 0, 
    "no_copy": 0, 
@@ -503,6 +558,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -513,7 +569,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -529,6 +587,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -539,7 +598,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 1, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Zone", 
    "length": 0, 
    "no_copy": 0, 
@@ -557,6 +618,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -567,7 +629,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 1, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Region", 
    "length": 0, 
    "no_copy": 0, 
@@ -585,6 +649,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -595,7 +660,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -611,6 +678,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -621,7 +689,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 1, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Area", 
    "length": 0, 
    "no_copy": 0, 
@@ -639,6 +709,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -649,7 +720,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "HQ", 
    "length": 0, 
    "no_copy": 0, 
@@ -667,6 +740,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -677,7 +751,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Products Selection", 
    "length": 0, 
    "no_copy": 0, 
@@ -694,6 +770,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -704,7 +781,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -720,6 +799,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -730,7 +810,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "ACTIRAB TAB", 
    "length": 0, 
    "no_copy": 0, 
@@ -747,6 +829,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -757,7 +840,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "ACTIRAB - D CAP", 
    "length": 0, 
    "no_copy": 0, 
@@ -774,6 +859,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -784,7 +870,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "ACTIRAB - L CAP", 
    "length": 0, 
    "no_copy": 0, 
@@ -801,6 +889,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -811,7 +900,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "EMPOWER - OD TAB", 
    "length": 0, 
    "no_copy": 0, 
@@ -828,6 +919,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -838,7 +930,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "STAND - SP TAB", 
    "length": 0, 
    "no_copy": 0, 
@@ -855,6 +949,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -865,7 +960,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "STAR T TAB", 
    "length": 0, 
    "no_copy": 0, 
@@ -882,6 +979,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -892,7 +990,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "GLUCOLYST - G1 TAB", 
    "length": 0, 
    "no_copy": 0, 
@@ -909,6 +1009,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -919,7 +1020,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "LYCOREST TAB", 
    "length": 0, 
    "no_copy": 0, 
@@ -936,6 +1039,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -946,7 +1050,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -962,6 +1068,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -972,7 +1079,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "LYCORT 1ml INJ", 
    "length": 0, 
    "no_copy": 0, 
@@ -989,6 +1098,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -999,7 +1109,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "REGAIN - XT TAB", 
    "length": 0, 
    "no_copy": 0, 
@@ -1016,6 +1128,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1026,7 +1139,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "LYCOREST 60ml SUSP", 
    "length": 0, 
    "no_copy": 0, 
@@ -1043,6 +1158,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1053,7 +1169,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "LYCOLIC  10ml DROPS", 
    "length": 0, 
    "no_copy": 0, 
@@ -1070,6 +1188,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1080,7 +1199,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "STAND - MF 60ml SUSP", 
    "length": 0, 
    "no_copy": 0, 
@@ -1097,6 +1218,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1107,7 +1229,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "TEN - ON 30ml SYRUP", 
    "length": 0, 
    "no_copy": 0, 
@@ -1124,6 +1248,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1134,7 +1259,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "WEGO GEL 20 MG", 
    "length": 0, 
    "no_copy": 0, 
@@ -1151,6 +1278,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1161,7 +1289,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "WEGO GEL 30 MG", 
    "length": 0, 
    "no_copy": 0, 
@@ -1178,6 +1308,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1188,7 +1319,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "TRYGESIC TAB", 
    "length": 0, 
    "no_copy": 0, 
@@ -1205,6 +1338,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1215,7 +1349,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Co Ordinates", 
    "length": 0, 
    "no_copy": 0, 
@@ -1232,6 +1368,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1242,7 +1379,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 1, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Latitude", 
    "length": 0, 
    "no_copy": 0, 
@@ -1259,6 +1398,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1269,7 +1409,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 1, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Longitude", 
    "length": 0, 
    "no_copy": 0, 
@@ -1286,6 +1428,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1296,7 +1439,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -1312,6 +1457,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1323,7 +1469,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Active", 
    "length": 0, 
    "no_copy": 0, 
@@ -1340,6 +1488,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1351,7 +1500,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Core of TBM", 
    "length": 0, 
    "no_copy": 0, 
@@ -1368,6 +1519,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1378,7 +1530,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Core of ABM", 
    "length": 0, 
    "no_copy": 0, 
@@ -1395,6 +1549,7 @@
    "unique": 0
   }, 
   {
+   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1406,7 +1561,9 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+   "in_global_search": 0, 
    "in_list_view": 0, 
+   "in_standard_filter": 0, 
    "label": "Core of ZBM", 
    "length": 0, 
    "no_copy": 0, 
@@ -1423,18 +1580,18 @@
    "unique": 0
   }
  ], 
+ "has_web_view": 0, 
  "hide_heading": 0, 
  "hide_toolbar": 0, 
  "idx": 0, 
  "image_view": 0, 
  "in_create": 0, 
- "in_dialog": 0, 
  "is_submittable": 0, 
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2017-04-07 15:48:24.231652", 
- "modified_by": "arjunapatil08.ap@gmail.com", 
+ "modified": "2017-09-12 09:44:20.789439", 
+ "modified_by": "Administrator", 
  "module": "Team", 
  "name": "Doctor Master", 
  "name_case": "", 
@@ -1450,7 +1607,6 @@
    "export": 1, 
    "if_owner": 0, 
    "import": 0, 
-   "is_custom": 0, 
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -1471,7 +1627,6 @@
    "export": 1, 
    "if_owner": 0, 
    "import": 0, 
-   "is_custom": 0, 
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -1492,7 +1647,6 @@
    "export": 1, 
    "if_owner": 0, 
    "import": 0, 
-   "is_custom": 0, 
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -1513,7 +1667,6 @@
    "export": 1, 
    "if_owner": 0, 
    "import": 0, 
-   "is_custom": 0, 
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -1534,7 +1687,6 @@
    "export": 1, 
    "if_owner": 0, 
    "import": 0, 
-   "is_custom": 0, 
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -1555,7 +1707,6 @@
    "export": 0, 
    "if_owner": 0, 
    "import": 0, 
-   "is_custom": 0, 
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -1576,7 +1727,6 @@
    "export": 1, 
    "if_owner": 0, 
    "import": 0, 
-   "is_custom": 0, 
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -1592,8 +1742,10 @@
  "read_only": 0, 
  "read_only_onload": 0, 
  "search_fields": "doctor_name", 
+ "show_name_in_global_search": 0, 
  "sort_field": "modified", 
  "sort_order": "DESC", 
  "title_field": "doctor_name", 
+ "track_changes": 0, 
  "track_seen": 0
 }
