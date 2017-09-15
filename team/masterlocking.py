@@ -43,8 +43,20 @@ def lock_transaction_forms(employee,formname,date):
     frmdate,todate,locktime= frappe.db.sql(""" select ifnull(t_cmc1,'')as cam_frm_date,ifnull(t_cmc2,'')as cam_to_date,ifnull(t_cmc_time,'')as cam_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
   
   else:
-    return lock_flag
+    lock_flag=0
   
+  if(date>=frmdate and date<=todate):
+    lock_flag=1
+  
+  elif(today_date==date):
+    if current_time<=locktime:
+      lock_flag=1
+    else:
+      lock_flag=0
+  else:
+    lock_flag=0
+    
+retuen lock_flag
  
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
