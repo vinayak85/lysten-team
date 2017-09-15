@@ -56,7 +56,7 @@ def lock_transaction_forms(employee,formname,date):
   else:
     lock_flag=0
     
-retuen lock_flag
+  return lock_flag
  
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
