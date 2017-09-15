@@ -45,7 +45,7 @@ def lock_transaction_forms(employee,formname,date):
   else:
     lock_flag=0
   
-  if frmdate!="" and todate != "" and locktime != "":
+  if frmdate != "" and todate != "" and locktime != "":
     if(date>=frmdate and date<=todate):
       lock_flag=1
     elif(today_date==date):
