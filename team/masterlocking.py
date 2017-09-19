@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 import frappe
+import datetime dt
 from datetime import datetime
 from pytz import timezone
 from frappe import msgprint, _
@@ -65,7 +66,7 @@ def lock_transaction_forms(employee,formname,date):
         if(today_date == date):
             #frappe.msgprint(_(today_date))
             #import datetime
-            time_diff = datetime.datetime.strptime(locktime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
+            time_diff = dt.datetime.strptime(locktime, '%H:%M:%S') - dt.datetime.strptime(current_time, '%H:%M:%S')
             minutes = int(time_diff.total_seconds()/60)
             if minutes >= 0:
             #if datetime.datetime(*time.strptime(current_time, '%H:%M:%S')).time() <= datetime.datetime(*time.strptime(locktime, '%H:%M:%S')).time():
