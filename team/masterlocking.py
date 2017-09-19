@@ -30,30 +30,31 @@ def lock_master_forms(employee,formname):
 @frappe.whitelist()
 def lock_transaction_forms(employee,formname,date):    
     lock_flag=0
-    frmdate=""
-    todate=""
-    locktime=""
+    dataarray=""
+    #frmdate=""
+    #todate=""
+    #locktime=""
     today_date = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
     current_time = local_time()
     
     #frappe.msgprint(_(formname))
     if(formname == 'T_Obj'):        
-        frmdate = frappe.db.sql(""" select ifnull(t_obj1,'')as obj_frm_date,ifnull(t_obj2,'')as obj_to_date,ifnull(t_obj_time,'')as obj_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)        
-        frappe.msgprint(_(frmdate[0].obj_frm_date))
+        dataarray = frappe.db.sql(""" select ifnull(t_obj1,'')as frm_date,ifnull(t_obj2,'')as to_date,ifnull(t_obj_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)                
 
     elif formname == "T_DrC":
-        frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_drc1,'')as doc_frm_date,ifnull(t_drc2,'')as doc_to_date,ifnull(t_drc_time,'')as doc_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
+        frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_drc1,'')as date,ifnull(t_drc2,'')as to_date,ifnull(t_drc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     elif formname == "T_ChC":
-        frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_chc1,'')as che_frm_date,ifnull(t_chc2,'')as che_to_date,ifnull(t_chc_time,'')as che_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
+        frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_chc1,'')as frm_date,ifnull(t_chc2,'')as to_date,ifnull(t_chc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     elif formname == "T_CmC":
-        frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_cmc1,'')as cam_frm_date,ifnull(t_cmc2,'')as cam_to_date,ifnull(t_cmc_time,'')as cam_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
+        frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_cmc1,'')as frm_date,ifnull(t_cmc2,'')as to_date,ifnull(t_cmc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     else:
         lock_flag=0
         return lock_flag
 
+    frappe.msgprint(_(dataarray[0].frm_date))
     #if frmdate != "" and todate != "" and locktime != "":
         #if(date >= frmdate and date <= todate):
             #lock_flag=1
