@@ -30,7 +30,7 @@ def lock_master_forms(employee,formname):
 
 @frappe.whitelist()
 def lock_transaction_forms(employee,formname,date):    
-    lock_flag=""
+    lock_flag=0
     dataarray=""
     frmdate=""
     todate=""
@@ -76,7 +76,7 @@ def lock_transaction_forms(employee,formname,date):
                 lock_flag=1
                 return lock_flag
             else:                
-                lock_flag=0
+                lock_flag=-1
                 return lock_flag
         elif(date >= frmdate  and date <= todate):
             #frappe.msgprint(_('bbb'))
