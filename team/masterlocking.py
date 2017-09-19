@@ -28,6 +28,7 @@ def lock_master_forms(employee,formname):
         return lock_flag
 
 def lock_transaction_forms(employee,formname,date):
+    frappe.msgprint(_(formname))
     lock_flag=0
     frmdate=""
     todate=""
