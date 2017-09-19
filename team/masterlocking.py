@@ -76,7 +76,7 @@ def lock_transaction_forms(employee,formname,date):
                 lock_flag = 1
                 return lock_flag
             else:
-                lock_flag = 0
+                #lock_flag = 0
                 return lock_flag
         elif(date >= frmdate  and date <= todate):
             #frappe.msgprint(_('bbb'))
@@ -84,10 +84,10 @@ def lock_transaction_forms(employee,formname,date):
             #frappe.msgprint(_(lock_flag))
             return lock_flag
         else:
-            lock_flag = 0
+            #lock_flag = 0
             return lock_flag
     else:
-        lock_flag = 0
+        #lock_flag = 0
         return lock_flag    
     
 #Europe/Berlin
