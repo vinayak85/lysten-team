@@ -26,7 +26,8 @@ def lock_master_forms(employee,formname):
         return lock_flag
 
     else:
-        return lock_flag
+        myBoolean = False
+        return int(myBoolean)
 
 @frappe.whitelist()
 def lock_transaction_forms(employee,formname,date):    
