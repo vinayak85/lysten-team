@@ -57,25 +57,25 @@ def lock_transaction_forms(employee,formname,date):
     frmdate=dataarray[0].frm_date
     todate=dataarray[0].to_date
     locktime=dataarray[0].lock_time
-    frappe.msgprint(_(locktime))
+    #frappe.msgprint(_(locktime))
     
-    #if frmdate != "" and todate != "" and locktime != "":
-        #if(date >= frmdate and date <= todate):
-            #lock_flag=1
-            #return lock_flag
-        #elif(today_date == date):
-            #if current_time<=locktime:
-                #lock_flag=1
-                #return lock_flag
-            #else:
-                #lock_flag=0
-                #return lock_flag
-        #else:
-            #lock_flag=0
-            #return lock_flag
-    #else:
-        #lock_flag=0
-        #return lock_flag    
+    if frmdate != "" and todate != "" and locktime != "":
+        if(date >= frmdate and date <= todate):
+            lock_flag=1
+            return lock_flag
+        elif(today_date == date):
+            if current_time<=locktime:
+                lock_flag=1
+                return lock_flag
+            else:
+                lock_flag=0
+                return lock_flag
+        else:
+            lock_flag=0
+            return lock_flag
+    else:
+        lock_flag=0
+        return lock_flag    
     
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
