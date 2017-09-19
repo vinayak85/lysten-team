@@ -31,9 +31,9 @@ def lock_master_forms(employee,formname):
 def lock_transaction_forms(employee,formname,date):    
     lock_flag=0
     dataarray=""
-    #frmdate="" frmdate,todate,locktime
-    #todate=""
-    #locktime=""
+    frmdate=""
+    todate=""
+    locktime=""
     today_date = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
     current_time = local_time()
     
@@ -53,8 +53,12 @@ def lock_transaction_forms(employee,formname,date):
     else:
         lock_flag=0
         return lock_flag
-
-    frappe.msgprint(_(dataarray[0].frm_date))
+    
+    frmdate=dataarray[0].frm_date
+    todate=dataarray[0].to_date
+    locktime=dataarray[0].lock_time
+    frappe.msgprint(_(locktime))
+    
     #if frmdate != "" and todate != "" and locktime != "":
         #if(date >= frmdate and date <= todate):
             #lock_flag=1
