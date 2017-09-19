@@ -35,9 +35,10 @@ def lock_transaction_forms(employee,formname,date):
     locktime=""
     today_date = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
     current_time = local_time()
-    frappe.msgprint(_(current_time))
+    
     if(formname == 'T_Obj'):
         frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_obj1,'')as obj_frm_date,ifnull(t_obj2,'')as obj_to_date,ifnull(t_obj_time,'')as obj_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
+        frappe.msgprint(_(frmdate))
 
     elif formname == "T_DrC":
         frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_drc1,'')as doc_frm_date,ifnull(t_drc2,'')as doc_to_date,ifnull(t_drc_time,'')as doc_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
