@@ -1,8 +1,6 @@
 from __future__ import unicode_literals
 import frappe
 from datetime import datetime
-import datetime
-import time
 from pytz import timezone
 from frappe import msgprint, _
 __version__ = '0.0.1'
