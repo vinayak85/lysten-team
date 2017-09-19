@@ -13,21 +13,20 @@ def lock_master_forms(employee,formname):
         return lock_flag
 
     elif formname == "patch":
-         lock_flag = frappe.db.sql(""" select m_pat from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-         return lock_flag
+        lock_flag = frappe.db.sql(""" select m_pat from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
+        return lock_flag
 
     elif formname == "doctor":
         lock_flag = frappe.db.sql(""" select m_doc from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
         return lock_flag
 
     elif formname == "chemist":
-         lock_flag = frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-         return lock_flag
+        lock_flag = frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
+        return lock_flag
 
     else:
         return lock_flag
 
-@frappe.whitelist()
 def lock_transaction_forms(employee,formname,date):
     lock_flag=0
     frmdate=""
@@ -53,17 +52,20 @@ def lock_transaction_forms(employee,formname,date):
     if frmdate != "" and todate != "" and locktime != "":
         if(date >= frmdate and date <= todate):
             lock_flag=1
+            return lock_flag
         elif(today_date == date):
             if current_time<=locktime:
                 lock_flag=1
+                return lock_flag
             else:
                 lock_flag=0
+                return lock_flag
         else:
             lock_flag=0
+            return lock_flag
     else:
         lock_flag=0
-
-    return lock_flag
+        return lock_flag
 
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
