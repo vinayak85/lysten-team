@@ -8,7 +8,7 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def lock_master_forms(employee,formname):
-    lock_flag=0
+    lock_flag='0'
     if(formname == 'profile'):
         lock_flag = frappe.db.sql("""select m_pro from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
         return lock_flag
@@ -26,8 +26,8 @@ def lock_master_forms(employee,formname):
         return lock_flag
 
     else:
-        lock_flag = 0
-        return 0.01
+        lock_flag = '0'
+        return lock_flag
 
 @frappe.whitelist()
 def lock_transaction_forms(employee,formname,date):    
