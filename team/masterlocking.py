@@ -38,7 +38,7 @@ def lock_transaction_forms(employee,formname,date):
     
     if(formname == 'T_Obj'):
         frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_obj1,'')as obj_frm_date,ifnull(t_obj2,'')as obj_to_date,ifnull(t_obj_time,'')as obj_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        frappe.msgprint(_(frmdate))
+        frappe.msgprint(_(frmdate[0].obj_frm_date))
 
     elif formname == "T_DrC":
         frmdate,todate,locktime = frappe.db.sql(""" select ifnull(t_drc1,'')as doc_frm_date,ifnull(t_drc2,'')as doc_to_date,ifnull(t_drc_time,'')as doc_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
