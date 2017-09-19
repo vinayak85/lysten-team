@@ -28,8 +28,7 @@ def lock_master_forms(employee,formname):
         return lock_flag
 
 @frappe.whitelist()
-def lock_transaction_forms(employee,formname,date):
-    frappe.msgprint(_(formname))
+def lock_transaction_forms(employee,formname,date):    
     lock_flag=0
     frmdate=""
     todate=""
@@ -70,6 +69,8 @@ def lock_transaction_forms(employee,formname,date):
         lock_flag=0
         return lock_flag
 
+    frappe.msgprint(_(lock_flag))
+    
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
