@@ -64,9 +64,13 @@ def lock_transaction_forms(employee,formname,date):
     if frmdate != "" and todate != "" and locktime != "":        
         if(today_date == date):
             #frappe.msgprint(_(today_date))
-            if datetime.datetime(*time.strptime(current_time, '%H:%M:%S')).time() <= datetime.datetime(*time.strptime(locktime, '%H:%M:%S')).time():
+            #import datetime
+            time_diff = datetime.datetime.strptime(locktime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
+            minutes = int(time_diff.total_seconds()/60)
+            if minutes >= 0
+            #if datetime.datetime(*time.strptime(current_time, '%H:%M:%S')).time() <= datetime.datetime(*time.strptime(locktime, '%H:%M:%S')).time():
             #if current_time <= locktime: 
-                frappe.msgprint(_(current_time))
+                frappe.msgprint(_(minutes))
                 lock_flag=1
                 return lock_flag
             else:
