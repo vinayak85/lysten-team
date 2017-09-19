@@ -56,13 +56,13 @@ def lock_transaction_forms(employee,formname,date):
     
     frmdate=dataarray[0].frm_date
     todate=dataarray[0].to_date
-    locktime=dataarray[0].lock_time
+    locktime=dataarray[0].lock_time.strftime("%H:%M:%S")
     #frappe.msgprint(_(locktime))
     #frappe.msgprint(_(frmdate+todate+date))
     frappe.msgprint(_(current_time+' '+locktime))
     if frmdate != "" and todate != "" and locktime != "":        
         if(today_date == date):
-            frappe.msgprint(_(today_date))
+            #frappe.msgprint(_(today_date))
             if current_time<=locktime:                
                 lock_flag=1
                 return lock_flag
