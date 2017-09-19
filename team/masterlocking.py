@@ -73,7 +73,7 @@ def lock_transaction_forms(employee,formname,date):
             if minutes >= 0:
             #if datetime.datetime(*time.strptime(current_time, '%H:%M:%S')).time() <= datetime.datetime(*time.strptime(locktime, '%H:%M:%S')).time():
             #if current_time <= locktime: 
-                frappe.msgprint(_(minutes))
+                #frappe.msgprint(_(minutes))
                 lock_flag = '1'
                 return lock_flag
             else:
