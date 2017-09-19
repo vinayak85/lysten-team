@@ -11,19 +11,19 @@ def lock_master_forms(employee,formname):
     lock_flag='0'
     if(formname == 'profile'):
         lock_flag = frappe.db.sql("""select m_pro from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return lock_flag
+        return lock_flag[0].m_pro
 
     elif formname == "patch":
         lock_flag = frappe.db.sql(""" select m_pat from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return lock_flag
+        return lock_flag[0].m_pat
 
     elif formname == "doctor":
         lock_flag = frappe.db.sql(""" select m_doc from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return lock_flag
+        return lock_flag[0].m_doc
 
     elif formname == "chemist":
         lock_flag = frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return lock_flag
+        return lock_flag[0].m_che
 
     else:
         lock_flag = '0'
