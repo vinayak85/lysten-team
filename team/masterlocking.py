@@ -31,7 +31,7 @@ def lock_master_forms(employee,formname):
 
 @frappe.whitelist()
 def lock_transaction_forms(employee,formname,date):    
-    lock_flag=0
+    lock_flag='0'
     dataarray=""
     frmdate=""
     todate=""
@@ -53,7 +53,7 @@ def lock_transaction_forms(employee,formname,date):
         dataarray = frappe.db.sql(""" select ifnull(t_cmc1,'')as frm_date,ifnull(t_cmc2,'')as to_date,ifnull(t_cmc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     else:
-        lock_flag=0
+        lock_flag = '0'
         return lock_flag
     
     frmdate=dataarray[0].frm_date
@@ -74,22 +74,22 @@ def lock_transaction_forms(employee,formname,date):
             #if datetime.datetime(*time.strptime(current_time, '%H:%M:%S')).time() <= datetime.datetime(*time.strptime(locktime, '%H:%M:%S')).time():
             #if current_time <= locktime: 
                 frappe.msgprint(_(minutes))
-                lock_flag = 1
+                lock_flag = '1'
                 return lock_flag
             else:
-                #lock_flag = 0
-                return 0
+                lock_flag = '0'
+                return lock_flag
         elif(date >= frmdate  and date <= todate):
             #frappe.msgprint(_('bbb'))
-            lock_flag=1
+            lock_flag = '1'
             #frappe.msgprint(_(lock_flag))
             return lock_flag
         else:
-            #lock_flag = 0
-            return 0
+            lock_flag = '0'
+            return lock_flag
     else:
-        #lock_flag = 0
-        return 0    
+        lock_flag = '0'
+        return lock_flag    
     
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
