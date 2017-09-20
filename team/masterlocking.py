@@ -172,7 +172,7 @@ def lock_transaction_forms(employee,formname,date):
                 lock_flag = '0'
                 #return lock_flag
         else:
-            msg='Please Set Between Date And Time'
+            msg='Please Set From-To Date And Time'
             lock_flag = '0'
             #return lock_flag
         
