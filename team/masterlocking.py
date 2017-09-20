@@ -88,7 +88,7 @@ def lock_transaction_forms(employee,formname,date):
         dataarray = frappe.db.sql(""" select ifnull(t_cmc1,'')as frm_date,ifnull(t_cmc2,'')as to_date,ifnull(t_cmc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     else:
-        msg='Failed...'
+        msg='Invalid Request...'
         lock_flag = '0'
         #return lock_flag
     
@@ -125,10 +125,10 @@ def lock_transaction_forms(employee,formname,date):
                     #return lock_flag
                 else:
                     if a=='a':
-                        msg='Oops !!! Objective Request For Today; Time is Over......'
+                        msg='Oops !!! Objective Request For Today; Time is Over...'
                         
                     elif a=='b':
-                        msg='Oops !!! Doctor Call Request For Today; Time is Over......'
+                        msg='Oops !!! Doctor Call Request For Today; Time is Over...'
                         
                     elif a=='c':
                         msg='Oops !!! Chemist Call Request Request For; Time is Over...'
@@ -142,27 +142,37 @@ def lock_transaction_forms(employee,formname,date):
             elif(date >= frmdate  and date <= todate):
                 #frappe.msgprint(_('bbb'))
                 if a=='a':
-                    msg='Oops !!! Objective Request For Today; Time is Over......'
+                    msg='Oops !!! Objective Request For Between Date;Is In Range...'
                         
                 elif a=='b':
-                    msg='Oops !!! Doctor Call Request For Today; Time is Over......'
+                    msg='Oops !!! Doctor Call Request For Between Date;Is In Range...'
                         
                 elif a=='c':
-                    msg='Oops !!! Chemist Call Request Request For; Time is Over...'
+                    msg='Oops !!! Chemist Call Request For Between Date;Is In Range...'
                         
                 elif a=='d':
-                    msg='Oops !!! Campaign Booking Request For Today; Time is Over...'
-                    
-                msg='Ok !!! Request Is In Between Date Range...'
+                    msg='Oops !!! Campaign Booking Request For Between Date;Is In Range...'
+                
                 lock_flag = '1'
                 #return lock_flag
              
             else:
-                msg='Oops !!! Given Date Request Locked...'
+                if a=='a':
+                    msg='Oops !!! Objective Request For Selected Date Is Locked...'
+                        
+                elif a=='b':
+                    msg='Oops !!! Doctor Call Request For Selected Date Is Locked...'
+                        
+                elif a=='c':
+                    msg='Oops !!! Chemist Call Request For Selected Date Is Locked...'
+                        
+                elif a=='d':
+                    msg='Oops !!! Campaign Booking Request For Selected Date Is Locked...'
+                    
                 lock_flag = '0'
                 #return lock_flag
         else:
-            msg='Failed'
+            msg='Invalid Request'
             lock_flag = '0'
             #return lock_flag
         
