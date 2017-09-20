@@ -97,6 +97,7 @@ def lock_transaction_forms(employee,formname,date):
     #frappe.msgprint(_(today_date+' '+date))
     
     if frmdate != "" and todate != "" and locktime != "":        
+        
         if(today_date == date):
             #frappe.msgprint(_(today_date))
             import datetime
@@ -118,12 +119,13 @@ def lock_transaction_forms(employee,formname,date):
             #frappe.msgprint(_('bbb'))
             msg='Ok !!! Request Is In Between Date Range...'
             lock_flag = '1'
-            #frappe.msgprint(_(lock_flag))
             #return lock_flag
+            
         else:
             msg='Oops !!! Given Date Request Locked...'
             lock_flag = '0'
             #return lock_flag
+            
     else:
         msg='Failed'
         lock_flag = '0'
@@ -137,6 +139,7 @@ def lock_transaction_forms(employee,formname,date):
     dict['message'] = msg;
     
     return dict    
+    
     
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
