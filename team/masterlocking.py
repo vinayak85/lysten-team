@@ -110,26 +110,49 @@ def lock_transaction_forms(employee,formname,date):
                 
                 if minutes >= 0:
                     if a=='a':
-                        msg='Ok !!! Objective Request For Today Time Is In Range...'
+                        msg='Ok !!! Objective Request For Today; Time Is In Range...'
                         
                     elif a=='b':
-                        msg='Ok !!! Docot Call Request For Today Time Is In Range...'
+                        msg='Ok !!! Doctor Call Request For Today; Time Is In Range...'
                         
                     elif a=='c':
-                        msg='Ok !!! Request Request For Today Time Is In Range...'
+                        msg='Ok !!! Chemist Call Request Request For; Today Time Is In Range...'
                         
                     elif a=='d':
-                        msg='Ok !!! Request Request For Today Time Is In Range...'
+                        msg='Ok !!! Campaign Booking Request For Today; Time Is In Range...'
                     
                     lock_flag = '1'
                     #return lock_flag
                 else:
-                    msg='Oops !!! Time is Over...'
+                    if a=='a':
+                        msg='Oops !!! Objective Request For Today; Time is Over......'
+                        
+                    elif a=='b':
+                        msg='Oops !!! Doctor Call Request For Today; Time is Over......'
+                        
+                    elif a=='c':
+                        msg='Oops !!! Chemist Call Request Request For; Time is Over...'
+                        
+                    elif a=='d':
+                        msg='Oops !!! Campaign Booking Request For Today; Time is Over...'
+                                            
                     lock_flag = '0'
                     #return lock_flag
              
             elif(date >= frmdate  and date <= todate):
                 #frappe.msgprint(_('bbb'))
+                if a=='a':
+                    msg='Oops !!! Objective Request For Today; Time is Over......'
+                        
+                elif a=='b':
+                    msg='Oops !!! Doctor Call Request For Today; Time is Over......'
+                        
+                elif a=='c':
+                    msg='Oops !!! Chemist Call Request Request For; Time is Over...'
+                        
+                elif a=='d':
+                    msg='Oops !!! Campaign Booking Request For Today; Time is Over...'
+                    
                 msg='Ok !!! Request Is In Between Date Range...'
                 lock_flag = '1'
                 #return lock_flag
