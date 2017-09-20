@@ -142,16 +142,16 @@ def lock_transaction_forms(employee,formname,date):
             elif(date >= frmdate  and date <= todate):
                 #frappe.msgprint(_('bbb'))
                 if a=='a':
-                    msg='Oops !!! Objective Request For Between Date;Is In Range...'
+                    msg='Ok !!! Objective Request For Between Date;Is In Range...'
                         
                 elif a=='b':
-                    msg='Oops !!! Doctor Call Request For Between Date;Is In Range...'
+                    msg='Ok !!! Doctor Call Request For Between Date;Is In Range...'
                         
                 elif a=='c':
-                    msg='Oops !!! Chemist Call Request For Between Date;Is In Range...'
+                    msg='Ok !!! Chemist Call Request For Between Date;Is In Range...'
                         
                 elif a=='d':
-                    msg='Oops !!! Campaign Booking Request For Between Date;Is In Range...'
+                    msg='Ok !!! Campaign Booking Request For Between Date;Is In Range...'
                 
                 lock_flag = '1'
                 #return lock_flag
