@@ -74,7 +74,7 @@ def lock_transaction_forms(employee,formname,date):
     if(formname == 'T_Obj'):
         a='a'
         dataarray = frappe.db.sql(""" select ifnull(t_obj1,'')as frm_date,ifnull(t_obj2,'')as to_date,ifnull(t_obj_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)                
-
+    
     elif formname == "T_DrC":
         a='b'
         dataarray = frappe.db.sql(""" select ifnull(t_drc1,'')as date,ifnull(t_drc2,'')as to_date,ifnull(t_drc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
@@ -172,7 +172,7 @@ def lock_transaction_forms(employee,formname,date):
                 lock_flag = '0'
                 #return lock_flag
         else:
-            msg='Invalid Request'
+            msg='Please Set Between Date And Time'
             lock_flag = '0'
             #return lock_flag
         
