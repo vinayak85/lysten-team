@@ -72,15 +72,19 @@ def lock_transaction_forms(employee,formname,date):
     #frappe.msgprint(_(formname))
     
     if(formname == 'T_Obj'):
+        a='a'
         dataarray = frappe.db.sql(""" select ifnull(t_obj1,'')as frm_date,ifnull(t_obj2,'')as to_date,ifnull(t_obj_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)                
 
     elif formname == "T_DrC":
+        a='b'
         dataarray = frappe.db.sql(""" select ifnull(t_drc1,'')as date,ifnull(t_drc2,'')as to_date,ifnull(t_drc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     elif formname == "T_ChC":
+        a='c'
         dataarray = frappe.db.sql(""" select ifnull(t_chc1,'')as frm_date,ifnull(t_chc2,'')as to_date,ifnull(t_chc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     elif formname == "T_CmC":
+        a='d'
         dataarray = frappe.db.sql(""" select ifnull(t_cmc1,'')as frm_date,ifnull(t_cmc2,'')as to_date,ifnull(t_cmc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     else:
@@ -88,48 +92,56 @@ def lock_transaction_forms(employee,formname,date):
         lock_flag = '0'
         #return lock_flag
     
-    frmdate=dataarray[0].frm_date
-    todate=dataarray[0].to_date
-    locktime=dataarray[0].lock_time
-    locktime = locktime[:locktime.find('.')]
-    #frappe.msgprint(_(locktime))
-    #frappe.msgprint(_(frmdate+todate+date))
-    #frappe.msgprint(_(today_date+' '+date))
-    
-    if frmdate != "" and todate != "" and locktime != "":        
+    if a=='a' or a=='b' or a=='c' or a=='d':
+        frmdate=dataarray[0].frm_date
+        todate=dataarray[0].to_date
+        locktime=dataarray[0].lock_time
+        locktime = locktime[:locktime.find('.')]
+        #frappe.msgprint(_(locktime))
+        #frappe.msgprint(_(frmdate+todate+date))
+        #frappe.msgprint(_(today_date+' '+date))
         
-        if(today_date == date):
-            #frappe.msgprint(_(today_date))
-            import datetime
-            time_diff = datetime.datetime.strptime(locktime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
-            minutes = int(time_diff.total_seconds()/60)
-            
-            if minutes >= 0:
+        if frmdate != "" and todate != "" and locktime != "":
+            if(today_date == date):
+                #frappe.msgprint(_(today_date))
+                import datetime
+                time_diff = datetime.datetime.strptime(locktime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
+                minutes = int(time_diff.total_seconds()/60)
                 
-                msg='Oops !!! Request Is In Today Time Range...'    
+                if minutes >= 0:
+                    if a=='a':
+                        msg='Ok !!! Objective Request For Today Time Is In Range...'
+                        
+                    elif a=='b':
+                        msg='Ok !!! Docot Call Request For Today Time Is In Range...'
+                        
+                    elif a=='c':
+                        msg='Ok !!! Request Request For Today Time Is In Range...'
+                        
+                    elif a=='d':
+                        msg='Ok !!! Request Request For Today Time Is In Range...'
+                    
+                    lock_flag = '1'
+                    #return lock_flag
+                else:
+                    msg='Oops !!! Time is Over...'
+                    lock_flag = '0'
+                    #return lock_flag
+             
+            elif(date >= frmdate  and date <= todate):
+                #frappe.msgprint(_('bbb'))
+                msg='Ok !!! Request Is In Between Date Range...'
                 lock_flag = '1'
                 #return lock_flag
-            
+             
             else:
-                msg='Oops !!! Time is Over...'
+                msg='Oops !!! Given Date Request Locked...'
                 lock_flag = '0'
                 #return lock_flag
-            
-        elif(date >= frmdate  and date <= todate):
-            #frappe.msgprint(_('bbb'))
-            msg='Ok !!! Request Is In Between Date Range...'
-            lock_flag = '1'
-            #return lock_flag
-            
         else:
-            msg='Oops !!! Given Date Request Locked...'
+            msg='Failed'
             lock_flag = '0'
             #return lock_flag
-            
-    else:
-        msg='Failed'
-        lock_flag = '0'
-        #return lock_flag
         
     dict = {'lock_flag': '',
             'message': ''
