@@ -119,7 +119,7 @@ def lock_transaction_forms(employee,formname,date):
             msg='Oops !!! Request Is In Between Range...'
             lock_flag = '1'
             #frappe.msgprint(_(lock_flag))
-            return lock_flag
+            #return lock_flag
         else:
             msg='Oops !!! Given Date Request Locked...'
             lock_flag = '0'
