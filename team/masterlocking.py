@@ -67,9 +67,11 @@ def lock_transaction_forms(employee,formname,date):
     locktime=""
     today_date = frappe.utils.data.get_datetime().strftime('%Y-%m-%d')
     current_time = local_time()
-    
+    temp_flag=''
+    msg=''   
     #frappe.msgprint(_(formname))
-    if(formname == 'T_Obj'):        
+    
+    if(formname == 'T_Obj'):
         dataarray = frappe.db.sql(""" select ifnull(t_obj1,'')as frm_date,ifnull(t_obj2,'')as to_date,ifnull(t_obj_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)                
 
     elif formname == "T_DrC":
@@ -82,8 +84,9 @@ def lock_transaction_forms(employee,formname,date):
         dataarray = frappe.db.sql(""" select ifnull(t_cmc1,'')as frm_date,ifnull(t_cmc2,'')as to_date,ifnull(t_cmc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     else:
+        msg='Failed...'
         lock_flag = '0'
-        return lock_flag
+        #return lock_flag
     
     frmdate=dataarray[0].frm_date
     todate=dataarray[0].to_date
@@ -92,33 +95,48 @@ def lock_transaction_forms(employee,formname,date):
     #frappe.msgprint(_(locktime))
     #frappe.msgprint(_(frmdate+todate+date))
     #frappe.msgprint(_(today_date+' '+date))
+    
     if frmdate != "" and todate != "" and locktime != "":        
         if(today_date == date):
             #frappe.msgprint(_(today_date))
             import datetime
             time_diff = datetime.datetime.strptime(locktime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
             minutes = int(time_diff.total_seconds()/60)
-            #frappe.msgprint(_(minutes))
+            
             if minutes >= 0:
-            #if datetime.datetime(*time.strptime(current_time, '%H:%M:%S')).time() <= datetime.datetime(*time.strptime(locktime, '%H:%M:%S')).time():
-            #if current_time <= locktime: 
-                #frappe.msgprint(_(minutes))
+                
+                msg='Oops !!! Request Is In Time Range...'    
                 lock_flag = '1'
-                return lock_flag
+                #return lock_flag
+            
             else:
+                msg='Oops !!! Time is Over...'
                 lock_flag = '0'
-                return lock_flag
+                #return lock_flag
+            
         elif(date >= frmdate  and date <= todate):
             #frappe.msgprint(_('bbb'))
+            msg='Oops !!! Request Is In Between Range...'
             lock_flag = '1'
             #frappe.msgprint(_(lock_flag))
             return lock_flag
         else:
+            msg='Oops !!! Given Date Request Locked...'
             lock_flag = '0'
-            return lock_flag
+            #return lock_flag
     else:
+        msg='Failed'
         lock_flag = '0'
-        return lock_flag    
+        #return lock_flag
+        
+    dict = {'lock_flag': '',
+            'message': ''
+           }
+
+    dict['lock_flag'] = lock_flag;
+    dict['message'] = msg;
+    
+    return dict    
     
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
