@@ -105,7 +105,7 @@ def lock_transaction_forms(employee,formname,date):
             
             if minutes >= 0:
                 
-                msg='Oops !!! Request Is In Time Range...'    
+                msg='Oops !!! Request Is In Today Time Range...'    
                 lock_flag = '1'
                 #return lock_flag
             
@@ -116,7 +116,7 @@ def lock_transaction_forms(employee,formname,date):
             
         elif(date >= frmdate  and date <= todate):
             #frappe.msgprint(_('bbb'))
-            msg='Oops !!! Request Is In Between Range...'
+            msg='Ok !!! Request Is In Between Date Range...'
             lock_flag = '1'
             #frappe.msgprint(_(lock_flag))
             #return lock_flag
