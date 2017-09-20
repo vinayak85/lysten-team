@@ -23,7 +23,7 @@ def lock_master_forms(employee,formname):
 
     elif formname == "chemist":
         lock_flag = frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return '+ lock_flag[0].m_che +'
+        return str(lock_flag[0].m_che)
 
     else:
         lock_flag = '0'
