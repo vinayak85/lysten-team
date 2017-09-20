@@ -21,7 +21,7 @@ def lock_master_forms(employee,formname):
 
     elif formname == "patch":
         lock_flag = frappe.db.sql(""" select m_pat from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        if lock_flag[0].m_pro > 0:
+        if lock_flag[0].m_pat > 0:
             msg='Oops !!! Locked Patch...'
         else:
             msg='Unlock Patch'
@@ -29,7 +29,7 @@ def lock_master_forms(employee,formname):
 
     elif formname == "doctor":
         lock_flag = frappe.db.sql(""" select m_doc from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        if lock_flag[0].m_pro > 0:
+        if lock_flag[0].m_doc > 0:
             msg='Oops !!! Locked Doctor...'
         else:
             msg='Unlock Doctor'
@@ -37,7 +37,7 @@ def lock_master_forms(employee,formname):
 
     elif formname == "chemist":
         lock_flag = frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        if lock_flag[0].m_pro > 0:
+        if lock_flag[0].m_che > 0:
             msg='Oops !!! Locked Chemist...'
         else:
             msg='Unlock Chemist'
@@ -46,7 +46,7 @@ def lock_master_forms(employee,formname):
     else:
         lock_flag = '0'
         msg='Failed...'
-        temp_flag=str(lock_flag[0].m_che)
+        temp_flag='0'
         #return lock_flag
         
     dict = {'lock_flag': '',
