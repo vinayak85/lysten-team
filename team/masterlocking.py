@@ -9,26 +9,55 @@ __version__ = '0.0.1'
 @frappe.whitelist()
 def lock_master_forms(employee,formname):
     lock_flag='0'
+    temp_flag=''
+    msg=''
     if(formname == 'profile'):
         lock_flag = frappe.db.sql("""select m_pro from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return str(lock_flag[0].m_pro)
+        if lock_flag[0].m_pro > 0:
+            msg='Oops !!! Locked Profile...'
+        else:
+            msg='Unlock Profile'
+        temp_flag=str(lock_flag[0].m_pro)
 
     elif formname == "patch":
         lock_flag = frappe.db.sql(""" select m_pat from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return str(lock_flag[0].m_pat)
+        if lock_flag[0].m_pro > 0:
+            msg='Oops !!! Locked Patch...'
+        else:
+            msg='Unlock Patch'
+        temp_flag=str(lock_flag[0].m_pat)
 
     elif formname == "doctor":
         lock_flag = frappe.db.sql(""" select m_doc from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return str(lock_flag[0].m_doc)
+        if lock_flag[0].m_pro > 0:
+            msg='Oops !!! Locked Doctor...'
+        else:
+            msg='Unlock Doctor'
+        temp_flag=str(lock_flag[0].m_doc)
 
     elif formname == "chemist":
         lock_flag = frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        return str(lock_flag[0].m_che)
+        if lock_flag[0].m_pro > 0:
+            msg='Oops !!! Locked Chemist...'
+        else:
+            msg='Unlock Chemist'
+        temp_flag=str(lock_flag[0].m_che)
 
     else:
         lock_flag = '0'
-        return lock_flag
+        msg='Failed...'
+        temp_flag=str(lock_flag[0].m_che)
+        #return lock_flag
+        
+    dict = {'lock_flag': '',
+            'message': ''
+           }
 
+    dict['lock_flag'] = temp_flag;
+    dict['message'] = msg;
+    
+    return dict
+    
 @frappe.whitelist()
 def lock_transaction_forms(employee,formname,date):    
     lock_flag='0'
@@ -111,3 +140,4 @@ def local_time(zone='Asia/Kolkata'):
 
 
     ###print(local_time())
+
