@@ -75,7 +75,7 @@ def lock_transaction_forms(employee,formname,date):
         a='a'
         dataarray = frappe.db.sql(""" select ifnull(t_obj1,'')as frm_date,ifnull(t_obj2,'')as to_date,ifnull(t_obj_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)                
     
-    elif formname == "T_DrC":
+    elif formname == 'T_DrC':
         a='b'
         dataarray = frappe.db.sql(""" select ifnull(t_drc1,'')as date,ifnull(t_drc2,'')as to_date,ifnull(t_drc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
@@ -88,15 +88,16 @@ def lock_transaction_forms(employee,formname,date):
         dataarray = frappe.db.sql(""" select ifnull(t_cmc1,'')as frm_date,ifnull(t_cmc2,'')as to_date,ifnull(t_cmc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     else:
-        msg='Invalid Request...'
+        msg='Invalid Requesttt...'
         lock_flag = '0'
         #return lock_flag
     
     if a=='a' or a=='b' or a=='c' or a=='d':
-        frmdate=dataarray[0].frm_date
-        todate=dataarray[0].to_date
-        locktime=dataarray[0].lock_time
-        locktime = locktime[:locktime.find('.')]
+        if len(dataarray) != 0
+            frmdate=dataarray[0].frm_date
+            todate=dataarray[0].to_date
+            locktime=dataarray[0].lock_time
+            locktime = locktime[:locktime.find('.')]
         #frappe.msgprint(_(locktime))
         #frappe.msgprint(_(frmdate+todate+date))
         #frappe.msgprint(_(today_date+' '+date))
