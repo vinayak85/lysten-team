@@ -109,7 +109,18 @@ def lock_transaction_forms(employee,formname,date):
                 time_diff = datetime.datetime.strptime(locktime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
                 minutes = int(time_diff.total_seconds()/60)
                 
-                if minutes >= 0:
+                if str(locktime)=="00:00:00":
+                    if a=='a':
+                        msg='Ok !!! Objective Request For Today...'
+                    elif a=='b':
+                        msg='Ok !!! Doctor Call Request For Today...'
+                    elif a=='c':
+                        msg='Ok !!! Chemist Call Request Request For Today...'
+                    elif a=='d':
+                        msg='Ok !!! Campaign Booking Request For Today...'
+                    lock_flag = '1'
+                
+                elif minutes >= 0:
                     if a=='a':
                         msg='Ok !!! Objective Request For Today; Time Is In Range...'
                         
@@ -180,7 +191,18 @@ def lock_transaction_forms(employee,formname,date):
                 time_diff = datetime.datetime.strptime(locktime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
                 minutes = int(time_diff.total_seconds()/60)
                 
-                if minutes >= 0:
+                if str(locktime)=="00:00:00":
+                    if a=='a':
+                        msg='Ok !!! Objective Request For Today...'
+                    elif a=='b':
+                        msg='Ok !!! Doctor Call Request For Today...'
+                    elif a=='c':
+                        msg='Ok !!! Chemist Call Request Request For Today...'
+                    elif a=='d':
+                        msg='Ok !!! Campaign Booking Request For Today...'
+                    lock_flag = '1'
+                
+                elif minutes >= 0:
                     if a=='a':
                         msg='Ok !!! Objective Request For Today; Time Is In Range...'
                         
@@ -195,6 +217,7 @@ def lock_transaction_forms(employee,formname,date):
                     
                     lock_flag = '1'
                     #return lock_flag
+                
                 else:
                     if a=='a':
                         msg='Oops !!! Objective Request For Today; Time is Over...'
@@ -203,7 +226,7 @@ def lock_transaction_forms(employee,formname,date):
                         msg='Oops !!! Doctor Call Request For Today; Time is Over...'
                         
                     elif a=='c':
-                        msg=str(locktime)#'Oops !!! Chemist Call Request Request For Today; Time is Over...'
+                        msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
                         
                     elif a=='d':
                         msg='Oops !!! Campaign Booking Request For Today; Time is Over...'
