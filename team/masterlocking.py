@@ -94,6 +94,7 @@ def lock_transaction_forms(employee,formname,date):
     
     if a=='a' or a=='b' or a=='c' or a=='d':
         if len(dataarray) != 0:
+            msg='Okk'
             frmdate=dataarray[0].frm_date
             todate=dataarray[0].to_date
             locktime=dataarray[0].lock_time
@@ -295,7 +296,7 @@ def lock_transaction_forms(employee,formname,date):
                     #return lock_flag
         
         else:
-            msg='Invalid Request...'
+            msg = frmdate+' '+todate+' '+locktime
             lock_flag = '0'
             #return lock_flag
         
