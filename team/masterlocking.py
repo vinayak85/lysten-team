@@ -94,11 +94,10 @@ def lock_transaction_forms(employee,formname,date):
     
     if a=='a' or a=='b' or a=='c' or a=='d':
         #if len(dataarray) != 0:
-         msg='Okk'
-         frmdate=dataarray[0].frm_date
-         todate=dataarray[0].to_date
-         locktime=dataarray[0].lock_time
-         locktime = locktime[:locktime.find('.')]
+        frmdate=dataarray[0].frm_date
+        todate=dataarray[0].to_date
+        locktime=dataarray[0].lock_time
+        locktime = locktime[:locktime.find('.')]
         #frappe.msgprint(_(locktime))
         #frappe.msgprint(_(frmdate+todate+date))
         #frappe.msgprint(_(today_date+' '+date))
@@ -290,11 +289,9 @@ def lock_transaction_forms(employee,formname,date):
                     msg='Ok !!! Chemist Call Request Request For Today...'
                 
                 elif a=='d':
-                    msg='Ok !!! Campaign Booking Request For Today...'
-                    
+                    msg='Ok !!! Campaign Booking Request For Today...'                    
                 lock_flag = '1'
                     #return lock_flag
-                    
             else:
                 if a=='a':
                     msg='Oops !!! Objective Request For Selected Date Is Locked...'
