@@ -132,7 +132,7 @@ def lock_transaction_forms(employee,formname,date):
                         msg='Oops !!! Doctor Call Request For Today; Time is Over...'
                         
                     elif a=='c':
-                        msg=str(locktime)#'Oops !!! Chemist Call Request Request For Today; Time is Over...'
+                        msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
                         
                     elif a=='d':
                         msg='Oops !!! Campaign Booking Request For Today; Time is Over...'
@@ -203,7 +203,7 @@ def lock_transaction_forms(employee,formname,date):
                         msg='Oops !!! Doctor Call Request For Today; Time is Over...'
                         
                     elif a=='c':
-                        msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
+                        msg=str(locktime)#'Oops !!! Chemist Call Request Request For Today; Time is Over...'
                         
                     elif a=='d':
                         msg='Oops !!! Campaign Booking Request For Today; Time is Over...'
