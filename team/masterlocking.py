@@ -296,7 +296,7 @@ def lock_transaction_forms(employee,formname,date):
                     #return lock_flag
         
         else:
-            msg = frmdate+' '+todate+' '+locktime
+            msg = frmdate
             lock_flag = '0'
             #return lock_flag
         
