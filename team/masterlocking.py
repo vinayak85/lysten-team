@@ -278,7 +278,7 @@ def lock_transaction_forms(employee,formname,date):
                 lock_flag = '0'
                 #return lock_flag
         
-        elif ((str(frmdate) == "null" and str(todate) == "null" and str(locktime) == "null") or(str(frmdate) == "" and str(todate) == "" and str(locktime) == "")) :
+        elif ((str(frmdate) == "None" and str(todate) == "None" and str(locktime) == "None") or(str(frmdate) == "" and str(todate) == "" and str(locktime) == "")) :
             if(today_date == date):
                 if a=='a':
                     msg='Ok !!! Objective Request For Today...'
