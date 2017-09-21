@@ -294,6 +294,22 @@ def lock_transaction_forms(employee,formname,date):
                     
                 lock_flag = '1'
                     #return lock_flag
+                    
+            else:
+                if a=='a':
+                    msg='Oops !!! Objective Request For Selected Date Is Locked...'
+                        
+                elif a=='b':
+                    msg='Oops !!! Doctor Call Request For Selected Date Is Locked...'
+                        
+                elif a=='c':
+                    msg='Oops !!! Chemist Call Request For Selected Date Is Locked...'
+                        
+                elif a=='d':
+                    msg='Oops !!! Campaign Booking Request For Selected Date Is Locked...'
+                    
+                lock_flag = '0'
+                #return lock_flag 
         
         else:
             msg = "Invalid Request..."
