@@ -18,10 +18,8 @@ def get_plan_of_today(employee, designation,date_pass,app_ver):
   today_date=date_pass
   
  today_date="'"+today_date+"'"
-
  
- 
-  objective= frappe.db.sql(""" SELECT doctor_flag as dc,camp_flag as cm,meeting_flag as mt,leave_flag as lv,call_agenda as dc_a,
+ objective= frappe.db.sql(""" SELECT doctor_flag as dc,camp_flag as cm,meeting_flag as mt,leave_flag as lv,call_agenda as dc_a,
   camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.`tabObjective` where 
   1bd3e0294da19198.`tabObjective`.user = {0} and
   1bd3e0294da19198.`tabObjective`.`select_date`={1} """.format(employee,today_date), as_dict=1)
