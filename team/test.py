@@ -27,7 +27,8 @@ def get_plan_of_today(employee, designation,date_pass,app_ver):
  if len(objective) > 0:
   if objective[0].dc==1 and objective[0].cm==1 and objective[0].mt==1 and objective[0].lv==0:
     objj="";
-    objj="<b>PLAN OF DAY :</b>"+ " DCR  |  CAMP BOOKING  |  MEETING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
+    objj="Hiii";
+    #"<b>PLAN OF DAY :</b>"+ " DCR  |  CAMP BOOKING  |  MEETING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
           
   elif objective[0].dc==1 and objective[0].cm==1 and objective[0].mt==0 and objective[0].lv==0:
     objj="";
