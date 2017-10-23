@@ -30,7 +30,7 @@ def get_plan_of_today(employee, designation,date_pass,app_ver):
     objj="""PLAN OF DAY :"+ " DCR  |  CAMP BOOKING  |  MEETING 
     DCR Agenda:{0}
     CAMP Agenda:{1}
-    Meeting Agenda:{2}""".format( objective[0].dc_a,objective[0].cm_a,objective[0].dc_mt);
+    Meeting Agenda:{2}""".format( objective[0].dc_a,objective[0].cm_a,objective[0].mt_a);
     #'\033[1m' + 'This is my text string.' + '\033[0m';#'Hiii';
     #"<b>PLAN OF DAY :</b>"+ " DCR  |  CAMP BOOKING  |  MEETING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
           
