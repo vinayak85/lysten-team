@@ -50,7 +50,7 @@ def get_plan_of_today(employee, designation,date_pass,app_ver):
         
   elif objective[0].dc==1 and objective[0].cm==0 and objective[0].mt==0 and objective[0].lv==0:
     objj="";
-    objj="""PLAN OF DAY : DCR  |  CAMP BOOKING  |  MEETING 
+    objj="""PLAN OF DAY : DCR 
     DCR Agenda:{0}""".format( objective[0].dc_a);
     #objj="<b>PLAN OF DAY :</b>"+ " DCR \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a;
   
