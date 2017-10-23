@@ -50,26 +50,35 @@ def get_plan_of_today(employee, designation,date_pass,app_ver):
         
   elif objective[0].dc==1 and objective[0].cm==0 and objective[0].mt==0 and objective[0].lv==0:
     objj="";
-    objj="<b>PLAN OF DAY :</b>"+ " DCR \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a;
+    objj="""PLAN OF DAY : DCR  |  CAMP BOOKING  |  MEETING 
+    DCR Agenda:{0}""".format( objective[0].dc_a);
+    #objj="<b>PLAN OF DAY :</b>"+ " DCR \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a;
   
   elif objective[0].dc==0 and objective[0].cm==1 and objective[0].mt==1 and objective[0].lv==0:
     objj="";
-    objj="<b>PLAN OF DAY :</b>"+ " CAMP BOOKING  |  MEETING \n\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
+    objj="""PLAN OF DAY : CAMP BOOKING  |  MEETING 
+    CAMP Agenda:{0}
+    Meeting Agenda:{0}""".format( objective[0].cm_a,objective[0].mt_a);
+    #objj="<b>PLAN OF DAY :</b>"+ " CAMP BOOKING  |  MEETING \n\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
         
   elif objective[0].dc==0 and objective[0].cm==1 and objective[0].mt==0 and objective[0].lv==0:
     objj="";
-    objj="<b>PLAN OF DAY :</b>"+ " CAMP BOOKING \n\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a;
+    objj="""PLAN OF DAY : CAMP BOOKING 
+    CAMP Agenda:{0}""".format( objective[0].cm_a);
+    #objj="<b>PLAN OF DAY :</b>"+ " CAMP BOOKING \n\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a;
       
   elif objective[0].dc==0 and objective[0].cm==0 and objective[0].mt==1 and objective[0].lv==0:
     objj="";
-    objj="<b>PLAN OF DAY :</b>"+ " MEETING \n\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
+    objj="""PLAN OF DAY : MEETING 
+    Meeting Agenda:{0}""".format( objective[0].mt_a);
+    #objj="<b>PLAN OF DAY :</b>"+ " MEETING \n\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
       
   elif objective[0].dc==0 and objective[0].cm==0 and objective[0].mt==0 and objective[0].lv==1:
     objj="";
-    objj="<b>PLAN OF DAY : LEAVE</b>";
+    objj="PLAN OF DAY : LEAVE";
 
   else:
-    objj="<b>PLAN NOT CREATED FOR TODAY...</b>";
+    objj="PLAN NOT CREATED FOR TODAY...";
  else:
   objj='No Objective Today'
  
