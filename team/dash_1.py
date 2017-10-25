@@ -79,7 +79,7 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
 1bd3e0294da19198.`tabAppVersions`.versionCode = {0} and
 1bd3e0294da19198.`tabAppVersions`.supported=true""".format(app_ver), as_dict=1)
   
-  if len(objective) > 0:
+ if len(objective) > 0:
     if objective[0].dc==1 and objective[0].cm==1 and objective[0].mt==1 and objective[0].lv==0:
      objj="";
      objj="""PLAN OF DAY : DCR  |  CAMP BOOKING  |  MEETING 
@@ -126,7 +126,7 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
      objj="PLAN OF DAY : LEAVE";
     else:
      objj="PLAN NOT CREATED FOR TODAY...";
-  else:
+ else:
    objj='No Objective Today';
  
  expected_dcr_call_tbm=0
