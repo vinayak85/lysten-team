@@ -79,65 +79,55 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
 1bd3e0294da19198.`tabAppVersions`.versionCode = {0} and
 1bd3e0294da19198.`tabAppVersions`.supported=true""".format(app_ver), as_dict=1)
   
- 
-
-if len(objective) > 0:
-  if objective[0].dc==1 and objective[0].cm==1 and objective[0].mt==1 and objective[0].lv==0:
-    objj="";
-    objj="""PLAN OF DAY : DCR  |  CAMP BOOKING  |  MEETING 
-    DCR Agenda:{0}
-    CAMP Agenda:{1}
-    Meeting Agenda:{2}""".format( objective[0].dc_a,objective[0].cm_a,objective[0].mt_a);
-    #'\033[1m' + 'This is my text string.' + '\033[0m';#'Hiii';
-    #"<b>PLAN OF DAY :</b>"+ " DCR  |  CAMP BOOKING  |  MEETING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
-          
-  elif objective[0].dc==1 and objective[0].cm==1 and objective[0].mt==0 and objective[0].lv==0:
-    objj="";
-    objj="""PLAN OF DAY : DCR  |  CAMP BOOKING 
-    DCR Agenda:{0}
-    CAMP Agenda:{1}""".format( objective[0].dc_a,objective[0].cm_a);
-    #objj="<b>PLAN OF DAY :</b>"+ " DCR  |  CAMP BOOKING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
-          
-  elif objective[0].dc==1 and objective[0].cm==0 and objective[0].mt==1 and objective[0].lv==0:
-    objj="";
-    objj="""PLAN OF DAY : DCR  |  MEETING 
-    DCR Agenda:{0}
-    Meeting Agenda:{1}""".format( objective[0].dc_a,objective[0].mt_a);
-    #objj="<b>PLAN OF DAY :</b>"+ " DCR  |  MEETING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
-        
-  elif objective[0].dc==1 and objective[0].cm==0 and objective[0].mt==0 and objective[0].lv==0:
-    objj="";
-    objj="""PLAN OF DAY : DCR 
-    DCR Agenda:{0}""".format( objective[0].dc_a);
-    #objj="<b>PLAN OF DAY :</b>"+ " DCR \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a;
-  
-  elif objective[0].dc==0 and objective[0].cm==1 and objective[0].mt==1 and objective[0].lv==0:
-    objj="";
-    objj="""PLAN OF DAY : CAMP BOOKING  |  MEETING 
-    CAMP Agenda:{0}
-    Meeting Agenda:{0}""".format( objective[0].cm_a,objective[0].mt_a);
-    #objj="<b>PLAN OF DAY :</b>"+ " CAMP BOOKING  |  MEETING \n\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
-        
-  elif objective[0].dc==0 and objective[0].cm==1 and objective[0].mt==0 and objective[0].lv==0:
-    objj="";
-    objj="""PLAN OF DAY : CAMP BOOKING 
-    CAMP Agenda:{0}""".format( objective[0].cm_a);
-    #objj="<b>PLAN OF DAY :</b>"+ " CAMP BOOKING \n\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a;
-      
-  elif objective[0].dc==0 and objective[0].cm==0 and objective[0].mt==1 and objective[0].lv==0:
-    objj="";
-    objj="""PLAN OF DAY : MEETING 
-    Meeting Agenda:{0}""".format( objective[0].mt_a);
-    #objj="<b>PLAN OF DAY :</b>"+ " MEETING \n\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
-      
-  elif objective[0].dc==0 and objective[0].cm==0 and objective[0].mt==0 and objective[0].lv==1:
-    objj="";
-    objj="PLAN OF DAY : LEAVE";
-
+  if len(objective) > 0:
+    if objective[0].dc==1 and objective[0].cm==1 and objective[0].mt==1 and objective[0].lv==0:
+     objj="";
+     objj="""PLAN OF DAY : DCR  |  CAMP BOOKING  |  MEETING 
+     DCR Agenda:{0}
+     CAMP Agenda:{1}
+     Meeting Agenda:{2}""".format( objective[0].dc_a,objective[0].cm_a,objective[0].mt_a);
+     #'\033[1m' + 'This is my text string.' + '\033[0m';#'Hiii';
+     #"<b>PLAN OF DAY :</b>"+ " DCR  |  CAMP BOOKING  |  MEETING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
+    elif objective[0].dc==1 and objective[0].cm==1 and objective[0].mt==0 and objective[0].lv==0:
+     objj="";
+     objj="""PLAN OF DAY : DCR  |  CAMP BOOKING 
+     DCR Agenda:{0}
+     CAMP Agenda:{1}""".format( objective[0].dc_a,objective[0].cm_a);
+     #objj="<b>PLAN OF DAY :</b>"+ " DCR  |  CAMP BOOKING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
+    elif objective[0].dc==1 and objective[0].cm==0 and objective[0].mt==1 and objective[0].lv==0:
+     objj="";
+     objj="""PLAN OF DAY : DCR  |  MEETING 
+     DCR Agenda:{0}
+     Meeting Agenda:{1}""".format( objective[0].dc_a,objective[0].mt_a);
+     #objj="<b>PLAN OF DAY :</b>"+ " DCR  |  MEETING \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
+    elif objective[0].dc==1 and objective[0].cm==0 and objective[0].mt==0 and objective[0].lv==0:
+     objj="";
+     objj="""PLAN OF DAY : DCR 
+     DCR Agenda:{0}""".format( objective[0].dc_a);
+     #objj="<b>PLAN OF DAY :</b>"+ " DCR \n\n"+"<b>DCR Agenda: </b>" + objective[0].dc_a;
+    elif objective[0].dc==0 and objective[0].cm==1 and objective[0].mt==1 and objective[0].lv==0:
+     objj="";
+     objj="""PLAN OF DAY : CAMP BOOKING  |  MEETING 
+     CAMP Agenda:{0}
+     Meeting Agenda:{0}""".format( objective[0].cm_a,objective[0].mt_a);
+     #objj="<b>PLAN OF DAY :</b>"+ " CAMP BOOKING  |  MEETING \n\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a +"\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
+    elif objective[0].dc==0 and objective[0].cm==1 and objective[0].mt==0 and objective[0].lv==0:
+     objj="";
+     objj="""PLAN OF DAY : CAMP BOOKING 
+     CAMP Agenda:{0}""".format( objective[0].cm_a);
+     #objj="<b>PLAN OF DAY :</b>"+ " CAMP BOOKING \n\n"+"<b>CAMP Agenda: </b>" +objective[0].cm_a;
+    elif objective[0].dc==0 and objective[0].cm==0 and objective[0].mt==1 and objective[0].lv==0:
+     objj="";
+     objj="""PLAN OF DAY : MEETING 
+     Meeting Agenda:{0}""".format( objective[0].mt_a);
+     #objj="<b>PLAN OF DAY :</b>"+ " MEETING \n\n"+"<b>Meeting Agenda: </b>" +objective[0].dc_mt;
+    elif objective[0].dc==0 and objective[0].cm==0 and objective[0].mt==0 and objective[0].lv==1:
+     objj="";
+     objj="PLAN OF DAY : LEAVE";
+    else:
+     objj="PLAN NOT CREATED FOR TODAY...";
   else:
-    objj="PLAN NOT CREATED FOR TODAY...";
-else:
-  objj='No Objective Today'
+   objj='No Objective Today';
  
  expected_dcr_call_tbm=0
  actual_dcr_call_tbm=0
