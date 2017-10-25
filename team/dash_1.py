@@ -136,7 +136,7 @@ if len(objective) > 0:
 
   else:
     objj="PLAN NOT CREATED FOR TODAY...";
- else:
+else:
   objj='No Objective Today'
  
  expected_dcr_call_tbm=0
