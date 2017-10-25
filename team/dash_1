@@ -5,7 +5,7 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
-def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ver):
+def get_dash(employee, designation,date_pass,app_ver):
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
  #return tree_user_bottom(employee, designation)
  email_list=""
