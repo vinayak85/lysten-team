@@ -443,7 +443,8 @@ def lock_transaction_forms(employee,formname,date):
            msg='Ooops !!! Doctor Call Locked Due To No Calls In Start Time...'
            lock_flag = '0'
          else:
-          msg='Ooops !!! Doctor Call Locked Due To Missing Objective...aa'
+          msg=cnt_obj[0].obj_cnt
+          #'Ooops !!! Doctor Call Locked Due To Missing Objective...aa'
           lock_flag = '0'
                         
         elif a=='c':
