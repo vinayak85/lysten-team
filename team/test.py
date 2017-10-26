@@ -100,6 +100,9 @@ def get_plan_of_today(employee, designation,date_pass,app_ver):
 def lock_transaction_forms(employee,formname,date):    
     lock_flag='0'
     dataarray=""
+    cnt_obj=""
+    cnt_dc=""
+    cnt_ch=""
     frmdate=""
     todate=""
     locktime=""
@@ -446,7 +449,7 @@ def lock_transaction_forms(employee,formname,date):
           msg=cnt_obj[0].obj_cnt
           #'Ooops !!! Doctor Call Locked Due To Missing Objective...aa'
           lock_flag = '0'
-                        
+          
         elif a=='c':
          if int(cnt_obj[0].obj_cnt)>0:
           if int(cnt_dc[0].ch_cnt)>0:
