@@ -435,15 +435,15 @@ def lock_transaction_forms(employee,formname,date):
        #########  
        elif minutes <= 0:
         if a=='b':
-         if int(cnt_obj[0].obj_cnt)>0:
-          if int(cnt_dc[0].dc_cnt)>0:
+         if int(cnt_obj[0].obj_cnt) > 0:
+          if int(cnt_dc[0].dc_cnt) > 0:
            msg='Ok !!! Doctor Call Request For Today;'
            lock_flag = '1'
           else:
            msg='Ooops !!! Doctor Call Locked Due To No Calls In Start Time...'
            lock_flag = '0'
          else:
-          msg='Ooops !!! Doctor Call Locked Due To Missing Objective...'
+          msg='Ooops !!! Doctor Call Locked Due To Missing Objective...aa'
           lock_flag = '0'
                         
         elif a=='c':
