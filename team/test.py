@@ -394,7 +394,7 @@ def lock_transaction_forms(employee,formname,date):
        cnt_obj=frappe.db.sql(""" select count(*) as obj_cnt from 1bd3e0294da19198.`tabObjective` where user={0} and select_date={1}; """.format(employee,date), as_dict=1)
        cnt_dc=frappe.db.sql(""" select count(*) as dc_cnt from 1bd3e0294da19198.`tabDoctor Calls` where dr_call_by_user_id={0} and date={1}; """.format(employee,date), as_dict=1)
        cnt_ch=frappe.db.sql(""" select count(*) as ch_cnt from 1bd3e0294da19198.`tabChemist Call` where call_by_user_id={0} and date={1}; """.format(employee,date), as_dict=1)
-       frappe.msgprint(_(cnt_obj[0].obj_cnt))
+       frappe.msgprint(_(cnt_obj))
       
        
            
