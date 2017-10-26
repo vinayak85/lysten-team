@@ -391,7 +391,8 @@ def lock_transaction_forms(employee,formname,date):
        #locktime = locktime[:locktime.find('.')]
        #1bd3e0294da19198.`tabObjective`
        #get count for start time...
-       cnt_obj = frappe.db.sql(""" select concat(count(*), '') as obj_cnt from 1bd3e0294da19198.`tabObjective` where 1bd3e0294da19198.`tabObjective`.`user` = {0} and 1bd3e0294da19198.`tabObjective`.`select_date` = {1}; """.format(employee,date), as_dict=1)
+       #cnt_obj = frappe.db.sql(""" select concat(count(*), '') as obj_cnt from 1bd3e0294da19198.`tabObjective` where 1bd3e0294da19198.`tabObjective`.`user` = {0} and 1bd3e0294da19198.`tabObjective`.`select_date` = {1}; """.format(employee,date), as_dict=1)
+       cnt_obj = frappe.db.sql(""" select concat(count(*), '') as obj_cnt from 1bd3e0294da19198.`tabObjective` where 1bd3e0294da19198.`tabObjective`.`user` = 'amolrmohite@gmail.com' and 1bd3e0294da19198.`tabObjective`.`select_date` = '2017-10-26'; """, as_dict=1)
        cnt_dc=frappe.db.sql(""" select count(*) as dc_cnt from 1bd3e0294da19198.`tabDoctor Calls` where dr_call_by_user_id={0} and date={1}; """.format(employee,date), as_dict=1)
        cnt_ch=frappe.db.sql(""" select count(*) as ch_cnt from 1bd3e0294da19198.`tabChemist Call` where call_by_user_id={0} and date={1}; """.format(employee,date), as_dict=1)
        frappe.msgprint(_(cnt_obj))
