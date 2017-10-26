@@ -381,6 +381,7 @@ def lock_transaction_forms(employee,formname,date):
     if a=='b' or a=='c':
      if(today_date == date):
       starttime=dataarray[0].start_time
+      frappe.msgprint(_(starttime))
       starttime = starttime[:starttime.find('.')]
       
       #locktime=dataarray[0].lock_time
