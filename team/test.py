@@ -157,7 +157,7 @@ def lock_transaction_forms(employee,formname,date):
                     elif a=='b':
                         msg='Ok !!! Doctor Call Request For Today...'
                     elif a=='c':
-                        msg='Ok !!! Chemist Call Request Request For Today...'
+                        msg='Ok !!! Chemist Call Request For Today...'
                     elif a=='d':
                         msg='Ok !!! Campaign Booking Request For Today...'
                     lock_flag = '1'
@@ -170,7 +170,7 @@ def lock_transaction_forms(employee,formname,date):
                         msg='Ok !!! Doctor Call Request For Today; Time Is In Range...'
                         
                     elif a=='c':
-                        msg='Ok !!! Chemist Call Request Request For Today; Time Is In Range...'
+                        msg='Ok !!! Chemist Call Request For Today; Time Is In Range...'
                         
                     elif a=='d':
                         msg='Ok !!! Campaign Booking Request For Today; Time Is In Range...'
@@ -185,7 +185,7 @@ def lock_transaction_forms(employee,formname,date):
                         msg='Oops !!! Doctor Call Request For Today; Time is Over...'
                         
                     elif a=='c':
-                        msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
+                        msg='Oops !!! Chemist Call Request For Today; Time is Over...'
                         
                     elif a=='d':
                         msg='Oops !!! Campaign Booking Request For Today; Time is Over...'
@@ -239,7 +239,7 @@ def lock_transaction_forms(employee,formname,date):
                     elif a=='b':
                         msg='Ok !!! Doctor Call Request For Today...'
                     elif a=='c':
-                        msg='Ok !!! Chemist Call Request Request For Today...'
+                        msg='Ok !!! Chemist Call Request For Today...'
                     elif a=='d':
                         msg='Ok !!! Campaign Booking Request For Today...'
                     lock_flag = '1'
@@ -252,7 +252,7 @@ def lock_transaction_forms(employee,formname,date):
                         msg='Ok !!! Doctor Call Request For Today; Time Is In Range...'
                         
                     elif a=='c':
-                        msg='Ok !!! Chemist Call Request Request For Today; Time Is In Range...'
+                        msg='Ok !!! Chemist Call Request For Today; Time Is In Range...'
                         
                     elif a=='d':
                         msg='Ok !!! Campaign Booking Request For Today; Time Is In Range...'
@@ -268,7 +268,7 @@ def lock_transaction_forms(employee,formname,date):
                         msg='Oops !!! Doctor Call Request For Today; Time is Over...'
                         
                     elif a=='c':
-                        msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
+                        msg='Oops !!! Chemist Call Request For Today; Time is Over...'
                         
                     elif a=='d':
                         msg='Oops !!! Campaign Booking Request For Today; Time is Over...'
@@ -301,7 +301,7 @@ def lock_transaction_forms(employee,formname,date):
                     msg='Ok !!! Doctor Call Request For Today...'
                 
                 elif a=='c':
-                    msg='Ok !!! Chemist Call Request Request For Today...'
+                    msg='Ok !!! Chemist Call Request For Today...'
                 
                 elif a=='d':
                     msg='Ok !!! Campaign Booking Request For Today...'
@@ -351,7 +351,7 @@ def lock_transaction_forms(employee,formname,date):
                     msg='Ok !!! Doctor Call Request For Today...'
                 
                 elif a=='c':
-                    msg='Ok !!! Chemist Call Request Request For Today...'
+                    msg='Ok !!! Chemist Call Request For Today...'
                 
                 elif a=='d':
                     msg='Ok !!! Campaign Booking Request For Today...'                    
@@ -417,7 +417,7 @@ def lock_transaction_forms(employee,formname,date):
               lock_flag = '0'
           elif a=='c':
             if int(cnt_obj[0].obj_cnt)>0:
-              msg='Ok !!! Chemist Call Request Request For Today...'
+              msg='Ok !!! Chemist Call Request For Today...'
               lock_flag = '1'
             else:
               msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
@@ -435,7 +435,7 @@ def lock_transaction_forms(employee,formname,date):
                   lock_flag = '0'
               elif a=='c':
                 if int(cnt_obj[0].obj_cnt)>0:
-                  msg='Ok !!! Chemist Call Request Request For Today; Time Is In Range...'
+                  msg='Ok !!! Chemist Call Request For Today; Time Is In Range...'
                   lock_flag = '1'
                 else:
                   msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
@@ -447,7 +447,7 @@ def lock_transaction_forms(employee,formname,date):
                     msg='Ok !!! Doctor Call Request For Today;'
                     lock_flag = '1'
                   else:
-                    msg='Ooops !!! Doctor Call Locked Due To No Calls In Start Time...'
+                    msg='Ooops !!! Doctor Call Locked Due To No Calls In Start Time...'####
                     lock_flag = '0'
                 else:
                   msg='Ooops !!! Doctor Call Locked Due To Missing Objective...'
@@ -455,25 +455,25 @@ def lock_transaction_forms(employee,formname,date):
               elif a=='c':
                 if int(cnt_obj[0].obj_cnt)>0:
                   if int(cnt_ch[0].ch_cnt)>0:
-                    msg='Ok !!! Chemist Call Request Request For Today;'
+                    msg='Ok !!! Chemist Call Request For Today;'
                     lock_flag = '1'
                   else:
-                    msg='Ooops !!! Chemist Call Locked Due To No Calls In Start Time...'
+                    msg='Ooops !!! Chemist Call Locked Due To No Calls In Start Time...'####
                     lock_flag = '0'
                 else:
                  msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
                  lock_flag = '0'
             else:
                if a=='b':
-                 msg='Oops !!! Doctor Call Request For Today; Time is Over...'
+                 msg='Oops !!! Doctor Call Request For Today; Time is Over...'####
                elif a=='c':
-                 msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
+                 msg='Oops !!! Chemist Call Request For Today; Time is Over...'####
                lock_flag = '0'
          else:
            if a=='b':
              msg='Oops !!! Doctor Call Request For Today; Time is Over...'
            elif a=='c':
-             msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
+             msg='Oops !!! Chemist Call Request For Today; Time is Over...'
            lock_flag = '0'       
        
        ##############################
@@ -488,16 +488,16 @@ def lock_transaction_forms(employee,formname,date):
                lock_flag = '0'
            elif a=='c':
              if int(cnt_obj[0].obj_cnt)>0:
-               msg='Ok !!! Chemist Call Request Request For Today...'
+               msg='Ok !!! Chemist Call Request For Today...'
                lock_flag = '1'
              else:
                msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
                lock_flag = '0'
          else:
            if a=='b':
-             msg='Oops !!! Doctor Call Request For Today; Time is Over...'
+             msg='Oops !!! Doctor Call Request For Today; Time is Over...'####
            elif a=='c':
-             msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
+             msg='Oops !!! Chemist Call Request For Today; Time is Over...'####
            lock_flag = '0'       
        
        ##############################
@@ -512,7 +512,7 @@ def lock_transaction_forms(employee,formname,date):
                lock_flag = '0'
            elif a=='c':
              if int(cnt_obj[0].obj_cnt)>0:
-               msg='Ok !!! Chemist Call Request Request For Today; Time Is In Range...'
+               msg='Ok !!! Chemist Call Request For Today; Time Is In Range...'
                lock_flag = '1'
              else:
                msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
@@ -524,7 +524,7 @@ def lock_transaction_forms(employee,formname,date):
                  msg='Ok !!! Doctor Call Request For Today;'
                  lock_flag = '1'
                else:
-                 msg='Ooops !!! Doctor Call Locked Due To No Calls In Start Time...'
+                 msg='Ooops !!! Doctor Call Locked Due To No Calls In Start Time...'####
                  lock_flag = '0'
              else:
                msg='Ooops !!! Doctor Call Locked Due To Missing Objective...'
@@ -532,10 +532,10 @@ def lock_transaction_forms(employee,formname,date):
            elif a=='c':
              if int(cnt_obj[0].obj_cnt)>0:
                if int(cnt_ch[0].ch_cnt)>0:
-                 msg='Ok !!! Chemist Call Request Request For Today;'
+                 msg='Ok !!! Chemist Call Request For Today;'
                  lock_flag = '1'
                else:
-                 msg='Ooops !!! Chemist Call Locked Due To No Calls In Start Time...'
+                 msg='Ooops !!! Chemist Call Locked Due To No Calls In Start Time...'####
                  lock_flag = '0'
              else:
                msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
@@ -544,7 +544,7 @@ def lock_transaction_forms(employee,formname,date):
              if a=='b':
                msg='Oops !!! Doctor Call Request For Today; Time is Over...'
              elif a=='c':
-               msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'
+               msg='Oops !!! Chemist Call Request For Today; Time is Over...'
              lock_flag = '0'        
        
        ##############################
@@ -558,7 +558,7 @@ def lock_transaction_forms(employee,formname,date):
              lock_flag = '0'
          elif a=='c':
            if int(cnt_obj[0].obj_cnt)>0:
-             msg='Ok !!! Chemist Call Request Request For Today...'
+             msg='Ok !!! Chemist Call Request For Today...'
              lock_flag = '1'
            else:
              msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
@@ -573,7 +573,7 @@ def lock_transaction_forms(employee,formname,date):
     dict['message'] = msg;
     
     return dict    
-    
+      
     
 #Europe/Berlin
 def local_time(zone='Asia/Kolkata'):
