@@ -455,7 +455,7 @@ def lock_transaction_forms(employee,formname,date):
           
         elif a=='c':
          if int(cnt_obj[0].obj_cnt)>0:
-          if int(cnt_dc[0].ch_cnt)>0:
+          if int(cnt_ch[0].ch_cnt)>0:
            msg='Ok !!! Chemist Call Request Request For Today;'
            lock_flag = '1'
           else:
