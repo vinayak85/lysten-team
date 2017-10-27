@@ -77,7 +77,7 @@ def lock_transaction_forms(employee,formname,date):
     
     elif formname == 'T_DrC':
         a='b'
-        dataarray = frappe.db.sql(""" select ifnull(t_drc1,'')as date,ifnull(t_drc2,'')as to_date,ifnull(t_drc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
+        dataarray = frappe.db.sql(""" select ifnull(t_drc1,'')as frm_date,ifnull(t_drc2,'')as to_date,ifnull(t_drc_time,'')as lock_time from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
 
     elif formname == "T_ChC":
         a='c'
