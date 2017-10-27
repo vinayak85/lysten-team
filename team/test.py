@@ -140,9 +140,9 @@ def lock_transaction_forms(employee,formname,date):
         todate=dataarray[0].to_date
         locktime=dataarray[0].lock_time
         locktime = locktime[:locktime.find('.')]
-        frappe.msgprint(_(locktime))
-        frappe.msgprint(_(dataarray[0].frm_date+' '+dataarray[0].to_date))
-        frappe.msgprint(_(today_date+' '+date))
+        #frappe.msgprint(_(locktime))
+        #frappe.msgprint(_(frmdate+todate+date))
+        #frappe.msgprint(_(today_date+' '+date))
         
         if frmdate != "" and todate != "" and locktime != "":
             if(today_date == date):
