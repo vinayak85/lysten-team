@@ -406,7 +406,7 @@ def lock_transaction_forms(employee,formname,date):
        minutes = int(time_diff.total_seconds()/60)
        
        #########
-       if str(locktime)=="00:00:00":               
+       if str(locktime)=="00:00:00" or str(starttime)=="00:00:00":               
         if a=='b':
          if int(cnt_obj[0].obj_cnt)>0:
           msg='Ok !!! Doctor Call Request For Today...'
