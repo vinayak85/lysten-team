@@ -393,11 +393,99 @@ def lock_transaction_forms(employee,formname,date):
        #get count for start time...
        #cnt_obj = frappe.db.sql(""" select concat(count(*), '') as obj_cnt from 1bd3e0294da19198.`tabObjective` where 1bd3e0294da19198.`tabObjective`.`user` = {0} and 1bd3e0294da19198.`tabObjective`.`select_date` = {1}; """.format(employee,date), as_dict=1)       
        date_="'"+date+"'"
-       cnt_obj = frappe.db.sql(""" select count(*) as obj_cnt from 1bd3e0294da19198.`tabObjective` where 1bd3e0294da19198.`tabObjective`.`select_date`= {0} """.format(date_), as_dict=1)
-       cnt_dc = frappe.db.sql(""" select count(*) as dc_cnt from 1bd3e0294da19198.`tabDoctor Calls` where dr_call_by_user_id={0} and date={1}; """.format(employee,date), as_dict=1)
-       cnt_ch = frappe.db.sql(""" select count(*) as ch_cnt from 1bd3e0294da19198.`tabChemist Call` where call_by_user_id={0} and date={1}; """.format(employee,date), as_dict=1)
-       frappe.msgprint(_(cnt_obj))
-      
+       cnt_obj = frappe.db.sql(""" select count(*) as obj_cnt from 1bd3e0294da19198.`tabObjective` where 1bd3e0294da19198.`tabObjective`.`user`= {0} and 1bd3e0294da19198.`tabObjective`.`select_date`= {1} """.format(employee,date_), as_dict=1)
+       cnt_dc = frappe.db.sql(""" select count(*) as dc_cnt from 1bd3e0294da19198.`tabDoctor Calls` where dr_call_by_user_id={0} and date={1}; """.format(employee,date_), as_dict=1)
+       cnt_ch = frappe.db.sql(""" select count(*) as ch_cnt from 1bd3e0294da19198.`tabChemist Call` where call_by_user_id={0} and date={1}; """.format(employee,date_), as_dict=1)
+       #frappe.msgprint(_(cnt_obj))
+       
+       import datetime
+       #time_diff = datetime.datetime.strptime(locktime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
+       #minutes = int(time_diff.total_seconds()/60) 
+       
+       time_diff = datetime.datetime.strptime(starttime, '%H:%M:%S') - datetime.datetime.strptime(current_time, '%H:%M:%S')
+       minutes = int(time_diff.total_seconds()/60)
+       
+       #########
+       if str(locktime)=="00:00:00":               
+        if a=='b':
+         if int(cnt_obj[0].obj_cnt)>0:
+          msg='Ok !!! Doctor Call Request For Today...'
+          lock_flag = '1'
+         else:
+          msg='Ooops !!! Doctor Call Locked Due To Missing Objective...'
+          lock_flag = '0'
+        elif a=='c':
+         if int(cnt_obj[0].obj_cnt)>0:
+          msg='Ok !!! Chemist Call Request Request For Today...'
+          lock_flag = '1'
+         else:
+          msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
+          lock_flag = '0'
+       #########   
+       elif minutes >= 0:
+        if a=='b':
+         if int(cnt_obj[0].obj_cnt)>0:         
+           msg='Ok !!! Doctor Call Request For Today; Time Is In Range...'
+           lock_flag = '1'         
+         else:
+          msg='Ooops !!! Doctor Call Locked Due To Missing Objective...'
+          lock_flag = '0'
+                        
+        elif a=='c':
+         if int(cnt_obj[0].obj_cnt)>0:        
+           msg='Ok !!! Chemist Call Request Request For Today; Time Is In Range...'
+           lock_flag = '1'         
+         else:
+          msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
+          lock_flag = '0'
+       #########  
+       elif minutes <= 0:
+        if a=='b':
+         if int(cnt_obj[0].obj_cnt) > 0:
+          if int(cnt_dc[0].dc_cnt) > 0:
+           msg='Ok !!! Doctor Call Request For Today;'
+           lock_flag = '1'
+          else:
+           msg='Ooops !!! Doctor Call Locked Due To No Calls In Start Time...'
+           lock_flag = '0'
+         else:
+          msg=cnt_obj[0].obj_cnt
+          #'Ooops !!! Doctor Call Locked Due To Missing Objective...aa'
+          lock_flag = '0'
+          
+        elif a=='c':
+         if int(cnt_obj[0].obj_cnt)>0:
+          if int(cnt_dc[0].ch_cnt)>0:
+           msg='Ok !!! Chemist Call Request Request For Today;'
+           lock_flag = '1'
+          else:
+           msg='Ooops !!! Chemist Call Locked Due To No Calls In Start Time...'
+           lock_flag = '0'
+         else:
+          msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
+          lock_flag = '0'               
+        #return lock_flag
+       else:
+        if a=='b':
+         msg='Oops !!! Doctor Call Request For Today; Time is Over...'                        
+        elif a=='c':
+         msg='Oops !!! Chemist Call Request Request For Today; Time is Over...'                                     
+        lock_flag = '0'
+      else:
+        if a=='b':
+         if int(cnt_obj[0].obj_cnt)>0:
+          msg='Ok !!! Doctor Call Request For Today...'
+          lock_flag = '1'
+         else:
+          msg='Ooops !!! Doctor Call Locked Due To Missing Objective...'
+          lock_flag = '0'
+        elif a=='c':
+         if int(cnt_obj[0].obj_cnt)>0:
+          msg='Ok !!! Chemist Call Request Request For Today...'
+          lock_flag = '1'
+         else:
+          msg='Ooops !!! Chemist Call Locked Due To Missing Objective...'
+          lock_flag = '0'       
        
            
     dict = {'lock_flag': '',
