@@ -9,3 +9,4 @@ from frappe.model.document import Document
 class Secondary(Document):
 	def autoname(self):
 		self.name = self.year+"-"+self.month+"-"+self.stockist ;
+		pass
