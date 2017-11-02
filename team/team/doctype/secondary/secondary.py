@@ -12,4 +12,4 @@ class Secondary(Document):
         self.name = self.year + "-" + self.month + "-" + self.stockist;
 
     def on_update(self):
-        frappe.msgprint("hii");
+        self.name = self.year + "-" + self.month + "-" + self.stockist;
