@@ -12,4 +12,4 @@ class Secondary(Document):
         self.name = self.year + "-" + self.month + "-" + self.stockist;
 
     def on_update(self):
-        self.update_nsm_model()
+        frappe.msgprint("hii");
