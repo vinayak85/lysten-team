@@ -6,7 +6,10 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 
+
 class Secondary(Document):
-	def autoname(self):
-		self.name = self.year+"-"+self.month+"-"+self.stockist ;
-		pass
+    def autoname(self):
+        self.name = self.year + "-" + self.month + "-" + self.stockist;
+
+    def on_update(self):
+        self.update_nsm_model()
