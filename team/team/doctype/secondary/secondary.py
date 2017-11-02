@@ -8,4 +8,4 @@ from frappe.model.document import Document
 
 class Secondary(Document):
 	def autoname(self):
-		self.name = 'Sal Slip/' +self.month ;
+		self.name = self.year+"-"+self.month+"-"+self.stockist ;
