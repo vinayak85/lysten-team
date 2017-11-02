@@ -8,4 +8,4 @@ from frappe.model.document import Document
 
 class Secondary(Document):
 	def autoname(self):
-		self.name = make_autoname('Sal Slip/' +self.month + '/.#####')
+		self.name = 'Sal Slip/' +self.month ;
