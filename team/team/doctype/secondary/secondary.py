@@ -8,6 +8,11 @@ from frappe import msgprint, _
 import frappe.utils
 from frappe.model.document import Document
 
+@frappe.whitelist()
+    def make_stock_entry(aa, bb):
+	frappe.msgprint(_("hello"));
+	return null;   
+
 
 class Secondary(Document):
     def autoname(self):
@@ -32,10 +37,4 @@ class Secondary(Document):
    
     def on_change(self):
         frappe.msgprint(_("on_change")); '''
-    
-    
-    @frappe.whitelist()
-    def make_stock_entry(aa, bb):
-	frappe.msgprint(_("hello"));
-	return null;        
-   
+
