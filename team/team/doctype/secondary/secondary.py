@@ -11,7 +11,7 @@ from frappe.model.document import Document
 @frappe.whitelist()
 def make_stock_entry(aa, bb):
 	frappe.msgprint(_("hello"));
-	return null;   
+	  
 
 
 class Secondary(Document):
