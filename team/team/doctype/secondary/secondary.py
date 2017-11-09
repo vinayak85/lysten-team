@@ -30,9 +30,7 @@ class Secondary(Document):
     def validate(self):
         frappe.msgprint(_("validate"));
 	
-   z	 
-	 
-	 
+  	 
 	
     '''    
     def before_save(self):
