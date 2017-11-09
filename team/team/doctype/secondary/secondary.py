@@ -9,7 +9,7 @@ import frappe.utils
 from frappe.model.document import Document
 
 @frappe.whitelist()
-    def make_stock_entry(aa, bb):
+def make_stock_entry(aa, bb):
 	frappe.msgprint(_("hello"));
 	return null;   
 
