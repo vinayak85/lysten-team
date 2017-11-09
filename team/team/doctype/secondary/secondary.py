@@ -12,7 +12,7 @@ from frappe.model.document import Document
 @frappe.whitelist()
 def make_stock_entry(year, month,stockist,name):
 	#frappe.msgprint(_(aa+"hello"+bb));
-	frappe.msgprint(_(name))
+	frappe.msgprint(_(name.year))
 	  
 
 
