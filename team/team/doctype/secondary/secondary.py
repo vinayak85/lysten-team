@@ -8,10 +8,7 @@ from frappe import msgprint, _
 import frappe.utils
 from frappe.model.document import Document
 
-@frappe.whitelist()
-def make_stock_entry(year, month,stockist):
-	#frappe.msgprint(_(aa+"hello"+bb));
-	frappe.msgprint(_(self.name));
+
 	  
 
 
@@ -24,6 +21,14 @@ class Secondary(Document):
         
     def validate(self):
         frappe.msgprint(_("validate"));
+	
+    @frappe.whitelist()
+    def make_stock_entry(year, month,stockist):
+	#frappe.msgprint(_(aa+"hello"+bb));
+	frappe.msgprint(_(self.name));	 
+	 
+	 
+	
     '''    
     def before_save(self):
         frappe.msgprint(_("before_save"));
