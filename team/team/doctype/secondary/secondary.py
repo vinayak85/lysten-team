@@ -9,8 +9,9 @@ import frappe.utils
 from frappe.model.document import Document
 
 @frappe.whitelist()
-def make_stock_entry(aa, bb):
-	frappe.msgprint(_(aa+"hello"+bb));
+def make_stock_entry(year, month,stockist):
+	#frappe.msgprint(_(aa+"hello"+bb));
+	frappe.msgprint(_(self.name));
 	  
 
 
