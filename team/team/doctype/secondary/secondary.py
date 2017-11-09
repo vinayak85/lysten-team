@@ -18,7 +18,7 @@ class Secondary(Document):
         
     def validate(self):
         frappe.msgprint(_("validate"));
-        
+    '''    
     def before_save(self):
         frappe.msgprint(_("before_save"));
         
@@ -31,5 +31,6 @@ class Secondary(Document):
         frappe.msgprint(_("before_update_after_submit"));
    
     def on_change(self):
-        frappe.msgprint(_("on_change"));
+        frappe.msgprint(_("on_change")); '''
+         
    
