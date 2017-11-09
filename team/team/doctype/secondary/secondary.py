@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+import frappe.utils
 from frappe.model.document import Document
 
 
@@ -13,3 +14,21 @@ class Secondary(Document):
 
     def on_update(self):
         self.name = self.year + "-" + self.month + "-" + self.stockist;
+        
+    def validate(self):
+        frappe.msgprint(_("validate"));
+        
+    def before_save(self):
+        frappe.msgprint(_("before_save"));
+        
+   
+        
+    def before_submit(self): 
+        frappe.msgprint(_("before_submit"));
+        
+    def before_update_after_submit(self):
+        frappe.msgprint(_("before_update_after_submit"));
+   
+    def on_change(self):
+        frappe.msgprint(_("on_change"));
+   
