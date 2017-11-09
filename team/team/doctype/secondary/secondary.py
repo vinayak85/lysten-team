@@ -12,16 +12,13 @@ from frappe.model.document import Document
 @frappe.whitelist()
 def make_stock_entry(year, month,stockist,name):
 	#frappe.msgprint(_(aa+"hello"+bb));
-	#frappe.msgprint(_(self.name))
-	test();	  
+	frappe.msgprint(_(name))
+	  
 
 
 class Secondary(Document):
     def autoname(self):
         self.name = self.year + "-" + self.month + "-" + self.stockist;
-
-    def test(self)
-        frappe.msgprint(_(self.name));
 	
 
     def on_update(self):
