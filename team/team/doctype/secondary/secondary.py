@@ -28,13 +28,13 @@ class Secondary(Document):
     def validate(self):
         frappe.msgprint(_("validate"));
 
-    def test(self):
+    def test():
 	 frappe.msgprint(_("hiii"));
 	
   	 
 	
     '''    
-    def before_save(self):
+    def before_save():
         frappe.msgprint(_("before_save"));
         
    
