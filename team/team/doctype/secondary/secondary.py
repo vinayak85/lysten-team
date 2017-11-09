@@ -12,7 +12,8 @@ from frappe.model.document import Document
 @frappe.whitelist()
 def make_stock_entry(year, month,stockist,name):
 	#frappe.msgprint(_(aa+"hello"+bb));
-	frappe.msgprint(_(name.year))
+	#frappe.msgprint(_(name.year))
+	Secondary.test();
 	  
 
 
@@ -26,6 +27,9 @@ class Secondary(Document):
         
     def validate(self):
         frappe.msgprint(_("validate"));
+
+    def test(self):
+	 frappe.msgprint(_("hiii"));
 	
   	 
 	
