@@ -35,7 +35,7 @@ class Secondary(Document):
     
     
     @frappe.whitelist()
-def make_stock_entry(aa, bb):
+    def make_stock_entry(aa, bb):
 	frappe.msgprint(_(aa+",,"+bb));
          
    
