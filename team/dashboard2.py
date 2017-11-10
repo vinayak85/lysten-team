@@ -204,11 +204,13 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
  dict['percent_tbm_chem_call']=frappe.utils.data.flt (percent_tbm_chem_call, precision=2);
  dict['app_ver_count']=app_ver_count[0].cnt_ob;
  dict['lock']=0;
- dict['active_emp']=presenty[0].active_emp;
- dict['tot_obj']=presenty[0].tot_obj;
- dict['Present']=presenty[0].Present;
- dict['Leave']=presenty[0].Leave;
- dict['miss_obj']=presenty[0].miss_obj;
+ 
+ if (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
+  dict['active_emp']=presenty[0].active_emp;
+  dict['tot_obj']=presenty[0].tot_obj;
+  dict['Present']=presenty[0].Present;
+  dict['Leave']=presenty[0].Leave;
+  dict['miss_obj']=presenty[0].miss_obj;
  
  
  return dict
