@@ -36,6 +36,24 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ve
  #return str(len(email_list)) + "ssss " + str(len(email_list_only_TBM))
  #frappe.msgprint(_(email_list_only_TBM))
  
+ #presenty details for dashboard
+ if (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
+  presenty=frappe.db.sql(""" Select distinct select_date,
+  (Select count(name) from 1bd3e0294da19198.tabUser where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM'))as `active_emp`,
+  (Select count(name) from 1bd3e0294da19198.tabObjective  where select_date=obj.select_date
+  and user in (select name from tabUser where enabled=1
+  and designation in('TBM','ABM','RBM','SM','NBM')))as 'tot_obj',
+  (Select count(name) from 1bd3e0294da19198.tabObjective
+  where select_date=obj.select_date
+  and (tabObjective.doctor_flag=1 or tabObjective.meeting_flag=1 or tabObjective.camp_flag=1)
+  and user in (select name from tabUser where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM')))as 'Present',
+  (Select count(name) from 1bd3e0294da19198.tabObjective
+  where select_date=obj.select_date and tabObjective.leave_flag=1 )as 'Leave',
+  ((Select count(name)from 1bd3e0294da19198.tabUser where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM')) -
+  (Select count(name) from 1bd3e0294da19198.tabObjective where select_date=obj.select_date 
+  and user in (select name from tabUser where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM'))))as `miss_obj`
+  from 1bd3e0294da19198.tabObjective obj where select_date between {0} and {1} ;""".format(today_date,today_date), as_dict=1) 
+ 
  if(len(email_list)>0):
   count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
 where 1bd3e0294da19198.tabObjective.user in ({0}) and
@@ -162,7 +180,12 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
          'actual_chem_call_tbm':0,
          'percent_tbm_chem_call':0,
          'app_ver_count':0,
-         'lock':0
+         'lock':0,
+         'active_emp':0,
+         'tot_obj':0,
+         'Present':0,
+         'Leave':0,
+         'miss_obj':0
          }
  
  dict['today_date'] = today_date;
@@ -181,6 +204,11 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
  dict['percent_tbm_chem_call']=frappe.utils.data.flt (percent_tbm_chem_call, precision=2);
  dict['app_ver_count']=app_ver_count[0].cnt_ob;
  dict['lock']=0;
+ dict['active_emp']=presenty[0].active_emp;
+ dict['tot_obj']=presenty[0].tot_obj;
+ dict['Present']=presenty[0].Present;
+ dict['Leave']=presenty[0].Leave;
+ dict['miss_obj']=presenty[0].miss_obj;
  
  
  return dict
