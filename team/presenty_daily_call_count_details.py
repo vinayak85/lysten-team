@@ -10,7 +10,8 @@ __version__ = '0.0.1'
  #it will featch all top and down users of selected user
   
 @frappe.whitelist()
-def presenty_daily_call_count(fromdate,todate, designation,limit, offset):
+#def presenty_daily_call_count(fromdate,todate, designation,limit, offset):
+def presenty_daily_call_count(fromdate,todate, designation):
   if((len(fromdate)) == 0 or (len(todate)) == 0):
     fromdate = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
     todate = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')
@@ -44,6 +45,7 @@ def presenty_daily_call_count(fromdate,todate, designation,limit, offset):
    tabObjective `obj` on obj.`user`=tu.`name` 
    where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM') and select_date between {0} and {1} 
    order by select_date,FIELD(`designation`,'NBM','SM','RBM','ABM','TBM') 
-   LIMIT {2}  OFFSET {3} """.format(fromdate,todate,limit,offset),as_dict=True)
+    """.format(fromdate,todate),as_dict=True)
+  #LIMIT {2}  OFFSET {3} """.format(fromdate,todate,limit,offset),as_dict=True)
   
   
