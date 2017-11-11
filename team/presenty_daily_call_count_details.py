@@ -18,7 +18,7 @@ def presenty_daily_call_count(fromdate,todate, designation,limit, offset):
     fromdate=fromdate
     todate=todate
   
-  today_date="'"+today_date+"'"
+  #today_date="'"+today_date+"'"
   fromdate="'"+fromdate+"'"
   todate="'"+todate+"'"
 
