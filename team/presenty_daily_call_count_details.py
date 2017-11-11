@@ -23,7 +23,7 @@ def presenty_daily_call_count(fromdate,todate, designation):
   fromdate="'"+fromdate+"'"
   todate="'"+todate+"'"
 
-  if (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
+  if (designation == "NBM" or designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
    return frappe.db.sql(""" Select distinct 
    obj.select_date,
    concat(first_name,' ',last_name,' (',designation,' )')as emp_name,
