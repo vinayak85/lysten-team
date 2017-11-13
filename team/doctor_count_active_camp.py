@@ -7,7 +7,7 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
-def lock_master_forms(employee):
+def count_active_camp_doctors(employee):
     tot_doc='0'
     active_doc='0'
     inactive_doc='0'
