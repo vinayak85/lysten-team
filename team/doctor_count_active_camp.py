@@ -47,7 +47,7 @@ def count_active_camp_doctors(employee):
         #flag_active='1'
         #flag_camp='0'
         msg='ONLY ACTIVE and Lock CAMP'        
-    elif(active > active1 and camp > campp):
+    elif(active >= active1 and camp >= campp):
         flag_action=0
         #flag_active='0'
         #flag_camp='0'
