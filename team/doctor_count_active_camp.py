@@ -13,8 +13,9 @@ def count_active_camp_doctors(employee):
     active_doc='0'
     inactive_doc='0'
     camp_doc='0'    
-    flag_active='0'
-    flag_camp='0'
+    #flag_active='0'
+    #flag_camp='0'
+    flag_action='0'
     msg=''
     
     tot_doc = frappe.db.sql(""" select count(*)as tot_doc from 1bd3e0294da19198.`tabDoctor Master` where user= {0} """.format(employee), as_dict=1)
@@ -29,24 +30,29 @@ def count_active_camp_doctors(employee):
     
     
     if(active <= 80 and camp <= 40):
-        flag_active='1'
-        flag_camp='1'
+        flag_action=1
+        #flag_active='1'
+        #flag_camp='1'
         msg='Both Are Enable For Update Active AND CAMP'
     elif(active > 80 and camp <= 40):
-        flag_active='0'
-        flag_camp='1'
+        flag_action=2
+        #flag_active='0'
+        #flag_camp='1'
         msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP'        
     elif(active <= 80 and camp > 40):
-        flag_active='1'
-        flag_camp='0'
+        flag_action=3
+        #flag_active='1'
+        #flag_camp='0'
         msg='ONLY ACTIVE and Lock CAMP'        
     elif(active > 80 and camp > 40):
-        flag_active='0'
-        flag_camp='0'
+        flag_action=0
+        #flag_active='0'
+        #flag_camp='0'
         msg='Both Locked'
     else:
-        flag_active='0'
-        flag_camp='0'
+        flag_action=0
+        #flag_active='0'
+        #flag_camp='0'
         msg='Wrong Selection'        
       
     
@@ -54,18 +60,18 @@ def count_active_camp_doctors(employee):
             'active_doc': '',
             'inactive_doc': '',
             'camp_doc': '',
-            'flag_active':'',
-            'flag_camp':'',
+            'flag_action':''
             'msg':''
            }
-
+#'flag_active':'',
+            #'flag_camp':'',
     dict['tot_doc'] = tot_doc[0].tot_doc;
     dict['active_doc'] = active_doc[0].active_doc;
     dict['inactive_doc'] = inactive_doc[0].inactive_doc;
     dict['camp_doc'] = camp_doc[0].camp_doc;
-    
-    dict['flag_active'] = flag_active;
-    dict['flag_camp'] = flag_camp;
+    dict['flag_action']=flag_action
+    #dict['flag_active'] = flag_active;
+    #dict['flag_camp'] = flag_camp;
     dict['msg'] = msg;
     
     return dict
