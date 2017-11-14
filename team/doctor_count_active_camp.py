@@ -47,7 +47,7 @@ def count_active_camp_doctors(employee):
     else:
         flag_active='0'
         flag_camp='0'
-        msg='Both Locked'        
+        msg='Wrong Selection'        
       
     
     dict = {'tot_doc': '',
