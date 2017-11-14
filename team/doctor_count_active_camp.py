@@ -9,17 +9,17 @@ __version__ = '0.0.1'
 @frappe.whitelist()
 def count_active_camp_doctors(employee):
     heqdquarter=''
-    tot_doc='0'
-    active_doc='0'
-    inactive_doc='0'
-    camp_doc='0'    
+    tot_doc='0';
+    active_doc='0';
+    inactive_doc='0';
+    camp_doc='0';   
     #flag_active='0'
     #flag_camp='0'
-    flag_action='0'
-    msg=''
-    active1=125
-    active2=80
-    campp=40
+    flag_action='0';
+    msg='';
+    active1 = 125;
+    active2 = 80;
+    campp = 40;
     
     tot_doc = frappe.db.sql(""" select count(*)as tot_doc from 1bd3e0294da19198.`tabDoctor Master` where user= {0} """.format(employee), as_dict=1)
     active_doc = frappe.db.sql(""" select count(*)as active_doc from 1bd3e0294da19198.`tabDoctor Master` where user= {0} and active=1 ;""".format(employee), as_dict=1)
@@ -69,9 +69,9 @@ def count_active_camp_doctors(employee):
 #'flag_active':'',
             #'flag_camp':'',
     dict['tot_doc'] = tot_doc[0].tot_doc;
-    dict['active_doc'] = active_doc[0].active_doc;
+    dict['active_doc'] = active;#active_doc[0].active_doc;
     dict['inactive_doc'] = inactive_doc[0].inactive_doc;
-    dict['camp_doc'] = camp_doc[0].camp_doc;
+    dict['camp_doc'] = camp;#camp_doc[0].camp_doc;
     dict['flag_action']=flag_action
     #dict['flag_active'] = flag_active;
     #dict['flag_camp'] = flag_camp;
