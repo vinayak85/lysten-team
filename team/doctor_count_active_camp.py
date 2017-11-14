@@ -29,7 +29,7 @@ def count_active_camp_doctors(employee):
     heqdquarter = frappe.db.sql(""" select headquarter_name as hq from 1bd3e0294da19198.`tabUser` where name={0} and enabled=1; """.format(employee), as_dict=1)
     
     active=active_doc[0].active_doc
-    camp=active_doc[0].camp_doc
+    camp=camp_doc[0].camp_doc
     
     
     if(active < active1 and camp < campp):
@@ -69,9 +69,9 @@ def count_active_camp_doctors(employee):
 #'flag_active':'',
             #'flag_camp':'',
     dict['tot_doc'] = tot_doc[0].tot_doc;
-    dict['active_doc'] = active;#active_doc[0].active_doc;
+    dict['active_doc'] = active_doc[0].active_doc;
     dict['inactive_doc'] = inactive_doc[0].inactive_doc;
-    dict['camp_doc'] = camp;#camp_doc[0].camp_doc;
+    dict['camp_doc'] = camp_doc[0].camp_doc;
     dict['flag_action']=flag_action
     #dict['flag_active'] = flag_active;
     #dict['flag_camp'] = flag_camp;
