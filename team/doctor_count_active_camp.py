@@ -25,7 +25,7 @@ def count_active_camp_doctors(employee):
     heqdquarter = frappe.db.sql(""" select headquarter_name as hq from 1bd3e0294da19198.`tabUser` where name={0} and enabled=1; """.format(employee), as_dict=1)
     
     active=active_doc[0].active_doc
-    camp=active_doc[0].active_doc
+    camp=active_doc[0].camp_doc
     
     
     if(active <= 80 and camp <= 40):
