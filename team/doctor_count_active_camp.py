@@ -32,7 +32,7 @@ def count_active_camp_doctors(employee):
     camp=active_doc[0].camp_doc
     
     
-    if(active <= active1 and camp <= camp):
+    if(active < active1 and camp < camp):
         flag_action=1
         #flag_active='1'
         #flag_camp='1'
