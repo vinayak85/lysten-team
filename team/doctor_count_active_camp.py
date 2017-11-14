@@ -37,12 +37,12 @@ def count_active_camp_doctors(employee):
         #flag_active='1'
         #flag_camp='1'
         msg='Both Are Enable For Update Active AND CAMP'
-    elif(active >= active1 and camp <= campp):
+    elif(active >= active1 and camp < campp):
         flag_action=2
         #flag_active='0'
         #flag_camp='1'
         msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP'        
-    elif(active <= active1 and camp >= campp):
+    elif(active < active1 and camp >= campp):
         flag_action=3
         #flag_active='1'
         #flag_camp='0'
