@@ -60,7 +60,7 @@ def count_active_camp_doctors(employee):
             'active_doc': '',
             'inactive_doc': '',
             'camp_doc': '',
-            'flag_action':''
+            'flag_action':'',
             'msg':''
            }
 #'flag_active':'',
