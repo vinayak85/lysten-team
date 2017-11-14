@@ -17,6 +17,9 @@ def count_active_camp_doctors(employee):
     #flag_camp='0'
     flag_action='0'
     msg=''
+    active1=125
+    active2=80
+    camp=40
     
     tot_doc = frappe.db.sql(""" select count(*)as tot_doc from 1bd3e0294da19198.`tabDoctor Master` where user= {0} """.format(employee), as_dict=1)
     active_doc = frappe.db.sql(""" select count(*)as active_doc from 1bd3e0294da19198.`tabDoctor Master` where user= {0} and active=1 ;""".format(employee), as_dict=1)
@@ -29,22 +32,22 @@ def count_active_camp_doctors(employee):
     camp=active_doc[0].camp_doc
     
     
-    if(active <= 80 and camp <= 40):
+    if(active <= active1 and camp <= camp):
         flag_action=1
         #flag_active='1'
         #flag_camp='1'
         msg='Both Are Enable For Update Active AND CAMP'
-    elif(active > 80 and camp <= 40):
+    elif(active > active1 and camp <= camp):
         flag_action=2
         #flag_active='0'
         #flag_camp='1'
         msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP'        
-    elif(active <= 80 and camp > 40):
+    elif(active <= active1 and camp > camp):
         flag_action=3
         #flag_active='1'
         #flag_camp='0'
         msg='ONLY ACTIVE and Lock CAMP'        
-    elif(active > 80 and camp > 40):
+    elif(active > active1 and camp > camp):
         flag_action=0
         #flag_active='0'
         #flag_camp='0'
