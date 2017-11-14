@@ -22,7 +22,7 @@ def count_active_camp_doctors(employee):
     inactive_doc = frappe.db.sql(""" select count(*)as inactive_doc from 1bd3e0294da19198.`tabDoctor Master` where user={0} and inactive=1; """.format(employee), as_dict=1)
     camp_doc = frappe.db.sql(""" select count(*)as camp_doc from 1bd3e0294da19198.`tabDoctor Master` where user={0} and campaign_book=1; """.format(employee), as_dict=1)
     
-    heqdquarter = frappe.db.sql(""" select headquarter_name as hq from 1bd3e0294da19198.`tabUser` where user={0} and enabled=1; """.format(employee), as_dict=1)
+    heqdquarter = frappe.db.sql(""" select headquarter_name as hq from 1bd3e0294da19198.`tabUser` where name={0} and enabled=1; """.format(employee), as_dict=1)
     
     active=active_doc[0].active_doc
     camp=active_doc[0].active_doc
