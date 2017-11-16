@@ -12,6 +12,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ve
  email_list_only_TBM=""
  count_of_emp=0
  count_of_emp_tbm=0
+ report_ip=""
  #i = datetime.now()
  #test=i.strftime('%Y/%m/%d %H:%M:%S')
  if((len(date_pass)) == 0):
@@ -35,6 +36,8 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ve
   email_list_only_TBM=employee
  #return str(len(email_list)) + "ssss " + str(len(email_list_only_TBM))
  #frappe.msgprint(_(email_list_only_TBM))
+ 
+ report_ip= frappe.db.sql("""select report_ip from 1bd3e0294da19198.`tabreport ip address`""", as_dict=1)
  
  #presenty details for dashboard
  if (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
@@ -185,7 +188,8 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
          'tot_obj':0,
          'Present':0,
          'Leave':0,
-         'miss_obj':0
+         'miss_obj':0,
+         'report_ip':''
          }
  
  dict['today_date'] = today_date;
@@ -204,6 +208,7 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
  dict['percent_tbm_chem_call']=frappe.utils.data.flt (percent_tbm_chem_call, precision=2);
  dict['app_ver_count']=app_ver_count[0].cnt_ob;
  dict['lock']=0;
+ dict['report_ip']=report_ip[0].report_ip;
  
  if (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
   dict['active_emp']=presenty[0].active_emp;
