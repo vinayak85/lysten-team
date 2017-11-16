@@ -10,5 +10,7 @@ __version__ = '0.0.1'
 def ip_set_for_cry_report():
     ip='13.127.22.180';
     dict = {'ip': ''
-           }    
+           }
+    
+    dict['ip']=ip;
     return dict
