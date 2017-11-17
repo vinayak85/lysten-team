@@ -37,53 +37,53 @@ def count_active_camp_doctors(employee):
             flag_action=1
             #flag_active='1'
             #flag_camp='1'
-            msg='Both Are Enable For Update Active AND CAMP1'
+            msg='Both Are Enable For Update Active AND CAMP'
         elif(active >= active1 and camp < campp):
             flag_action=2
             #flag_active='0'
             #flag_camp='1'
-            msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP1'
+            msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP'
         elif(active < active1 and camp >= campp):
             flag_action=3
             #flag_active='1'
             #flag_camp='0'
-            msg='ONLY ACTIVE and Lock CAMP1'
+            msg='ONLY ACTIVE and Lock CAMP'
         elif(active >= active1 and camp >= campp):
             flag_action=0
             #flag_active='0'
             #flag_camp='0'
-            msg='Both Locked1'
+            msg='Both Locked'
         else:
             flag_action=0
             #flag_active='0'
             #flag_camp='0'
-            msg='Wrong Selection1'
+            msg='Wrong Selection'
     else:
         if(active < active2 and camp < campp):
             flag_action=1
             #flag_active='1'
             #flag_camp='1'
-            msg='Both Are Enable For Update Active AND CAMP2'
+            msg='Both Are Enable For Update Active AND CAMP'
         elif(active >= active2 and camp < campp):
             flag_action=2
             #flag_active='0'
             #flag_camp='1'
-            msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP2'
+            msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP'
         elif(active < active2 and camp >= campp):
             flag_action=3
             #flag_active='1'
             #flag_camp='0'
-            msg='ONLY ACTIVE and Lock CAMP2'
+            msg='ONLY ACTIVE and Lock CAMP'
         elif(active >= active2 and camp >= campp):
             flag_action=0
             #flag_active='0'
             #flag_camp='0'
-            msg='Both Locked2'
+            msg='Both Locked'
         else:
             flag_action=0
             #flag_active='0'
             #flag_camp='0'
-            msg='Wrong Selection2'
+            msg='Wrong Selection'
       
     
     dict = {'tot_doc': '',
