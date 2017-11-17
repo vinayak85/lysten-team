@@ -27,36 +27,63 @@ def count_active_camp_doctors(employee):
     camp_doc = frappe.db.sql(""" select count(*)as camp_doc from 1bd3e0294da19198.`tabDoctor Master` where user={0} and campaign_book=1; """.format(employee), as_dict=1)
     
     heqdquarter = frappe.db.sql(""" select headquarter_name as hq from 1bd3e0294da19198.`tabUser` where name={0} and enabled=1; """.format(employee), as_dict=1)
+    heqdquarters=["Ichalkaranji 3 (HQ)", "Ichalkaranji 4 (HQ)", "Ichalkarnji 2 (HQ)", "Ichalkaranji 1(HQ)", "Kolhapur Pool (HQ)","Chiplun(HQ)", "Goa(HQ)", "Kudal(HQ)", "Ratnagiri(HQ)", "Islampur(HQ)","Jath(HQ)", "Miraj(HQ)", "SANGLI(HQ)", "Baramati (HQ)", "Karad (HQ)","Satara (HQ)","Wai (HQ)"]
     
     active=active_doc[0].active_doc
     camp=camp_doc[0].camp_doc
     
-    
-    if(active < active1 and camp < campp):
-        flag_action=1
-        #flag_active='1'
-        #flag_camp='1'
-        msg='Both Are Enable For Update Active AND CAMP'
-    elif(active >= active1 and camp < campp):
-        flag_action=2
-        #flag_active='0'
-        #flag_camp='1'
-        msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP'        
-    elif(active < active1 and camp >= campp):
-        flag_action=3
-        #flag_active='1'
-        #flag_camp='0'
-        msg='ONLY ACTIVE and Lock CAMP'        
-    elif(active >= active1 and camp >= campp):
-        flag_action=0
-        #flag_active='0'
-        #flag_camp='0'
-        msg='Both Locked'
+    if(heqdquarter[0].hq in heqdquarters):
+        if(active < active1 and camp < campp):
+            flag_action=1
+            #flag_active='1'
+            #flag_camp='1'
+            msg='Both Are Enable For Update Active AND CAMP1'
+        elif(active >= active1 and camp < campp):
+            flag_action=2
+            #flag_active='0'
+            #flag_camp='1'
+            msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP1'
+        elif(active < active1 and camp >= campp):
+            flag_action=3
+            #flag_active='1'
+            #flag_camp='0'
+            msg='ONLY ACTIVE and Lock CAMP1'
+        elif(active >= active1 and camp >= campp):
+            flag_action=0
+            #flag_active='0'
+            #flag_camp='0'
+            msg='Both Locked1'
+        else:
+            flag_action=0
+            #flag_active='0'
+            #flag_camp='0'
+            msg='Wrong Selection1'
     else:
-        flag_action=0
-        #flag_active='0'
-        #flag_camp='0'
-        msg='Wrong Selection'        
+        if(active < active2 and camp < campp):
+            flag_action=1
+            #flag_active='1'
+            #flag_camp='1'
+            msg='Both Are Enable For Update Active AND CAMP2'
+        elif(active >= active2 and camp < campp):
+            flag_action=2
+            #flag_active='0'
+            #flag_camp='1'
+            msg='Lock ACTIVE and UPDATE only Active DOCTOR FOR CAMP2'
+        elif(active < active2 and camp >= campp):
+            flag_action=3
+            #flag_active='1'
+            #flag_camp='0'
+            msg='ONLY ACTIVE and Lock CAMP2'
+        elif(active >= active2 and camp >= campp):
+            flag_action=0
+            #flag_active='0'
+            #flag_camp='0'
+            msg='Both Locked2'
+        else:
+            flag_action=0
+            #flag_active='0'
+            #flag_camp='0'
+            msg='Wrong Selection2'
       
     
     dict = {'tot_doc': '',
