@@ -51,6 +51,7 @@ def presenty_daily_call_count(fromdate,todate, designation):
 
 ###################
 ###################
+@frappe.whitelist()
 def missing_daily_obj_names(date):
  if((len(date)) == 0):
   date = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')   
