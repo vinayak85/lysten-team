@@ -23,12 +23,13 @@ class Secondary(Document):
 	
 
     def on_update(self):
-        new_name = self.year + "-" + self.month + "-" + self.stockist;
-	if self.name != new_name and not self.is_new():
-		frappe.rename_doc(self.doctype,self.name,new_name)
+        pass;
+
         
     def validate(self):
-	pass;
+	new_name = self.year + "-" + self.month + "-" + self.stockist;
+	if self.name != new_name and not self.is_new():
+		frappe.rename_doc(self.doctype,self.name,new_name)
         #frappe.msgprint(_("validate"));
 
     def test():
