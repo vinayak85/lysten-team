@@ -26,9 +26,11 @@ class Secondary(Document):
         self.name = self.year + "-" + self.month + "-" + self.stockist;
         
     def validate(self):
+	pass;
         #frappe.msgprint(_("validate"));
 
     def test():
+	pass;
 	#frappe.msgprint(_("hiii"));
 	
   	 
