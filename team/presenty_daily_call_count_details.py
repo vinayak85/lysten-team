@@ -47,5 +47,23 @@ def presenty_daily_call_count(fromdate,todate, designation):
    order by select_date desc,FIELD(`designation`,'NBM','SM','RBM','ABM','TBM') 
     """.format(fromdate,todate),as_dict=True)
   #LIMIT {2}  OFFSET {3} """.format(fromdate,todate,limit,offset),as_dict=True)
+   
+
+###################
+###################
+
+def missing_daily_obj_names(date):
+  if((len(date)) == 0):
+    date = frappe.utils.data.get_datetime().strftime('%Y/%m/%d')   
+  else:
+    date=date
   
+  #today_date="'"+today_date+"'"
+  date="'"+date+"'"
+
+  if (designation == "NBM" or designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
+   return frappe.db.sql(""" select concat(first_name,' ',last_name,' (',designation,' )')as emp_name,designation,name as email,
+   ifnull(mobile_no1,'-') as mobno
+   from 1bd3e0294da19198.tabUser where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM') 
+   and name not in (select user from 1bd3e0294da19198.tabObjective where select_date='2017-11-28');""".format(date),as_dict=True)
   
