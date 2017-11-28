@@ -57,9 +57,9 @@ def missing_daily_obj_names(date):
  else:
   date=date
  date="'"+date+"'"
- if (designation == "NBM" or designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
-  return frappe.db.sql(""" select concat(first_name,' ',last_name,' (',designation,' )')as emp_name,designation,name as email,
-  ifnull(mobile_no1,'-') as mobno
-  from 1bd3e0294da19198.tabUser where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM') 
-  and name not in (select user from 1bd3e0294da19198.tabObjective where select_date={0});""".format(date),as_dict=True)
+ #if (designation == "NBM" or designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
+ return frappe.db.sql(""" select concat(first_name,' ',last_name,' (',designation,' )')as emp_name,designation,name as email,
+ ifnull(mobile_no1,'-') as mobno
+ from 1bd3e0294da19198.tabUser where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM') 
+ and name not in (select user from 1bd3e0294da19198.tabObjective where select_date={0});""".format(date),as_dict=True)
   
