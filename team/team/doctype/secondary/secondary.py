@@ -29,7 +29,7 @@ class Secondary(Document):
         #frappe.msgprint(_("validate"));
 
     def test():
-	 #frappe.msgprint(_("hiii"));
+	#frappe.msgprint(_("hiii"));
 	
   	 
 	
