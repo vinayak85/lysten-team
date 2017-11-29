@@ -10,11 +10,11 @@ frappe.ui.form.on('Secondary', {
 	},
 	
 	get_items_all:function (frm) {
-		var filters ;
+		filters:[["used_for_secondary","=","1"]]
 		frappe.call({
 			method:'team.team.doctype.secondary.secondary.get_items',
 			args:{
-				
+				filters: filters
 			},
 			callback:function (r) {
 				alert("hello");
