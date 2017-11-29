@@ -22,12 +22,12 @@ def make_stock_entry(year, month,stockist,name):
 	
 @frappe.whitelist()
 def get_items():
-	frappe.msgprint(_("222"));
+	frappe.msgprint(_(args['filters']));
 	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])	  
 
 
 class Secondary(Document):
-    def autoname(self):
+    def autoname(**args):
         self.name = self.year + "-" + self.month + "-" + self.stockist;
 	
 
