@@ -14,7 +14,7 @@ frappe.ui.form.on('Secondary', {
 		frappe.call({
 			method:'team.team.doctype.secondary.secondary.get_items',
 			args:{
-				filters: filters
+				
 			},
 			callback:function (r) {
 				var sec_item_qty = $.map(frm.doc.sec_item_qty, function(d) { return d.item });
