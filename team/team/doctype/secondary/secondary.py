@@ -22,8 +22,8 @@ def make_stock_entry(year, month,stockist,name):
 	
 @frappe.whitelist()
 def get_items(**args):
-	frappe.msgprint(_("222"))
-	return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])	  
+	frappe.msgprint(_("222"));
+	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])	  
 
 
 class Secondary(Document):
