@@ -43,7 +43,7 @@ frappe.ui.form.on('Secondary', {
 		
 	},
 	
-	test:function (frm,check_item_name) {
+	test= function(frm,check_item_name) {
 		//alert("hii");
 		//var sec_items_qty = $.map(frm.doc.sec_items_qty, function(d) { return d.sec_item_qty });
 		var tbl1 = frm.doc.sec_items_qty || [];
