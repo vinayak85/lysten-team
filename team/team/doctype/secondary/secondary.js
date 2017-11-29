@@ -17,7 +17,7 @@ frappe.ui.form.on('Secondary', {
 				filters: filters
 			},
 			callback:function (r) {
-				alert(r.message[1].name);
+				//alert(r.message[1].name);
 				var sec_items_qty = $.map(frm.doc.sec_items_qty, function(d) { return d.sec_item_qty });
 				//alert(sec_items_qty );
 				for (var i=0; i< r.message.length; i++) {
