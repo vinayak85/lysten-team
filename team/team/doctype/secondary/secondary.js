@@ -45,7 +45,7 @@ frappe.ui.form.on('Secondary', {
 		var tbl1 = frm.doc.sec_items_qty || [];
 		var strr="";
 		//var total_earn = 0; var total_ded = 0;
-	        for(var i = 0; i < tbl1.3; i++)
+	        for(var i = 0; i < 3; i++)
 		{
 		  strr=strr+" ... "+ tbl1.item_code;
 	        }
