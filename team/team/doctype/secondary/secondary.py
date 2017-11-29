@@ -7,6 +7,11 @@ import frappe
 from frappe import msgprint, _ 
 import frappe.utils
 from frappe.model.document import Document
+from frappe.utils import cstr, flt, getdate, cint
+from frappe.model.naming import make_autoname
+from frappe import _
+from frappe.model.mapper import get_mapped_doc
+
 
 
 @frappe.whitelist()
@@ -14,7 +19,10 @@ def make_stock_entry(year, month,stockist,name):
 	#frappe.msgprint(_(aa+"hello"+bb));
 	#frappe.msgprint(_(name.year))
 	Secondary.test();
-	  
+	
+@frappe.whitelist()
+def get_items():
+	return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])	  
 
 
 class Secondary(Document):
