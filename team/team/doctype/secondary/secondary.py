@@ -22,7 +22,7 @@ def make_stock_entry(year, month,stockist,name):
 	
 @frappe.whitelist()
 def get_items(**args):
-	frappe.msgprint(_(args['filters']));
+	frappe.msgprint(_(frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])));
 	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])	  
 
 
