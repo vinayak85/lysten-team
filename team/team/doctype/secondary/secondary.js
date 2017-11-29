@@ -19,7 +19,7 @@ frappe.ui.form.on('Secondary', {
 			callback:function (r) {
 				//alert("hello");
 				var sec_items_qty = $.map(frm.doc.sec_items_qty, function(d) { return d.sec_item_qty });
-				alert(sec_item_qty);
+				alert(sec_items_qty );
 				for (var i=0; i< r.message.length; i++) {
 					if (sec_items_qty.indexOf(r.message[i].name) === -1) {
 						var row = frappe.model.add_child(frm.doc, frm.fields_dict.sec_items_qty.df.options, frm.fields_dict.sec_items_qty.df.fieldname);
