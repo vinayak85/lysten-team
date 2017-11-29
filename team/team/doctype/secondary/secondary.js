@@ -41,7 +41,8 @@ frappe.ui.form.on('Secondary', {
 			}
 		})
 		
-	},
+	}
+	});
 	
 	test= function(frm,check_item_name) {
 		//alert("hii");
@@ -58,5 +59,5 @@ frappe.ui.form.on('Secondary', {
 		
 		
 		
-	},
-});
+	};
+
