@@ -10,6 +10,7 @@ frappe.ui.form.on('Secondary', {
 	},
 	
 	get_items_all:function (frm) {
+		var filters = "";
 		frappe.call({
 			method:'team.team.doctype.secondary.secondary.get_items',
 			args:{
