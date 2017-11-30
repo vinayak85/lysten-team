@@ -31,6 +31,10 @@ frappe.ui.form.on('Secondary', {
 						row.item_code = r.message[i].name;
 						row.item_code = r.message[i].item_name;
 						
+						row.rec_tot = r.message[i].tot_qty;
+						row.rec_qty = r.message[i].qty;
+						row.rec_free = r.message[i].f_qty;
+						
 						
 					}
 					}
