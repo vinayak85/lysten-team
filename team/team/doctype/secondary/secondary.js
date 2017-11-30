@@ -54,9 +54,9 @@ frappe.ui.form.on('Secondary', {
 						
 						
 					
-						row.value_tot = r.message[i].f_amt;
-						row.value_qty = r.message[i].f_amt;
-						//row.rec_free = r.message[i].value_sale_free;
+						row.value_sale_tot = r.message[i].f_amt;
+						row.value_sale_qty = r.message[i].f_amt;
+						row.value_sale_free = r.message[i].f_qty*row.item_rate;
 				
 					
 						
