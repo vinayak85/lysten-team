@@ -28,7 +28,7 @@ def get_items(**args):
 
 
 class Secondary(Document):
-    def autoname():
+    def autoname(self):
         self.name = self.year + "-" + self.month + "-" + self.stockist;
 	
 
