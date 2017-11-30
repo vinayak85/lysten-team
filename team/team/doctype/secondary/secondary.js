@@ -48,13 +48,16 @@ frappe.ui.form.on('Secondary', {
 						row.rec_qty = r.message[i].qty;
 						row.rec_free = r.message[i].f_qty;
 						
-						row.cr_tot_qty = r.message[i].credit_note_tot;
-						row.cr_qty = r.message[i].credit_note_qty;
-						row.cr_f_qty = r.message[i].credit_note_free;
+						row.credit_note_tot = r.message[i].cr_tot_qty;
+						row.credit_note_qty = r.message[i].cr_qty;
+						row.credit_note_free = r.message[i].cr_f_qty;
 						
-						row.value_tot = r.message[i].value_sale_tot;
-						row.value_qty = r.message[i].value_sale_qty;
+						
+					
+						row.value_tot = r.message[i].f_amt;
+						row.value_qty = r.message[i].f_amt;
 						//row.rec_free = r.message[i].value_sale_free;
+				
 					
 						
 						
