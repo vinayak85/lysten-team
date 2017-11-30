@@ -24,7 +24,9 @@ def make_stock_entry(year, month,stockist,name):
 def get_items(**args):
 	#frappe.msgprint(_("hii"));
 	#frappe.msgprint(_(frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])));
-	return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])	  
+	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])
+	return frappe.db.sql("""SELECT name,item_name FROM 1bd3e0294da19198.tabItem
+	where 1bd3e0294da19198.used_for_secondary=1""", as_dict=0)
 
 
 class Secondary(Document):
