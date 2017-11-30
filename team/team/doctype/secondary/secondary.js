@@ -31,9 +31,33 @@ frappe.ui.form.on('Secondary', {
 						row.item_code = r.message[i].name;
 						row.item_code = r.message[i].item_name;
 						
+						var avg_sell_rate=r.message[i].avg_rate
+						var avg_credit_rate=r.message[i].cr_avg_rate
+						if(avg_credit_rate<=0){
+							row.item_rate = avg_sell_rate;
+						}
+						else
+						{
+							row.item_rate =avg_credit_rate;
+						}
+						
+						
+						
+						
 						row.rec_tot = r.message[i].tot_qty;
 						row.rec_qty = r.message[i].qty;
 						row.rec_free = r.message[i].f_qty;
+						
+						row.cr_tot_qty = r.message[i].credit_note_tot;
+						row.cr_qty = r.message[i].credit_note_qty;
+						row.cr_f_qty = r.message[i].credit_note_free;
+						
+						row.value_tot = r.message[i].value_sale_tot;
+						row.value_qty = r.message[i].value_sale_qty;
+						//row.rec_free = r.message[i].value_sale_free;
+					
+						
+						
 						
 						
 					}
