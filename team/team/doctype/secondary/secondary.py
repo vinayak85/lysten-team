@@ -15,13 +15,13 @@ from frappe.model.mapper import get_mapped_doc
 
 
 @frappe.whitelist()
-def make_stock_entry(year, month,stockist,name):
+def make_stock_entry(year, month,stockist):
 	#frappe.msgprint(_(aa+"hello"+bb));
 	#frappe.msgprint(_(name.year))
 	Secondary.test();
 	
 @frappe.whitelist()
-def get_items(year, month,stockist,name):
+def get_items(year, month,stockist):
 	#frappe.msgprint(_("hii"));
 	#frappe.msgprint(_(frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])));
 	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])
