@@ -60,7 +60,7 @@ frappe.ui.form.on('Secondary', {
 					        else
 					        {
 							var tbl1 = frm.doc.sec_items_qty || [];
-							ii=frm,r.message[i].item_name;
+							ii=test1(frm,r.message[i].item_name);
 							
 							var avg_sell_rate=r.message[i].avg_rate
 							var avg_credit_rate=r.message[i].cr_avg_rate
