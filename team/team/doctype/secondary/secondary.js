@@ -59,7 +59,32 @@ frappe.ui.form.on('Secondary', {
 						}
 					        else
 					        {
-						alert(test1(frm,r.message[i].item_name));
+							var tbl1 = frm.doc.sec_items_qty || [];
+							ii=frm,r.message[i].item_name;
+							
+							var avg_sell_rate=r.message[i].avg_rate
+							var avg_credit_rate=r.message[i].cr_avg_rate
+							if(avg_credit_rate<=0){
+							 tbl1[ii].item_rate = avg_sell_rate;
+							}
+							else
+							{
+							 tbl1[ii].item_rate =avg_credit_rate;
+							}
+							
+		                                 	
+		  			               	tbl1[ii].rec_tot = r.message[i].tot_qty;
+							tbl1[ii].rec_qty = r.message[i].qty;
+							tbl1[ii].rec_free = r.message[i].f_qty;
+						
+							tbl1[ii].credit_note_tot = r.message[i].cr_tot_qty;
+							tbl1[ii].credit_note_qty = r.message[i].cr_qty;
+							tbl1[ii].credit_note_free = r.message[i].cr_f_qty;
+					
+							tbl1[ii].value_sale_tot = r.message[i].f_amt;
+							tbl1[ii].value_sale_qty = r.message[i].f_amt;
+							tbl1[ii].value_sale_free = r.message[i].f_qty*row.item_rate;	
+						
 					        }	
 				
 					}					
