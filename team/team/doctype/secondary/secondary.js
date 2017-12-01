@@ -81,7 +81,7 @@ frappe.ui.form.on('Secondary', {
 	        for(var i = 0; i < tbl1.length; i++)
 		{
 			if(check_item_name==tbl1[i].item_code)
-				flag=flase;
+				flag=false;;
 			
 		  //strr=strr+" ... "+ tbl1[i].item_code;
 	        }
