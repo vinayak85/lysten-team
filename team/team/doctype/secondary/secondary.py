@@ -28,7 +28,7 @@ def get_items(year, month,stockist):
 	#return frappe.db.sql("""SELECT name,item_name FROM 1bd3e0294da19198.tabItem
 	#where 1bd3e0294da19198.tabItem.used_for_secondary=1""", as_dict=1)
 	yearmonth="";
-	yearmonth=year+"-"+month;
+	yearmonth=year+"-"+return_month_in_number(month);
 	
 	 
 	return frappe.db.sql("""SELECT  tbl.item_name as name ,tbl.item_name as item_name,
@@ -94,9 +94,29 @@ order by tbl.item_name
 
 def return_month_in_number(month):
 	if(month=="Jan"):
-		return 1;
+		return "01";
 	elif(month=="Feb"):
-		return 2;
+		return "02";
+	elif(month=="March"):
+		return "03";
+	elif(month=="Apr"):
+		return "04";
+	elif(month=="May"):
+		return "05";
+	elif(month=="June"):
+		return "06";
+	elif(month=="July"):
+		return "07";
+	elif(month=="Aug"):
+		return "08";
+	elif(month=="Sep"):
+		return "09";
+	elif(month=="Oct"):
+		return "10";
+	elif(month=="Nov"):
+		return "11";
+	elif(month=="Dec"):
+		return "12";
 
 
 	
