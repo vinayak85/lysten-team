@@ -29,7 +29,7 @@ def get_items(year, month,stockist):
 	#where 1bd3e0294da19198.tabItem.used_for_secondary=1""", as_dict=1)
 	yearmonth="";
 	stockist="'"+stockist+"'";
-	yearmonth=year+"-"+return_month_in_number(month);
+	yearmonth="'"+year+"-"+return_month_in_number(month)+"%'";
 	
 	 
 	return frappe.db.sql("""SELECT  tbl.item_name as name ,tbl.item_name as item_name,
