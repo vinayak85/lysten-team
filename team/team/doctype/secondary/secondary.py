@@ -90,9 +90,16 @@ group by  t_i.item_name)
 as tbl
 group by   tbl.item_name
 order by tbl.item_name
-""".format(yearmonth,stockist), as_dict=1)
+""".format(yearmonth,stockist), as_dict=1);
+
+def return_month_in_number(month):
+	if(month=="Jan")
+	return 1
+        else if(month=="Feb")
+	return 2
 
 
+	
 class Secondary(Document):
     def autoname(self):
         self.name = self.year + "-" + self.month + "-" + self.stockist;
