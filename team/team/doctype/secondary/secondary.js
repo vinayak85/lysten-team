@@ -17,7 +17,9 @@ frappe.ui.form.on('Secondary', {
 		frappe.call({
 			method:'team.team.doctype.secondary.secondary.get_items',
 			args:{
-				filters: filters
+				year: frm.doc.year,
+				month: frm.doc.month,
+				stockist: frm.doc.stockist
 			},
 			callback:function (r) {
 				//alert(r.message[1].name);
