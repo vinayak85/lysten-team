@@ -93,9 +93,9 @@ order by tbl.item_name
 """.format(yearmonth,stockist), as_dict=1);
 
 def return_month_in_number(month):
-	if(month=="Jan")
+	if(month=="Jan"):
 	return 1
-        else if(month=="Feb")
+        else if(month=="Feb"):
 	return 2
 
 
