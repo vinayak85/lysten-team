@@ -27,7 +27,8 @@ def get_items(year, month,stockist,name):
 	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])
 	#return frappe.db.sql("""SELECT name,item_name FROM 1bd3e0294da19198.tabItem
 	#where 1bd3e0294da19198.tabItem.used_for_secondary=1""", as_dict=1)
-	var yearmonth=year+"-"+month;
+	yearmonth="";
+	yearmonth=year+"-"+month;
 	
 	 
 	return frappe.db.sql("""SELECT  tbl.item_name as name ,tbl.item_name as item_name,
