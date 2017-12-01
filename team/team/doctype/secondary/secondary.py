@@ -21,12 +21,15 @@ def make_stock_entry(year, month,stockist,name):
 	Secondary.test();
 	
 @frappe.whitelist()
-def get_items(**args):
+def get_items(year, month,stockist,name):
 	#frappe.msgprint(_("hii"));
 	#frappe.msgprint(_(frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])));
 	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])
 	#return frappe.db.sql("""SELECT name,item_name FROM 1bd3e0294da19198.tabItem
 	#where 1bd3e0294da19198.tabItem.used_for_secondary=1""", as_dict=1)
+	var yearmonth=year+"-"+month;
+	
+	 
 	return frappe.db.sql("""SELECT  tbl.item_name as name ,tbl.item_name as item_name,
 sum(tbl.qty) as qty, sum(tbl.f_qty) as f_qty,sum(tbl.tot_qty) as tot_qty ,
 sum(tbl.q_amt) as q_amt,(sum(tbl.f_amt)) as f_amt,
@@ -59,8 +62,8 @@ on t_i.`name`=t_sit.`item_name`
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice` as t_si
 on t_si.`name`=t_sit.`parent`
 where t_i.used_for_secondary=1
-and t_si.`posting_date` like '2017-07%'
-and t_si.`customer`='C.T. ENTERPRISES'
+and t_si.`posting_date` like {0}
+and t_si.`customer`={1}
 and t_si.`name` like 'SI-%'
 group by  t_i.item_name
 
@@ -79,14 +82,14 @@ on t_i.`name`=t_sit.`item_name`
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice` as t_si
 on t_si.`name`=t_sit.`parent`
 where t_i.used_for_secondary=1
-and t_si.`posting_date` like '2017-07%'
-and t_si.`customer`='C.T. ENTERPRISES'
+and t_si.`posting_date` like {0}
+and t_si.`customer`={1}
 and t_si.`name` like 'SR-0%'
 group by  t_i.item_name) 
 as tbl
 group by   tbl.item_name
 order by tbl.item_name
-""", as_dict=1)
+""".format(yearmonth,stockist), as_dict=1)
 
 
 class Secondary(Document):
