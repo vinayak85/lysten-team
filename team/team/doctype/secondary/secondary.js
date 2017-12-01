@@ -26,7 +26,7 @@ frappe.ui.form.on('Secondary', {
 				var sec_items_qty = $.map(frm.doc.sec_items_qty, function(d) { return d.sec_item_qty });
 				//alert(sec_items_qty );
 				for (var i=0; i< r.message.length; i++) {
-					if(test(frm,r.message[i].item_name) != false)
+					if(test(frm,r.message[i].item_name) != true)
 					{
 					if (sec_items_qty.indexOf(r.message[i].name) === -1) {
 						var row = frappe.model.add_child(frm.doc, frm.fields_dict.sec_items_qty.df.options, frm.fields_dict.sec_items_qty.df.fieldname);
@@ -41,10 +41,7 @@ frappe.ui.form.on('Secondary', {
 						else
 						{
 							row.item_rate =avg_credit_rate;
-						}
-						
-						
-						
+						}	
 						
 						row.rec_tot = r.message[i].tot_qty;
 						row.rec_qty = r.message[i].qty;
@@ -53,19 +50,17 @@ frappe.ui.form.on('Secondary', {
 						row.credit_note_tot = r.message[i].cr_tot_qty;
 						row.credit_note_qty = r.message[i].cr_qty;
 						row.credit_note_free = r.message[i].cr_f_qty;
-						
-						
 					
 						row.value_sale_tot = r.message[i].f_amt;
 						row.value_sale_qty = r.message[i].f_amt;
 						row.value_sale_free = r.message[i].f_qty*row.item_rate;
 				
-					
-						
-						
-						
-						
 					}
+					else
+					{
+						alert(test(frm,r.message[i].item_name));
+					}
+						
 					}
 				}
 				frm.refresh_field('sec_items_qty');
@@ -86,9 +81,12 @@ frappe.ui.form.on('Secondary', {
 	        for(var i = 0; i < tbl1.length; i++)
 		{
 			if(check_item_name==tbl1[i].item_code)
-				return false;
+				return i;
+			
 		  //strr=strr+" ... "+ tbl1[i].item_code;
 	        }
+		return true;
+		
 		
 		
 		
