@@ -26,7 +26,7 @@ frappe.ui.form.on('Secondary', {
 				var sec_items_qty = $.map(frm.doc.sec_items_qty, function(d) { return d.sec_item_qty });
 				//alert(sec_items_qty );
 				for (var i=0; i< r.message.length; i++) {
-					if(test(frm,r.message[i].item_name) != true)
+					if(test(frm,r.message[i].item_name) != false)
 					{
 					if (sec_items_qty.indexOf(r.message[i].name) === -1) {
 						var row = frappe.model.add_child(frm.doc, frm.fields_dict.sec_items_qty.df.options, frm.fields_dict.sec_items_qty.df.fieldname);
@@ -58,7 +58,7 @@ frappe.ui.form.on('Secondary', {
 					}
 					else
 					{
-						alert(test(frm,r.message[i].item_name));
+						alert(test1(frm,r.message[i].item_name));
 					}
 						
 					}
@@ -75,6 +75,27 @@ frappe.ui.form.on('Secondary', {
 	test= function(frm,check_item_name) {
 		//alert("hii");
 		//var sec_items_qty = $.map(frm.doc.sec_items_qty, function(d) { return d.sec_item_qty });
+		flag=true;
+		var tbl1 = frm.doc.sec_items_qty || [];
+		var strr="";
+		//var total_earn = 0; var total_ded = 0;
+	        for(var i = 0; i < tbl1.length; i++)
+		{
+			if(check_item_name==tbl1[i].item_code)
+				flag=flase;
+			
+		  //strr=strr+" ... "+ tbl1[i].item_code;
+	        }
+		return flag;
+		
+		
+		
+		
+	};
+
+      test1= function(frm,check_item_name) {
+		
+		
 		var tbl1 = frm.doc.sec_items_qty || [];
 		var strr="";
 		//var total_earn = 0; var total_ded = 0;
@@ -85,7 +106,7 @@ frappe.ui.form.on('Secondary', {
 			
 		  //strr=strr+" ... "+ tbl1[i].item_code;
 	        }
-		return true;
+		
 		
 		
 		
