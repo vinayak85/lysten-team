@@ -55,12 +55,11 @@ frappe.ui.form.on('Secondary', {
 						row.value_sale_qty = r.message[i].f_amt;
 						row.value_sale_free = r.message[i].f_qty*row.item_rate;
 				
+					}					
 					}
 					else
 					{
 						alert(test1(frm,r.message[i].item_name));
-					}
-						
 					}
 				}
 				frm.refresh_field('sec_items_qty');
