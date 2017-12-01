@@ -94,9 +94,9 @@ order by tbl.item_name
 
 def return_month_in_number(month):
 	if(month=="Jan"):
-	return 1
-        else if(month=="Feb"):
-	return 2
+		return 1;
+	else if(month=="Feb"):
+		return 2;
 
 
 	
