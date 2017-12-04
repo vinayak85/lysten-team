@@ -18,11 +18,11 @@ frappe.ui.form.on('Attendence Calculation', {
 			},
 			callback:function (r) {
 				alert(r.message);
-				/*var attendence_table = $.map(frm.doc.attendence_table, function(d) { return d.sec_item_qty });
+				var attendence_tables = $.map(frm.doc.attendence_table, function(d) { return d.attendence_table });
 				//alert(sec_items_qty );
 				for (var i=0; i< r.message.length; i++) {
 					
-					if (sec_items_qty.indexOf(r.message[i].att_date) === -1) {
+					if (attendence_tables.indexOf(r.message[i].att_date) === -1) {
 					      
 						
 						row.att_date = r.message[i].att_date;
