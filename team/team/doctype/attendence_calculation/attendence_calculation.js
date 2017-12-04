@@ -17,7 +17,7 @@ frappe.ui.form.on('Attendence Calculation', {
 				
 			},
 			callback:function (r) {
-				//alert(r.message[1].name);
+				alert(r.message[1].name);
 				/*var attendence_table = $.map(frm.doc.attendence_table, function(d) { return d.sec_item_qty });
 				//alert(sec_items_qty );
 				for (var i=0; i< r.message.length; i++) {
