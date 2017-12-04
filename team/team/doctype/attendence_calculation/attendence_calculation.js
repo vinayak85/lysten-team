@@ -46,7 +46,7 @@ frappe.ui.form.on('Attendence Calculation', {
 					
 				}
 				frm.refresh_field('attendence_table');
-				*/
+				
 				
 			}
 		})
