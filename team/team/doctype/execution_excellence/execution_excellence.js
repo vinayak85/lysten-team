@@ -16,12 +16,16 @@ frappe.ui.form.on('Execution Excellence', {
 });
 
 remove_child_rows= function(frm) {
+	alert("111");
 var tbl = frm.doc.execution_excellence_table || [];
 var i = tbl.length;
+		alert("222");
 while (i--)
 {
+		alert("333");
     if(tbl[i].field_name == '')
     {
+	    	alert("444");
         frm.get_field("execution_excellence_table").grid.grid_rows[i].remove();
     }
 }
