@@ -9,14 +9,14 @@ frappe.ui.form.on('Execution Excellence', {
 	
 	get_data:function (frm) {
 		//alert("hiii");
-		remove_child_rows();
+		remove_child_rows(frm);
 				
 	}
 		
 });
 
 remove_child_rows= function(frm) {
-var tbl = doc.child_table || [];
+var tbl = frm.doc.child_table || [];
 var i = tbl.length;
 while (i--)
 {
