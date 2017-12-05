@@ -18,8 +18,7 @@ frappe.ui.form.on('Execution Excellence', {
 
 add_child_rows= function(frm) {
 	var tbl = frm.doc.execution_excellence_table || [];
-	var i = tbl.length;
-	while (i--){ 
+	
 	for (var i=0; i< 12; i++) {
 		var row = frappe.model.add_child(frm.doc, frm.fields_dict.execution_excellence_table.df.options,
 						 frm.fields_dict.execution_excellence_table.df.fieldname);
@@ -32,7 +31,7 @@ add_child_rows= function(frm) {
 		
 	}
        
-	}
+	
 	 frm.refresh_field('execution_excellence_table');
 };
 
