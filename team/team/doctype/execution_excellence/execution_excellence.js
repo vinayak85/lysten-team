@@ -10,12 +10,13 @@ frappe.ui.form.on('Execution Excellence', {
 	get_data:function (frm) {
 		//alert("hiii");
 		remove_child_rows(frm);
+		add_child_rows(frm);
 				
 	}
 		
 });
 
-remove_child_rows= function(frm) {
+add_child_rows= function(frm) {
 	var tbl = frm.doc.execution_excellence_table || [];
 	var i = tbl.length;
 	while (i--){ 
@@ -28,9 +29,19 @@ remove_child_rows= function(frm) {
 		row.holidays = "5";
 		row.working = "25";
 
-		//alert(	get_month(0));
+		
 	}
-        frm.get_field("execution_excellence_table").grid.grid_rows[i].remove();
+       
+	}
+	 frm.refresh_field('execution_excellence_table');
+};
+
+remove_child_rows= function(frm) {
+	var tbl = frm.doc.execution_excellence_table || [];
+	var i = tbl.length;
+	while (i--){ 
+	
+          frm.get_field("execution_excellence_table").grid.grid_rows[i].remove();
 	}
 	 frm.refresh_field('execution_excellence_table');
 };
