@@ -16,7 +16,7 @@ frappe.ui.form.on('Execution Excellence', {
 });
 
 remove_child_rows= function(frm) {
-var tbl = frm.doc.child_table || [];
+var tbl = frm.doc.execution_excellence_table || [];
 var i = tbl.length;
 while (i--)
 {
