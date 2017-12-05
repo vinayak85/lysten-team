@@ -23,7 +23,7 @@ remove_child_rows= function(frm) {
 		var row = frappe.model.add_child(frm.doc, frm.fields_dict.execution_excellence_table.df.options,
 						 frm.fields_dict.execution_excellence_table.df.fieldname);
 		
-		row.month = get_month(0);
+		row.month = get_month(i);
 		row.total_days_month = "30";
 		row.holidays = "5";
 		row.working = "25";
