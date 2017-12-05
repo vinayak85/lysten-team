@@ -18,8 +18,19 @@ frappe.ui.form.on('Execution Excellence', {
 remove_child_rows= function(frm) {
 	var tbl = frm.doc.execution_excellence_table || [];
 	var i = tbl.length;
-	while (i--){    	
+	while (i--){ 
+	//for (var i=0; i< 12; i++) {
+	alert(	get_month(0));
+	//}
         frm.get_field("execution_excellence_table").grid.grid_rows[i].remove();
 	}
 	 frm.refresh_field('execution_excellence_table');
 };
+get_month=function(i)
+{
+	if(i==0)
+	{
+		return "April";
+	}
+};
+
