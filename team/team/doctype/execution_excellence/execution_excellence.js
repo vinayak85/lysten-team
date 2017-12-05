@@ -3,6 +3,14 @@
 
 frappe.ui.form.on('Execution Excellence', {
 	refresh: function(frm) {
-
+		frm.add_custom_button(__("Recalculate Execution Data"),
+			function() { frm.trigger('get_data'); }, "fa fa-sitemap", "btn-default");
+	},
+	
+	get_data:function (frm) {
+		alert("hiii");
+			
+				
 	}
+		
 });
