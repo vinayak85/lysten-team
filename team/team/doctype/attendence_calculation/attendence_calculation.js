@@ -17,14 +17,14 @@ frappe.ui.form.on('Attendence Calculation', {
 				
 			},
 			callback:function (r) {
-				alert("1");
+				//alert("1");
 				var attendence_tables = $.map(frm.doc.attendence_table, function(d) { return d.attendence_table });
-				alert("2");
+				//alert("2");
 				for (var i=0; i< r.message.length; i++) {
-					alert("3");
+					//alert("3");
 					if (attendence_tables.indexOf(r.message[i].att_date) === -1) {
 					      
-						alert("4");
+						//alert("4");
 						row.att_date = r.message[i].att_date;
 						row.emp_code = r.message[i].emp_code;
 						row.email = r.message[i].email;
