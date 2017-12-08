@@ -15,9 +15,9 @@ from frappe.model.mapper import get_mapped_doc
 @frappe.whitelist()
 def get_calculations(fromdate, todate):
 	#return frappe.db.sql("""call attendence1({0},{1})""".format(fromdate,todate), as_dict=1);
-	#frappe.msgprint(_(frappe.db.sql("""call attendence1({0},{1})""".format("2017/11/01","2017/11/10"), as_dict=1)));
-	frappe.msgprint(_(fromdate));
-	frappe.msgprint(_(todate));
+	frappe.msgprint(_(frappe.db.sql("""call attendence1({0},{1})""".format("2017/11/01","2017/11/10"), as_dict=1)));
+	#frappe.msgprint(_(fromdate));
+	#frappe.msgprint(_(todate));
 	
 
 class AttendenceCalculation(Document):
