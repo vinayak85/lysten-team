@@ -12,8 +12,10 @@ frappe.ui.form.on('Attendence Calculation', {
 		frappe.call({
 			method:'team.team.doctype.attendence_calculation.attendence_calculation.get_calculations',			
 			args:{
-				fromdate:frm.doc.month,
-				todate: frm.doc.year
+				/*fromdate:frm.doc.month,
+				todate: frm.doc.year*/
+				fromdate:'2017/11/01',
+				todate: '2017/11/05'
 				
 			},
 			callback:function (r) 
