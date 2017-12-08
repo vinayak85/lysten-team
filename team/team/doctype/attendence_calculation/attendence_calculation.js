@@ -10,10 +10,17 @@ frappe.ui.form.on('Attendence Calculation', {
 	get_items_all:function (frm) {
 		
 		frappe.call({
-			method:'team.team.doctype.attendence_calculation.attendence_calculation.get_calculations',
+			/*method:'team.team.doctype.attendence_calculation.attendence_calculation.get_calculations',			
 			args:{
 				fromdate:"2017/11/01",
 				todate: "2017/11/05"
+				
+			},*/
+			method:'team.team.doctype.secondary.secondary.make_stock_entry',
+			args:{
+				year:"2017",
+				month:"Jan",
+				stockist:"spppp"
 				
 			},
 			callback:function (r) {
