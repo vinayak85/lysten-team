@@ -16,9 +16,9 @@ from frappe.model.mapper import get_mapped_doc
 
 @frappe.whitelist()
 def make_stock_entry(year, month,stockist):
-	#frappe.msgprint(_(aa+"hello"+bb));
+	frappe.msgprint(_("hello"));
 	#frappe.msgprint(_(name.year))
-	Secondary.test();
+	#Secondary.test();
 	
 @frappe.whitelist()
 def get_items(year, month,stockist):
