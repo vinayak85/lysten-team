@@ -28,8 +28,10 @@ frappe.ui.form.on('Secondary', {
 				for (var i=0; i< r.message.length; i++) {
 					
 					if (sec_items_qty.indexOf(r.message[i].name) === -1) {
+						alert('main:'+ r.message[i].item_name);
 					        if(test(frm,r.message[i].item_name) != false)
 					        {
+						alert('no:'+ r.message[i].item_name);
 						var row = frappe.model.add_child(frm.doc, frm.fields_dict.sec_items_qty.df.options, frm.fields_dict.sec_items_qty.df.fieldname);
 						row.item_code = r.message[i].name;
 						row.item_code = r.message[i].item_name;
@@ -59,6 +61,7 @@ frappe.ui.form.on('Secondary', {
 						}
 					        else
 					        {
+							alert('yes:'+ r.message[i].item_name);
 							var tbl1 = frm.doc.sec_items_qty || [];
 							ii=test1(frm,r.message[i].item_name);
 							
