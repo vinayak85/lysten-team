@@ -22,7 +22,7 @@ def form16_package(employee):
         """.format(employee), as_dict=1) 
     else:
         employee="'"+employee+"'";
-        package= frappe.db.sql("""select base as pckge from `tabSalary Structure Employee` where employee={0} 
+        package= frappe.db.sql("""select base as pckge from `tabSalary Structure Employee` where employee={0}
         """.format(employee), as_dict=1)        
         
     dict = {'package': ''
