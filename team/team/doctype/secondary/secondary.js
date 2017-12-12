@@ -121,7 +121,17 @@ frappe.ui.form.on('Secondary', {
 
 	function change_select(frm)
 	{
-	msgprint(frm.doc.year+' '+frm.doc.month+' '+frm.doc.stockist);  
+		frappe.call({
+			method:'team.team.doctype.secondary.secondary.check_duplicate',
+			args:{
+				year: frm.doc.year,
+				month: frm.doc.month,
+				stockist: frm.doc.stockist
+			},
+			callback:function (r) {
+			}
+		});
+	//msgprint(frm.doc.year+' '+frm.doc.month+' '+frm.doc.stockist);  
 	}
 
 	
