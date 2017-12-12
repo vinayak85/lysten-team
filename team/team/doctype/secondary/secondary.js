@@ -103,6 +103,27 @@ frappe.ui.form.on('Secondary', {
 		
 	}
 	});
+
+	frappe.ui.form.on("Secondary", {onload: function(frm) {	
+      
+        frappe.ui.form.on("Secondary", "year", function(frm, cdt, cdn)  {           
+             change_select(frm);             
+    
+        });	
+        frappe.ui.form.on("Form 16", "month", function(frm, cdt, cdn)  {           
+             
+            change_select(frm);     
+        });        
+	frappe.ui.form.on("Form 16", "stockist", function(frm, cdt, cdn)  {           
+           
+            change_select(frm);     
+        });          
+	}});
+	function change_select(frm)
+	{
+	msgprint(frm.doc.year+' '+msgprint(frm.doc.month)+' '+frm.doc.stockist);  
+	}
+
 	
 	test= function(frm,check_item_name) {
 		//alert("hii");
