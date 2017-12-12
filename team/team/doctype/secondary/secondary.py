@@ -22,7 +22,7 @@ def make_stock_entry(year, month,stockist):
 def check_duplicate(year, month,stockist):
 	doc_name=year + "-" + month + "-" + stockist;
 	cnt=0;
-	cnt=frappe.db.sql("""SELECT count(name) FROM tabSecondary where name like '{0}""".format(doc_name));
+	cnt=frappe.db.sql("""SELECT count(name) FROM tabSecondary where name like {0}""".format(doc_name));
 	if(cnt > 0):
 		frappe.msgprint(_("Secondary Data Already exist for  "+ doc_name));
 		
