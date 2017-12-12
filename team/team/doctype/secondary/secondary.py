@@ -24,9 +24,9 @@ def make_stock_entry(year, month,stockist):
 	cnt=0;
 	cnt=frappe.db.sql("""SELECT count(name) FROM tabSecondary where name like '{0}""".format(doc_name));
 	if(cnt>0):
-	{
-		frappe.msgprint(_("Secondary Data Already exist for  "+ doc_name));
-	}
+		{
+			frappe.msgprint(_("Secondary Data Already exist for  "+ doc_name));
+		}
 	
 @frappe.whitelist()
 def get_items(year, month,stockist):
