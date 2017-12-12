@@ -16,7 +16,7 @@ def form16_package(employee):
         package_cnt= frappe.db.sql("""select  count(distinct base)as cnt from `tabSalary Structure Employee` where employee={0} 
         """.format(employee), as_dict=1)
         
-    if(package_cnt[0].cnt>1):
+    '''if(package_cnt[0].cnt>1):
         employee="'"+employee+"'";
         package= frappe.db.sql("""select GROUP_CONCAT(distinct base) as pckge from `tabSalary Structure Employee` where employee={0} 
         """.format(employee), as_dict=1) 
@@ -24,9 +24,10 @@ def form16_package(employee):
         employee="'"+employee+"'";
         package= frappe.db.sql("""select base as pckge from `tabSalary Structure Employee` where employee={0} 
         """.format(employee), as_dict=1)
+        '''
         
     dict = {'package': ''
            }
     
-    dict['package']=package[0].pckge;
+    dict['package']=package_cnt[0].cnt;
     return dict
