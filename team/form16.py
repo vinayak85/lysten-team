@@ -6,8 +6,8 @@ from pytz import timezone
 from frappe import msgprint, _
 __version__ = '0.0.1'
 
-@frappe.whitelist(employee)
-def form16_package():    
+@frappe.whitelist()
+def form16_package(employee):    
     package_cnt='';
     package='';
     
