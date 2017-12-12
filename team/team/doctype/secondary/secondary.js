@@ -104,24 +104,24 @@ frappe.ui.form.on('Secondary', {
 	}
 	});
 
-	frappe.ui.form.on("Secondary", {onload: function(frm) {	
-      
-        frappe.ui.form.on("Secondary", "year", function(frm, cdt, cdn)  {           
-             change_select(frm);             
-    
-        });	
-        frappe.ui.form.on("Form 16", "month", function(frm, cdt, cdn)  {           
-             
-            change_select(frm);     
-        });        
-	frappe.ui.form.on("Form 16", "stockist", function(frm, cdt, cdn)  {           
-           
-            change_select(frm);     
-        });          
+	frappe.ui.form.on("Secondary", {onload: function(frm) {
+		frappe.ui.form.on("Secondary", "year", function(frm, cdt, cdn) 
+		{
+			change_select(frm);
+		});
+		frappe.ui.form.on("Secondary", "month", function(frm, cdt, cdn)  
+		{
+			change_select(frm);
+		});        
+		frappe.ui.form.on("Secondary", "stockist", function(frm, cdt, cdn)  
+		{    
+            		change_select(frm);    
+        	});          
 	}});
+
 	function change_select(frm)
 	{
-	msgprint(frm.doc.year+' '+msgprint(frm.doc.month)+' '+frm.doc.stockist);  
+	msgprint(frm.doc.year+' '+frm.doc.month+' '+frm.doc.stockist);  
 	}
 
 	
@@ -142,12 +142,9 @@ frappe.ui.form.on('Secondary', {
 		return flag;
 		
 		
-		
-		
 	};
 
-      test1= function(frm,check_item_name) {
-		
+      test1= function(frm,check_item_name) {		
 		
 		var tbl1 = frm.doc.sec_items_qty || [];
 		var strr="";
@@ -159,10 +156,7 @@ frappe.ui.form.on('Secondary', {
 			
 		  //strr=strr+" ... "+ tbl1[i].item_code;
 	        }
-		
-		
-		
-		
+				
 		
 	};
 
