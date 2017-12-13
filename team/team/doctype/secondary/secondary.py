@@ -19,6 +19,7 @@ from frappe.model.mapper import get_mapped_doc
 @frappe.whitelist()
 def get_items1():
 	op="";
+	op=subprocess.call('cd /home/frappe');
 	op=subprocess.call('ls');
 	frappe.msgprint(_(op));
 	
