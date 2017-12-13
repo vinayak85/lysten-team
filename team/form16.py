@@ -17,14 +17,16 @@ def form16_package(employee):
         """.format(employee), as_dict=1)
         
     if(package_cnt[0].cnt > 1):
-        package= frappe.db.sql("""select GROUP_CONCAT(distinct base) as pckge from `tabSalary Structure Employee` where employee={0} 
-        """.format(employee), as_dict=1) 
+        package= frappe.db.sql("""select GROUP_CONCAT(distinct base) as pckge,GROUP_CONCAT(EXTRACT( YEAR_MONTH FROM `from_date` ) )as paid_month
+        from `tabSalary Structure Employee` where employee={0} """.format(employee), as_dict=1) 
     else:
-        package= frappe.db.sql("""select base as pckge from `tabSalary Structure Employee` where employee={0}
-        """.format(employee), as_dict=1)        
+        package= frappe.db.sql("""select base as pckge,GROUP_CONCAT(EXTRACT( YEAR_MONTH FROM `from_date` ) )as paid_month
+        from `tabSalary Structure Employee` where employee={0} """.format(employee), as_dict=1)        
         
-    dict = {'package': ''
+    dict = {'package': '',
+            'paid_month': '',
            }
     
     dict['package']=package[0].pckge;
+    dict['paid_month']=package[0].paid_month;
     return dict
