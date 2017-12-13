@@ -7,10 +7,23 @@ frappe.ui.form.on('Secondary', {
 		frm.add_custom_button(__("Recalculate Secondary"),
 			function() { frm.trigger('get_items_all'); }, "fa fa-sitemap", "btn-default");
 		
-		/*frm.add_custom_button(__("test"),
-			function() { frm.trigger('test'); }, "fa fa-sitemap", "btn-default");*/
+		frm.add_custom_button(__("test"),
+			function() { frm.trigger('test'); }, "fa fa-sitemap", "btn-default");
 
 	},
+	test:function (frm) {
+		
+		frappe.call({
+			method:'team.team.doctype.secondary.secondary.get_items1',
+			args:{
+				
+			},
+			callback:function (r) {
+				alert(r.message);
+			}
+		});
+	}
+				
 	
 	get_items_all:function (frm) {
 		var filters=[["used_for_secondary","=","1"]];
