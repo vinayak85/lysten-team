@@ -125,7 +125,7 @@ frappe.ui.form.on('Secondary', {
 	function change_select(frm)
 	{
 		alert("ddd");
-		/*frappe.call({
+		frappe.call({
 			method:'team.team.doctype.secondary.secondary.check_duplicate',
 			args:{
 				year: frm.doc.year,
@@ -134,7 +134,7 @@ frappe.ui.form.on('Secondary', {
 			},
 			callback:function (r) {
 			}
-		}); */
+		}); 
 	 
 	}
 
