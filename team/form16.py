@@ -25,10 +25,21 @@ def form16_package(employee):
         
      
     '''Convenience Allowance Calucalte Query: Only Sum Of Paid Allowance in Salary::::
-    select sum(sd.amount)as convenience_allowance  from `tabSalary Detail` sd
-    left outer join `tabSalary Slip` ss on sd.parent=ss.name 
-    where sd.salary_component='Convenience Allowance' and ss.employee='EMP/0015' 
-          and ss.start_date between '2017-03-01' and '2017-11-01';'''
+    
+	select 
+		sum(sd.amount)as convenience_allowance  
+	from 
+		`tabSalary Detail` sd 
+	left outer join 
+		`tabSalary Slip` ss 
+	on
+		sd.parent=ss.name 
+	where 
+		sd.salary_component='Convenience Allowance' and 
+        ss.employee='EMP/0015' and 
+        ss.start_date between '2017-03-01' and '2017-11-01';
+        
+        '''
     
     
     dict = {'package': '',
