@@ -17,10 +17,10 @@ def form16_package(employee):
         """.format(employee), as_dict=1)
         
     if(package_cnt[0].cnt > 1):
-        package= frappe.db.sql("""select GROUP_CONCAT(distinct base) as pckge,GROUP_CONCAT(DATE_FORMAT(`from_date`,'%M %Y'))as paid_month
+        package= frappe.db.sql("""select GROUP_CONCAT(distinct CAST(base AS UNSIGNED)) as pckge,GROUP_CONCAT(DATE_FORMAT(`from_date`,'%M %Y'))as paid_month
         from `tabSalary Structure Employee` where employee={0} """.format(employee), as_dict=1) 
     else:
-        package= frappe.db.sql("""select base as pckge,GROUP_CONCAT(DATE_FORMAT(`from_date`,'%M %Y'))as paid_month
+        package= frappe.db.sql("""select CAST(base AS UNSIGNED) as pckge,GROUP_CONCAT(DATE_FORMAT(`from_date`,'%M %Y'))as paid_month
         from `tabSalary Structure Employee` where employee={0} """.format(employee), as_dict=1)        
         
      
