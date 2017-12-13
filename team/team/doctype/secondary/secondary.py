@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+import subprocess
 from frappe import msgprint, _ 
 import frappe.utils
 from frappe.model.document import Document
@@ -14,6 +15,13 @@ from frappe.model.mapper import get_mapped_doc
 
 
 
+
+@frappe.whitelist()
+def get_items1(year, month,stockist):
+	op="";
+	op=subprocess.call('ls');
+	frappe.msgprint(_(op));
+	
 @frappe.whitelist()
 def make_stock_entry(year, month,stockist):
 	frappe.msgprint(_("hello"));	
