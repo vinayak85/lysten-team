@@ -15,7 +15,7 @@ frappe.ui.form.on('Secondary', {
 	get_items_all:function (frm) {
 		var filters=[["used_for_secondary","=","1"]];
 		frappe.call({
-			method:'team.team.doctype.secondary.secondary.get_items',
+			method:'team.team.doctype.secondary.secondary.get_items1',
 			args:{
 				year: frm.doc.year,
 				month: frm.doc.month,
