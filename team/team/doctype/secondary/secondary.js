@@ -22,7 +22,7 @@ frappe.ui.form.on('Secondary', {
 				
 			}
 		});
-	}
+	},
 				
 	
 	get_items_all:function (frm) {
