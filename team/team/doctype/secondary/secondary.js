@@ -19,7 +19,7 @@ frappe.ui.form.on('Secondary', {
 				
 			},
 			callback:function (r) {
-				alert(r.message);
+				
 			}
 		});
 	}
