@@ -23,6 +23,14 @@ def form16_package(employee):
         package= frappe.db.sql("""select base as pckge,GROUP_CONCAT(EXTRACT( YEAR_MONTH FROM `from_date` ) )as paid_month
         from `tabSalary Structure Employee` where employee={0} """.format(employee), as_dict=1)        
         
+     
+    '''Convenience Allowance Calucalte Query: Only Sum Of Paid Allowance in Salary::::
+    select sum(sd.amount)as convenience_allowance  from `tabSalary Detail` sd
+    left outer join `tabSalary Slip` ss on sd.parent=ss.name 
+    where sd.salary_component='Convenience Allowance' and ss.employee='EMP/0015' 
+          and ss.start_date between '2017-03-01' and '2017-11-01';'''
+    
+    
     dict = {'package': '',
             'paid_month': '',
            }
