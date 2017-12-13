@@ -27,4 +27,4 @@ def form16_package(employee):
            }
     
     dict['package']=504000.00;#package[0].pckge;
-    return 'hiii'
+    return dict
