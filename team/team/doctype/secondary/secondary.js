@@ -107,24 +107,24 @@ frappe.ui.form.on('Secondary', {
 	frappe.ui.form.on("Secondary", {onload: function(frm) {
 		frappe.ui.form.on("Secondary", "year", function(frm, cdt, cdn) 
 		{
-			alert("hello");
+			
 			change_select(frm);
 		});
 		frappe.ui.form.on("Secondary", "month", function(frm, cdt, cdn)  
 		{
-			alert("hello");
+			
 			change_select(frm);
 		});        
 		frappe.ui.form.on("Secondary", "stockist", function(frm, cdt, cdn)  
 		{
-			alert("hello");
+			
             		change_select(frm);    
         	});          
 	}});
 
 	function change_select(frm)
 	{
-		alert("ddd");
+		alert(frm.doc.year+"---"+frm.doc.month+"----"+frm.doc.stockist);
 		frappe.call({
 			method:'team.team.doctype.secondary.secondary.check_duplicate',
 			args:{
