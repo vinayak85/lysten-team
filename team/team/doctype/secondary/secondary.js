@@ -131,7 +131,7 @@ frappe.ui.form.on('Secondary', {
 			callback:function (r) {
 			}
 		});
-	//msgprint(frm.doc.year+' '+frm.doc.month+' '+frm.doc.stockist);  
+	msgprint(frm.doc.year+' '+frm.doc.month+' '+frm.doc.stockist);  
 	}
 
 	
