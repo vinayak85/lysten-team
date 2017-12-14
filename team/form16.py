@@ -35,6 +35,7 @@ def form16_package(employee):
 def form16_allowance(employee,from_date,to_date):    
     allowance='';
     prof_tax='';
+    prov_fund='';
 	
     if(len(employee)>0):
         #employee="'"+employee+"'";
@@ -50,6 +51,12 @@ def form16_allowance(employee,from_date,to_date):
 	ss.start_date between {1} and {2}; 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
 	
+	prov_fund= frappe.db.sql("""select ifnull(sum(sd.amount),0)as provident_fund from `tabSalary Detail` sd 
+	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
+	where sd.salary_component='Provident Fund' and ss.employee={0} and 
+	ss.start_date between {1} and {2}; 
+        """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
+	
         
     
     '''Convenience Allowance Calucalte Query: Only Sum Of Paid Allowance in Salary::::
@@ -61,8 +68,10 @@ def form16_allowance(employee,from_date,to_date):
     
     dict = {'con_allow': '',
             'prof_tax': '',
+	    'prov_fund': ''
            }
     
     dict['con_allow']=allowance[0].convenience_allowance;
     dict['prof_tax']=prof_tax[0].professional_tax;
+    dict['prov_fund']=prov_fund[0].provident_fund;
     return dict
