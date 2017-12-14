@@ -21,26 +21,7 @@ def form16_package(employee):
         from `tabSalary Structure Employee` where employee={0} """.format(employee), as_dict=1) 
     else:
         package= frappe.db.sql("""select CAST(base AS UNSIGNED) as pckge,GROUP_CONCAT(DATE_FORMAT(`from_date`,'%M %Y'))as paid_month
-        from `tabSalary Structure Employee` where employee={0} """.format(employee), as_dict=1)        
-        
-     
-    '''Convenience Allowance Calucalte Query: Only Sum Of Paid Allowance in Salary::::
-    
-	select 
-		sum(sd.amount)as convenience_allowance  
-	from 
-		`tabSalary Detail` sd 
-	left outer join 
-		`tabSalary Slip` ss 
-	on
-		sd.parent=ss.name 
-	where 
-		sd.salary_component='Convenience Allowance' and 
-        ss.employee='EMP/0015' and 
-        ss.start_date between '2017-03-01' and '2017-11-01';
-        
-        '''
-    
+        from `tabSalary Structure Employee` where employee={0} """.format(employee), as_dict=1)                 
     
     dict = {'package': '',
             'paid_month': '',
@@ -53,14 +34,22 @@ def form16_package(employee):
 @frappe.whitelist()
 def form16_allowance(employee,from_date,to_date):    
     allowance='';
-    
+    prof_tax='';
+	
     if(len(employee)>0):
         #employee="'"+employee+"'";
-        allowance= frappe.db.sql("""select sum(sd.amount)as convenience_allowance from `tabSalary Detail` sd 
+        allowance= frappe.db.sql("""select ifnull(sum(sd.amount),0)as convenience_allowance from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
 	where sd.salary_component='Convenience Allowance' and ss.employee={0} and 
 	ss.start_date between {1} and {2}; 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
+	
+	prof_tax= frappe.db.sql("""select ifnull(sum(sd.amount),0)as professional_tax from `tabSalary Detail` sd 
+	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
+	where sd.salary_component='Convenience Allowance' and ss.employee={0} and 
+	ss.start_date between {1} and {2}; 
+        """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
+	
         
     
     '''Convenience Allowance Calucalte Query: Only Sum Of Paid Allowance in Salary::::
@@ -75,5 +64,5 @@ def form16_allowance(employee,from_date,to_date):
            }
     
     dict['con_allow']=allowance[0].convenience_allowance;
-    dict['prof_tax']=0;
+    dict['prof_tax']=prof_tax[0].professional_tax;
     return dict
