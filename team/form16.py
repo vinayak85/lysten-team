@@ -50,7 +50,7 @@ def form16_package(employee):
     dict['paid_month']=package[0].paid_month;
     return dict
 
-
+@frappe.whitelist()
 def form16_allowance(employee,from_date,to_date):    
     allowance='';
     
