@@ -46,7 +46,7 @@ def form16_allowance(employee,from_date,to_date):
 	
 	prof_tax= frappe.db.sql("""select ifnull(sum(sd.amount),0)as professional_tax from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
-	where sd.salary_component='Convenience Allowance' and ss.employee={0} and 
+	where sd.salary_component='Professional Tax' and ss.employee={0} and 
 	ss.start_date between {1} and {2}; 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
 	
