@@ -58,9 +58,9 @@ def form16_allowance(employee,from_date,to_date):
         #employee="'"+employee+"'";
         allowance= frappe.db.sql("""select sum(sd.amount)as convenience_allowance from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
-	where sd.salary_component='Convenience Allowance' and ss.employee='{0}' and 
-	ss.start_date between '{1}' and '{2}'; 
-        """.format(employee,from_date,to_date), as_dict=1)
+	where sd.salary_component='Convenience Allowance' and ss.employee={0} and 
+	ss.start_date between {1} and {2}; 
+        """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
         
     
     '''Convenience Allowance Calucalte Query: Only Sum Of Paid Allowance in Salary::::
