@@ -74,11 +74,9 @@ def form16_check_exist(employee,assement_year,from_date,to_date):
 	
     if(len(employee)>0 and len(assement_year)>0 and len(from_date)>0 and len(to_date)>0):
         #employee="'"+employee+"'";
-        flag= frappe.db.sql("""select ifnull(sum(sd.amount),0)as convenience_allowance from `tabSalary Detail` sd 
-	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
-	where sd.salary_component='Convenience Allowance' and ss.employee={0} and 
-	ss.start_date between {1} and {2}; 
-        """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)		
+        flag= frappe.db.sql("""select count(*)as cnt from `tabForm 16` 
+	where employee={0} and assessment_year={1} and period_from_date={2} and period_to_date={3};
+	""".format("'"+employee+"'","'"+assement_year+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)		
 	
      
     dict = {'flag': ''
