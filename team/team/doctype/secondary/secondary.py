@@ -33,8 +33,9 @@ def check_duplicate(year, month,stockist):
 	frappe.msgprint(_(doc_name));
 	cnt=0;
 	cnt=frappe.db.sql("""SELECT count(name) FROM tabSecondary where name like {0}""".format(doc_name));
-	if(cnt > 0):
-		frappe.msgprint(_("Secondary Data Already exist for  "+ doc_name));
+	#if(cnt > 0):
+	#	frappe.msgprint(_("Secondary Data Already exist for  "+ doc_name));
+	frappe.msgprint(_(cnt));
 		
 	
 @frappe.whitelist()
