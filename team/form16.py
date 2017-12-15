@@ -57,15 +57,7 @@ def form16_allowance(employee,from_date,to_date):
 	ss.start_date between {1} and {2}; 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
 	
-        
-    
-    '''Convenience Allowance Calucalte Query: Only Sum Of Paid Allowance in Salary::::
-    
-	select sum(sd.amount)as convenience_allowance from `tabSalary Detail` sd left outer join `tabSalary Slip` ss on	sd.parent=ss.name where sd.salary_component='Convenience Allowance' and ss.employee='EMP/0015' and ss.start_date between '2017-03-01' and '2017-11-01';
-        
-        '''
-    
-    
+     
     dict = {'con_allow': '',
             'prof_tax': '',
 	    'prov_fund': ''
@@ -74,4 +66,23 @@ def form16_allowance(employee,from_date,to_date):
     dict['con_allow']=allowance[0].convenience_allowance;
     dict['prof_tax']=prof_tax[0].professional_tax;
     dict['prov_fund']=prov_fund[0].provident_fund;
+    return dict
+
+@frappe.whitelist()
+def form16_check_exist(employee,assement_year,from_date,to_date):    
+    flag='';
+	
+    if(len(employee)>0 and len(assement_year)>0 and len(from_date)>0 and len(to_date)>0):
+        #employee="'"+employee+"'";
+        flag= frappe.db.sql("""select ifnull(sum(sd.amount),0)as convenience_allowance from `tabSalary Detail` sd 
+	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
+	where sd.salary_component='Convenience Allowance' and ss.employee={0} and 
+	ss.start_date between {1} and {2}; 
+        """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)		
+	
+     
+    dict = {'flag': ''
+           }
+    
+    dict['flag']=flag[0].cnt;
     return dict
