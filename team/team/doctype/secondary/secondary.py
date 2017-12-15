@@ -30,6 +30,7 @@ def make_stock_entry(year, month,stockist):
 @frappe.whitelist()
 def check_duplicate(year, month,stockist):
 	doc_name=year + "-" + month + "-" + stockist;
+	frappe.msgprint(_(doc_name));
 	cnt=0;
 	cnt=frappe.db.sql("""SELECT count(name) FROM tabSecondary where name like {0}""".format(doc_name));
 	if(cnt > 0):
