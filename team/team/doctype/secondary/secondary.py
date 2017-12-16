@@ -23,9 +23,10 @@ def check_duplicate(year, month,stockist):
 	#frappe.msgprint(_(doc_name));
 	#cnt=0;
 	#frappe.msgprint(_(frappe.db.sql("""SELECT count(name) FROM tabSecondary where name like {0}""".format("'"+doc_name+"'"))))
-	for c in frappe.db.sql("""SELECT count(name) as name FROM tabSecondary where name like {0}""".format("'"+doc_name+"'"));
+	for c in frappe.db.sql("""SELECT count(name) as name FROM tabSecondary where name like {0}""".format("'"+doc_name+"'")):
+		frappe.msgprint(_(c));
 	#if(cnt > 0):
-	frappe.msgprint(_(c));
+	
 	#frappe.msgprint(_(cnt));
 		
 	
