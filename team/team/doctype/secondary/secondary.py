@@ -13,16 +13,6 @@ from frappe.model.naming import make_autoname
 from frappe import _
 from frappe.model.mapper import get_mapped_doc
 
-
-
-
-@frappe.whitelist()
-def get_items1():
-	op="";
-	op=subprocess.call("(cd ~/home)", shell=True)
-	op=subprocess.call('ls');
-	frappe.msgprint(_(op));
-	
 @frappe.whitelist()
 def make_stock_entry(year, month,stockist):
 	frappe.msgprint(_("hello"));	
@@ -31,11 +21,11 @@ def make_stock_entry(year, month,stockist):
 def check_duplicate(year, month,stockist):
 	doc_name=year + "-" + month + "-" + stockist;
 	#frappe.msgprint(_(doc_name));
-	cnt=0;
+	#cnt=0;
 	#frappe.msgprint(_(frappe.db.sql("""SELECT count(name) FROM tabSecondary where name like {0}""".format("'"+doc_name+"'"))))
-	frappe.db.sql("""SELECT count(name) FROM tabSecondary where name like {0}""".format("'"+doc_name+"'"));
+	cnt=frappe.db.sql("""SELECT count(name) as name FROM tabSecondary where name like {0}""".format("'"+doc_name+"'"));
 	#if(cnt > 0):
-	#	frappe.msgprint(_("Secondary Data Already exist for  "+ doc_name));
+	frappe.msgprint(_(cnt[0].name));
 	#frappe.msgprint(_(cnt));
 		
 	
