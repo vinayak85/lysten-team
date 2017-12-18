@@ -149,8 +149,8 @@ frappe.ui.form.on('Secondary', {
 				//alert(r.message.count)
 				if(r.message.count==1)
 				{
-					alert("RRecord Already Exist..");
-					frappe.msgprint(_("Record Already Exist.."));	
+					//alert("RRecord Already Exist..");
+					frappe.msgprint(__('Message Sent'));	
 				}
 			}
 		}); 
