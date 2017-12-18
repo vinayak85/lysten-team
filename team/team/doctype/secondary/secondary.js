@@ -149,7 +149,7 @@ frappe.ui.form.on('Secondary', {
 				//alert(frm.doc.status);
 				var aa='';
 				frm.doc.forEach(function(ff, index) {
- 				 aa=aa+", "+ff);
+ 				 aa=aa+", "+ff;
 				});
 				frappe.msgprint(__(aa));
 				//alert(r.message.count)
