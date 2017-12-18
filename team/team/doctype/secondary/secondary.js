@@ -146,7 +146,11 @@ frappe.ui.form.on('Secondary', {
 				stockist: frm.doc.stockist
 			},
 			callback:function (r) {
-				alert(r.message.count)
+				//alert(r.message.count)
+				if(r.message.count==1)
+				{
+					frappe.msgprint(_("REcord Already Exist.."));	
+				}
 			}
 		}); 
 	 
