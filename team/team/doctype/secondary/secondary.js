@@ -150,7 +150,7 @@ frappe.ui.form.on('Secondary', {
 				if(r.message.count==1)
 				{
 					//alert("RRecord Already Exist..");
-					frappe.msgprint(__('Message Sent'));	
+					frappe.msgprint(__('Secondory Record Alredy Exist for '+ frm.doc.year+"-"+frm.doc.month+"-"+frm.doc.stockist));	
 				}
 			}
 		}); 
