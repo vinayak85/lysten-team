@@ -146,7 +146,7 @@ frappe.ui.form.on('Secondary', {
 				stockist: frm.doc.stockist
 			},
 			callback:function (r) {
-				alert(r.message[0].name)
+				alert(r.message)
 			}
 		}); 
 	 
