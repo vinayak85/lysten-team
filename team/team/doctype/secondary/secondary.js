@@ -117,7 +117,7 @@ frappe.ui.form.on('Secondary', {
 	}
 	});
 
-	frappe.ui.form.on("Secondary", {onload: function(frm) {
+	/*frappe.ui.form.on("Secondary", {onload: function(frm) {
 		frappe.ui.form.on("Secondary", "year", function(frm, cdt, cdn) 
 		{
 			
@@ -133,7 +133,7 @@ frappe.ui.form.on('Secondary', {
 			
             		change_select(frm);    
         	});          
-	}});
+	}});*/
 
 	function change_select(frm)
 	{
