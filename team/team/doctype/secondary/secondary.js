@@ -147,7 +147,7 @@ frappe.ui.form.on('Secondary', {
 			},
 			callback:function (r) {
 				//alert(frm.doc.status);
-				var aa=='';
+				var aa='';
 				frm.doc.forEach(function(ff, index) {
  				 aa=aa+", "+ff);
 				});
