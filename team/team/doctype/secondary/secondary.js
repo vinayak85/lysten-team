@@ -146,11 +146,12 @@ frappe.ui.form.on('Secondary', {
 				stockist: frm.doc.stockist
 			},
 			callback:function (r) {
+				alert(doc.status);
 				//alert(r.message.count)
 				if(r.message.count==1)
 				{
-					//alert("RRecord Already Exist..");
-					frappe.msgprint(__('Secondory Record Alredy Exist for '+ frm.doc.year+"-"+frm.doc.month+"-"+frm.doc.stockist));	
+					
+					//frappe.msgprint(__('Secondory Record Alredy Exist for '+ frm.doc.year+"-"+frm.doc.month+"-"+frm.doc.stockist));	
 				}
 			}
 		}); 
