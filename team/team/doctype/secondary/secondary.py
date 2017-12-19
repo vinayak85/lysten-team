@@ -45,12 +45,13 @@ def get_items(year, month,stockist):
 	#return frappe.db.sql("""SELECT name,item_name FROM 1bd3e0294da19198.tabItem
 	#where 1bd3e0294da19198.tabItem.used_for_secondary=1""", as_dict=1)
 	yearmonth="";
+	stockist_0=stockist;
 	stockist="'"+stockist+"'";
 	result=return_pre_month_year(year, month);
 	#frappe.msgprint(_(result.get('mm')));
 	#frappe.msgprint(_(result.get('yy')));
 	yearmonth="'"+year+"-"+return_month_in_number(month)+"%'";
-	prev_month_doc_name="'"+str(result.get('yy'))+"-"+result.get('mm')+"-"+stockist+"'";
+	prev_month_doc_name="'"+str(result.get('yy'))+"-"+result.get('mm')+"-"+stockist_0+"'";
 	 
 	return frappe.db.sql("""SELECT  tbl.item_name as name ,tbl.item_name as item_name,
 sum(tbl.qty) as qty, sum(tbl.f_qty) as f_qty,sum(tbl.tot_qty) as tot_qty ,
