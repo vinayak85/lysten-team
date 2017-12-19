@@ -140,6 +140,7 @@ def return_month_in_number(month):
 	pass
 
 def return_pre_month_year(year,month):
+	year=int(year);
 	if(month=="Jan"):
 		return {'mm': 'Dec', 'yy': year-1};
 	elif(month=="Feb"):
