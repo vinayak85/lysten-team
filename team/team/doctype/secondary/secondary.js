@@ -93,9 +93,9 @@ frappe.ui.form.on('Secondary', {
 							}
 							
 		                                 	
-							tbl1[ii]..opn_tot = r.message[i].close_tot;
-							tbl1[ii]..opn_qty = r.message[i].close_qty;
-							tbl1[ii]..opn_free = r.message[i].close_free;
+							tbl1[ii].opn_tot = r.message[i].close_tot;
+							tbl1[ii].opn_qty = r.message[i].close_qty;
+							tbl1[ii].opn_free = r.message[i].close_free;
 							
 		  			               	tbl1[ii].rec_tot = r.message[i].tot_qty;
 							tbl1[ii].rec_qty = r.message[i].qty;
