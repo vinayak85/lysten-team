@@ -39,7 +39,9 @@ def check_duplicate(year, month,stockist):
 	
 @frappe.whitelist()
 def get_items(year, month,stockist):
-	#frappe.msgprint(_("hii"));
+	result=return_pre_month_year(year, month);
+	frappe.msgprint(_(result.get('mm')));
+	frappe.msgprint(_(result.get('yy')));
 	#frappe.msgprint(_(frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])));
 	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])
 	#return frappe.db.sql("""SELECT name,item_name FROM 1bd3e0294da19198.tabItem
@@ -135,6 +137,34 @@ def return_month_in_number(month):
 		return "11";
 	elif(month=="Dec"):
 		return "12";
+	pass
+
+def return_pre_month_year(year,month):
+	if(month=="Jan"):
+		return {'mm': Dec, 'yy': year-1}";
+	elif(month=="Feb"):
+		return {'mm': Jan, 'yy': year}";
+	elif(month=="March"):
+		return {'mm': Feb, 'yy': year}";;
+	elif(month=="Apr"):
+		return {'mm': March, 'yy': year}";
+	elif(month=="May"):
+		return {'mm': Apr, 'yy': year}";
+	elif(month=="June"):
+		return {'mm': May, 'yy': year}";
+	elif(month=="July"):
+		return {'mm': June, 'yy': year}";
+	elif(month=="Aug"):
+		return {'mm': July, 'yy': year}";
+	elif(month=="Sep"):
+		return {'mm': Aug, 'yy': year}";
+	elif(month=="Oct"):
+		return {'mm': Sep, 'yy': year}";
+	elif(month=="Nov"):
+		return {'mm': Oct, 'yy': year}";
+	elif(month=="Dec"):
+		return {'mm': Nov, 'yy': year}";
+	
 
 
 	
