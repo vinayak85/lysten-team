@@ -50,7 +50,7 @@ def get_items(year, month,stockist):
 	#frappe.msgprint(_(result.get('mm')));
 	#frappe.msgprint(_(result.get('yy')));
 	yearmonth="'"+year+"-"+return_month_in_number(month)+"%'";
-	prev_month_doc_name=="'"+result.get('yy')+"-"+result.get('mm')+"-"+stockist+"'";
+	prev_month_doc_name="'"+result.get('yy')+"-"+result.get('mm')+"-"+stockist+"'";
 	 
 	return frappe.db.sql("""SELECT  tbl.item_name as name ,tbl.item_name as item_name,
 sum(tbl.qty) as qty, sum(tbl.f_qty) as f_qty,sum(tbl.tot_qty) as tot_qty ,
