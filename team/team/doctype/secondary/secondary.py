@@ -141,29 +141,29 @@ def return_month_in_number(month):
 
 def return_pre_month_year(year,month):
 	if(month=="Jan"):
-		return {'mm': Dec, 'yy': year-1}";
+		return {'mm': Dec, 'yy': year-1};
 	elif(month=="Feb"):
-		return {'mm': Jan, 'yy': year}";
+		return {'mm': Jan, 'yy': year};
 	elif(month=="March"):
-		return {'mm': Feb, 'yy': year}";;
+		return {'mm': Feb, 'yy': year};;
 	elif(month=="Apr"):
-		return {'mm': March, 'yy': year}";
+		return {'mm': March, 'yy': year};
 	elif(month=="May"):
-		return {'mm': Apr, 'yy': year}";
+		return {'mm': Apr, 'yy': year};
 	elif(month=="June"):
-		return {'mm': May, 'yy': year}";
+		return {'mm': May, 'yy': year};
 	elif(month=="July"):
-		return {'mm': June, 'yy': year}";
+		return {'mm': June, 'yy': year};
 	elif(month=="Aug"):
-		return {'mm': July, 'yy': year}";
+		return {'mm': July, 'yy': year};
 	elif(month=="Sep"):
-		return {'mm': Aug, 'yy': year}";
+		return {'mm': Aug, 'yy': year};
 	elif(month=="Oct"):
-		return {'mm': Sep, 'yy': year}";
+		return {'mm': Sep, 'yy': year};
 	elif(month=="Nov"):
-		return {'mm': Oct, 'yy': year}";
+		return {'mm': Oct, 'yy': year};
 	elif(month=="Dec"):
-		return {'mm': Nov, 'yy': year}";
+		return {'mm': Nov, 'yy': year};
 	
 
 
