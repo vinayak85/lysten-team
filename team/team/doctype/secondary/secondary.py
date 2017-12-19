@@ -39,17 +39,18 @@ def check_duplicate(year, month,stockist):
 	
 @frappe.whitelist()
 def get_items(year, month,stockist):
-	result=return_pre_month_year(year, month);
-	frappe.msgprint(_(result.get('mm')));
-	frappe.msgprint(_(result.get('yy')));
+	
 	#frappe.msgprint(_(frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])));
 	#return frappe.get_list('Item',filters=args['filters'], fields=['name', 'item_name'])
 	#return frappe.db.sql("""SELECT name,item_name FROM 1bd3e0294da19198.tabItem
 	#where 1bd3e0294da19198.tabItem.used_for_secondary=1""", as_dict=1)
 	yearmonth="";
 	stockist="'"+stockist+"'";
+	result=return_pre_month_year(year, month);
+	#frappe.msgprint(_(result.get('mm')));
+	#frappe.msgprint(_(result.get('yy')));
 	yearmonth="'"+year+"-"+return_month_in_number(month)+"%'";
-	
+	prev_month_doc_name=="'"+result.get('yy')+"-"+result.get('mm')+"-"+stockist+"'";
 	 
 	return frappe.db.sql("""SELECT  tbl.item_name as name ,tbl.item_name as item_name,
 sum(tbl.qty) as qty, sum(tbl.f_qty) as f_qty,sum(tbl.tot_qty) as tot_qty ,
@@ -57,14 +58,21 @@ sum(tbl.q_amt) as q_amt,(sum(tbl.f_amt)) as f_amt,
 avg(tbl.avg_rate) as avg_rate,
 sum(tbl.cr_qty) as cr_qty, sum(tbl.cr_f_qty) as cr_f_qty,sum(tbl.cr_tot_qty) as cr_tot_qty,
 sum(tbl.cr_q_amt) as cr_q_amt,(sum(tbl.cr_f_amt)) as cr_f_amt,
-avg(tbl.cr_avg_rate) as cr_avg_rate from
+avg(tbl.cr_avg_rate) as cr_avg_rate,
+sum(tbl.close_tot) as close_tot,
+sum(tbl.close_qty) as close_qty,
+sum(tbl.close_free) as close_free
+from
 (select  t_i.name as item_name,
 0 as qty, 0 as f_qty,0 as tot_qty,
 0 as q_amt,0 as f_amt,
 0 as avg_rate,
 0 as cr_qty, 0 as cr_f_qty,0 as cr_tot_qty,
 0 as cr_q_amt,0 as cr_f_amt,
-0 as cr_avg_rate
+0 as cr_avg_rate,
+0 as close_tot,
+0 as close_qty,
+0 as close_free
 from tabItem as t_i
 where t_i.used_for_secondary=1
 group by  t_i.item_name
@@ -76,7 +84,10 @@ sum(t_sit.base_net_amount) as q_amt,(sum(t_sit.free_quantity)*avg(t_sit.base_net
 avg(t_sit.base_net_rate) as avg_rate,
 0 as cr_qty, 0 as cr_f_qty,0 as cr_tot_qty,
 0 as cr_q_amt,0 as cr_f_amt,
-avg(t_sit.base_net_rate) as cr_avg_rate
+avg(t_sit.base_net_rate) as cr_avg_rate,
+0 as close_tot,
+0 as close_qty,
+0 as close_free
 from tabItem as t_i
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice Item` as t_sit
 on t_i.`name`=t_sit.`item_name`
@@ -96,7 +107,10 @@ select  t_i.name as item_name,
 0 as avg_rate,
 sum(t_sit.qty) as cr_qty, sum(t_sit.free_quantity) as cr_f_qty,(sum(t_sit.qty) +sum(t_sit.free_quantity)) as cr_tot_qty,
 sum(t_sit.base_net_amount) as cr_q_amt,(sum(t_sit.free_quantity)*avg(t_sit.base_net_rate)) as cr_f_amt,
-avg(t_sit.base_net_rate) as cr_avg_rate
+avg(t_sit.base_net_rate) as cr_avg_rate,
+0 as close_tot,
+0 as close_qty,
+0 as close_free
 from tabItem as t_i
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice Item` as t_sit
 on t_i.`name`=t_sit.`item_name`
@@ -106,11 +120,26 @@ where t_i.used_for_secondary=1
 and t_si.`posting_date` like {0}
 and t_si.`customer`={1}
 and t_si.`name` like 'SR-0%'
-group by  t_i.item_name) 
+group by  t_i.item_name
+
+union 
+
+select item_code as item_name,
+0 as qty, 0 as f_qty,0 as tot_qty,
+0 as q_amt,0 as f_amt,
+0 as avg_rate,
+0 as cr_qty, 0 as cr_f_qty,0 as cr_tot_qty,
+0 as cr_q_amt,0 as cr_f_amt,
+0 as cr_avg_rate,
+ifnull(close_tot,0) as close_tot,
+ifnull(close_qty,0) as close_qty,
+ifnull(close_free,0) as close_free
+ from tabsec_item_qty as t_sitem
+ where parent={2}) 
 as tbl
 group by   tbl.item_name
 order by tbl.item_name
-""".format(yearmonth,stockist), as_dict=1);
+""".format(yearmonth,stockist,prev_month_doc_name), as_dict=1);
 
 def return_month_in_number(month):
 	if(month=="Jan"):
