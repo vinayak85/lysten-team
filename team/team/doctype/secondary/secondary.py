@@ -145,7 +145,7 @@ def return_pre_month_year(year,month):
 	elif(month=="Feb"):
 		return {'mm': Jan, 'yy': year};
 	elif(month=="March"):
-		return {'mm': Feb, 'yy': year};;
+		return {'mm': Feb, 'yy': year};
 	elif(month=="Apr"):
 		return {'mm': March, 'yy': year};
 	elif(month=="May"):
