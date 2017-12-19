@@ -133,7 +133,7 @@ frappe.ui.form.on('Secondary', {
 			
             		change_select(frm);    
         	});          
-	}});*/
+	}});
 
 	function change_select(frm)
 	{
@@ -161,7 +161,7 @@ frappe.ui.form.on('Secondary', {
 			}
 		}); 
 	 
-	}
+	}*/
 
 	
 	test= function(frm,check_item_name) {
