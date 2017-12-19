@@ -129,7 +129,7 @@ def return_month_in_number(month):
 		return "07";
 	elif(month=="Aug"):
 		return "08";
-	elif(month=="Sep"):
+	elif(month=="Sept"):
 		return "09";
 	elif(month=="Oct"):
 		return "10";
@@ -157,10 +157,10 @@ def return_pre_month_year(year,month):
 		return {'mm': 'June', 'yy': year};
 	elif(month=="Aug"):
 		return {'mm': 'July', 'yy': year};
-	elif(month=="Sep"):
+	elif(month=="Sept"):
 		return {'mm': 'Aug', 'yy': year};
 	elif(month=="Oct"):
-		return {'mm': 'Sep', 'yy': year};
+		return {'mm': 'Sept', 'yy': year};
 	elif(month=="Nov"):
 		return {'mm': 'Oct', 'yy': year};
 	elif(month=="Dec"):
