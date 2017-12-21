@@ -46,8 +46,8 @@ frappe.ui.form.on('Secondary', {
 					        {
 						
 						var row = frappe.model.add_child(frm.doc, frm.fields_dict.sec_items_qty.df.options, frm.fields_dict.sec_items_qty.df.fieldname);
-						row.item_code = r.message[i].name;
-						row.item_code = r.message[i].item_name;
+						row.item_code2 = r.message[i].name;
+						row.item_code2 = r.message[i].item_name;
 						
 						var avg_sell_rate=r.message[i].avg_rate
 						var avg_credit_rate=r.message[i].cr_avg_rate
@@ -181,7 +181,7 @@ frappe.ui.form.on('Secondary', {
 		//var total_earn = 0; var total_ded = 0;
 	        for(var i = 0; i < tbl1.length; i++)
 		{
-			if(check_item_name==tbl1[i].item_code)
+			if(check_item_name==tbl1[i].item_code2)
 				flag=false;;
 			
 		  //strr=strr+" ... "+ tbl1[i].item_code;
@@ -198,7 +198,7 @@ frappe.ui.form.on('Secondary', {
 		//var total_earn = 0; var total_ded = 0;
 	        for(var i = 0; i < tbl1.length; i++)
 		{
-			if(check_item_name==tbl1[i].item_code)
+			if(check_item_name==tbl1[i].item_code2)
 				return i;
 			
 		  //strr=strr+" ... "+ tbl1[i].item_code;
