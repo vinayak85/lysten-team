@@ -32,13 +32,19 @@ def form16_package(employee):
     return dict
 
 @frappe.whitelist()
-def form16_allowance(employee,from_date,to_date):    
+def form16_allowance(employee,from_date,to_date):
+    paid_month_count='';
     allowance='';
     prof_tax='';
     prov_fund='';
 	
     if(len(employee)>0):
         #employee="'"+employee+"'";
+	
+        paid_month_count= frappe.db.sql("""select  ifnull(count(name),0)as paid_month_count from `tabSalary Slip` where
+	employee={0} and start_date between {1} and {2} and end_date between {1} and {2} ;
+	""".format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
+	
         allowance= frappe.db.sql("""select ifnull(sum(sd.amount),0)as convenience_allowance from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
 	where sd.salary_component='Convenience Allowance' and ss.employee={0} and 
@@ -58,11 +64,13 @@ def form16_allowance(employee,from_date,to_date):
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
 	
      
-    dict = {'con_allow': '',
+    dict = {'paid_month_count':'',
+	    'con_allow': '',
             'prof_tax': '',
 	    'prov_fund': ''
            }
     
+    dict['paid_month_count']=paid_month_count[0].paid_month_count;
     dict['con_allow']=allowance[0].convenience_allowance;
     dict['prof_tax']=prof_tax[0].professional_tax;
     dict['prov_fund']=prov_fund[0].provident_fund;
