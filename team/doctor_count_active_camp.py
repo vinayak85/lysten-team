@@ -17,7 +17,8 @@ def count_active_camp_doctors(employee):
     #flag_camp='0'
     flag_action='0';
     msg='';
-    active1 = 125;
+    #active1 = 125;
+    active1 = 80;
     active2 = 80;
     campp = 40;
     
