@@ -11,6 +11,17 @@ frappe.ui.form.on('Secondary', {
 			function() { frm.trigger('test'); }, "fa fa-sitemap", "btn-default");
 
 	},
+	onload: function(frm) {
+		
+		frappe.ui.form.on("Secondary", "year", function(frm, cdt, cdn) 
+		{
+			alert("hello");
+			//frm.set_value("sec_items_qty[0].value_tot","200");
+			//frappe.model.set_value("Secondary", "sec_items_qty[0]", "value_tot", "100");
+			//change_select(frm);
+		});
+
+	},
 	test:function (frm) {
 		
 		frappe.call({
