@@ -21,6 +21,7 @@ frappe.ui.form.on('Secondary', {
 			//change_select(frm);
 			var tbl1 = frm.doc.sec_items_qty || [];
 			 tbl1[0].opn_tot =tbl1[0].opn_tot +2;
+			frm.refresh_field('sec_items_qty');
 			
 		});
 
