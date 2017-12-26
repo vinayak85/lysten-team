@@ -214,7 +214,7 @@ class Secondary(Document):
 		frappe.rename_doc(self.doctype,self.name,new_name)
         duplicate_pos=self.test()
 	if(duplicate_pos>=0):
-		frappe.throw(_("Duplicate Item "+self.sec_items_qty[duplicate_pos].item_code2)))
+		frappe.throw(_("Duplicate Item "+self.sec_items_qty[duplicate_pos].item_code2))
 	
 
     def test(self):
