@@ -125,11 +125,13 @@ frappe.ui.form.on('Secondary', {
 	}
 	});
 
-	/*frappe.ui.form.on("Secondary", {onload: function(frm) {
+	frappe.ui.form.on("Secondary", {onload: function(frm) {
 		frappe.ui.form.on("Secondary", "year", function(frm, cdt, cdn) 
 		{
-			
-			change_select(frm);
+			tbl1[0].opn_tot = 1+tbl1[0].opn_tot;
+			//frm.set_value("sec_items_qty[0].value_tot","200");
+			//frappe.model.set_value("Secondary", "sec_items_qty[0]", "value_tot", "100");
+			//change_select(frm);
 		});
 		frappe.ui.form.on("Secondary", "month", function(frm, cdt, cdn)  
 		{
@@ -138,15 +140,23 @@ frappe.ui.form.on('Secondary', {
 		});        
 		frappe.ui.form.on("Secondary", "stockist", function(frm, cdt, cdn)  
 		{
-			
-            		change_select(frm);    
-        	});          
-	}});
+			check_duplicate_item(frm);
+            		//change_select(frm);    
+        	});  
+		frappe.ui.form.on("sec_item_qty", "close_tot", function(frm, cdt, cdn)  
+		{
+			calculate_item_row(frm);
+        	});
 
-	function change_select(frm)
+	}});          
+
+	change_select=function (frm)
 	{
-		//alert(frm.doc.year+"---"+frm.doc.month+"----"+frm.doc.stockist);
-		frappe.call({
+		old_name=frm.doc.name;
+		new_name=frm.doc.year+"-"+frm.doc.month+"-"+frm.doc.stockist
+		if(old_name!=new_name)
+		{
+		     frappe.call({
 			method:'team.team.doctype.secondary.secondary.check_duplicate',
 			args:{
 				year: frm.doc.year,
@@ -154,22 +164,27 @@ frappe.ui.form.on('Secondary', {
 				stockist: frm.doc.stockist
 			},
 			callback:function (r) {
-				//alert(frm.doc.status);
-				var aa='';
-				frm.doc.forEach(function(ff, index) {
- 				 aa=aa+", "+ff;
-				});
-				frappe.msgprint(__(aa));
-				//alert(r.message.count)
+				
+				
 				if(r.message.count==1)
-				{
-					
-					//frappe.msgprint(__('Secondory Record Alredy Exist for '+ frm.doc.year+"-"+frm.doc.month+"-"+frm.doc.stockist));	
+				{					
+				frappe.msgprint(__('Secondory Record Alredy Exist for '+ 	
+                                              frm.doc.year+"-"+frm.doc.month+"-"+frm.doc.stockist));	
 				}
 			}
-		}); 
+		      }); 
+		}
+		else
+		{
+			//alert("not changed");
+		}
+		/*//alert(frm.doc.year+"---"+frm.doc.month+"----"+frm.doc.stockist);
+		*/
 	 
-	}*/
+	};
+
+
+
 
 	
 	test= function(frm,check_item_name) {
