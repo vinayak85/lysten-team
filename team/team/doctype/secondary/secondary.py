@@ -212,7 +212,7 @@ class Secondary(Document):
 	new_name = self.year + "-" + self.month + "-" + self.stockist;
 	if self.name != new_name and not self.is_new():
 		frappe.rename_doc(self.doctype,self.name,new_name)
-        test();
+        self.test();
 
     def test():
 	cnt=0
