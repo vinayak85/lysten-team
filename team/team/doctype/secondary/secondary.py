@@ -221,7 +221,7 @@ class Secondary(Document):
 	if cnt>0:
 		count = 0
 		while count < cnt:
-			frappe.msgprint(_(self.sec_items_qty.item_code2))
+			frappe.msgprint(_(self.sec_items_qty[count].item_code2))
 			count += 1
 			
 	
