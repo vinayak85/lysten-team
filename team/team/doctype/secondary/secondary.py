@@ -214,7 +214,7 @@ class Secondary(Document):
 		frappe.rename_doc(self.doctype,self.name,new_name)
         self.test();
 
-    def test():
+    def test(self):
 	cnt=0
 	for d in self.doc.sec_item_qty:
 		cnt=cnt+1
