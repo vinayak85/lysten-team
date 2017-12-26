@@ -125,7 +125,7 @@ group by  t_i.item_name
 
 union 
 
-select item_code as item_name,
+select item_code2 as item_name,
 0 as qty, 0 as f_qty,0 as tot_qty,
 0 as q_amt,0 as f_amt,
 0 as avg_rate,
