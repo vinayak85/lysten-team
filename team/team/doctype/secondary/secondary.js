@@ -180,8 +180,8 @@ frappe.ui.form.on('Secondary', {
 		{
 			//alert("not changed");
 		}
-		/*//alert(frm.doc.year+"---"+frm.doc.month+"----"+frm.doc.stockist);
-		*/
+		//alert(frm.doc.year+"---"+frm.doc.month+"----"+frm.doc.stockist);
+		
 	 
 	};
 
