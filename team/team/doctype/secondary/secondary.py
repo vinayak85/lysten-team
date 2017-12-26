@@ -212,8 +212,9 @@ class Secondary(Document):
 	new_name = self.year + "-" + self.month + "-" + self.stockist;
 	if self.name != new_name and not self.is_new():
 		frappe.rename_doc(self.doctype,self.name,new_name)
-        if(self.test()==false):
-		frappe.throw(_("Duplicate Items ..Please Check before save"))
+        #if(self.test()==false):
+	#	frappe.throw(_(self.test()))
+	frappe.msgprint(_(self.test()))
 
     def test(self):
 	cnt=0
