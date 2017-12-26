@@ -217,8 +217,8 @@ class Secondary(Document):
     def test(self):
 	cnt=0
 	for d in self.doc.sec_item_qty:
-		cnt++;
-	frappe.msgprint(_(cnt));
+		cnt++
+	frappe.msgprint(_(cnt))
 	
 
 
