@@ -224,8 +224,8 @@ class Secondary(Document):
 		count1=count+1
 		while count1 < cnt:
 			#frappe.msgprint(_(self.sec_items_qty[count].item_code2))
-			if((self.sec_items_qty[count].item_code2)==(self.sec_items_qty[count1].item_code2))
-			return false;
+			if((self.sec_items_qty[count].item_code2)==(self.sec_items_qty[count1].item_code2)):
+				return false;
 			#frappe.msgprint(_( str(count)+","+str(count1)))
 			count1 += 1
 		count += 1	
