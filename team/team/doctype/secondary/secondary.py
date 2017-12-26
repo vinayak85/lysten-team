@@ -212,11 +212,13 @@ class Secondary(Document):
 	new_name = self.year + "-" + self.month + "-" + self.stockist;
 	if self.name != new_name and not self.is_new():
 		frappe.rename_doc(self.doctype,self.name,new_name)
-        #if(self.test()==false):
-	#	frappe.throw(_(self.test()))
-	frappe.msgprint(_(self.test()))
+        duplicate_pos=self.test()
+	if(duplicate_pos>=0):
+		frappe.throw(_("Duplicate Item "+self.sec_items_qty[count].item_code2)))
+	
 
     def test(self):
+	duplicate_pos=-1;
 	cnt=0
 	for d in self.sec_items_qty:
 		cnt=cnt+1
@@ -226,10 +228,13 @@ class Secondary(Document):
 		while count1 < cnt:
 			#frappe.msgprint(_(self.sec_items_qty[count].item_code2))
 			if((self.sec_items_qty[count].item_code2)==(self.sec_items_qty[count1].item_code2)):
-				return False;
+				duplicate_pos=count;
+				
 			#frappe.msgprint(_( str(count)+","+str(count1)))
 			count1 += 1
-		count += 1	
+		count += 1
+	
+	return duplicate_pos;
 	
 			
 	
