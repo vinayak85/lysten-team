@@ -218,7 +218,13 @@ class Secondary(Document):
 	cnt=0
 	for d in self.sec_items_qty:
 		cnt=cnt+1
-	frappe.msgprint(_(cnt))
+	if cnt>0:
+		count = 0
+		while count < cnt:
+			frappe.msgprint(_(count))
+			count += 1
+			
+	
 	
 
 
