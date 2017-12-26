@@ -218,11 +218,15 @@ class Secondary(Document):
 	cnt=0
 	for d in self.sec_items_qty:
 		cnt=cnt+1
-	if cnt>0:
-		count = 0
-		while count < cnt:
-			frappe.msgprint(_(self.sec_items_qty[count].item_code2))
-			count += 1
+	count=0
+	while count < cnt:
+		count1=count+1
+		while count1 < cnt:
+			#frappe.msgprint(_(self.sec_items_qty[count].item_code2))
+			frappe.msgprint(_( count+","+count1))
+			count1 += 1
+		count += 1	
+	
 			
 	
 	
