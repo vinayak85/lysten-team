@@ -116,13 +116,13 @@ frappe.ui.form.on('Secondary', {
 							tbl1[ii].rec_qty = r.message[i].qty;
 							tbl1[ii].rec_free = r.message[i].f_qty;
 						
-							tbl1[ii].credit_note_tot = r.message[i].cr_tot_qty;
-							tbl1[ii].credit_note_qty = r.message[i].cr_qty;
-							tbl1[ii].credit_note_free = r.message[i].cr_f_qty;
+							tbl1[ii].credit_note_tot = r.message[i].cr_q_amt;
+							tbl1[ii].credit_note_qty = r.message[i].cr_q_amt;
+							tbl1[ii].credit_note_free = r.message[i].cr_f_amt;
 					
-							tbl1[ii].value_sale_tot = r.message[i].f_amt;
-							tbl1[ii].value_sale_qty = r.message[i].f_amt;
-							tbl1[ii].value_sale_free = r.message[i].f_qty*tbl1[ii].item_rate;
+							tbl1[ii].value_sale_tot = r.message[i].q_amt;
+							tbl1[ii].value_sale_qty = r.message[i].q_amt;
+							tbl1[ii].value_sale_free = r.message[i].f_amt;
 							/*alert('mmm:'+ r.message[i].item_name+'nnn:'+ r.message[i].item_name);*/
 								
 						
