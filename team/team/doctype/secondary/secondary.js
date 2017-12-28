@@ -4,8 +4,7 @@
 frappe.ui.form.on('Secondary', {
 	refresh: function(frm) {
 		
-		var df = document.getElementsByClassName("btn btn-xs btn-default grid-add-row")[0];   
-   		 df.style.display = 'none';
+		
 		frm.add_custom_button(__("Recalculate Secondary"),
 			function() { frm.trigger('get_items_all'); }, "fa fa-sitemap", "btn-default");
 		
