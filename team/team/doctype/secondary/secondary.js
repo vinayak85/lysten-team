@@ -90,6 +90,11 @@ frappe.ui.form.on('Secondary', {
 						//row.value_sale_tot = r.message[i].q_amt;
 						//row.value_sale_qty = r.message[i].q_amt;
 						//row.value_sale_free = r.message[i].f_amt;
+							
+						if((row.rec_tot+row.opn_tot)=0)
+						{
+							row.close_tot=0;
+						}
 						
 						}
 					        else
@@ -121,6 +126,10 @@ frappe.ui.form.on('Secondary', {
 							tbl1[ii].value_credit_note_qty = r.message[i].cr_q_amt;
 							tbl1[ii].value_credit_note_free = r.message[i].cr_f_amt;
 					
+							if((tbl1[ii].rec_tot+tbl1[ii].opn_tot)=0)
+							{
+							tbl1[ii].close_tot=0;
+							}
 							//tbl1[ii].value_sale_tot = r.message[i].q_amt;
 							//tbl1[ii].value_sale_qty = r.message[i].q_amt;
 							//tbl1[ii].value_sale_free = r.message[i].f_amt;
