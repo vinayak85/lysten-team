@@ -72,19 +72,9 @@ def lock_transaction_forms(employee,formname,date):
     today_date = frappe.utils.data.get_datetime().strftime('%Y-%m-%d')
     current_time = local_time()
     temp_flag=''
-    msg='' 
+    msg=''
     
-    temp1=''
-    temp2=''
-    call_flag=0;
-        
     #frappe.msgprint(_(formname))
-    
-    if(len(formname)>5):
-        temp1=formname[:5]
-        temp2=formname[:-(len(formname)-5)]
-        formname=temp1
-        call_flag=frappe.db.sql(""" select  allow_calls_without_location as call_flag from 1bd3e0294da19198.`tabDoctor Master` where name= {0} """.format(temp2), as_dict=1)               
     
     if(formname == 'T_Obj'):
         a='a'
@@ -539,16 +529,12 @@ def lock_transaction_forms(employee,formname,date):
             
            
     dict = {'lock_flag': '',
-            'message': '',
-            'call_flag':0
+            'message': ''
            }
     
     dict['lock_flag'] = lock_flag;
     dict['message'] = msg;
-    
-    if formname == 'T_DrC':
-        dict['call_flag'] =call_flag=[0].call_flag;    
-    
+
     return dict    
       
     
