@@ -45,12 +45,14 @@ def get_items(year, month,stockist):
 	#return frappe.db.sql("""SELECT name,item_name FROM 1bd3e0294da19198.tabItem
 	#where 1bd3e0294da19198.tabItem.used_for_secondary=1""", as_dict=1)
 	yearmonth="";
+	yearmonth_27="";
 	stockist_0=stockist;
 	stockist="'"+stockist+"'";
 	result=return_pre_month_year(year, month);
 	#frappe.msgprint(_(result.get('mm')));
 	#frappe.msgprint(_(result.get('yy')));
 	yearmonth="'"+year+"-"+return_month_in_number(month)+"%'";
+	yearmonth_27="'"+year+"-"+return_month_in_number(month)+"-27'";
 	prev_month_doc_name="'"+str(result.get('yy'))+"-"+result.get('mm')+"-"+stockist_0+"'";
 	 
 	return frappe.db.sql("""SELECT  tbl.item_name as name ,tbl.item_name as item_name,
@@ -64,7 +66,20 @@ sum(tbl.close_tot) as close_tot,
 sum(tbl.close_qty) as close_qty,
 sum(tbl.close_free) as close_free
 from
-(select  t_i.name as item_name,
+(SELECT item_code as item_name,
+0 as qty, 0 as f_qty,0 as tot_qty,
+0 as q_amt,0 as f_amt,
+price as avg_rate,
+0 as cr_qty, 0 as cr_f_qty,0 as cr_tot_qty,
+0 as cr_q_amt,0 as cr_f_amt,
+0 as cr_avg_rate,
+0 as close_tot,
+0 as close_qty,
+0 as close_free FROM 1bd3e0294da19198.`tabPricing Rule`
+WHERE name like 'GST pri%'
+and valid_from<={3} and valid_upto>={3}
+union
+select  t_i.name as item_name,
 0 as qty, 0 as f_qty,0 as tot_qty,
 0 as q_amt,0 as f_amt,
 0 as avg_rate,
@@ -140,7 +155,7 @@ ifnull(close_free,0) as close_free
 as tbl
 group by   tbl.item_name
 order by tbl.item_name
-""".format(yearmonth,stockist,prev_month_doc_name), as_dict=1);
+""".format(yearmonth,stockist,prev_month_doc_name,yearmonth_27), as_dict=1);
 
 def return_month_in_number(month):
 	if(month=="Jan"):
