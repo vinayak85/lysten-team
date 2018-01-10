@@ -112,9 +112,7 @@ frappe.ui.form.on('Secondary', {
 							var tbl1 = frm.doc.sec_items_qty || [];
 							ii=test1(frm,r.message[i].item_name);
 							
-							tbl1[ii].opn_tot = 0;
-							tbl1[ii].opn_qty = 0;
-							tbl1[ii].opn_free =0;
+							
 							
 							tbl1[ii].sale_tot = 0;
 							tbl1[ii].sale_qty = 0;
