@@ -113,7 +113,7 @@ frappe.ui.form.on('Secondary', {
 							ii=test1(frm,r.message[i].item_name);
 							
 							
-							
+							/*
 							tbl1[ii].sale_tot = 0;
 							tbl1[ii].sale_qty = 0;
 							tbl1[ii].sale_free = 0;
@@ -124,7 +124,7 @@ frappe.ui.form.on('Secondary', {
 							
 							tbl1[ii].rec_tot =0;
 							tbl1[ii].rec_qty = 0;
-							tbl1[ii].rec_free = 0;
+							tbl1[ii].rec_free = 0;*/
 							
 							var avg_sell_rate=r.message[i].avg_rate
 							var avg_credit_rate=r.message[i].cr_avg_rate
