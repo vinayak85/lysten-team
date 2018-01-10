@@ -110,7 +110,7 @@ on t_i.`name`=t_sit.`item_name`
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice` as t_si
 on t_si.`name`=t_sit.`parent`
 where t_i.used_for_secondary=1
-and t_si.`posting_date` like {0}
+and t_si.`customer_received_date` like {0}
 and t_si.`customer`={1}
 and t_si.`name` like 'SI-%'
 group by  t_i.item_name
@@ -133,7 +133,7 @@ on t_i.`name`=t_sit.`item_name`
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice` as t_si
 on t_si.`name`=t_sit.`parent`
 where t_i.used_for_secondary=1
-and t_si.`posting_date` like {0}
+and t_si.`customer_received_date` like {0}
 and t_si.`customer`={1}
 and t_si.`name` like 'SR-0%'
 group by  t_i.item_name
