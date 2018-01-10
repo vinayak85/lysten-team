@@ -87,6 +87,10 @@ frappe.ui.form.on('Secondary', {
 						row.value_credit_note_qty = r.message[i].cr_q_amt;
 						row.value_credit_note_free = r.message[i].cr_f_amt;
 					
+						row.sale_tot = 0;
+						row.sale_qty = 0;
+						row.Free = 0;
+							
 						//row.value_sale_tot = r.message[i].q_amt;
 						//row.value_sale_qty = r.message[i].q_amt;
 						//row.value_sale_free = r.message[i].f_amt;
