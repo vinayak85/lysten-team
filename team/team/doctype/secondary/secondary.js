@@ -253,3 +253,57 @@ frappe.ui.form.on('Secondary', {
 		
 	};
 
+	calculate_item_rows=function (frm)
+	{
+		var tbl1 = frm.doc.sec_items_qty || [];
+		for(var i = 0; i < tbl1.length; i++)
+		{
+			//var item = frappe.get_doc(cdt, cdn);
+			var opening=0;
+			var closing=0;
+			var rec=0;
+			var sale=0;
+			var item_rate=0;
+			var val_closing_total=0;
+			var val_sale_total=0;
+			var credit_note=0;
+
+			
+			opening=tbl1[i].opn_tot || 0;
+			closing=tbl1[i].close_tot || 0;
+			rec=tbl1[i].rec_tot || 0;
+			sale=((opening+rec)-closing)  || 0;
+			item_rate=tbl1[i].item_rate || 0;
+			var val_closing_total=closing * item_rate;
+			val_sale_total=sale * item_rate|| 0;
+			credit_note=tbl1[i].credit_note_tot || 0;
+
+ 			//alert(((opening+rec)-closing)*item.item_rate);
+
+			
+			tbl1[i].sale_tot =sale;
+			tbl1[i].sale_qty =((tbl1[i].opn_qty+tbl1[i].rec_qty)-tbl1[i].close_qty)  || 0;
+			tbl1[i].sale_free =((tbl1[i].opn_free+tbl1[i].rec_free)-tbl1[i].close_free)  || 0;
+			tbl1[i].value_closing_tot=val_closing_total;
+			tbl1[i].value_closing_qty=tbl1[i].close_qty*tbl1[i].item_rate;
+			tbl1[i].value_closing_free=tbl1[i].close_free*tbl1[i].item_rate;
+			
+			tbl1[i].value_sale_tot=tbl1[i].sale_tot*tbl1[i].item_rate;
+			tbl1[i].value_sale_qty=tbl1[i].sale_qty*tbl1[i].item_rate;                                
+			tbl1[i].value_sale_free=tbl1[i].value_sale_tot-tbl1[i].value_sale_qty;
+			
+
+			tbl1[i].value_final_sale_tot=tbl1[i].value_sale_tot-tbl1[i].value_credit_note_tot;
+			tbl1[i].value_final_sale_qty=tbl1[i].value_sale_qty-tbl1[i].value_credit_note_qty;
+			tbl1[i].value_final_sale_free=tbl1[i].value_sale_free-tbl1[i].value_credit_note_free;
+			
+			
+		}
+			
+			
+	frm.refresh_field('sec_items_qty');
+
+			
+		  
+	};
+
