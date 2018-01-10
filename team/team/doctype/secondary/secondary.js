@@ -5,11 +5,11 @@ frappe.ui.form.on('Secondary', {
 	refresh: function(frm) {
 		
 		
-		frm.add_custom_button(__("Recalculate Secondary"),
+		frm.add_custom_button(__("clear and Recalculate Secondary"),
 			function() { frm.trigger('get_items_all'); }, "fa fa-sitemap", "btn-default");
 		
-		frm.add_custom_button(__("test"),
-			function() { frm.trigger('test'); }, "fa fa-sitemap", "btn-default");
+		/*frm.add_custom_button(__("test"),
+			function() { frm.trigger('test'); }, "fa fa-sitemap", "btn-default");*/
 
 	},
 	/*onload: function(frm) {
