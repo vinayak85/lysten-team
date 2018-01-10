@@ -106,7 +106,7 @@ max(t_sit.base_net_rate) as cr_avg_rate,
 0 as close_free
 from tabItem as t_i
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice Item` as t_sit
-on t_i.`name`=t_sit.`item_name`
+on t_i.`name`=t_sit.`item_code`
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice` as t_si
 on t_si.`name`=t_sit.`parent`
 where t_i.used_for_secondary=1
@@ -129,7 +129,7 @@ max(t_sit.base_net_rate) as cr_avg_rate,
 0 as close_free
 from tabItem as t_i
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice Item` as t_sit
-on t_i.`name`=t_sit.`item_name`
+on t_i.`name`=t_sit.`item_code`
 LEFT OUTER JOIN 1bd3e0294da19198.`tabSales Invoice` as t_si
 on t_si.`name`=t_sit.`parent`
 where t_i.used_for_secondary=1
