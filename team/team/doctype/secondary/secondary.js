@@ -58,7 +58,13 @@ frappe.ui.form.on('Secondary', {
 				for (var i=0; i< r.message.length; i++) {
 					
 					if (sec_items_qty.indexOf(r.message[i].name) === -1) {
+						row.close_qty=0;
+						row.close_free=0;
 						
+							
+						
+						row.sale_qty = 0;
+						row.sale_free = 0;
 					        if(test(frm,r.message[i].item_name) != false)
 					        {
 						
