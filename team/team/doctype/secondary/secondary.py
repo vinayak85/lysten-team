@@ -234,7 +234,7 @@ class Secondary(Document):
 		frappe.msgprint(_(self.amended_from));
 		
 		frappe.msgprint(_("docstatus: "+str(self.docstatus)));
-		frappe.msgprint(_("_doc_before_save: "+sstr(elf._doc_before_save)));
+		frappe.msgprint(_("_doc_before_save: "+str(elf._doc_before_save)));
 		frappe.msgprint(_("_seen: "+str(self._seen)));
 		frappe.msgprint(_("idx: "+str(self.idx)));
 		frappe.msgprint(_("_action: "+str(self._action)));
