@@ -216,6 +216,7 @@ def return_pre_month_year(year,month):
 	
 class Secondary(Document):
     def autoname(self):
+	frappe.msgprint(_("dd"));
         self.name = self.year + "-" + self.month + "-" + self.stockist;
 	
 
