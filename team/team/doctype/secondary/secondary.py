@@ -230,7 +230,7 @@ class Secondary(Document):
 	if(duplicate_pos>=0):
 		frappe.throw(_("Duplicate Item "+self.sec_items_qty[duplicate_pos].item_code2))
 	else:
-		if not self.amended_from):
+		if not self.amended_from:
 			frappe.msgprint(_("not"));
 			pass;
 		else:
