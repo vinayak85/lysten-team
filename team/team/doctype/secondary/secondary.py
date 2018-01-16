@@ -231,13 +231,15 @@ class Secondary(Document):
 		frappe.throw(_("Duplicate Item "+self.sec_items_qty[duplicate_pos].item_code2))
 	else:
 		
-		frappe.msgprint(_(self.amended_from));
+		if len(self.amended_from)=0:
+			frappe.msgprint(_("not"));
+			pass;
+		else:
+			frappe.msgprint(_("amm"));
+			pass;
 		
-		frappe.msgprint(_("docstatus: "+str(self.docstatus)));
-		frappe.msgprint(_("_doc_before_save: "+str(self._doc_before_save)));
-		frappe.msgprint(_("_seen: "+str(self._seen)));
-		frappe.msgprint(_("idx: "+str(self.idx)));
-		frappe.msgprint(_("_action: "+str(self._action)));
+			
+		
 		#new_name = self.year + "-" + self.month + "-" + self.stockist;
 		#if self.name != new_name and not self.is_new():
 		#	frappe.rename_doc(self.doctype,self.name,new_name)
