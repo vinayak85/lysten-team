@@ -216,7 +216,7 @@ def return_pre_month_year(year,month):
 	
 class Secondary(Document):
     def autoname(self):
-	frappe.msgprint(_("dd"));
+	
         self.name = self.year + "-" + self.month + "-" + self.stockist;
 	
 
@@ -225,11 +225,12 @@ class Secondary(Document):
 
         
     def validate(self):
-	frappe.msgprint(_("dd"));
+	
         duplicate_pos=self.check_any_duplicate_item() # vin return -1 if not duplicate else return greater than 0
 	if(duplicate_pos>=0):
 		frappe.throw(_("Duplicate Item "+self.sec_items_qty[duplicate_pos].item_code2))
 	else:
+		frappe.msgprint(_(self));
 		new_name = self.year + "-" + self.month + "-" + self.stockist;
 		if self.name != new_name and not self.is_new():
 			frappe.rename_doc(self.doctype,self.name,new_name)
