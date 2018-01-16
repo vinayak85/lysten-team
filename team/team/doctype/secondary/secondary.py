@@ -232,9 +232,15 @@ class Secondary(Document):
 	else:
 		
 		frappe.msgprint(_(self.amended_from));
-		new_name = self.year + "-" + self.month + "-" + self.stockist;
-		if self.name != new_name and not self.is_new():
-			frappe.rename_doc(self.doctype,self.name,new_name)
+		frappe.msgprint(_("docstatus: "+self.docstatus));
+		frappe.msgprint(_("docstatus: "+self.docstatus));
+		frappe.msgprint(_("_doc_before_save: "+self._doc_before_save));
+		frappe.msgprint(_("_seen: "+self._seen));
+		frappe.msgprint(_("idx: "+self.idx));
+		frappe.msgprint(_("_action: "+self._action));
+		#new_name = self.year + "-" + self.month + "-" + self.stockist;
+		#if self.name != new_name and not self.is_new():
+		#	frappe.rename_doc(self.doctype,self.name,new_name)
 		
 	
 
