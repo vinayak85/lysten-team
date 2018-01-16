@@ -230,7 +230,8 @@ class Secondary(Document):
 	if(duplicate_pos>=0):
 		frappe.throw(_("Duplicate Item "+self.sec_items_qty[duplicate_pos].item_code2))
 	else:
-		frappe.msgprint(_(self.__dict__.keys()));
+		var aa=', '.join("%s: %s" % item for item in self.__dict__.keys());
+		frappe.msgprint(_(aa));
 		new_name = self.year + "-" + self.month + "-" + self.stockist;
 		if self.name != new_name and not self.is_new():
 			frappe.rename_doc(self.doctype,self.name,new_name)
