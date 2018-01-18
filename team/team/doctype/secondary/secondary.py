@@ -234,14 +234,13 @@ class Secondary(Document):
 			frappe.msgprint(_("not"));
 			pass;
 		else:
-			frappe.msgprint(_("amm"));
-			pass;
-		
+			new_name = self.year + "-" + self.month + "-" + self.stockist;
+			if self.name != new_name and not self.is_new():
+				frappe.rename_doc(self.doctype,self.name,new_name);
+				pass;
 			
 		
-		#new_name = self.year + "-" + self.month + "-" + self.stockist;
-		#if self.name != new_name and not self.is_new():
-		#	frappe.rename_doc(self.doctype,self.name,new_name)
+		
 		
 	
 
