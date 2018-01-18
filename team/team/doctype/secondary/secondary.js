@@ -179,7 +179,7 @@ frappe.ui.form.on('Secondary', {
 		})
 		
 	}
-	});
+	,
 
 	get_items:function (frm) {
 		
