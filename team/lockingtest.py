@@ -11,6 +11,7 @@ def lock_master_forms(employee,formname):
     lock_flag='0'
     temp_flag=''
     msg=''
+    test=''
     if(formname == 'profile'):
         lock_flag = frappe.db.sql("""select m_pro from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
         if lock_flag[0].m_pro > 0:
@@ -73,6 +74,7 @@ def lock_transaction_forms(employee,formname,date):
     current_time = local_time()
     temp_flag=''
     msg=''
+    test=today_date
     
     #frappe.msgprint(_(formname))
     
@@ -529,11 +531,13 @@ def lock_transaction_forms(employee,formname,date):
             
            
     dict = {'lock_flag': '',
-            'message': ''
+            'message': '',
+            'test':''
            }
     
     dict['lock_flag'] = lock_flag;
     dict['message'] = msg;
+    dict['test']=test;
 
     return dict    
       
