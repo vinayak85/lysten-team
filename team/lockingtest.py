@@ -74,7 +74,7 @@ def lock_transaction_forms(employee,formname,date):
     current_time = local_time()
     temp_flag=''
     msg=''
-    test=date +" ,"+frmdate +" ,"+todate 
+    
     
     #frappe.msgprint(_(formname))
     
@@ -108,7 +108,7 @@ def lock_transaction_forms(employee,formname,date):
         #frappe.msgprint(_(locktime))
         #frappe.msgprint(_(frmdate+todate+date))
         #frappe.msgprint(_(today_date+' '+date))
-        
+        test=date +" ,"+frmdate +" ,"+todate 
         if frmdate != "" and todate != "" and locktime != "":
             if(today_date == date):
                 #frappe.msgprint(_(today_date))
