@@ -37,6 +37,7 @@ def form16_allowance(employee,from_date,to_date):
     allowance='';
     prof_tax='';
     prov_fund='';
+    gross_amt_wot_exp='';
 	
     if(len(employee)>0):
         #employee="'"+employee+"'";
@@ -58,6 +59,12 @@ def form16_allowance(employee,from_date,to_date):
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
 	
 	prov_fund= frappe.db.sql("""select ifnull(sum(sd.amount),0)as provident_fund from `tabSalary Detail` sd 
+	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
+	where sd.salary_component='Provident Fund' and ss.employee={0} and 
+	ss.start_date between {1} and {2}; 
+        """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
+	
+	gross_amt_wot_exp= frappe.db.sql("""select ifnull(sum(sd.amount),0)as provident_fund from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
 	where sd.salary_component='Provident Fund' and ss.employee={0} and 
 	ss.start_date between {1} and {2}; 
