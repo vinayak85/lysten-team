@@ -35,6 +35,7 @@ def form16_package(employee):
 def form16_allowance(employee,from_date,to_date):
     paid_month_count='';
     allowance='';
+    perform_allowance='';	
     prof_tax='';
     prov_fund='';
     gross_amt_wot_exp='';
@@ -52,6 +53,12 @@ def form16_allowance(employee,from_date,to_date):
 	ss.start_date between {1} and {2}; 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
 	
+        perform_allowance= frappe.db.sql("""select ifnull(sum(sd.amount),0)as perform_allow from `tabSalary Detail` sd 
+	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
+	where sd.salary_component='Performance Allowance' and ss.employee={0} and 
+	ss.start_date between {1} and {2}; 
+        """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
+	
 	prof_tax= frappe.db.sql("""select ifnull(sum(sd.amount),0)as professional_tax from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
 	where sd.salary_component='Professional Tax' and ss.employee={0} and 
@@ -64,21 +71,26 @@ def form16_allowance(employee,from_date,to_date):
 	ss.start_date between {1} and {2}; 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
 	
-	gross_amt_wot_exp= frappe.db.sql("""select ifnull(sum(sd.amount),0)as provident_fund from `tabSalary Detail` sd 
+	gross_amt_wot_exp= frappe.db.sql("""select (ifnull(sum(ss.gross_pay),0)- ifnull(sum(sd.amount),0))as gross_wot_exp 
+	from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
-	where sd.salary_component='Provident Fund' and ss.employee={0} and 
+	where sd.salary_component='Expenses' and ss.employee={0} and 
 	ss.start_date between {1} and {2}; 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
 	
      
     dict = {'paid_month_count':'',
+	    'gross_amt':'',
 	    'con_allow': '',
+	    'per_allow':'',	    
             'prof_tax': '',
 	    'prov_fund': ''
            }
     
     dict['paid_month_count']=paid_month_count[0].paid_month_count;
+    dict['gross_amt']=gross_amt_wot_exp[0].gross_wot_exp;	
     dict['con_allow']=allowance[0].convenience_allowance;
+    dict['per_allow']=perform_allowance[0].perform_allow;	
     dict['prof_tax']=prof_tax[0].professional_tax;
     dict['prov_fund']=prov_fund[0].provident_fund;
     return dict
