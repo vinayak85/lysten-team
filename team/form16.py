@@ -338,32 +338,32 @@ GROUP BY  EMP_NAME,EMP ) AS TAXBLE where EMP={0} GROUP BY  EMP_NAME,EMP
     #dict['prof_tax']=prof_tax[0].professional_tax;
     #dict['prov_fund']=prov_fund[0].provident_fund;
 
-    if not paid_month_count:
+    if len(paid_month_count) > 0:
 	dict['paid_month_count']=paid_month_count[0].paid_month_count;
     else:
 	dict['paid_month_count']=0;
 
-    if not gross_amt_wot_exp:
+    if len(gross_amt_wot_exp) > 0:
 	dict['gross_amt']=gross_amt_wot_exp[0].GrossWotExp;
     else:
 	dict['gross_amt']=0;
 	
-    if not allowance:
+    if len(allowance) > 0:
 	dict['con_allow']=allowance[0].convenience_allowance;
     else:
 	dict['con_allow']=0;
 	
-    if not perform_allowance:
+    if len(perform_allowance) > 0:
 	dict['per_allow']=perform_allowance[0].perform_allow;
     else:
 	dict['per_allow']=0;	
 	
-    if not prof_tax:
+    if len(prof_tax) > 0:
 	dict['prof_tax']=prof_tax[0].professional_tax;
     else:
 	dict['prof_tax']=0;
 
-    if not prov_fund:
+    if len(prov_fund) > 0:
 	dict['prov_fund']=prov_fund[0].provident_fund;
     else:
 	dict['prov_fund']=0;
