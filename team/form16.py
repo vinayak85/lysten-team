@@ -94,7 +94,7 @@ SUM(SS.gross_pay) AS GROSS,SUM(SS.total_deduction) AS DED,SUM(SS.rounded_total) 
 0 AS D_PT
 
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
- WHERE SS.start_date >={1} AND SS.start_date <={2}
+ WHERE SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -115,7 +115,7 @@ SUM(SD.AMOUNT) AS BASIC,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='E_B'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -136,7 +136,7 @@ SUM(SD.AMOUNT) AS DA,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='E_DA'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -156,7 +156,7 @@ SUM(SD.AMOUNT) AS CA,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='E_CA'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -176,7 +176,7 @@ SUM(SD.AMOUNT) AS EA,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='E_EA'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -196,7 +196,7 @@ SUM(SD.AMOUNT) AS HRA,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='E_HRA'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -216,7 +216,7 @@ SUM(SD.AMOUNT) AS SPA,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='E_SA'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -236,7 +236,7 @@ SUM(SD.AMOUNT) AS wash_allow,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='wash_allow'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -256,7 +256,7 @@ SUM(SD.AMOUNT) AS Per_Allow,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='Per_Allow'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -276,7 +276,7 @@ SUM(SD.AMOUNT) AS OTHER,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='E_OA'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -296,7 +296,7 @@ SUM(SD.AMOUNT) AS D_PF,
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='D_PF'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 
 UNION  ALL
@@ -316,7 +316,7 @@ SUM(SD.AMOUNT) AS D_PT
  FROM 1bd3e0294da19198.`tabSalary Slip` AS SS
   LEFT   JOIN 1bd3e0294da19198.`tabSalary Detail` AS SD ON SD.PARENT = SS.NAME
   WHERE SD.ABBR='D_PT'
-  AND SS.start_date >={1} AND SS.start_date <={2}
+  AND SS.start_date >={1} AND SS.start_date <={2}  and status IN ('Draft', 'Submitted')
 GROUP BY  SS.Employee,SS.employee_name
 ) AS TEMP
 GROUP BY  EMP_NAME,EMP ) AS TAXBLE where EMP={0} GROUP BY  EMP_NAME,EMP
