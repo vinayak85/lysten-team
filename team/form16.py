@@ -331,12 +331,44 @@ GROUP BY  EMP_NAME,EMP ) AS TAXBLE where EMP={0} GROUP BY  EMP_NAME,EMP
 	    'prov_fund': ''
            }
     
-    dict['paid_month_count']=paid_month_count[0].paid_month_count;
-    dict['gross_amt']=gross_amt_wot_exp[0].GrossWotExp;	
-    dict['con_allow']=allowance[0].convenience_allowance;
-    dict['per_allow']=perform_allowance[0].perform_allow;	
-    dict['prof_tax']=prof_tax[0].professional_tax;
-    dict['prov_fund']=prov_fund[0].provident_fund;
+    #dict['paid_month_count']=paid_month_count[0].paid_month_count;
+    #dict['gross_amt']=gross_amt_wot_exp[0].GrossWotExp;	
+    #dict['con_allow']=allowance[0].convenience_allowance;
+    #dict['per_allow']=perform_allowance[0].perform_allow;	
+    #dict['prof_tax']=prof_tax[0].professional_tax;
+    #dict['prov_fund']=prov_fund[0].provident_fund;
+
+if not paid_month_count:
+	dict['paid_month_count']=paid_month_count[0].paid_month_count;
+    else:
+	dict['paid_month_count']=0;
+
+    if not gross_amt_wot_exp:
+	dict['gross_amt']=gross_amt_wot_exp[0].GrossWotExp;
+    else:
+	dict['gross_amt']=0;
+	
+    if not allowance:
+	dict['con_allow']=allowance[0].convenience_allowance;
+    else:
+	dict['con_allow']=0;
+	
+    if not perform_allowance:
+	dict['per_allow']=perform_allowance[0].perform_allow;
+    else:
+	dict['per_allow']=0;	
+	
+    if not prof_tax:
+	dict['prof_tax']=prof_tax[0].professional_tax;
+    else:
+	dict['prof_tax']=0;
+
+    if not prov_fund:
+	dict['prov_fund']=prov_fund[0].provident_fund;
+    else:
+	dict['prov_fund']=0;
+
+
     return dict
 
 @frappe.whitelist()
