@@ -3,7 +3,8 @@
 
 frappe.ui.form.on('Secondary', {
 	refresh: function(frm) {
-		
+		frm.add_custom_button(__("Recalculate Secondary"),
+			function() { frm.trigger('get_items'); }, "fa fa-sitemap", "btn-default");
 		
 		frm.add_custom_button(__("clear and Recalculate Secondary"),
 			function() { frm.trigger('get_items_all'); }, "fa fa-sitemap", "btn-default");
@@ -67,6 +68,146 @@ frappe.ui.form.on('Secondary', {
 						row.item_code2 = r.message[i].name;
 						row.item_code2 = r.message[i].item_name;
 						
+						row.close_tot=0;
+						row.close_qty=0;
+						row.close_free=0;
+							
+						var avg_sell_rate=r.message[i].avg_rate
+						var avg_credit_rate=r.message[i].cr_avg_rate
+						if(avg_credit_rate<=0){
+							row.item_rate = avg_sell_rate;
+						}
+						else
+						{
+							row.item_rate =avg_credit_rate;
+						}	
+					
+							
+						row.opn_tot = r.message[i].close_tot;
+						row.opn_qty = r.message[i].close_qty;
+						row.opn_free = r.message[i].close_free;
+							
+						row.rec_tot = r.message[i].tot_qty;
+						row.rec_qty = r.message[i].qty;
+						row.rec_free = r.message[i].f_qty;
+						
+						row.value_credit_note_tot = r.message[i].cr_q_amt;
+						row.value_credit_note_qty = r.message[i].cr_q_amt;
+						row.value_credit_note_free = r.message[i].cr_f_amt;
+					
+							
+						//row.value_sale_tot = r.message[i].q_amt;
+						//row.value_sale_qty = r.message[i].q_amt;
+						//row.value_sale_free = r.message[i].f_amt;
+							
+						if((row.rec_tot+row.opn_tot)==0)
+						{
+							row.close_tot=0;
+						}
+						
+						}
+					        else
+					        {
+						
+						
+							
+							
+							
+							//alert('yes:'+ r.message[i].item_name);
+							var tbl1 = frm.doc.sec_items_qty || [];
+							ii=test1(frm,r.message[i].item_name);
+							tbl1[ii].close_tot=0;
+							tbl1[ii].close_qty=0;
+							tbl1[ii].close_free=0;
+							
+							/*
+							tbl1[ii].sale_tot = 0;
+							tbl1[ii].sale_qty = 0;
+							tbl1[ii].sale_free = 0;
+							
+							tbl1[ii].close_tot=0;
+							tbl1[ii].close_qty=0;
+							tbl1[ii].close_free=0;
+							
+							tbl1[ii].rec_tot =0;
+							tbl1[ii].rec_qty = 0;
+							tbl1[ii].rec_free = 0;*/
+							
+							var avg_sell_rate=r.message[i].avg_rate
+							var avg_credit_rate=r.message[i].cr_avg_rate
+							if(avg_credit_rate<=0){
+							 tbl1[ii].item_rate = avg_sell_rate;
+							}
+							else
+							{
+							 tbl1[ii].item_rate =avg_credit_rate;
+							}
+							
+		                                 	
+							tbl1[ii].opn_tot = r.message[i].close_tot;
+							tbl1[ii].opn_qty = r.message[i].close_qty;
+							tbl1[ii].opn_free = r.message[i].close_free;
+							
+		  			               	tbl1[ii].rec_tot = r.message[i].tot_qty;
+							tbl1[ii].rec_qty = r.message[i].qty;
+							tbl1[ii].rec_free = r.message[i].f_qty;
+						
+							tbl1[ii].value_credit_note_tot = r.message[i].cr_q_amt;
+							tbl1[ii].value_credit_note_qty = r.message[i].cr_q_amt;
+							tbl1[ii].value_credit_note_free = r.message[i].cr_f_amt;
+					
+							if((tbl1[ii].rec_tot+tbl1[ii].opn_tot)==0)
+							{
+							tbl1[ii].close_tot=0;
+							}
+							//tbl1[ii].value_sale_tot = r.message[i].q_amt;
+							//tbl1[ii].value_sale_qty = r.message[i].q_amt;
+							//tbl1[ii].value_sale_free = r.message[i].f_amt;
+							/*alert('mmm:'+ r.message[i].item_name+'nnn:'+ r.message[i].item_name);*/
+								
+						
+					        }	
+				
+					}					
+					
+				}
+				calculate_item_rows(frm);
+				frm.refresh_field('sec_items_qty');
+				
+				
+			}
+		})
+		
+	}
+	,
+
+	get_items:function (frm) {
+		
+		var filters=[["used_for_secondary","=","1"]];
+		frappe.call({
+			method:'team.team.doctype.secondary.secondary.get_items',
+			args:{
+				year: frm.doc.year,
+				month: frm.doc.month,
+				stockist: frm.doc.stockist
+			},
+			callback:function (r) {
+				//alert(r.message[1].name);
+				var sec_items_qty = $.map(frm.doc.sec_items_qty, function(d) { return d.sec_item_qty });
+				//alert(sec_items_qty );
+				for (var i=0; i< r.message.length; i++) {
+					
+					if (sec_items_qty.indexOf(r.message[i].name) === -1) {
+						
+						
+					        if(test(frm,r.message[i].item_name) != false)
+					        {
+						
+						var row = frappe.model.add_child(frm.doc, frm.fields_dict.sec_items_qty.df.options, frm.fields_dict.sec_items_qty.df.fieldname);
+						row.item_code2 = r.message[i].name;
+						row.item_code2 = r.message[i].item_name;
+						
+							
 						var avg_sell_rate=r.message[i].avg_rate
 						var avg_credit_rate=r.message[i].cr_avg_rate
 						if(avg_credit_rate<=0){
