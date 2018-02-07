@@ -48,8 +48,8 @@ def get_date_and_app_support():
     datasets.append({'title': 'Dec', 'values': dec[0]})
     datasets.append({'title': 'Jan', 'values': jan[0]})
     
-    dict = {'datasets': []}
+    #dict = {'datasets': []}
   
-    dict['datasets'] = datasets;
-    return dict
-    #return datasets;
+    #dict['datasets'] = datasets;
+    #return dict
+    return datasets;
