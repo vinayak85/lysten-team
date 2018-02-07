@@ -40,13 +40,13 @@ def get_date_and_app_support():
    
     
     datasets = [];
-    datasets.append({title: 'July', values: july[0]})
-    datasets.append({title: 'Aug', values: aug[0]})
-    datasets.append({title: 'Sept', values: sept[0]})
-    datasets.append({title: 'Oct', values: oct[0]})
-    datasets.append({title: 'Nov', values: nov[0]})
-    datasets.append({title: 'Dec', values: dec[0]})
-    datasets.append({title: 'Jan', values: jan[0]})
+    datasets.append({'title': 'July','values': july[0]})
+    datasets.append({'title': 'Aug', 'values': aug[0]})
+    datasets.append({'title': 'Sept','values': sept[0]})
+    datasets.append({'title': 'Oct', 'values': oct[0]})
+    datasets.append({'title': 'Nov', 'values': nov[0]})
+    datasets.append({'title': 'Dec', 'values': dec[0]})
+    datasets.append({'title': 'Jan', 'values': jan[0]})
     
     #dict = {'datasets': []}
   
