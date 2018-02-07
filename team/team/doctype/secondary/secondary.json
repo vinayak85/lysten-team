@@ -207,7 +207,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2017-11-29 17:30:06.729728", 
+ "modified": "2018-01-01 12:45:14.470305", 
  "modified_by": "Administrator", 
  "module": "Team", 
  "name": "Secondary", 
@@ -275,7 +275,7 @@
    "write": 1
   }
  ], 
- "quick_entry": 1, 
+ "quick_entry": 0, 
  "read_only": 0, 
  "read_only_onload": 0, 
  "show_name_in_global_search": 0, 
