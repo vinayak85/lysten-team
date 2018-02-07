@@ -20,8 +20,8 @@ def get_date_and_app_support():
     datasets.append({'title': 'July', 'values': july})
     datasets.append({'title': 'Aug', 'values': aug})
 
-    dict = {'app_ver_count': 0}
-   
-    dict['app_ver_count'] = datasets;
-    return dict
-    #return datasets;
+    #dict = {'app_ver_count': 0}
+  
+    #dict['app_ver_count'] = datasets;
+    #return dict
+    return datasets;
