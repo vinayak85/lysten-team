@@ -16,9 +16,9 @@ def get_date_and_app_support():
     aug = frappe.db.sql("""select sum(opn_tot*item_rate) as "Opening",sum(rec_tot*item_rate) as "Primary/Received",
     sum(close_tot*item_rate) as "Closing",sum(sale_tot*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent  
     like '2017-Oct-CHIRAYU PHARMA'""", as_dict=0)
-    datasets = []
+    datasets = [];
     datasets.append({'title': 'July', 'values': july})
-	datasets.append({'title': 'Aug', 'values': aug})
+    datasets.append({'title': 'Aug', 'values': aug})
 
     dict = {'app_ver_count': 0}
    
