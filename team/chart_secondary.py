@@ -17,8 +17,8 @@ def get_date_and_app_support():
     sum(close_tot*item_rate) as "Closing",sum(sale_tot*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent  
     like '2017-Oct-CHIRAYU PHARMA'""", as_dict=0)
     datasets = [];
-    datasets.append({'title': 'July', 'values': july})
-    datasets.append({'title': 'Aug', 'values': aug})
+    datasets.append({'title': 'July', 'values': july[0]})
+    datasets.append({'title': 'Aug', 'values': aug[0]})
 
     #dict = {'app_ver_count': 0}
   
