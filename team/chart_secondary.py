@@ -61,24 +61,26 @@ def get_date_and_app_support():
     #return dict
     return datasets;
 @frappe.whitelist()
-def getmonthly(employee):
-    
-    opening = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening" from `tabsec_item_qty` where parent  
-    like '2017-July-CHIRAYU PHARMA'""", as_dict=0)
-    
-    primary = frappe.db.sql("""select sum(rec_qty*item_rate) as "Primary/Received" from `tabsec_item_qty` where parent  
-    like '2017-Aug-CHIRAYU PHARMA'""", as_dict=0)
-    
-    closing = frappe.db.sql("""select sum(close_qty*item_rate) as "Closing" from `tabsec_item_qty` where parent  
-    like '2017-Sept-CHIRAYU PHARMA'""", as_dict=0)
-    
-    credit = frappe.db.sql("""select sum(value_credit_note_qty) as "Credit note" from `tabsec_item_qty` where parent  
-    like '2017-Oct-CHIRAYU PHARMA'""", as_dict=0)
-    
-    sale = frappe.db.sql("""select sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent  
-    like '2017-Nov-CHIRAYU PHARMA'""", as_dict=0)   
+def getmonthly(months):
+    opening=[];
+    primary=[];
+    closing=[];
+    credit=[];
+    sale=[];
    
-    
+    pets=['2017-Nov','2017-Dec','2018-jan']
+    for f in pets:
+        opening.append(frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening" from `tabsec_item_qty` where parent  
+    like '2017-July-CHIRAYU PHARMA'""", as_dict=0));
+        primary.append(frappe.db.sql("""select sum(rec_qty*item_rate) as "Primary/Received" from `tabsec_item_qty` where parent  
+    like '2017-Aug-CHIRAYU PHARMA'""", as_dict=0));
+        closing.append(frappe.db.sql("""select sum(close_qty*item_rate) as "Closing" from `tabsec_item_qty` where parent  
+    like '2017-Sept-CHIRAYU PHARMA'""", as_dict=0));
+        credit.append(frappe.db.sql("""select sum(value_credit_note_qty) as "Credit note" from `tabsec_item_qty` where parent  
+    like '2017-Oct-CHIRAYU PHARMA'""", as_dict=0));
+        sale.append(frappe.db.sql("""select sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent  
+    like '2017-Nov-CHIRAYU PHARMA'""", as_dict=0));
+        pass;
     datasets = [];
     datasets.append({'title': 'opening','values': opening[0]})
     datasets.append({'title': 'primary', 'values': primary[0]})
