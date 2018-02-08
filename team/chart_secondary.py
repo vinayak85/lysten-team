@@ -96,7 +96,7 @@ def getmonthly(months):
     datasets.append({'title': 'primary', 'values': primary})
     datasets.append({'title': 'closing','values': closing})
     datasets.append({'title': 'credit', 'values': credit})
-    datasets.append({'title': 'sale', 'values': sale})
+    datasets.append({'title': 'sale', 'values': saling})
  
     
     #dict = {'datasets': []}
