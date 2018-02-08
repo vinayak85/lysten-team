@@ -60,3 +60,35 @@ def get_date_and_app_support():
     #dict['datasets'] = datasets;
     #return dict
     return datasets;
+@frappe.whitelist()
+def getmonthly(employee):
+    
+    opening = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening" from `tabsec_item_qty` where parent  
+    like '2017-July-CHIRAYU PHARMA'""", as_dict=0)
+    
+    primary = frappe.db.sql("""select sum(rec_qty*item_rate) as "Primary/Received" from `tabsec_item_qty` where parent  
+    like '2017-Aug-CHIRAYU PHARMA'""", as_dict=0)
+    
+    closing = frappe.db.sql("""select sum(close_qty*item_rate) as "Closing" from `tabsec_item_qty` where parent  
+    like '2017-Sept-CHIRAYU PHARMA'""", as_dict=0)
+    
+    credit = frappe.db.sql("""select sum(value_credit_note_qty) as "Credit note" from `tabsec_item_qty` where parent  
+    like '2017-Oct-CHIRAYU PHARMA'""", as_dict=0)
+    
+    sale = frappe.db.sql("""select sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent  
+    like '2017-Nov-CHIRAYU PHARMA'""", as_dict=0)   
+   
+    
+    datasets = [];
+    datasets.append({'title': 'opening','values': opening[0]})
+    datasets.append({'title': 'primary', 'values': primary[0]})
+    datasets.append({'title': 'closing','values': closing[0]})
+    datasets.append({'title': 'credit', 'values': credit[0]})
+    datasets.append({'title': 'sale', 'values': sale[0]})
+ 
+    
+    #dict = {'datasets': []}
+  
+    #dict['datasets'] = datasets;
+    #return dict
+    return datasets;
