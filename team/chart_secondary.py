@@ -61,7 +61,7 @@ def get_date_and_app_support():
     #return dict
     return datasets;
 @frappe.whitelist()
-def getmonthly(months):
+def getmonthly():
     opening=[];
     primary=[];
     closing=[];
