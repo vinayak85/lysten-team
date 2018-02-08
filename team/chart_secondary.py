@@ -66,28 +66,37 @@ def getmonthly(months):
     primary=[];
     closing=[];
     credit=[];
-    sale=[];
+    saling=[];
    
     pets=['2017-Nov','2017-Dec','2018-jan']
     for f in pets:
-        op=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent  
+        opn=0,prim=0,clos=0,cred=0,sale=0;
+        opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent  
     like '2017-July-CHIRAYU PHARMA'""", as_dict=1);
-        opening.append(op[0].opn);
-        primary.append(frappe.db.sql("""select sum(rec_qty*item_rate) as "Primary/Received" from `tabsec_item_qty` where parent  
+        opening.append(opn[0].opn);
+        
+        prim.append(frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent  
     like '2017-Aug-CHIRAYU PHARMA'""", as_dict=0));
-        closing.append(frappe.db.sql("""select sum(close_qty*item_rate) as "Closing" from `tabsec_item_qty` where parent  
+         primary.append(prim[0].opn);
+            
+        clos.append(frappe.db.sql("""select sum(close_qty*item_rate) as clos from `tabsec_item_qty` where parent  
     like '2017-Sept-CHIRAYU PHARMA'""", as_dict=0));
-        credit.append(frappe.db.sql("""select sum(value_credit_note_qty) as "Credit note" from `tabsec_item_qty` where parent  
+         closing.append(clos[0].opn);
+        
+        cred.append(frappe.db.sql("""select sum(value_credit_note_qty) as cred from `tabsec_item_qty` where parent  
     like '2017-Oct-CHIRAYU PHARMA'""", as_dict=0));
-        sale.append(frappe.db.sql("""select sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent  
+         credit.append(cred[0].opn);
+        
+        sale.append(frappe.db.sql("""select sum(sale_qty*item_rate) as sale" from `tabsec_item_qty` where parent  
     like '2017-Nov-CHIRAYU PHARMA'""", as_dict=0));
-        pass;
+         saling.append(sale[0].opn);
+            pass;
     datasets = [];
     datasets.append({'title': 'opening','values': opening})
-    datasets.append({'title': 'primary', 'values': primary[0]})
-    datasets.append({'title': 'closing','values': closing[0]})
-    datasets.append({'title': 'credit', 'values': credit[0]})
-    datasets.append({'title': 'sale', 'values': sale[0]})
+    datasets.append({'title': 'primary', 'values': primary})
+    datasets.append({'title': 'closing','values': closing})
+    datasets.append({'title': 'credit', 'values': credit})
+    datasets.append({'title': 'sale', 'values': sale})
  
     
     #dict = {'datasets': []}
