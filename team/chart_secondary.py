@@ -70,8 +70,9 @@ def getmonthly(months):
    
     pets=['2017-Nov','2017-Dec','2018-jan']
     for f in pets:
-        opening.append(frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening" from `tabsec_item_qty` where parent  
+        op=opening.append(frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening" from `tabsec_item_qty` where parent  
     like '2017-July-CHIRAYU PHARMA'""", as_dict=0));
+        opening.append(op[0]);
         primary.append(frappe.db.sql("""select sum(rec_qty*item_rate) as "Primary/Received" from `tabsec_item_qty` where parent  
     like '2017-Aug-CHIRAYU PHARMA'""", as_dict=0));
         closing.append(frappe.db.sql("""select sum(close_qty*item_rate) as "Closing" from `tabsec_item_qty` where parent  
@@ -82,7 +83,7 @@ def getmonthly(months):
     like '2017-Nov-CHIRAYU PHARMA'""", as_dict=0));
         pass;
     datasets = [];
-    datasets.append({'title': 'opening','values': opening})
+    datasets.append({'title': 'opening','values': opening[0]})
     datasets.append({'title': 'primary', 'values': primary[0]})
     datasets.append({'title': 'closing','values': closing[0]})
     datasets.append({'title': 'credit', 'values': credit[0]})
