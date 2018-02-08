@@ -7,13 +7,13 @@ frappe.ui.form.on('Secondary report', {
 	}
 });
 frappe.ui.form.on("Secondary report", "btn_show", function (frm) {
-//datasetreturn();
-initialize(frm);
+datasetreturn();
+//initialize(frm);
 	
 	
 });
 
-initialize= function(frm){
+initialize= function(frm,dataset){
    if (document.getElementById('chart'))
 	{
 	
@@ -47,7 +47,7 @@ initialize= function(frm){
  //datasets:datasetreturn();
 };
 
-alert(JSON.stringify(datasetreturn()));
+alert(dataset);
 //data.datasets.push(ee[0]);
 //alert(JSON.stringify(data));
 
@@ -82,8 +82,8 @@ datasetreturn= function(frm){
 				//return r.message;
 				//alert(JSON.stringify(r.message[0]["values"]));
 				//return 	(JSON.stringify(r.message[0]["values"]));
-				 				
-				return r.message;			
+				initialize(frm,r.message);				
+				//return r.message;			
 				
 				
 				
