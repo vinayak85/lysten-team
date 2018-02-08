@@ -70,7 +70,7 @@ def getmonthly(months):
    
     pets=['2017-Nov','2017-Dec','2018-jan']
     for f in pets:
-        op=frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening" from `tabsec_item_qty` where parent  
+        op=frappe.db.sql("""select sum(opn_qty*item_rate) as Opening from `tabsec_item_qty` where parent  
     like '2017-July-CHIRAYU PHARMA'""", as_dict=0);
         opening.append(op[0].Opening);
         primary.append(frappe.db.sql("""select sum(rec_qty*item_rate) as "Primary/Received" from `tabsec_item_qty` where parent  
