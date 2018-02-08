@@ -68,11 +68,11 @@ def getmonthly(months):
     credit=[];
     saling=[];
    
-    pets=['2017-Nov','2017-Dec','2018-jan']
+    pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
     for f in pets:
         opn=0;prim=0;clos=0;cred=0;sale=0;
         opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent  
-    like '2017-July-CHIRAYU PHARMA'""", as_dict=1);
+    like concat(f,'-CHIRAYU PHARMA')""", as_dict=1);
         opening.append(opn[0].opn);
         
         prim=frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent  
