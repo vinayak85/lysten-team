@@ -76,19 +76,19 @@ def getmonthly(months):
         opening.append(opn[0].opn);
         
         prim=frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent  
-    like '2017-Aug-CHIRAYU PHARMA'""", as_dict=0));
+    like '2017-Aug-CHIRAYU PHARMA'""", as_dict=0);
         primary.append(prim[0].opn);
             
         clos=frappe.db.sql("""select sum(close_qty*item_rate) as clos from `tabsec_item_qty` where parent  
-    like '2017-Sept-CHIRAYU PHARMA'""", as_dict=0));
+    like '2017-Sept-CHIRAYU PHARMA'""", as_dict=0);
         closing.append(clos[0].opn);
         
         cred=frappe.db.sql("""select sum(value_credit_note_qty) as cred from `tabsec_item_qty` where parent  
-    like '2017-Oct-CHIRAYU PHARMA'""", as_dict=0));
+    like '2017-Oct-CHIRAYU PHARMA'""", as_dict=0);
         credit.append(cred[0].opn);
         
         sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale" from `tabsec_item_qty` where parent  
-    like '2017-Nov-CHIRAYU PHARMA'""", as_dict=0));
+    like '2017-Nov-CHIRAYU PHARMA'""", as_dict=0);
         saling.append(sale[0].opn);
         pass;
     datasets = [];
