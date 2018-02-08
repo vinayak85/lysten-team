@@ -87,7 +87,7 @@ def getmonthly(months):
     like '2017-Oct-CHIRAYU PHARMA'""", as_dict=1);
         credit.append(cred[0].cred);
         
-        sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale" from `tabsec_item_qty` where parent  
+        sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent  
     like '2017-Nov-CHIRAYU PHARMA'""", as_dict=1);
         saling.append(sale[0].sale);
         pass;
