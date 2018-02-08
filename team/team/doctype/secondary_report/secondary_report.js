@@ -9,9 +9,11 @@ frappe.ui.form.on('Secondary report', {
 frappe.ui.form.on("Secondary report", "btn_show", function (frm) {
 //datasetreturn();
 initialize(frm);
+	
+	
 });
 
-function initialize(frm){
+initialize= function(frm){
    if (document.getElementById('chart'))
 	{
 	
@@ -66,8 +68,7 @@ let chart = new Chart({
 	}
 }
 
-function datasetreturn()
-{
+datasetreturn= function(frm){
 //alert("sdff");
         
 		frappe.call({
