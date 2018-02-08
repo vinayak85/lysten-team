@@ -83,7 +83,7 @@ def getmonthly(months):
     like '2017-Nov-CHIRAYU PHARMA'""", as_dict=0));
         pass;
     datasets = [];
-    datasets.append({'title': 'opening','values': opening[0]})
+    datasets.append({'title': 'opening','values': opening})
     datasets.append({'title': 'primary', 'values': primary[0]})
     datasets.append({'title': 'closing','values': closing[0]})
     datasets.append({'title': 'credit', 'values': credit[0]})
