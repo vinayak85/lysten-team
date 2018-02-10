@@ -10,9 +10,10 @@ __version__ = '0.0.1'
 def get_date_and_app_support(stockist_name,products,months):
     
     stockist_name=stockist_name;
+    frappe.msgprint(_("products: "+products));
     pp=product_return_names(products);
     months=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan'];
-    frappe.msgprint(_(pp));
+      frappe.msgprint(_("pp: "+pp));
     datasets = []; 
     for f in months:
         op = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
