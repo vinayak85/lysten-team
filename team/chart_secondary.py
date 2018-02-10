@@ -127,43 +127,43 @@ def product_return_names(codes):
         pass;
     return names;
 def code_to_names(code):
-    if (code == "1"):
+    if (code == 1):
         return 'ACTIRAB - D CAP'
-    elif (code == "2"):
+    elif (code == 2):
         return 'ACTIRAB - L CAP'
-    elif (code == "3"):
+    elif (code == 3):
         return 'ACTIRAB -DV Cap'
-    elif (code == "4"):
+    elif (code == 4):
         return 'ACTIRAB TAB'
-    elif (code == "5"):
+    elif (code == 5):
         return 'EMPOWER - OD TAB'
-    elif (code == "6"):
+    elif (code == 6):
         return 'GLUCOLYST -G1 TAB'
-    elif (code == "7"):
+    elif (code == 7):
         return 'LYCOLIC 10ml DROP'
-    elif (code == "8"):
+    elif (code == 8):
         return 'LYCOREST 60ml SUSP'
-    elif (code == "9"):
+    elif (code == 9):
         return 'LYCOREST TAB'
-    elif (code == "10"):
+    elif (code == 10):
         return 'LYCORT 1 ml INJ'
-    elif (code == "11"):
+    elif (code == 11):
         return 'REGAIN - XT TAB'
-    elif (code == "12"):
+    elif (code == 12):
         return 'STAND - MF 60ml SUSP'
-    elif (code == "13"):
+    elif (code == 13):
         return 'STAND MF +'
-    elif (code == "14"):
+    elif (code == 14):
         return 'STAND -SP TAB'
-    elif (code == "15"):
+    elif (code == 15):
         return 'STAR T TAB'
-    elif (code == "16"):
+    elif (code == 16):
         return 'TEN-ON 30 ml SYRUP'
-    elif (code == "17"):
+    elif (code == 17):
         return 'TRYGESIC TAB'
-    elif (code == "18"):
+    elif (code == 18):
         return 'WEGO GEL 20mg'
-    elif (code == "19"):
+    elif (code == 19):
         return 'WEGO GEL 30mg'
             
 
