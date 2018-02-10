@@ -123,7 +123,7 @@ def getmonthly():
 def product_return_names(codes):
     names=[];
     for f in codes:
-        frappe.msgprint(_(f+"  : "+names));
+        frappe.msgprint(_(f));
         names.append(code_to_names(f));
         pass;
     return names;
