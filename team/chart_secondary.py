@@ -123,7 +123,7 @@ def getmonthly():
 def product_return_names(codes):
     names=[];
     for f in codes:
-        names.append(code_to_names(code));
+        names.append(code_to_names(f));
         pass;
     return names;
 def code_to_names(code):
