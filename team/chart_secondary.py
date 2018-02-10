@@ -13,7 +13,7 @@ def get_date_and_app_support(stockist_name,products,months):
     
     #pp=product_return_names(products);
     #months=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan'];
-    #frappe.msgprint(_("pp: "+pp));
+    frappe.msgprint(_("pp: "+months));
     datasets = []; 
     for f in months:
         frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
