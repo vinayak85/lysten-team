@@ -127,7 +127,7 @@ def product_return_names(codes):
         pass;
     return names;
 def code_to_names(code):
-    if(code=="1")
+    if(code=='1')
     {
         return 'ACTIRAB - D CAP';
     }
