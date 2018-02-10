@@ -127,13 +127,13 @@ def product_return_names(codes):
         pass;
     return names;
 def code_to_names(code):
-    if (code == 1):
+    if (code == '1'):
         return 'ACTIRAB - D CAP'
-    elif (code == 2):
+    elif (code == '2'):
         return 'ACTIRAB - L CAP'
-    elif (code == 3):
+    elif (code == '3'):
         return 'ACTIRAB -DV Cap'
-    elif (code == 4):
+    elif (code == '4'):
         return 'ACTIRAB TAB'
     elif (code == 5):
         return 'EMPOWER - OD TAB'
