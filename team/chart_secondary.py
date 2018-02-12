@@ -18,8 +18,8 @@ def get_date_and_app_support(stockist_name,products,months):
     datasets = []; 
     for f in monthss:
         frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
-        ss="'-"+f+"'-"+stockist_name+"'";
-        frappe.msgprint(_("tt: "+"'-"+ss));
+        ss="'"+f+"-"+stockist_name+"'";
+        frappe.msgprint(_("tt: "+":::"+ss));
         op = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
     sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note"
     ,sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent  
