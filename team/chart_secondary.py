@@ -8,18 +8,15 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def get_date_and_app_support(stockist_name,products,months):
-    monthss=[];
-    monthss=months.split (',')
-    #monthss=list(months);
+    months=[];
+    months=months.split (',')
     stockist_name=stockist_name;
     
     #pp=product_return_names(products);
     #months=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan'];
-    frappe.msgprint(_("pp: "+monthss[1]));
+    frappe.msgprint(_("pp: "+months[1]));
     datasets = []; 
-    #for f in months:
-    for idx, f in enumerate(months):
-        #frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
+    for f in months:
         frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
         op = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
     sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note"
