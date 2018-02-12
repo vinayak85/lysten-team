@@ -8,7 +8,8 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def get_date_and_app_support(stockist_name,products,months):
-    
+    months=[];
+    months=months;
     stockist_name=stockist_name;
     
     #pp=product_return_names(products);
