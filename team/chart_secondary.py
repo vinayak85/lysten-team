@@ -27,91 +27,45 @@ def get_date_and_app_support(stockist_name,products,months):
         
         datasets.append({'title': f,'values': op[0]})
         pass;
-    
-    ''' previos code   +"'-"  "'-"+f,"'-"+stockist_name+"'"
         
-    july = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
-    sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note"
-    ,sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
-     like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
-    
-    aug = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
-    sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note",
-    sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
-    like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
-    
-    sept = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
-    sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note",
-    sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
-    like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
-    
-    oct = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
-    sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note",
-    sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
-    like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
-    
-    nov = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
-    sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note",
-    sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
-    like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
-    
-    dec = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
-    sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note",
-    sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
-    like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
-    
-    jan = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
-    sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note",
-    sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
-    like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
-    
-   
-    
-    datasets = [];
-    datasets.append({'title': 'July','values': july[0]})
-    datasets.append({'title': 'Aug', 'values': aug[0]})
-    datasets.append({'title': 'Sept','values': sept[0]})
-    datasets.append({'title': 'Oct', 'values': oct[0]})
-    datasets.append({'title': 'Nov', 'values': nov[0]})
-    datasets.append({'title': 'Dec', 'values': dec[0]})
-    datasets.append({'title': 'Jan', 'values': jan[0]})
-    
-    #dict = {'datasets': []}
-  
-    #dict['datasets'] = datasets;
-    #return dict
-    '''
     return datasets;
 
 @frappe.whitelist()
-def getmonthly():
+def getmonthly(stockist_name,products,months):
+    
+    monthss=[];
+    monthss=months.split (',')
+    stockist_name=stockist_name;
+    
     opening=[];
     primary=[];
     closing=[];
     credit=[];
     saling=[];
    
-    pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
-    for f in pets:
+    #pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
+    #for f in pets:
+    for f in monthss:
         opn=0;prim=0;clos=0;cred=0;sale=0;
-        opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent  
-    like concat({0},'-CHIRAYU PHARMA')""".format("'"+f+"'"), as_dict=1);
+        ss="'"+f+"-"+stockist_name+"'";
+        opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent 
+        like concat({0})""".format(ss), as_dict=1);
         opening.append(opn[0].opn);
         
-        prim=frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent  
-    like concat({0},'-CHIRAYU PHARMA')""".format("'"+f+"'"), as_dict=1);
+        prim=frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent 
+        like concat({0})""".format(ss), as_dict=1);
         primary.append(prim[0].prim);
             
-        clos=frappe.db.sql("""select sum(close_qty*item_rate) as clos from `tabsec_item_qty` where parent  
-    like concat({0},'-CHIRAYU PHARMA')""".format("'"+f+"'"), as_dict=1);
+        clos=frappe.db.sql("""select sum(close_qty*item_rate) as clos from `tabsec_item_qty` where parent 
+        like concat({0})""".format(ss), as_dict=1);
         closing.append(clos[0].clos);
         
-        cred=frappe.db.sql("""select sum(value_credit_note_qty) as cred from `tabsec_item_qty` where parent  
-    like concat({0},'-CHIRAYU PHARMA')""".format("'"+f+"'"), as_dict=1);
+        cred=frappe.db.sql("""select sum(value_credit_note_qty) as cred from `tabsec_item_qty` where parent 
+        like concat({0})""".format(ss), as_dict=1);
         credit.append(cred[0].cred);
         
-        sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent  
-    like concat({0},'-CHIRAYU PHARMA')""".format("'"+f+"'"), as_dict=1);
+        sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
+        like concat({0})""".format(ss), as_dict=1);
         saling.append(sale[0].sale);
         pass;
     datasets = [];
