@@ -37,7 +37,7 @@ def getmonthly(stockist_name,products,months):
     monthss=months.split (',')
     stockist_name=stockist_name;
     
-    frappe.msgprint(_("pp: "+monthss[0]));
+    #frappe.msgprint(_("pp: "+monthss[0]));
     
     opening=[];
     primary=[];
@@ -50,7 +50,7 @@ def getmonthly(stockist_name,products,months):
     for f in monthss:
         opn=0;prim=0;clos=0;cred=0;sale=0;
         ss="'"+f+"-"+stockist_name+"'";
-        frappe.msgprint(_("For Loop : "+ss));
+        #frappe.msgprint(_("For Loop : "+ss));
         
         opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent 
         like concat({0})""".format(ss), as_dict=1);
