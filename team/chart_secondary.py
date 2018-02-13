@@ -106,6 +106,24 @@ def getproductwise(stockist_name,products,months):
    
     #pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
     #for f in pets:
+    ###for f in product:
+        #saling=[];
+        ###sale=0;
+        ###ss="";
+        ###for g in monthss:          
+            ###ss+="'"+g+"-"+stockist_name+"',";
+            ###pass;
+        ###ss = ss[:-1];      
+        #frappe.msgprint(_("sec Id : "+ss+" prod"+f));        
+        ###sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
+        ###in({0}) and  item_code2={1}""".format(ss,f), as_dict=1);
+        ###saling.append(sale[0].sale);        
+        ###frappe.msgprint(_(saling));        
+        ###datasets.append({'title': f,'values': []})
+        ###pass;
+    ###datasets.insert(0,{'title': f,'values': saling})  
+    ###return datasets;
+
     for f in product:
         #saling=[];
         sale=0;
@@ -119,11 +137,10 @@ def getproductwise(stockist_name,products,months):
         in({0}) and  item_code2={1}""".format(ss,f), as_dict=1);
         saling.append(sale[0].sale);        
         frappe.msgprint(_(saling));        
-        datasets.append({'title': f,'values': []})
+        datasets.append(f,[]})
         pass;
-    datasets.insert(0,{'title': f,'values': saling})  
+    datasets.insert(0,f,saling})  
     return datasets;
-
 
 ##########################
 
