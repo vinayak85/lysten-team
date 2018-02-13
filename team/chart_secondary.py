@@ -109,24 +109,15 @@ def getproductwise(stockist_name,products,months):
     for f in product:
         sale=0;
         ss="";
-        for g in monthss:
-            #ss+="'"+f+"-"+g+":"+stockist_name+"'";            
+        for g in monthss:          
             ss+="'"+g+"-"+stockist_name+"',";
             pass;
-        ss = ss[:-1];
-        
-        #frappe.msgprint(_("sec Id : "+ss+" prod"+f));
-        
+        ss = ss[:-1];      
+        #frappe.msgprint(_("sec Id : "+ss+" prod"+f));        
         sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
         in({0}) and  item_code2={1}""".format(ss,f), as_dict=1);
         saling.append(sale[0].sale);        
-        
-        #sales = frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
-        #in({0}) and  item_code2={1}""".format(ss,f), as_dict=0)
-        
-        #sal=sales[0].sale;
-        frappe.msgprint(_(sale[0].sale));
-        
+        frappe.msgprint(_(saling));        
         datasets.append({'title': f,'values': saling})
         pass;
         
