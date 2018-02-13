@@ -126,7 +126,7 @@ def getproductwise(stockist_name,products,months):
         datasets.append({'title': f,'values': sales[0]})
         pass;
         
-    ##return datasets;
+    return datasets;
 
 
 ##########################
