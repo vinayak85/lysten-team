@@ -120,7 +120,7 @@ def getproductwise(stockist_name,products,months):
         in({0}) and  item_code2={1}""".format(ss,f), as_dict=1)
         
         #sal=sales[0].sale;
-        frappe.msgprint(_(sales[0]));
+        frappe.msgprint(_(sales[0].sale));
         
         datasets.append({'title': f,'values': sales[0]})
         pass;
