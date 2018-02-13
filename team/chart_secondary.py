@@ -91,6 +91,7 @@ def getmonthly(stockist_name,products,months):
 @frappe.whitelist()
 def getproductwise(stockist_name,products,months):
     
+    frappe.msgprint(_("Hiiii"));
     monthss=[];
     monthss=months.split (',')
     
