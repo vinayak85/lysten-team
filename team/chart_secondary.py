@@ -115,10 +115,10 @@ def getproductwise(stockist_name,products,months):
         
         #frappe.msgprint(_("sec Id : "+ss+" prod"+f));
         
-        op = frappe.db.sql("""select sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
+        sale = frappe.db.sql("""select sum(sale_qty*item_rate) as "sale" from `tabsec_item_qty` where parent 
         in({0}) and  item_code2={1}""".format(ss,f), as_dict=0)
         
-        datasets.append({'title': 'Sale','values': op[0]})
+        datasets.append({'title': f,'values': sale[0].sale})
         pass;
         
     return datasets;
