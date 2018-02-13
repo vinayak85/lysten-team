@@ -91,7 +91,7 @@ def getmonthly(stockist_name,products,months):
 @frappe.whitelist()
 def getproductwise(stockist_name,products,months):
     
-    frappe.msgprint(_("Hiiii"));
+    #frappe.msgprint(_("Hiiii"));
     monthss=[];
     monthss=months.split (',')
     
@@ -115,13 +115,13 @@ def getproductwise(stockist_name,products,months):
             pass;
         ss = ss[:-1];
         
-        frappe.msgprint(_("sec Id : "+ss+" prod"+f));
+        #frappe.msgprint(_("sec Id : "+ss+" prod"+f));
         
         sales = frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
         in({0}) and  item_code2={1}""".format(ss,f), as_dict=0)
         
         #sal=sales[0].sale;
-        #frappe.msgprint(_(sales[0].sale));
+        frappe.msgprint(_(sales[0]));
         
         datasets.append({'title': f,'values': sales[0]})
         pass;
