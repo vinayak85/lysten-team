@@ -86,6 +86,68 @@ def getmonthly(stockist_name,products,months):
     #return dict
     return datasets;
 
+##########################
+
+@frappe.whitelist()
+def getproductwise(stockist_name,products,months):
+    
+    monthss=[];
+    monthss=months.split (',')
+    
+    product=[];
+    product=products.split (',')
+    
+    stockist_name=stockist_name;
+    
+    #frappe.msgprint(_("pp: "+monthss[0]));
+    
+    opening=[];
+    primary=[];
+    closing=[];
+    credit=[];
+    saling=[];
+   
+    #pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
+    #for f in pets:
+    for f in monthss:
+        for g in product:
+            opn=0;prim=0;clos=0;cred=0;sale=0;
+            ss="'"+f+"-"+g+":"stockist_name+"'";
+            pass;
+        #frappe.msgprint(_("For Loop : "+ss));
+        
+        ##opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent 
+        ##like concat({0})""".format(ss), as_dict=1);
+        ##opening.append(opn[0].opn);
+        
+        ##prim=frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent 
+        ##like concat({0})""".format(ss), as_dict=1);
+        ##primary.append(prim[0].prim);
+            
+        ##clos=frappe.db.sql("""select sum(close_qty*item_rate) as clos from `tabsec_item_qty` where parent 
+        ##like concat({0})""".format(ss), as_dict=1);
+        ##closing.append(clos[0].clos);
+        
+        ##cred=frappe.db.sql("""select sum(value_credit_note_qty) as cred from `tabsec_item_qty` where parent 
+        ##like concat({0})""".format(ss), as_dict=1);
+        ##credit.append(cred[0].cred);
+        
+        ##sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
+        ##like concat({0})""".format(ss), as_dict=1);
+        ##saling.append(sale[0].sale);
+        pass;
+    ##datasets = [];
+    ##datasets.append({'title': 'opening','values': opening})
+    ##datasets.append({'title': 'primary', 'values': primary})
+    ##datasets.append({'title': 'closing','values': closing})
+    ##datasets.append({'title': 'credit', 'values': credit})
+    ##datasets.append({'title': 'sale', 'values': saling})
+ 
+    ##return datasets;
+
+
+##########################
+
 def product_return_names(codes):
     names=[];
     for f in codes:
