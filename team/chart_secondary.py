@@ -106,6 +106,7 @@ def getproductwise(stockist_name,products,months):
     #pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
     #for f in pets:
     for f in product:
+        sales=0;
         ss="";
         for g in monthss:
             #ss+="'"+f+"-"+g+":"+stockist_name+"'";            
