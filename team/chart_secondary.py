@@ -138,7 +138,7 @@ def getproductwise(stockist_name,products,months):
         saling.append(sale[0].sale);        
         #frappe.msgprint(_(saling));        
         datasets.append(f)
-        datasets.append(saling)
+        datasets.append(sale[0].sale)
         pass;
     #datasets.insert(0,saling)    
     return datasets;
