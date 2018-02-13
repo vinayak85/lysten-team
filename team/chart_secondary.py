@@ -107,7 +107,7 @@ def getproductwise(stockist_name,products,months):
     #pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
     #for f in pets:
     for f in product:
-        saling=[];
+        #saling=[];
         sale=0;
         ss="";
         for g in monthss:          
@@ -119,9 +119,9 @@ def getproductwise(stockist_name,products,months):
         in({0}) and  item_code2={1}""".format(ss,f), as_dict=1);
         saling.append(sale[0].sale);        
         frappe.msgprint(_(saling));        
-        datasets.append({'title': f,'values': saling})
+        datasets.append({'title': f,'values': []})
         pass;
-        
+    b.insert({'title': f,'values': saling})  
     return datasets;
 
 
