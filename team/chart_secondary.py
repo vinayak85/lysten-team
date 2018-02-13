@@ -112,7 +112,7 @@ def getproductwise(stockist_name,products,months):
     for f in monthss:
         for g in product:
             opn=0;prim=0;clos=0;cred=0;sale=0;
-            ss="'"+f+"-"+g+":"stockist_name+"'";
+            ss="'"+f+"-"+g+":"+stockist_name+"'";
             pass;
         #frappe.msgprint(_("For Loop : "+ss));
         
