@@ -116,37 +116,17 @@ def getproductwise(stockist_name,products,months):
             #ss+="'"+f+"-"+g+":"+stockist_name+"'";            
             ss+="'"+g+"-"+stockist_name+"',";
             pass;
+        ss = ss[:-1]
         frappe.msgprint(_("sec Id : "+ss+" prod"+f));
-        #frappe.msgprint(_("For Loop : "+ss));
+        op = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
+        sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note"
+        ,sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
+        in({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
         
-        ##opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent 
-        ##like concat({0})""".format(ss), as_dict=1);
-        ##opening.append(opn[0].opn);
-        
-        ##prim=frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent 
-        ##like concat({0})""".format(ss), as_dict=1);
-        ##primary.append(prim[0].prim);
-            
-        ##clos=frappe.db.sql("""select sum(close_qty*item_rate) as clos from `tabsec_item_qty` where parent 
-        ##like concat({0})""".format(ss), as_dict=1);
-        ##closing.append(clos[0].clos);
-        
-        ##cred=frappe.db.sql("""select sum(value_credit_note_qty) as cred from `tabsec_item_qty` where parent 
-        ##like concat({0})""".format(ss), as_dict=1);
-        ##credit.append(cred[0].cred);
-        
-        ##sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
-        ##like concat({0})""".format(ss), as_dict=1);
-        ##saling.append(sale[0].sale);
+        datasets.append({'title': f,'values': op[0]})
         pass;
-    ##datasets = [];
-    ##datasets.append({'title': 'opening','values': opening})
-    ##datasets.append({'title': 'primary', 'values': primary})
-    ##datasets.append({'title': 'closing','values': closing})
-    ##datasets.append({'title': 'credit', 'values': credit})
-    ##datasets.append({'title': 'sale', 'values': saling})
- 
-    ##return datasets;
+        
+    return datasets;
 
 
 ##########################
