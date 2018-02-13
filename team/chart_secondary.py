@@ -101,18 +101,13 @@ def getproductwise(stockist_name,products,months):
     
     #frappe.msgprint(_("pp: "+monthss[0]));
     
-    opening=[];
-    primary=[];
-    closing=[];
-    credit=[];
-    saling=[];
+    datasets = []; 
    
     #pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
     #for f in pets:
     for f in product:
         ss="";
         for g in monthss:
-            opn=0;prim=0;clos=0;cred=0;sale=0;
             #ss+="'"+f+"-"+g+":"+stockist_name+"'";            
             ss+="'"+g+"-"+stockist_name+"',";
             pass;
