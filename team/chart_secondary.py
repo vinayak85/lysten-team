@@ -109,12 +109,14 @@ def getproductwise(stockist_name,products,months):
    
     #pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
     #for f in pets:
-    for f in monthss:
-        for g in product:
+    for f in product:
+        ss="";
+        for g in monthss:
             opn=0;prim=0;clos=0;cred=0;sale=0;
-            ss="'"+f+"-"+g+":"+stockist_name+"'";
-            frappe.msgprint(_("For Loop : "+ss));
+            #ss+="'"+f+"-"+g+":"+stockist_name+"'";            
+            ss+="'"+f+"-"+stockist_name+"',";
             pass;
+        frappe.msgprint(_("sec Id : "+ss));
         #frappe.msgprint(_("For Loop : "+ss));
         
         ##opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent 
