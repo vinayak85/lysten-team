@@ -125,7 +125,7 @@ def getproductwise(stockist_name,products,months):
     ###return datasets;
 
     for f in product:
-        #saling=[];
+        saling=[];
         sale=0;
         ss="";
         for g in monthss:          
