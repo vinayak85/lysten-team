@@ -219,11 +219,11 @@ def get_sec_details_for_pie(stockist_name,products,months):
     Credit = [];
     Secondary = [];
     
-    Opening.append('Opening');
-    Primary.append('Primary');
-    Closing.append('Closing');
-    Credit.append('Credit');
-    Secondary.append('Secondary');
+    #Opening.append('Opening');
+    #Primary.append('Primary');
+    #Closing.append('Closing');
+    #Credit.append('Credit');
+    #Secondary.append('Secondary');
    
     for f in monthss:
         #frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
@@ -238,16 +238,21 @@ def get_sec_details_for_pie(stockist_name,products,months):
         Primary.append(op[0].Primary)
         Closing.append(op[0].Closing)
         Credit.append(op[0].Credit)
-        Secondary.append(op[0].Secondary) 
-        frappe.msgprint(_("tt: "+":::"+ss+"   "+products));
-        pass;
+        Secondary.append(op[0].Secondary)         
+        pass;  
     
-        datasets.append(Opening);
-        datasets.append(Primary);
-        datasets.append(Closing);
-        datasets.append(Credit);
-        datasets.append(Secondary);
-        
+    Opening.insert(0,'Opening');
+    Primary.insert(0,'Primary');
+    Closing.insert(0,'Closing');
+    Credit.insert(0,'Credit');
+    Secondary.insert(0,'Secondary');
+    
+    datasets.append(Opening);
+    datasets.append(Primary);
+    datasets.append(Closing);
+    datasets.append(Credit);
+    datasets.append(Secondary);
+    
     return datasets;
 
 
