@@ -47,6 +47,39 @@ def getmonthly(stockist_name,products,months):
    
     #pets=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan']
     #for f in pets:
+    ###for f in monthss:
+        ###opn=0;prim=0;clos=0;cred=0;sale=0;
+        ###ss="'"+f+"-"+stockist_name+"'";
+        #frappe.msgprint(_("For Loop : "+ss));
+        
+        ###opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent 
+        ###like concat({0})""".format(ss), as_dict=1);
+        ###opening.append(opn[0].opn);
+        
+        ###prim=frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent 
+        ###like concat({0})""".format(ss), as_dict=1);
+        ###primary.append(prim[0].prim);
+            
+        ###clos=frappe.db.sql("""select sum(close_qty*item_rate) as clos from `tabsec_item_qty` where parent 
+        ###like concat({0})""".format(ss), as_dict=1);
+        ###closing.append(clos[0].clos);
+        
+        ###cred=frappe.db.sql("""select sum(value_credit_note_qty) as cred from `tabsec_item_qty` where parent 
+        ###like concat({0})""".format(ss), as_dict=1);
+        ###credit.append(cred[0].cred);
+        
+        ###sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
+        ###like concat({0})""".format(ss), as_dict=1);
+        ###saling.append(sale[0].sale);
+        ###pass;
+    ###datasets = [];
+    ###datasets.append({'title': 'opening','values': opening})
+    ###datasets.append({'title': 'primary', 'values': primary})
+    ###datasets.append({'title': 'closing','values': closing})
+    ###datasets.append({'title': 'credit', 'values': credit})
+    ###datasets.append({'title': 'sale', 'values': saling})
+    ###return datasets;
+
     for f in monthss:
         opn=0;prim=0;clos=0;cred=0;sale=0;
         ss="'"+f+"-"+stockist_name+"'";
@@ -78,15 +111,33 @@ def getmonthly(stockist_name,products,months):
     datasets.append({'title': 'closing','values': closing})
     datasets.append({'title': 'credit', 'values': credit})
     datasets.append({'title': 'sale', 'values': saling})
- 
-    
-    #dict = {'datasets': []}
-  
-    #dict['datasets'] = datasets;
-    #return dict
     return datasets;
 
 ##########################
+
+###var chart = c3.generate({
+###    data: {
+###        x : 'x',
+###        columns: [
+###            ['x', 'jun-2017', 'jul-2017', 'aug-2017', 'sept-2017', 'oct-2017', 'nov-2017'],
+###            ['opening', 30, 200, 100, 400, 150, 250],
+###            ['primary', 130, 100, 140, 200, 150, 50],
+###            ['credit', 10,30, 70, 150, 60, 90],
+###            ['sale', 10,30, 70, 150, 60, 90],
+###        ],
+###        type: 'bar'
+###    },
+###    axis: {
+###        x: {
+###            type: 'category',
+###            tick: {
+######                rotate: 0,
+###                multiline: false
+###            },
+###            height: 130
+###        }
+###    }
+###});
 
 @frappe.whitelist()
 def getproductwise(stockist_name,products,months):
