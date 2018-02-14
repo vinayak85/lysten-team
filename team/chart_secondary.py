@@ -34,17 +34,20 @@ def get_date_and_app_support(stockist_name,products,months):
         #frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
         ss="'"+f+"-"+stockist_name+"'";
         #frappe.msgprint(_("tt: "+":::"+ss+"   "+products));
-        op = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary/Received",
-        sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit note"
-        ,sum(sale_qty*item_rate) as "Secondary/Sale" from `tabsec_item_qty` where parent 
-        like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=0)
+        op = frappe.db.sql("""select sum(opn_qty*item_rate) as "Opening",sum(rec_qty*item_rate) as "Primary",
+        sum(close_qty*item_rate) as "Closing",sum(value_credit_note_qty) as "Credit"
+        ,sum(sale_qty*item_rate) as "Secondary" from `tabsec_item_qty` where parent 
+        like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=1)
         
-        #datasets1.append( f);
-        op.insert(0,f);
-        datasets.append(op[0]);
+        datasets.append(f);      
+        datasets.append(op[0].Opening);
+        datasets.append(op[0].Primary);
+        datasets.append(op[0].Closing);
+        datasets.append(op[0].Credit);
+        datasets.append(op[0].Secondary);
         pass;
         
-    return datasets1;
+    return datasets;
 
 @frappe.whitelist()
 def getmonthly(stockist_name,products,months):
