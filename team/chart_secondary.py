@@ -79,18 +79,24 @@ def getmonthly(stockist_name,products,months):
     ###datasets.append({'title': 'credit', 'values': credit})
     ###datasets.append({'title': 'sale', 'values': saling})
     ###return datasets;
-
+    
+    opening.append('opening');
+    primary.append('primary');
+    closing.append('closing');
+    credit.append('credit');
+    saling.append('sale');
+    
     for f in monthss:
         opn=0;prim=0;clos=0;cred=0;sale=0;
         ss="'"+f+"-"+stockist_name+"'";
         #frappe.msgprint(_("For Loop : "+ss));
         
         opn=frappe.db.sql("""select sum(opn_qty*item_rate) as opn from `tabsec_item_qty` where parent 
-        like concat({0})""".format(ss), as_dict=1);
+        like concat({0})""".format(ss), as_dict=1);        
         opening.append(opn[0].opn);
         
         prim=frappe.db.sql("""select sum(rec_qty*item_rate) as prim from `tabsec_item_qty` where parent 
-        like concat({0})""".format(ss), as_dict=1);
+        like concat({0})""".format(ss), as_dict=1);        
         primary.append(prim[0].prim);
             
         clos=frappe.db.sql("""select sum(close_qty*item_rate) as clos from `tabsec_item_qty` where parent 
@@ -102,15 +108,15 @@ def getmonthly(stockist_name,products,months):
         credit.append(cred[0].cred);
         
         sale=frappe.db.sql("""select sum(sale_qty*item_rate) as sale from `tabsec_item_qty` where parent 
-        like concat({0})""".format(ss), as_dict=1);
+        like concat({0})""".format(ss), as_dict=1);        
         saling.append(sale[0].sale);
         pass;
     datasets = [];
-    datasets.append({'title': 'opening','values': opening})
-    datasets.append({'title': 'primary', 'values': primary})
-    datasets.append({'title': 'closing','values': closing})
-    datasets.append({'title': 'credit', 'values': credit})
-    datasets.append({'title': 'sale', 'values': saling})
+    datasets.append(opening)
+    datasets.append(primary)
+    datasets.append(closing)
+    datasets.append(credit)
+    datasets.append(saling)
     return datasets;
 
 ##########################
