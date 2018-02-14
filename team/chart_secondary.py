@@ -230,15 +230,16 @@ def get_sec_details_for_pie(stockist_name,products,months):
         ss="'"+f+"-"+stockist_name+"'";
         #frappe.msgprint(_("tt: "+":::"+ss+"   "+products));
         op = frappe.db.sql("""select sum(opn_qty*item_rate) as Opening,sum(rec_qty*item_rate) as Primary,
-        sum(close_qty*item_rate) as Closing,sum(value_credit_note_qty) as Credit
-        ,sum(sale_qty*item_rate) as Secondary from `tabsec_item_qty` where parent 
+        sum(close_qty*item_rate) as Closing,sum(value_credit_note_qty) as Credit,
+        sum(sale_qty*item_rate) as Secondary from `tabsec_item_qty` where parent
         like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=1)
         
         Opening.append(op[0].Opening)
         Primary.append(op[0].Primary)
         Closing.append(op[0].Closing)
         Credit.append(op[0].Credit)
-        Secondary.append(op[0].Secondary)                       
+        Secondary.append(op[0].Secondary) 
+        frappe.msgprint(_("tt: "+":::"+ss+"   "+products));
         pass;
     
         datasets.append(Opening);
