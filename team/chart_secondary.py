@@ -203,6 +203,53 @@ def getproductwise(stockist_name,products,months):
 
 ##########################
 
+@frappe.whitelist()
+def get_sec_details_for_pie(stockist_name,products,months):
+    monthss=[];
+    monthss=months.split (',')
+    stockist_name=stockist_name;
+    
+    #pp=product_return_names(products);
+    #months=['2017-July','2017-Aug','2017-Sept','2017-Oct','2017-Nov','2017-Dec','2018-jan'];
+    #frappe.msgprint(_("pp: "+monthss[1]));
+    datasets = []; 
+    Opening = [];
+    Primary = [];
+    Closing = [];
+    Credit = [];
+    Secondary = [];
+    
+    Opening.append('Opening');
+    Primary.append('Primary');
+    Closing.append('Closing');
+    Credit.append('Credit');
+    Secondary.append('Secondary');
+   
+    for f in monthss:
+        #frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
+        ss="'"+f+"-"+stockist_name+"'";
+        #frappe.msgprint(_("tt: "+":::"+ss+"   "+products));
+        op = frappe.db.sql("""select sum(opn_qty*item_rate) as Opening,sum(rec_qty*item_rate) as Primary,
+        sum(close_qty*item_rate) as Closing,sum(value_credit_note_qty) as Credit
+        ,sum(sale_qty*item_rate) as Secondary from `tabsec_item_qty` where parent 
+        like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=1)
+        
+        Opening.append(op[0].Opening)
+        Primary.append(op[0].Primary)
+        Closing.append(op[0].Closing)
+        Credit.append(op[0].Credit)
+        Secondary.append(op[0].Secondary)                       
+        pass;
+    
+        datasets.append(Opening);
+        datasets.append(Primary);
+        datasets.append(Closing);
+        datasets.append(Credit);
+        datasets.append(Secondary);
+        
+    return datasets;
+
+
 def product_return_names(codes):
     names=[];
     for f in codes:
