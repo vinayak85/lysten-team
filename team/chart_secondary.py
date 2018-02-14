@@ -29,8 +29,10 @@ def get_date_and_app_support(stockist_name,products,months):
         ###pass;
         
     ###return datasets;
-    
+
+    #datasets1 = [];    
     for f in monthss:
+        datasets=[];
         #frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
         ss="'"+f+"-"+stockist_name+"'";
         #frappe.msgprint(_("tt: "+":::"+ss+"   "+products));
