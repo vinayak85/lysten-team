@@ -30,9 +30,9 @@ def get_date_and_app_support(stockist_name,products,months):
         
     ###return datasets;
 
-    #datasets1 = [];    
+    datasets1 = [];    
     for f in monthss:
-        datasets=[];
+        datasets1=[];
         #frappe.msgprint(_("mm: "+"'-"+f+"-'","'-"+stockist_name+"'"));
         ss="'"+f+"-"+stockist_name+"'";
         #frappe.msgprint(_("tt: "+":::"+ss+"   "+products));
@@ -41,12 +41,13 @@ def get_date_and_app_support(stockist_name,products,months):
         ,sum(sale_qty*item_rate) as "Secondary" from `tabsec_item_qty` where parent 
         like concat({0}) and  item_code2 IN ({1})""".format(ss,products), as_dict=1)
         
-        datasets.append(f);      
-        datasets.append(op[0].Opening);
-        datasets.append(op[0].Primary);
-        datasets.append(op[0].Closing);
-        datasets.append(op[0].Credit);
-        datasets.append(op[0].Secondary);
+        datasets1.append(f);      
+        datasets1.append(op[0].Opening);
+        datasets1.append(op[0].Primary);
+        datasets1.append(op[0].Closing);
+        datasets1.append(op[0].Credit);
+        datasets1.append(op[0].Secondary);
+        datasets.append(datasets1);
         pass;
         
     return datasets;
