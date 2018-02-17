@@ -15,9 +15,9 @@ def get_call_summary():
   #fromdate,todate,intervaltime,workstarttime,workendtime
   fromdate='2018-01-04'
   todate='2018-01-05';
-  intervaltime=30*60;
+  intervaltime=60*60;
   workstarttime='08:00:00';
-  workendtime='09:30:00';
+  workendtime='21:00:00';
   #while (fromdate <= todate):
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
     #fromdate=frappe.utils.data.add_days (fromdate, 1);
