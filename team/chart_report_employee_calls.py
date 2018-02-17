@@ -26,8 +26,8 @@ def get_call_summary():
   t = t + 1800 #30 minutes is 1800 secs
   #dt=time.mktime(t)
   #dt=time.strftime("%Y-%m-%d %H:%M:%S", t)
-  #dt_obj = datetime.fromtimestamp(t)
-  frappe.msgprint(_("time:"+": "+str(t)));
+  dt_obj = datetime.fromtimestamp(1515486600)
+  frappe.msgprint(_("time:"+": "+str(dt_obj)));
  
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
