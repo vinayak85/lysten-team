@@ -39,10 +39,11 @@ def get_call_summary():
     cnt_dcr = frappe.db.sql(""" select count(*) as cnt from  1bd3e0294da19198.`tabDoctor Calls` 
     where creation between {0} and {1}; """.format("'"+str(dt_form_s_time)+"'","'"+str(dt_form_t_time)+"'"), as_dict=1)
               
-    frappe.msgprint(_(cnt_dcr[0].cnt));
+    #frappe.msgprint(_(cnt_dcr[0].cnt));
     cntcall.append(cnt_dcr[0].cnt);    
     
-  #frappe.msgprint(_(cntcall[0]));  
+  for p in cntcall: 
+    frappe.msgprint(_(p));
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
   #if(fromdate <= todate):
     #frappe.msgprint(_("less than from date:"));
