@@ -8,11 +8,11 @@ frappe.ui.form.on('Standard Tour Plan', {
 });
 
 frappe.ui.form.on("Standard Tour Plan", "onload", function(frm) {
-    cur_frm.set_query("stp_user", function() {
-        return {
-            filters: [
-		    ['user', 'type', '=', 'Employee']
-	    ]
-        };
-    });
+    cur_frm.fields_dict['stp_user'].get_query = function(doc) {
+	return {
+		filters: {
+			"type": 'Employee'
+		}
+	}
+   }
 });
