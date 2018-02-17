@@ -34,14 +34,14 @@ def get_call_summary():
     workstarttime = str(dt_form_t_time).split(' ')[1]
     #frappe.msgprint(_("time:"+": "+str(workstarttime))); 
     
-    ##frappe.msgprint(_("From:"+": "+str(dt_form_s_time)+" To:"+str(dt_form_t_time)));
+    frappe.msgprint(_("From:"+": "+str(dt_form_s_time)+" To:"+str(dt_form_t_time)));
     
-    cnt_dcr = frappe.db.sql(""" select count(*) as cnt from  1bd3e0294da19198.`tabDoctor Calls` 
-              where creation between {0} and {1}; """.format("'"+dt_form_s_time+"'","'"+dt_form_t_time+"'"), as_dict=1)
-    cntcall.append(cnt_dcr[0].cnt);
+    ###cnt_dcr = frappe.db.sql(""" select count(*) as cnt from  1bd3e0294da19198.`tabDoctor Calls` 
+              ###where creation between {0} and {1}; """.format("'"+dt_form_s_time+"'","'"+dt_form_t_time+"'"), as_dict=1)
+    ###cntcall.append(cnt_dcr[0].cnt);
     
     
-  frappe.msgprint(_(cntcall[0]));  
+  ###frappe.msgprint(_(cntcall[0]));  
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
   #if(fromdate <= todate):
     #frappe.msgprint(_("less than from date:"));
