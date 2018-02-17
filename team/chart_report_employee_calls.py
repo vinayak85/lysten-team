@@ -20,7 +20,7 @@ def get_call_summary():
   dt=a+' '+b
   c = time.strptime(dt,"%Y-%m-%d %H:%M:%S")  
   t = time.mktime(c) 
-  t = t + 2700 #30 minutes is 1800 secs
+  t = t + 4500 #30 minutes is 1800 secs
   dt_obj = datetime.fromtimestamp(t)  
   frappe.msgprint(_("time:"+": "+str(dt_obj)));
  
