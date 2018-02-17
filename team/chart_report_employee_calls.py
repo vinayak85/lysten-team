@@ -12,9 +12,9 @@ def get_call_summary():
   #from datetime import datetime, timedelta
   #nine_hours_from_now = datetime.now() + timedelta(hours=9)
   #current_time = local_time()
-  now = datetime.now()
+  now = datetime.datetime.now()
   #now_plus_10 = (datetime.datetime.now() + datetime.timedelta(minutes=15)).strftime("%H:%M:%S")
-  frappe.msgprint(_("time:"+": "+now));
+  frappe.msgprint(_("time:"+": "+str(now)));
  
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
