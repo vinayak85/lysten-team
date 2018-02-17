@@ -9,6 +9,10 @@ frappe.ui.form.on('Standard Tour Plan', {
 
 frappe.ui.form.on("Standard Tour Plan", "onload", function(frm) {
     cur_frm.set_query("stp_user", function() {
-       alert("hiii");
+        return {
+            filters: [
+		    ['stp_user', 'type', '=', 'Employee']
+	    ]
+        };
     });
 });
