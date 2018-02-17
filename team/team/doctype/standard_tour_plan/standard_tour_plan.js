@@ -11,7 +11,7 @@ frappe.ui.form.on("Standard Tour Plan", "onload", function(frm) {
     cur_frm.set_query("stp_user", function() {
         return {
             filters: [
-		    ['stp_user', 'type', '=', 'Employee']
+		    ['user', 'type', '=', 'Employee']
 	    ]
         };
     });
