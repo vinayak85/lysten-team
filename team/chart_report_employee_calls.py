@@ -24,6 +24,7 @@ def get_call_summary():
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
   #dt_form_s_time=fromdate+' '+workstarttime
   cntcall=[];
+  flag=0;
   while (workstarttime < workendtime):
     dt_form_s_time=fromdate+' '+workstarttime
     c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S") 
@@ -32,6 +33,7 @@ def get_call_summary():
     dt_form_t_time = datetime.fromtimestamp(t)  
     #frappe.msgprint(_("time:"+": "+str(dt_form_t_time)));
     workstarttime = str(dt_form_t_time).split(' ')[1]
+    curr_select_date = str(dt_form_t_time).split(' ')[1]
     #frappe.msgprint(_("time:"+": "+str(workstarttime))); 
     
     #frappe.msgprint(_("From:"+": "+str(dt_form_s_time)+" To:"+str(dt_form_t_time)));
@@ -40,7 +42,10 @@ def get_call_summary():
     where creation between {0} and {1}; """.format("'"+str(dt_form_s_time)+"'","'"+str(dt_form_t_time)+"'"), as_dict=1)
               
     #frappe.msgprint(_(cnt_dcr[0].cnt));
-    cntcall.append(cnt_dcr[0].cnt);    
+    if(flag==0):
+      cntcall.append(cnt_dcr[0].curr_select_date);
+      
+    flag=1;
     
   for p in cntcall: 
     frappe.msgprint(_(p));
