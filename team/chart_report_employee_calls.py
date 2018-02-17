@@ -10,17 +10,21 @@ __version__ = '0.0.1'
 
 
 @frappe.whitelist()
-def get_call_summary(fromdate,todate,intervaltime,workstarttime,workendtime): 
+def get_call_summary(): 
   #fromdate,todate,intervaltime,workstarttime,workendtime
-  fromdate=''
-  todate=''
-  intervaltime=''
-  workstarttime=''
-  workendtime=''  
+  fromdate='2018-01-04'
+  todate='2018-01-12'
+  intervaltime='60'
+  workstarttime='08:00:00'
+  workendtime='12:00:00' 
   
+	while fromdate <= todate:
+    frappe.msgprint(_("time:"+": "+str(fromdate)));
+    frappe.utils.data.add_days (fromdate, 1);
   
   '''Time Add Auto in Date'''
-  a='2018-01-09'
+  
+  '''a='2018-01-09'
   b='12:00:00'
   dt=a+' '+b
   c = time.strptime(dt,"%Y-%m-%d %H:%M:%S")  
@@ -30,7 +34,7 @@ def get_call_summary(fromdate,todate,intervaltime,workstarttime,workendtime):
   frappe.msgprint(_("time:"+": "+str(dt_obj)));
   
   dt_time = str(dt_obj).split(' ')[1]
-  frappe.msgprint(_("time:"+": "+str(dt_time)));
+  frappe.msgprint(_("time:"+": "+str(dt_time)));'''
  
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
