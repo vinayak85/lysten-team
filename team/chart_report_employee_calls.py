@@ -23,7 +23,7 @@ def get_call_summary():
   
   c = time.strptime("2002-03-14 17:42:00","%Y-%m-%d %H:%M:%S")
   t = time.mktime(c)  
-  frappe.msgprint(_("time:"+": "+str(t)));
+  frappe.msgprint(_("time:"+": "+str(c)));
  
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
