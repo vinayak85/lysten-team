@@ -10,8 +10,7 @@ __version__ = '0.0.1'
 
 
 @frappe.whitelist()
-def get_call_summary(): 
-  #fromdate,todate,intervaltime,workstarttime,workendtime
+def get_call_summary(fromdate,todate,intervaltime,workstarttime,workendtime): 
   
   
   '''Time Add Auto in Date'''
@@ -23,6 +22,9 @@ def get_call_summary():
   t = t + 4500 #30 minutes is 1800 secs
   dt_obj = datetime.fromtimestamp(t)  
   frappe.msgprint(_("time:"+": "+str(dt_obj)));
+  
+  dt_time = datetime.strptime(dt_obj, "%H:%M:%S")
+  frappe.msgprint(_("time:"+": "+str(dt_time)));
  
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
