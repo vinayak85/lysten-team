@@ -16,10 +16,14 @@ def get_call_summary():
   #current_time = local_time()
   
   #now = frappe.utils.now().split(' ')[1]
-  now = frappe.utils.data.nowtime ()
-  #frappe.utils.data.nowtime () +
-  now_plus_10 =  frappe.utils.data.to_timedelta(10)
-  frappe.msgprint(_("time:"+": "+str(now)+"  "+str(now_plus_10)));
+  
+  #now = frappe.utils.data.nowtime ()
+  #now_plus_10 =  frappe.utils.data.to_timedelta(10)
+  #frappe.msgprint(_("time:"+": "+str(now)+"  "+str(now_plus_10)));
+  
+  c = time.strptime("2002-03-14 17:42:00","%Y-%m-%d %H:%M:%S")
+  t = time.mktime(c)  
+  frappe.msgprint(_("time:"+": "+str(t)));
  
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
