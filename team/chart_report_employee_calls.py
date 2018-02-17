@@ -23,7 +23,7 @@ def get_call_summary():
     #fromdate=frappe.utils.data.add_days (fromdate, 1);
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
   #dt_form_s_time=fromdate+' '+workstarttime
-  while (workstarttime <= workendtime):
+  while (workstarttime < workendtime):
     dt_form_s_time=fromdate+' '+workstarttime
     c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S") 
     t = time.mktime(c) 
