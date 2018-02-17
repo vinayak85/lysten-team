@@ -15,23 +15,24 @@ def get_call_summary():
   #fromdate,todate,intervaltime,workstarttime,workendtime
   fromdate='2018-01-04'
   todate='2018-01-05';
-  intervaltime=60*60;
+  intervaltime=30*60;
   workstarttime='08:00:00';
-  workendtime='12:00:00';
+  workendtime='09:30:00';
   #while (fromdate <= todate):
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
     #fromdate=frappe.utils.data.add_days (fromdate, 1);
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
-  
-  dt_form_s_time=fromdate+' '+workstarttime  
-  c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S")  
-  t = time.mktime(c) 
-  t = t + intervaltime #30 minutes is 1800 secs
-  dt_form_t_time = datetime.fromtimestamp(t)  
-  frappe.msgprint(_("time:"+": "+str(dt_form_t_time)));
-  
-  workstarttime = str(dt_form_t_time).split(' ')[1]
-  frappe.msgprint(_("time:"+": "+str(workstarttime)));  
+  #dt_form_s_time=fromdate+' '+workstarttime
+  while (workstarttime <= workendtime):
+    dt_form_s_time=fromdate+' '+workstarttime
+    c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S") 
+    t = time.mktime(c) 
+    t = t + intervaltime #30 minutes is 1800 secs
+    dt_form_t_time = datetime.fromtimestamp(t)  
+    #frappe.msgprint(_("time:"+": "+str(dt_form_t_time)));
+    workstarttime = str(dt_form_t_time).split(' ')[1]
+    #frappe.msgprint(_("time:"+": "+str(workstarttime)));  
+    frappe.msgprint(_("From:"+": "+str(dt_form_s_time)+" To:"+str(dt_form_t_time)));    
     
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
   #if(fromdate <= todate):
