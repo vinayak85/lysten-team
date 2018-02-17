@@ -17,9 +17,10 @@ def get_call_summary():
   intervaltime='60';
   workstarttime='08:00:00';
   workendtime='12:00:00';
-  while fromdate <= todate:
-   frappe.msgprint(_("time:"+": "+str(fromdate)));
-   frappe.utils.data.add_days (fromdate, 1);
+  #while fromdate <= todate:
+  #frappe.msgprint(_("time:"+": "+str(fromdate)));
+  frappe.utils.data.add_days (fromdate, 1);
+  frappe.msgprint(_("time:"+": "+str(fromdate)));
   
   '''Time Add Auto in Date'''
   
