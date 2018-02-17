@@ -10,8 +10,8 @@ __version__ = '0.0.1'
 
 
 @frappe.whitelist()
-def get_call_summary(fromdate,todate,intervaltime,workstarttime,workendtime): 
-  
+def get_call_summary(): 
+  #fromdate,todate,intervaltime,workstarttime,workendtime
   
   '''Time Add Auto in Date'''
   a='2018-01-09'
