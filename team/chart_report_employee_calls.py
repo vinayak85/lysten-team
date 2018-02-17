@@ -14,7 +14,7 @@ __version__ = '0.0.1'
 def get_call_summary():
   #fromdate,todate,intervaltime,workstarttime,workendtime
   fromdate='2018-01-04'
-  todate='2018-01-12';
+  todate='2018-01-05';
   intervaltime='60';
   workstarttime='08:00:00';
   workendtime='12:00:00';
