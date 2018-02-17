@@ -10,8 +10,14 @@ __version__ = '0.0.1'
 
 
 @frappe.whitelist()
-def get_call_summary(): 
+def get_call_summary(fromdate,todate,intervaltime,workstarttime,workendtime): 
   #fromdate,todate,intervaltime,workstarttime,workendtime
+  fromdate=''
+  todate=''
+  intervaltime=''
+  workstarttime=''
+  workendtime=''  
+  
   
   '''Time Add Auto in Date'''
   a='2018-01-09'
@@ -22,7 +28,7 @@ def get_call_summary():
   t = t + 4500 #30 minutes is 1800 secs
   dt_obj = datetime.fromtimestamp(t)  
   frappe.msgprint(_("time:"+": "+str(dt_obj)));
-  #frappe.utils.dt_obj.split(' ')[1] 
+  
   dt_time = str(dt_obj).split(' ')[1]
   frappe.msgprint(_("time:"+": "+str(dt_time)));
  
