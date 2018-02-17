@@ -11,7 +11,9 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def get_call_summary(): 
-  dt='2018-01-09 08:00:00'
+  a='2018-01-09'
+  b='08:00:00'
+  dt=a+' '+b
   c = time.strptime(dt,"%Y-%m-%d %H:%M:%S")
   
   t = time.mktime(c) 
