@@ -53,9 +53,12 @@ def get_call_summary():
         
     list_of_cnt.append(cntcall);
     fromdate=frappe.utils.data.add_days (fromdate, 1); #use for while loop increment in from_date by 1 day upto to_date
-    #frappe.msgprint(_("time:"+": "+str(fromdate))); 
-    for p in list_of_cnt: 
-      frappe.msgprint(_(p));
+    #frappe.msgprint(_("time:"+": "+str(fromdate)));
+    workstarttime='08:00:00';
+    workendtime='21:00:00';    
+  
+  for p in list_of_cnt:
+    frappe.msgprint(_(p));
     
     
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
