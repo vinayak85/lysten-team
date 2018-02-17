@@ -13,8 +13,8 @@ def get_call_summary():
   #nine_hours_from_now = datetime.now() + timedelta(hours=9)
   #current_time = local_time()
   now = datetime.now()
-  now_plus_10 = now + datetime.timedelta(minutes = 10)
-  frappe.msgprint(_("time:"+": "+now+" "+now_plus_10));
+  #now_plus_10 = (datetime.datetime.now() + datetime.timedelta(minutes=15)).strftime("%H:%M:%S")
+  frappe.msgprint(_("time:"+": "+now));
  
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
