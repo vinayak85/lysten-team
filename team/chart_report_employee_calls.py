@@ -16,8 +16,8 @@ def get_call_summary():
   #current_time = local_time()
   
   #now = frappe.utils.now().split(' ')[1]
-  now = frappe.utils.now().split(' ')[1]
-  now_plus_10 = now + frappe.utils.data.to_timedelta("10")
+  now = frappe.utils.data.nowtime ()
+  #now_plus_10 = now + frappe.utils.data.to_timedelta("10")
   frappe.msgprint(_("time:"+": "+str(now)));
  
 def local_time(zone='Asia/Kolkata'):
