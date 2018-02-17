@@ -23,6 +23,7 @@ def get_call_summary():
     #fromdate=frappe.utils.data.add_days (fromdate, 1);
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
   #dt_form_s_time=fromdate+' '+workstarttime
+  cntcall=[];
   while (workstarttime < workendtime):
     dt_form_s_time=fromdate+' '+workstarttime
     c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S") 
@@ -31,9 +32,16 @@ def get_call_summary():
     dt_form_t_time = datetime.fromtimestamp(t)  
     #frappe.msgprint(_("time:"+": "+str(dt_form_t_time)));
     workstarttime = str(dt_form_t_time).split(' ')[1]
-    #frappe.msgprint(_("time:"+": "+str(workstarttime)));  
-    frappe.msgprint(_("From:"+": "+str(dt_form_s_time)+" To:"+str(dt_form_t_time)));    
+    #frappe.msgprint(_("time:"+": "+str(workstarttime))); 
     
+    ##frappe.msgprint(_("From:"+": "+str(dt_form_s_time)+" To:"+str(dt_form_t_time)));
+    
+    cnt_dcr = frappe.db.sql(""" select count(*) as cnt from  1bd3e0294da19198.`tabDoctor Calls` 
+              where creation between {0} and {1}; """.format(dt_form_s_time,dt_form_t_time), as_dict=1)
+    cntcall.append(cnt_dcr[0].cnt);
+    
+    
+  frappe.msgprint(_(cntcall[0]));  
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
   #if(fromdate <= todate):
     #frappe.msgprint(_("less than from date:"));
