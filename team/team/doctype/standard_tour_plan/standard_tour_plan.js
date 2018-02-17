@@ -4,9 +4,11 @@
 frappe.ui.form.on('Standard Tour Plan', {
 	refresh: function(frm) {
 
-	},
-	cur_frm.set_query("stp_user", function() {
-        alert("hello");
-        });
-	
+	}	
+});
+
+frappe.ui.form.on("Rental Transaction", "onload", function(frm) {
+    cur_frm.set_query("stp_user", function() {
+       alert("hiii");
+    });
 });
