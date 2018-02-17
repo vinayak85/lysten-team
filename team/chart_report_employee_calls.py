@@ -23,15 +23,15 @@ def get_call_summary():
     #fromdate=frappe.utils.data.add_days (fromdate, 1);
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
   
-  dt=fromdate+' '+workstarttime  
-  c = time.strptime(dt,"%Y-%m-%d %H:%M:%S")  
+  dt_form_s_time=fromdate+' '+workstarttime  
+  c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S")  
   t = time.mktime(c) 
   t = t + intervaltime #30 minutes is 1800 secs
-  dt_obj = datetime.fromtimestamp(t)  
-  frappe.msgprint(_("time:"+": "+str(dt_obj)));
+  dt_form_t_time = datetime.fromtimestamp(t)  
+  frappe.msgprint(_("time:"+": "+str(dt_form_t_time)));
   
-  dt_time = str(dt_obj).split(' ')[1]
-  frappe.msgprint(_("time:"+": "+str(dt_time)));  
+  workstarttime = str(dt_form_t_time).split(' ')[1]
+  frappe.msgprint(_("time:"+": "+str(workstarttime)));  
     
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
   #if(fromdate <= todate):
@@ -51,7 +51,8 @@ def get_call_summary():
   dt_obj = datetime.fromtimestamp(t)  
   frappe.msgprint(_("time:"+": "+str(dt_obj)));
   
-  dt_time = str(dt_obj).split(' ')[1]
+  dt_time = str(dt_obj).split(' ')[1] get time
+  dt_date = str(dt_obj).split(' ')[0] get date
   frappe.msgprint(_("time:"+": "+str(dt_time)));'''
  
 def local_time(zone='Asia/Kolkata'):
