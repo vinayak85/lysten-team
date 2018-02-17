@@ -3,6 +3,7 @@ import frappe
 import datetime
 import time
 from datetime import datetime
+from datetime import timedelta
 from pytz import timezone
 from frappe import msgprint, _
 __version__ = '0.0.1'
@@ -15,10 +16,8 @@ def get_call_summary():
   #current_time = local_time()
   
   #now = frappe.utils.now().split(' ')[1]
-  
-  now = frappe.utils.now().split(' ')[1]
-  now_plus_10 = now + frappe.utils.now().split(' ')[1].timedelta(minutes = 10)
-  
+  now = datetime.now()
+  now_plus_10 = now + datetime.timedelta(minutes = 10)
   frappe.msgprint(_("time:"+": "+str(now)));
  
 def local_time(zone='Asia/Kolkata'):
