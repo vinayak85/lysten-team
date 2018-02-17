@@ -11,4 +11,5 @@ __version__ = '0.0.1'
 def get_call_summary():  
   #from datetime import datetime, timedelta
   #nine_hours_from_now = datetime.now() + timedelta(hours=9)
-  frappe.msgprint(_("time:"+": "+time.strftime('%H:%M:%S', time.gmtime(08:00:00))));
+  current_time = local_time()
+  frappe.msgprint(_("time:"+": "+current_time));
