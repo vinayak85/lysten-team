@@ -15,18 +15,30 @@ def get_call_summary():
   #fromdate,todate,intervaltime,workstarttime,workendtime
   fromdate='2018-01-04'
   todate='2018-01-05';
-  intervaltime='60';
+  intervaltime=60*60;
   workstarttime='08:00:00';
   workendtime='12:00:00';
+  #while (fromdate <= todate):
+    #frappe.msgprint(_("time:"+": "+str(fromdate)));
+    #fromdate=frappe.utils.data.add_days (fromdate, 1);
+    #frappe.msgprint(_("time:"+": "+str(fromdate)));
+  
+  dt=fromdate+' '+workstarttime  
+  c = time.strptime(dt,"%Y-%m-%d %H:%M:%S")  
+  t = time.mktime(c) 
+  t = t + intervaltime #30 minutes is 1800 secs
+  dt_obj = datetime.fromtimestamp(t)  
+  frappe.msgprint(_("time:"+": "+str(dt_obj)));
+  
+  dt_time = str(dt_obj).split(' ')[1]
+  frappe.msgprint(_("time:"+": "+str(dt_time)));  
+    
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
   #if(fromdate <= todate):
     #frappe.msgprint(_("less than from date:"));
   #else:
     #frappe.msgprint(_("High than from date:"));
-  while (fromdate <= todate):
-    frappe.msgprint(_("time:"+": "+str(fromdate)));
-    fromdate=frappe.utils.data.add_days (fromdate, 1);
-    frappe.msgprint(_("time:"+": "+str(fromdate)));
+
   
   '''Time Add Auto in Date'''
   
@@ -35,7 +47,7 @@ def get_call_summary():
   dt=a+' '+b
   c = time.strptime(dt,"%Y-%m-%d %H:%M:%S")  
   t = time.mktime(c) 
-  t = t + 4500 #30 minutes is 1800 secs
+  t = t + 1800 #30 minutes is 1800 secs
   dt_obj = datetime.fromtimestamp(t)  
   frappe.msgprint(_("time:"+": "+str(dt_obj)));
   
