@@ -23,7 +23,7 @@ def get_call_summary():
   dt_obj = datetime.fromtimestamp(t)  
   frappe.msgprint(_("time:"+": "+str(dt_obj)));
   #frappe.utils.dt_obj.split(' ')[1] 
-  dt_time = frappe.utils.dt_obj.split(' ')[1]
+  dt_time = dt_obj.split(' ')[1]
   frappe.msgprint(_("time:"+": "+str(dt_time)));
  
 def local_time(zone='Asia/Kolkata'):
