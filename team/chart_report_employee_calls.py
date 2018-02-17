@@ -12,7 +12,7 @@ def get_call_summary():
   #from datetime import datetime, timedelta
   #nine_hours_from_now = datetime.now() + timedelta(hours=9)
   #current_time = local_time()
-  now = datetime.datetime.now()
+  now = datetime.now()
   now_plus_10 = now + datetime.timedelta(minutes = 10)
   frappe.msgprint(_("time:"+": "+now+" "+now_plus_10));
  
