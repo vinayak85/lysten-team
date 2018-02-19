@@ -87,12 +87,19 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     #frappe.msgprint(_("time:"+": "+str(dt_form_t_time)));
     workstarttime = str(dt_form_t_time).split(' ')[1] #get time and use swap method like c=a,a=b,b=c    
 
-    t = time.strptime("22:30", "%H:%M")
-    timevalue_12hour = time.strftime( "%I:%M %p", t )
+    st_time=str(dt_form_s_time).split(' ')[1][:5]
+    en_time=str(dt_form_t_time).split(' ')[1][:5]
+    
+    t1 = time.strptime(st_time, "%H:%M")
+    timevalue_12hour_st = time.strftime( "%I:%M %p", t1 )
+    
+    t2 = time.strptime(en_time, "%H:%M")
+    timevalue_12hour_end = time.strftime( "%I:%M %p", t2 )      
+    ti_concat=str(timevalue_12hour_st)[:5]+'-'+str(timevalue_12hour_end)[:5]
     
     #frappe.msgprint(_(str(dt_form_s_time).split(' ')[1][:5]+" "+str(dt_form_t_time).split(' ')[1][:5]));
     #frappe.msgprint(_(str(datetime.strptime(str(dt_form_s_time).split(' ')[1][:5], "%H:%M"))+" "+str(datetime.strptime(str(dt_form_t_time).split(' ')[1][:5], "%H:%M"))));
-    frappe.msgprint(_(str(timevalue_12hour)[:5]))
+    frappe.msgprint(_(ti_concat))
     
   #for p in list_of_cnt:
     #frappe.msgprint(_(p));
