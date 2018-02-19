@@ -11,13 +11,18 @@ __version__ = '0.0.1'
 
 
 @frappe.whitelist()
-def get_call_summary():
+def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
   #fromdate,todate,intervaltime,workstarttime,workendtime
-  fromdate='2018-01-04'
+  '''fromdate='2018-01-04'
   todate='2018-01-05';
-  intervaltime=60*60;
+  intervaltime=60*60;#convert into seconds
   workstarttime='08:00:00';
-  workendtime='21:00:00';
+  workendtime='21:00:00';'''
+  fromdate=frmdt
+  todate=todt;
+  intervaltime=inttime*60;#convert into seconds
+  workstarttime=wrkstrttime;
+  workendtime=wrkendtime;  
   list_of_cnt=[];
   while (fromdate <= todate):
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
@@ -54,8 +59,8 @@ def get_call_summary():
     list_of_cnt.append(cntcall);
     fromdate=frappe.utils.data.add_days (fromdate, 1); #use for while loop increment in from_date by 1 day upto to_date
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
-    workstarttime='08:00:00';
-    workendtime='21:00:00';    
+    workstarttime=wrkstrttime;
+    workendtime=wrkendtime;    
   
   for p in list_of_cnt:
     frappe.msgprint(_(p));
