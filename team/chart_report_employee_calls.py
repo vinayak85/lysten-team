@@ -15,8 +15,10 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     todate=todt;
     intervaltime=int(inttime)*60;#convert into seconds
     workstarttime="'"+wrkstrttime+"'";
-    workendtime="'"+wrkendtime+"'";    
-    frappe.msgprint(_(fromdate+"  "+todate+"  "+str(intervaltime)+"  "+workstarttime+"  "+workendtime));
+    workendtime="'"+wrkendtime+"'"; 
+    dt_form_s_time=fromdate+' '+workstarttime
+    datetime_object = datetime.strptime(dt_form_s_time, '%b %d %Y %I:%M%p')
+    frappe.msgprint(_(fromdate+"  "+todate+"  "+str(intervaltime)+"  "+workstarttime+"  "+datetime_object));
     
 @frappe.whitelist()
 def get_call_summary1(frmdt,todt,inttime,wrkstrttime,wrkendtime):
