@@ -78,6 +78,7 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     
   workstarttime=wrkstrttime;
   workendtime=wrkendtime;
+  time_list=[];
   while (workstarttime < workendtime):
     dt_form_s_time=fromdate+' '+workstarttime
     c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S") 
@@ -99,10 +100,13 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     
     #frappe.msgprint(_(str(dt_form_s_time).split(' ')[1][:5]+" "+str(dt_form_t_time).split(' ')[1][:5]));
     #frappe.msgprint(_(str(datetime.strptime(str(dt_form_s_time).split(' ')[1][:5], "%H:%M"))+" "+str(datetime.strptime(str(dt_form_t_time).split(' ')[1][:5], "%H:%M"))));
-    frappe.msgprint(_(ti_concat))
-    
-  #for p in list_of_cnt:
-    #frappe.msgprint(_(p));
+    #frappe.msgprint(_(ti_concat))
+    time_list.append(ti_concat)
+
+  cntcall.insert(0,curr_select_date);  
+  list_of_cnt.insert(0,time_list);
+  for p in list_of_cnt:
+    frappe.msgprint(_(p));
     
     
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
