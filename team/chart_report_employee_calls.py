@@ -63,7 +63,8 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
       
       #frappe.msgprint(_(cnt_dcr[0].cnt));
       if(flag==0):
-        cntcall.insert(0,curr_select_date);
+        if(cntcall[0]!=curr_select_date):
+            cntcall.insert(0,curr_select_date);
       
       cntcall.append(cnt_dcr[0].cnt);
       flag=1;
