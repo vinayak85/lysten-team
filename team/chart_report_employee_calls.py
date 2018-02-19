@@ -74,10 +74,22 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     fromdate=frappe.utils.data.add_days (fromdate, 1); #use for while loop increment in from_date by 1 day upto to_date
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
     workstarttime=wrkstrttime;
-    workendtime=wrkendtime;    
+    workendtime=wrkendtime;
+    
+  workstarttime=wrkstrttime;
+  workendtime=wrkendtime;
+  while (workstarttime < workendtime):
+    dt_form_s_time=fromdate+' '+workstarttime
+    c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S") 
+    t = time.mktime(c) 
+    t = t + intervaltime #30 minutes is 1800 secs
+    dt_form_t_time = datetime.fromtimestamp(t)  #calculate to_time using interval time .this may be 30min,1hr,2hr
+    #frappe.msgprint(_("time:"+": "+str(dt_form_t_time)));
+    workstarttime = str(dt_form_t_time).split(' ')[1] #get time and use swap method like c=a,a=b,b=c
+    frappe.msgprint(_(str(dt_form_s_time).split(' ')[1]+" "+str(dt_form_t_time).split(' ')[1]));
   
-  for p in list_of_cnt:
-    frappe.msgprint(_(p));
+  #for p in list_of_cnt:
+    #frappe.msgprint(_(p));
     
     
   #fromdate=frappe.utils.data.add_days (fromdate, 2);
