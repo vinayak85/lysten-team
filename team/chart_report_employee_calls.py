@@ -28,7 +28,7 @@ def get_call_summary1(frmdt,todt,inttime,wrkstrttime,wrkendtime):
   workendtime='21:00:00';'''
   fromdate=frmdt
   todate=todt;
-  intervaltime=inttime*60;#convert into seconds
+  intervaltime=int(inttime)*60;#convert into seconds
   workstarttime=wrkstrttime;
   workendtime=wrkendtime;  
   list_of_cnt=[];
