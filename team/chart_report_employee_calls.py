@@ -48,7 +48,7 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
       
       #frappe.msgprint(_("time:"+": "+str(workstarttime)));#frappe.msgprint(_("From:"+": "+str(dt_form_s_time)+" To:"+str(dt_form_t_time)));
       
-      cnt_dcr = frappe.db.sql(""" select count(*) from  1bd3e0294da19198.`tabDoctor Calls` tdc left outer join 
+      cnt_dcr = frappe.db.sql(""" select count(*) as cnt from  1bd3e0294da19198.`tabDoctor Calls` tdc left outer join 
       tabUser tu on tu.name=tdc.dr_call_by_user_id where tu.designation='TBM' 
       and tdc.creation between {0} and {1}; """.format("'"+str(dt_form_s_time)+"'","'"+str(dt_form_t_time)+"'"), as_dict=1)
       
