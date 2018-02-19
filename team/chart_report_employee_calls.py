@@ -92,7 +92,7 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     
     #frappe.msgprint(_(str(dt_form_s_time).split(' ')[1][:5]+" "+str(dt_form_t_time).split(' ')[1][:5]));
     #frappe.msgprint(_(str(datetime.strptime(str(dt_form_s_time).split(' ')[1][:5], "%H:%M"))+" "+str(datetime.strptime(str(dt_form_t_time).split(' ')[1][:5], "%H:%M"))));
-    frappe.msgprint(_(str(timevalue_12hour)))
+    frappe.msgprint(_(str(timevalue_12hour)[:5]))
     
   #for p in list_of_cnt:
     #frappe.msgprint(_(p));
