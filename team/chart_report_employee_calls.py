@@ -16,7 +16,7 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     intervaltime=int(inttime)*60;#convert into seconds
     workstarttime=wrkstrttime;
     workendtime=wrkendtime;    
-    frappe.msgprint(_(fromdate+"  "+todate+"  "+intervaltime+"  "+workstarttime+"  "+workendtime));
+    frappe.msgprint(_(fromdate+"  "+todate+"  "+str(intervaltime)+"  "+workstarttime+"  "+workendtime));
     
 @frappe.whitelist()
 def get_call_summary1(frmdt,todt,inttime,wrkstrttime,wrkendtime):
