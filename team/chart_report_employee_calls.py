@@ -9,17 +9,7 @@ from frappe.utils import getdate, nowdate, add_days
 from frappe import msgprint, _
 __version__ = '0.0.1'
 
-@frappe.whitelist()
-def test(frmdt,todt,inttime,wrkstrttime,wrkendtime):
-    fromdate=frmdt
-    todate=todt;
-    intervaltime=int(inttime)*60;#convert into seconds
-    workstarttime=wrkstrttime;
-    workendtime=wrkendtime; 
-    dt_form_s_time=fromdate+' '+workstarttime
-    datetime_object = datetime.strptime(dt_form_s_time, "%Y-%m-%d %H:%M:%S")
-    frappe.msgprint(_(fromdate+"  "+todate+"  "+str(intervaltime)+"  "+workstarttime+"  "+str(datetime_object)));
-    
+
 @frappe.whitelist()
 def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
   #fromdate,todate,intervaltime,workstarttime,workendtime
@@ -65,9 +55,6 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
       if(flag==0):
         flag=1;
         cntcall.insert(0,curr_select_date);
-        '''if(len(cntcall) >0):
-            if(str(cntcall[0])!=str(curr_select_date)):
-                cntcall.insert(0,curr_select_date);'''
       
       cntcall.append(cnt_dcr[0].cnt);
       flag=1;
@@ -109,15 +96,12 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
 
   #cntcall.insert(0,curr_select_date);  
   list_of_cnt.insert(0,time_list);
-  for p in list_of_cnt:
-    frappe.msgprint(_(p));
     
+  return list_of_cnt;
+  #for p in list_of_cnt:
+    #frappe.msgprint(_(p));
     
-  #fromdate=frappe.utils.data.add_days (fromdate, 2);
-  #if(fromdate <= todate):
-    #frappe.msgprint(_("less than from date:"));
-  #else:
-    #frappe.msgprint(_("High than from date:"));
+
 
   
   '''Time Add Auto in Date'''
