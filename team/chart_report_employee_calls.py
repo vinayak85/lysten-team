@@ -10,7 +10,7 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
-def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
+def test(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     fromdate=frmdt
     todate=todt;
     intervaltime=int(inttime)*60;#convert into seconds
@@ -21,7 +21,7 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     frappe.msgprint(_(fromdate+"  "+todate+"  "+str(intervaltime)+"  "+workstarttime+"  "+str(datetime_object)));
     
 @frappe.whitelist()
-def get_call_summary1(frmdt,todt,inttime,wrkstrttime,wrkendtime):
+def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
   #fromdate,todate,intervaltime,workstarttime,workendtime
   '''fromdate='2018-01-04'
   todate='2018-01-05';
