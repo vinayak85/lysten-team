@@ -107,7 +107,7 @@ def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     #frappe.msgprint(_(ti_concat))
     time_list.append(ti_concat)
 
-  cntcall.insert(0,curr_select_date);  
+  #cntcall.insert(0,curr_select_date);  
   list_of_cnt.insert(0,time_list);
   for p in list_of_cnt:
     frappe.msgprint(_(p));
