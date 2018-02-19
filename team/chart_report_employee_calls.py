@@ -30,7 +30,7 @@ def get_call_summary1(frmdt,todt,inttime,wrkstrttime,wrkendtime):
   todate=todt;
   intervaltime=int(inttime)*60;#convert into seconds
   workstarttime="'"+wrkstrttime+"'";
-  workendtime="'"+wrkendtime"'"+;  
+  workendtime="'"+wrkendtime+"'";  
   list_of_cnt=[];
   while (fromdate <= todate):
     #frappe.msgprint(_("time:"+": "+str(fromdate)));
