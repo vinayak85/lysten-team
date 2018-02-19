@@ -44,8 +44,8 @@ def get_call_summary1(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     
     while (workstarttime < workendtime):
       
-      #dt_form_s_time=fromdate+' '+workstarttime
-      dt_form_s_time=datetime.strptime(fromdate+' '+workstarttime, "%Y-%m-%d %H:%M:%S")
+      dt_form_s_time=fromdate+' '+workstarttime
+      #dt_form_s_time=datetime.strptime(fromdate+' '+workstarttime, "%Y-%m-%d %H:%M:%S")
       c = time.strptime(dt_form_s_time,"%Y-%m-%d %H:%M:%S") 
       t = time.mktime(c) 
       t = t + intervaltime #30 minutes is 1800 secs
