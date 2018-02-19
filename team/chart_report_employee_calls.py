@@ -13,7 +13,7 @@ __version__ = '0.0.1'
 def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
     fromdate=frmdt
     todate=todt;
-    intervaltime=inttime*60;#convert into seconds
+    intervaltime=int(inttime)*60;#convert into seconds
     workstarttime=wrkstrttime;
     workendtime=wrkendtime;    
     frappe.msgprint(_(fromdate+"  "+todate+"  "+intervaltime+"  "+workstarttime+"  "+workendtime));
