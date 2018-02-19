@@ -11,7 +11,12 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def get_call_summary(frmdt,todt,inttime,wrkstrttime,wrkendtime):
-    frappe.msgprint(_(frmdt+"  "+todt+"  "+inttime+"  "+wrkstrttime+"  "+wrkendtime));
+    fromdate=frmdt
+    todate=todt;
+    intervaltime=inttime*60;#convert into seconds
+    workstarttime=wrkstrttime;
+    workendtime=wrkendtime;    
+    frappe.msgprint(_(fromdate+"  "+todate+"  "+intervaltime+"  "+workstarttime+"  "+workendtime));
     
 @frappe.whitelist()
 def get_call_summary1(frmdt,todt,inttime,wrkstrttime,wrkendtime):
