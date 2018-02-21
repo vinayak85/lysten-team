@@ -226,7 +226,7 @@ var y = new Date(frm.doc.to);
 method:'team.chart_report_employee_calls.get_call_summary',*/
 
 		frappe.call({
-			method:'team.team.doctype.call_summary_report.call_summary_report.get_call_summary'			
+			method:'team.team.doctype.call_summary_report.call_summary_report.get_call_summary',			
 			args:{
 				frmdt:frm.doc.from,
 				todt:frm.doc.to,
