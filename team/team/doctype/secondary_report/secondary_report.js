@@ -1070,7 +1070,7 @@ function datasetreturn(frm){
 //alert(string_stockist+"  "+code+"  "+string_month);
         
 		frappe.call({
-			method:'team.chart_secondary.get_date_and_app_support',
+			method:'team.team.doctype.secondary_report.secondary_report.get_date_and_app_support',
 			args:{
 				stockist_name:string_stockist,
 				products:code,
@@ -1084,7 +1084,7 @@ function datasetreturn(frm){
 
 function datasetreturn_2(frm){    
 		frappe.call({
-			method:'team.chart_secondary.getmonthly',
+			method:'team.team.doctype.secondary_report.secondary_report.getmonthly',
 			args:{
 				stockist_name:string_stockist,
 				products:code,
@@ -1109,7 +1109,7 @@ function datasetreturn_2(frm){
 
 function datasetreturn_3(frm){   
 		frappe.call({
-			method:'team.chart_secondary.getproductwise',
+			method:'team.team.doctype.secondary_report.secondary_report.getproductwise',
 			args:{
 				stockist_name:string_stockist,
 				products:code,
@@ -1124,7 +1124,7 @@ function datasetreturn_3(frm){
 
 function datasetreturn_4(frm){   
 		frappe.call({
-			method:'team.chart_secondary.get_sec_details_for_pie',
+			method:'team.team.doctype.secondary_report.secondary_report.get_sec_details_for_pie',
 			args:{
 				stockist_name:string_stockist,
 				products:code,
