@@ -8,6 +8,7 @@ frappe.ui.form.on('Call Summary Report', {
 });
 
 /************* Code Added On 21/02/2018 **************/
+
 var str_minutes=0;
 
 frappe.ui.form.on("Call Summary Report", {
