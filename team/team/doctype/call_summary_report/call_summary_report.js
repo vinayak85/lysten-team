@@ -30,7 +30,7 @@ var nodeList = document.getElementById('chart1').querySelector('svg').querySelec
     })
     x_and_y.forEach(function(element){
         element.style.fill = "none";
-        element.style.stroke = "black";
+        //element.style.stroke = "black";
     })
 
 /************ Append Code For Chart Printing Correctly END*************/
