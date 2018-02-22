@@ -221,11 +221,12 @@ class Secondary(Document):
 	frappe.msgprint(_(self.name));
 
     def on_update(self):
+	frappe.msgprint(_("update"));
         pass;
 
         
     def validate(self):
-	
+	frappe.msgprint(_("validate"));
         duplicate_pos=self.check_any_duplicate_item() # vin return -1 if not duplicate else return greater than 0
 	if(duplicate_pos>=0):
 		frappe.throw(_("Duplicate Item "+self.sec_items_qty[duplicate_pos].item_code2))
@@ -244,6 +245,7 @@ class Secondary(Document):
 	
 
     def check_any_duplicate_item(self):
+	frappe.msgprint(_("check_any"));
 	duplicate_pos=-1;
 	cnt=0
 	for d in self.sec_items_qty:
