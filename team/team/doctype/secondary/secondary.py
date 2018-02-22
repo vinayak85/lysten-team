@@ -218,7 +218,7 @@ class Secondary(Document):
     def autoname(self):
 	
         self.name = self.year + "-" + self.month + "-" + self.stockist;
-	
+	frappe.msgprint(_(self.name));
 
     def on_update(self):
         pass;
