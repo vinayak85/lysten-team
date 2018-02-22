@@ -35,7 +35,7 @@ function initialize(date, user) {
 function call_dr_gps_data(date, user) {
 
     frappe.call({
-        method: "team.get_lat_long_doc_calls.get_lat_long_details",
+        method: 'team.team.doctype.test_gps_map.test_gps_map.get_lat_long_details',
         args: {
             date: date,
             emp: user
