@@ -43,7 +43,7 @@ IF(doctor_flag=0 && camp_flag=0 && meeting_flag=0 && leave_flag=1,if(leave_type1
 if(leave_type3=1,concat('PLAN OF DAY : SICK LEAVE ',reason),'PLAN OF DAY : Leave'))),'PLAN NOT CREATED FOR THAT DAY...'))))))))) as calling 
 from 1bd3e0294da19198.`tabObjective` JOIN 1bd3e0294da19198.`tabUser`
  ON (1bd3e0294da19198.`tabUser`.`name` = 1bd3e0294da19198.`tabObjective`.user) 
-where select_date = {0} and user={1}) as subject
+where select_date = {0} and user={1} order by `tabObjective`.`name` desc limit 1) as subject
 ,"" as patch_id,join_name1 as "jwf_with",join_name2  as "jwf_with2"
   FROM 1bd3e0294da19198.`tabObjective`where select_date={0} and user ={1}
   
