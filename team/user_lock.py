@@ -23,7 +23,8 @@ def lock_check_with_std_lock(user):
       std_lock = frappe.db.sql("""select profile_master,patch_master,doctor_master,chemist_master,
       objective_lock_time,doctor_start_time,chemist_start_time from `tabStandard Lock`;""", as_dict=1)      
       
-      form_lock = frappe.db.sql("""select m_pro,m_pat,m_doc,m_che,t_obj_time,t_chc_s_time,t_drc_s_time,enabled from `tabUser` where name= {0} """.format(employee), as_dict=1)      
+      form_lock = frappe.db.sql("""select m_pro,m_pat,m_doc,m_che,t_obj_time,
+      t_chc_s_time,t_drc_s_time,enabled from `tabUser` where name= {0} """.format("'"+user+"'"), as_dict=1)      
       
       if(form_lock[0].enabled!=0):
         #profile master
