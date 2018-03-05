@@ -48,7 +48,7 @@ def lock_check_with_std_lock(user):
           lock_doc='0'          
 
         #Chemist master          
-        if(form_lock[0].m_doc==std_lock[0].doctor_master):
+        if(form_lock[0].m_che==std_lock[0].chemist_master):
           lock_chem='1'
         else:
           lock_chem='0'          
