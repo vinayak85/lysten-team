@@ -113,7 +113,7 @@ def lock_check_with_std_lock(user):
     return dict
 
 @frappe.whitelist()
-def update_user_lock_time_and_date_(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time):
+def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time):
     flag=0;
     if(m_pro!="" and m_pat!="" and m_doc!="" and m_che!="" and t_obj_time!="" and t_drc_s_time!="" and t_chc_s_time!=""):
         frappe.db.sql("""update `tabUser` 
