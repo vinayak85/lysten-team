@@ -134,7 +134,7 @@ def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_ti
         t_chc1="",
         t_chc2=""
         where enabled=1 and 
-        designation in ('TBM','ABM','RBM','SM','NBM') """.format(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time), as_dict=1)  
+        designation in ('TBM','ABM','RBM','SM','NBM') """.format(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time))  
         flag=1;
     else:
         frappe.msgprint(_("c"));
