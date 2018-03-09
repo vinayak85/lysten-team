@@ -111,3 +111,33 @@ def lock_check_with_std_lock(user):
     dict['active_flag'] = active_flag;    
     
     return dict
+
+@frappe.whitelist()
+def update_user_lock_time_and_date_(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time):
+    flag=0;
+    if(m_pro!="" and m_pat!="" and m_doc!="" and m_che!="" and t_obj_time!="" and t_drc_s_time!="" and t_chc_s_time!=""):
+        frappe.db.sql("""update `tabUser` 
+        set 
+        m_pro={0},
+        m_pat={1},
+        m_doc={2},
+        m_che={3},
+        t_obj_time={4},
+        t_drc_s_time={5},
+        t_chc_s_time={6},
+        t_drc1="",
+        t_drc2="",
+        t_obj1="",
+        t_obj2="",
+        t_chc1="",
+        t_chc2=""
+        where enabled=1 and 
+        designation in ('TBM','ABM','RBM','SM','NBM') """.format(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time), as_dict=1)  
+        flag=1;
+    else:
+        flag=0;
+        
+    dict = {'flag': ''}
+    dict['flag'] = flag;
+    return dict
+    
