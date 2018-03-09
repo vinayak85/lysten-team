@@ -117,23 +117,10 @@ def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_ti
     flag=0;
     frappe.msgprint(_("a"));
     if(m_pro!="" and m_pat!="" and m_doc!="" and m_che!="" and t_obj_time!="" and t_drc_s_time!="" and t_chc_s_time!=""):
-        frappe.msgprint(_("b"));
-        frappe.db.sql("""update `tabUser` 
-        set 
-        m_pro={0},
-        m_pat={1},
-        m_doc={2},
-        m_che={3},
-        t_obj_time={4},
-        t_drc_s_time={5},
-        t_chc_s_time={6},
-        t_drc1="",
-        t_drc2="",
-        t_obj1="",
-        t_obj2="",
-        t_chc1="",
-        t_chc2=""
-        where enabled=1 and 
+        frappe.msgprint(_(t_obj_time+" "+t_drc_s_time+" "+t_chc_s_time));#m_pro+" "+m_pat+" "+m_doc+" "+m_che+" "+
+        frappe.db.sql("""update `tabUser` set m_pro={0},m_pat={1},m_doc={2},m_che={3},
+        t_obj_time={4},t_drc_s_time={5},t_chc_s_time={6},t_drc1="",t_drc2="",t_obj1="",
+        t_obj2="",t_chc1="",t_chc2="" where enabled=1 and 
         designation in ('TBM','ABM','RBM','SM','NBM') """.format(int(m_pro),int(m_pat),int(m_doc),int(m_che),t_obj_time,t_drc_s_time,t_chc_s_time))  
         flag=1;
     else:
