@@ -137,7 +137,7 @@ def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_ti
     else:
         flag=0;
         
-    dict = {'flag': ''}
+    dict = {'flag': 0}
     dict['flag'] = flag;
     return dict
     
