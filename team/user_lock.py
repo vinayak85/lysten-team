@@ -7,6 +7,10 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
+def tttt():
+	frappe.msgprint(_("abcvv"));
+	
+@frappe.whitelist()
 def lock_check_with_std_lock(user):
     lock_prof='0'
     lock_patch='0'
