@@ -134,3 +134,7 @@ def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_ti
     dict = {'flag': 0}
     dict['flag'] = flag;
     return dict
+
+@frappe.whitelist()
+def retrun_user_list_with_lock_flag(limit, offset):
+	frappe.msgprint(_("c"));
