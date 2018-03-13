@@ -136,8 +136,11 @@ def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_ti
     
 @frappe.whitelist()
 def retrun_user_list_with_lock_flag(limit, offset):
-   frappe.msgprint(_("c"));
-	'''return frappe.db.sql("""Select name,concat(first_name," ",last_name) as full_name,
+	frappe.msgprint(_("c"));
+	
+	
+
+'''return frappe.db.sql("""Select name,concat(first_name," ",last_name) as full_name,
 	designation,enabled,modified,ifnull(mobile_no1,"-"),
 	if(m_pro=(select profile_master from `tabStandard Lock` order by modified desc limit 1)
 	&& m_pat=(select patch_master from `tabStandard Lock` order by modified desc limit 1)
