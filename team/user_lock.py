@@ -5,10 +5,6 @@ from datetime import datetime
 from pytz import timezone
 from frappe import msgprint, _
 __version__ = '0.0.1'
-
-@frappe.whitelist()
-def tttt():
-	frappe.msgprint(_("abcvv"));
 	
 @frappe.whitelist()
 def lock_check_with_std_lock(user):
@@ -116,6 +112,7 @@ def lock_check_with_std_lock(user):
     
     return dict
 
+
 @frappe.whitelist()
 def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time):
     flag=0;
@@ -137,32 +134,3 @@ def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_ti
     dict = {'flag': 0}
     dict['flag'] = flag;
     return dict
-    
-@frappe.whitelist()
-def retrun_user_list_with_lock_flag(limit, offset):
-	frappe.msgprint(_("c"));
-	
-	
-
-'''return frappe.db.sql("""Select name,concat(first_name," ",last_name) as full_name,
-	designation,enabled,modified,ifnull(mobile_no1,"-"),
-	if(m_pro=(select profile_master from `tabStandard Lock` order by modified desc limit 1)
-	&& m_pat=(select patch_master from `tabStandard Lock` order by modified desc limit 1)
-	&& m_doc= (select doctor_master from `tabStandard Lock` order by modified desc limit 1)&& m_che=
-	(select chemist_master from `tabStandard Lock` order by modified desc limit 1),1,0) as mast_flag,
-	if(t_obj_time=(select objective_lock_time from `tabStandard Lock` order by modified desc limit 1)
-	&& t_drc_s_time= (select doctor_start_time from `tabStandard Lock` order by modified desc limit 1)
-	&& t_chc_s_time=(select chemist_start_time from `tabStandard Lock` order by modified desc limit 1),1,0) as trans_flag 
-	from `tabUser` where designation in('TBM','ABM','RBM','ZBM','SM','NBM','CRM');""");'''
-
-
-'''select profile_master,chemist_master,doctor_master,patch_master,chemist_start_time,
-objective_lock_time,doctor_start_time from `tabStandard Lock`;
-
-Select name,concat(first_name," ",last_name) as full_name,
-		designation,enabled,modified,mobile_no1,mobile_no2,
-        if(m_pro='1' && m_pat='1' && m_doc= '1'&& m_che='1',1,0) as mast,
-        if(t_obj_time='09:30:00.000000' && t_drc_s_time= '12:00:00.000000' && t_chc_s_time='12:00:00.000000',1,0) as trans
-from 
-`tabUser`;'''
-
