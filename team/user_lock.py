@@ -158,3 +158,4 @@ Select name,concat(first_name," ",last_name) as full_name,
         if(t_obj_time='09:30:00.000000' && t_drc_s_time= '12:00:00.000000' && t_chc_s_time='12:00:00.000000',1,0) as trans
 from 
 `tabUser`;'''
+
