@@ -134,3 +134,15 @@ def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_ti
     dict['flag'] = flag;
     return dict
     
+
+    
+
+'''select profile_master,chemist_master,doctor_master,patch_master,chemist_start_time,
+objective_lock_time,doctor_start_time from `tabStandard Lock`;
+
+Select name,concat(first_name," ",last_name) as full_name,
+		designation,enabled,modified,mobile_no1,mobile_no2,
+        if(m_pro='1' && m_pat='1' && m_doc= '1'&& m_che='1',1,0) as mast,
+        if(t_obj_time='09:30:00.000000' && t_drc_s_time= '12:00:00.000000' && t_chc_s_time='12:00:00.000000',1,0) as trans
+from 
+`tabUser`;'''
