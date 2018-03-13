@@ -135,7 +135,19 @@ def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_ti
     return dict
     
 
-    
+@frappe.whitelist()
+def retrun_user_list_with_lock_flag():
+	return frappe.db.sql("""Select name,concat(first_name," ",last_name) as full_name,
+	designation,enabled,modified,ifnull(mobile_no1,"-"),
+	if(m_pro=(select profile_master from `tabStandard Lock` order by modified desc limit 1)
+	&& m_pat=(select patch_master from `tabStandard Lock` order by modified desc limit 1)
+	&& m_doc= (select doctor_master from `tabStandard Lock` order by modified desc limit 1)&& m_che=
+	(select chemist_master from `tabStandard Lock` order by modified desc limit 1),1,0) as mast_flag,
+	if(t_obj_time=(select objective_lock_time from `tabStandard Lock` order by modified desc limit 1) 
+	&& t_drc_s_time= (select doctor_start_time from `tabStandard Lock` order by modified desc limit 1)
+	&& t_chc_s_time=(select chemist_start_time from `tabStandard Lock` order by modified desc limit 1),1,0) as trans_flag
+	from `tabUser` where designation in('TBM','ABM','RBM','ZBM','SM','NBM','CRM');""");
+
 
 '''select profile_master,chemist_master,doctor_master,patch_master,chemist_start_time,
 objective_lock_time,doctor_start_time from `tabStandard Lock`;
