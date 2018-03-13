@@ -146,4 +146,4 @@ def retrun_user_list_with_lock_flag(limit, offset):
 	if(t_obj_time=(select objective_lock_time from `tabStandard Lock` order by modified desc limit 1)
 	&& t_drc_s_time= (select doctor_start_time from `tabStandard Lock` order by modified desc limit 1)
 	&& t_chc_s_time=(select chemist_start_time from `tabStandard Lock` order by modified desc limit 1),1,0) as trans_flag 
-	from `tabUser` where designation in('TBM','ABM','RBM','ZBM','SM','NBM','CRM');""");
+	from `tabUser` where designation in('TBM','ABM','RBM','ZBM','SM','NBM','CRM') LIMIT {0}  OFFSET {1};""".format(limit, offset));
