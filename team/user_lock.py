@@ -115,6 +115,7 @@ def lock_check_with_std_lock(user):
 @frappe.whitelist()
 def update_user_lock_time_and_date(send_opr_flag):
     flag=0;    
+    frappe.msgprint(_(send_opr_flag));
     if(send_opr_flag is 'Y'):
 	std_lock = frappe.db.sql("""select profile_master,patch_master,doctor_master,chemist_master,
 	objective_lock_time,doctor_start_time,chemist_start_time from `tabStandard Lock`;""", as_dict=1)
