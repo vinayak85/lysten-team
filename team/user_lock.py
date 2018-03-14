@@ -128,10 +128,11 @@ def update_user_lock_time_and_date(send_opr_flag):
 	t_obj2=NULL,t_chc1=NULL,t_chc2=NULL where enabled=1 and
 	designation in ('TBM','ABM','RBM','SM','NBM') ;""".format(std_lock[0].profile_master,
 								  std_lock[0].patch_master,
-								  std_lock[0].doctor_master,std_lock[0].chemist_master,
-								  std_lock[0].objective_lock_time,
-								  std_lock[0].doctor_start_time,
-								  std_lock[0].chemist_start_time), as_dict=1)
+								  std_lock[0].doctor_master,
+								  std_lock[0].chemist_master,
+								  "'"+std_lock[0].objective_lock_time+"'",
+								  "'"+std_lock[0].doctor_start_time+"'",
+								  "'"+std_lock[0].chemist_start_time+"'"), as_dict=1)
 	flag=1;
     else:
         frappe.msgprint(_("c"));
