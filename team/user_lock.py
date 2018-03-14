@@ -119,7 +119,7 @@ def update_user_lock_time_and_date(send_opr_flag):
 		std_lock = frappe.db.sql("""select profile_master,patch_master,doctor_master,
 		chemist_master,objective_lock_time,doctor_start_time,chemist_start_time from `tabStandard Lock`;""", as_dict=1)
 		
-		frappe.db.sql("""SET SQL_SAFE_UPDATES=0;update `tabUser` set m_pro={0},m_pat={1},m_doc={2},m_che={3},t_obj_time={4},t_drc_s_time={5},t_chc_s_time={6},t_drc1=NULL,t_drc2=NULL,t_obj1=NULL,t_obj2=NULL,t_chc1=NULL,t_chc2=NULL where enabled=1 and designation in ('TBM','ABM','RBM','SM','NBM') ;SET SQL_SAFE_UPDATES=1;""".format(std_lock[0].profile_master,std_lock[0].patch_master,std_lock[0].doctor_master,std_lock[0].chemist_master,"'"+str(std_lock[0].objective_lock_time)+"'","'"+str(std_lock[0].doctor_start_time)+"'","'"+str(std_lock[0].chemist_start_time)+"'"), as_dict=1)
+		frappe.db.sql("""update `tabUser` set m_pro={0},m_pat={1},m_doc={2},m_che={3},t_obj_time={4},t_drc_s_time={5},t_chc_s_time={6},t_drc1=NULL,t_drc2=NULL,t_obj1=NULL,t_obj2=NULL,t_chc1=NULL,t_chc2=NULL where enabled=1 and designation in ('TBM','ABM','RBM','SM','NBM') ;""".format(std_lock[0].profile_master,std_lock[0].patch_master,std_lock[0].doctor_master,std_lock[0].chemist_master,"'"+str(std_lock[0].objective_lock_time)+"'","'"+str(std_lock[0].doctor_start_time)+"'","'"+str(std_lock[0].chemist_start_time)+"'"), as_dict=1)
 		
 		frappe.msgprint(_("'"+str(std_lock[0].objective_lock_time)+"'"));
 	else:
