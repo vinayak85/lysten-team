@@ -116,7 +116,10 @@ def lock_check_with_std_lock(user):
 def update_user_lock_time_and_date(send_opr_flag):
 	ff='Y';
 	if(send_opr_flag == ff):
-		frappe.msgprint(_("A"));
+		std_lock = frappe.db.sql("""select profile_master,patch_master,doctor_master,
+		chemist_master,objective_lock_time,doctor_start_time,chemist_start_time from `tabStandard Lock`;""", as_dict=1)
+		
+		frappe.msgprint(_(str(std_lock[0].objective_lock_time)));
 	else:
 		frappe.msgprint(_("B"));
 
