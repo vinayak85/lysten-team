@@ -114,7 +114,8 @@ def lock_check_with_std_lock(user):
 
 @frappe.whitelist()
 def update_user_lock_time_and_date(send_opr_flag):
-	if(send_opr_flag is 'Y'):
+	ff='Y';
+	if(send_opr_flag == ff):
 		frappe.msgprint(_("A"));
 	else:
 		frappe.msgprint(_("B"));
