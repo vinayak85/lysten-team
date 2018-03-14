@@ -112,16 +112,14 @@ def lock_check_with_std_lock(user):
     
     return dict
 
-#std_lock[0].profile_master,std_lock[0].patch_master,std_lock[0].doctor_master,std_lock[0].chemist_master,std_lock[0].objective_lock_time,std_lock[0].doctor_start_time,std_lock[0].chemist_start_time
 @frappe.whitelist()
 def update_user_lock_time_and_date(send_opr_flag):
-    flag=0;
-    frappe.msgprint(_("a"));
-    if(send_opr_flag == 'Y'):
+    flag=0;    
+    if(send_opr_flag is 'Y'):
 	std_lock = frappe.db.sql("""select profile_master,patch_master,doctor_master,chemist_master,
 	objective_lock_time,doctor_start_time,chemist_start_time from `tabStandard Lock`;""", as_dict=1)
 	
-	frappe.msgprint(_(std_lock[0].objective_lock_time));
+	frappe.msgprint(_(str(std_lock[0].objective_lock_time)));
 	
 	frappe.db.sql("""update `tabUser` set m_pro={0},m_pat={1},m_doc={2},m_che={3},
 	t_obj_time={4},t_drc_s_time={5},t_chc_s_time={6},t_drc1=NULL,t_drc2=NULL,t_obj1=NULL,
