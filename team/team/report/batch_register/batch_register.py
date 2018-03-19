@@ -28,7 +28,7 @@ def get_columns():
 		_("Sale") + "::120",
 		_("Credit Note") + "::120",
 		_("Sample") + "::120",
-		_("Balance") + "::120"
+		_("Balance") + "::120",
 		_("Batch No") + "::120"
 		
 	]	
