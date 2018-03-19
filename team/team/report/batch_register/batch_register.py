@@ -57,10 +57,10 @@ def _execute(filters=None,  additional_query_columns=None):
 		bal_nqty = pur_qty[0].Purchase_Qty-(sale_qty[0].Sale+sample_pqty[0].Sample) + cn_qty[0].Credit_Note;
 		
 		datasets1.append(f);
-		datasets1.append(pur_qty[0].Purchase);
-		datasets1.append(sale_qty[0].Sale);
-		datasets1.append(sample_pqty[0].Sample);
-		datasets1.append(cn_qty[0].Credit_Note);
+		datasets1.append(if not pur_qty[0].Purchase: 0);
+		datasets1.append(if not sale_qty[0].Sale: 0);
+		datasets1.append(if not sample_pqty[0].Sample: 0);
+		datasets1.append(if not cn_qty[0].Credit_Note: 0);
 		datasets1.append(bal_nqty);
 		data.append(datasets1);
 		pass;
