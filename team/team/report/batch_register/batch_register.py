@@ -23,9 +23,10 @@ def _execute(filters=None,  additional_query_columns=None):
 		FROM 1bd3e0294da19198.`tabPurchase Invoice` as pi LEFT JOIN 1bd3e0294da19198.`tabPurchase Invoice Item` pii
 		ON pi.name = pii.parent where pi.docstatus <> 2 and pii.batch_no='AC6080' and pi.delivery_date 
 		like concat({0})""".format(ss), as_dict=1)
-        
-        data.append(f);      
-        data.append(op[0].Purchase_Qty);
+		data.append(f);
+		data.append(op[0].Purchase_Qty);
+		pass;
+	
 	return columns, data
 
 def get_columns():
