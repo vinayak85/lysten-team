@@ -72,7 +72,7 @@ def _execute(filters=None,  additional_query_columns=None):
 			
 			
 			if not cn_qty[0].Credit_Note is None:				
-				cn_qty = pur_qty[0].Credit_Note;
+				cn_qty = cn_qty[0].Credit_Note;
 				pass;
 			else:
 				cn_qty = 0;
