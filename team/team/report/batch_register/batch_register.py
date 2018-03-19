@@ -29,8 +29,11 @@ def _execute(filters=None,  additional_query_columns=None):
 	return columns, data
 
 def get_columns():
-	
 	columns = [
+		_("Month") + "::120",
+		_("Purchase_Qty") + "::120",
+	]
+	'''columns = [
 		_("Month") + "::120",
 		_("Purchase") + "::120",
 		_("Sale") + "::120",
@@ -39,7 +42,9 @@ def get_columns():
 		_("Balance") + "::120",
 		_("Batch No") + "::120"
 		
-	]	
+	]'''	
+	
+	
 
 	return columns
 
