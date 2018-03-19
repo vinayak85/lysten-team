@@ -18,8 +18,9 @@ def _execute(filters=None,  additional_query_columns=None):
 	monthss=get_months();
 	datasets1 = [];
 	batches=get_batches();
-	for f in monthss:
-		for batch in batches:
+	for batch in batches:
+		frappe.msgprint(_(batch));
+		for f in monthss:
 			datasets1 = [];
 			ss = "'" + f + "%'";
 			pur_qty = frappe.db.sql("""select sum(pii.stock_qty) as 'Purchase',batch_no
