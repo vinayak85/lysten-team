@@ -36,6 +36,6 @@ def get_columns():
 	return columns
 
 def get_months():
-	retrun ['2016-03%','2016-04%','2016-05%']
+	return ['2016-03%','2016-04%','2016-05%']
 
 
