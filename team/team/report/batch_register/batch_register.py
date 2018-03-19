@@ -21,13 +21,15 @@ def _execute(filters=None,  additional_query_columns=None):
 	for batch in batches:
 		gg= "'" +batch.batch_id+ "'";
 		frappe.msgprint(_(gg));
+		bal=0;
 		for f in monthss:
 			datasets1 = [];
 			ss = "'" + f + "%'";
 			pur_qty = frappe.db.sql("""select sum(pii.stock_qty) as 'Purchase',batch_no
 		FROM 1bd3e0294da19198.`tabPurchase Invoice` as pi LEFT JOIN 1bd3e0294da19198.`tabPurchase Invoice Item` pii
 		ON pi.name = pii.parent where pi.docstatus <> 2 and  pi.delivery_date 
-		like concat({0}) and  pii.batch_no=concat({1})""".format(ss, gg), as_dict=1)
+		like concat({0}) and  pii.batch_no=concat({1})""".format(ss, gg), as_dict=1);
+			
 			
 			sale_qty = frappe.db.sql("""select sum(sii.stock_qty) as 'Sale',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
 		as si LEFT JOIN 1bd3e0294da19198.`tabSales Invoice Item` sii ON si.name = sii.parent where si.docstatus <> 2 and 
@@ -50,7 +52,7 @@ def _execute(filters=None,  additional_query_columns=None):
 			else:
 				pur_qty = 0;
 				pass;
-			
+			bal=pur_qty;
 			
 			if not sale_qty[0].Sale is None:
 				sale_qty = sale_qty[0].Sale;
@@ -75,13 +77,14 @@ def _execute(filters=None,  additional_query_columns=None):
 				cn_qty = 0;
 				pass;
 			
-			bal_qty = pur_qty - (sale_qty + sample_qty) + cn_qty;
+			bal_qty = bal-pur_qty - (sale_qty + sample_qty) + cn_qty;
 			datasets1.append(f);
 			datasets1.append(pur_qty);
 			datasets1.append(sale_qty);
 			datasets1.append(sample_qty);
 			datasets1.append(cn_qty);
 			datasets1.append(bal_qty);
+			datasets1.append(gg);
 			data.append(datasets1);
 			pass;
 		pass;
