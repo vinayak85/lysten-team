@@ -19,6 +19,7 @@ def _execute(filters=None,  additional_query_columns=None):
 	datasets1 = [];
 	batches=get_batches();
 	for batch in batches:
+		batch="'" + batch + "'";
 		frappe.msgprint(_(batch));
 		for f in monthss:
 			datasets1 = [];
