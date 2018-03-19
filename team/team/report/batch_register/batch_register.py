@@ -34,7 +34,7 @@ def _execute(filters=None,  additional_query_columns=None):
 		and si.posting_date like concat({0})""".format(ss), as_dict=1)
 		
 		
-		sample_pqty = frappe.db.sql("""select sum(sii.stock_qty) as 'Sample',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
+		sample_qty = frappe.db.sql("""select sum(sii.stock_qty) as 'Sample',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
 		as si LEFT JOIN 1bd3e0294da19198.`tabSales Invoice Item` sii ON si.name = sii.parent where si.docstatus <> 2
 		and sii.batch_no='AC6080'  and 
 		(si.name like 'SS-%')
@@ -47,20 +47,44 @@ def _execute(filters=None,  additional_query_columns=None):
 		(si.name like 'Pre-R%' or si.name like 'SR-0%')
 		and si.posting_date like concat({0})""".format(ss), as_dict=1)
 		
-		if not pur_qty: pur_qty = 0;
-		if not sale_qty: pur_qty = 0;
-		if not sample_pqty: pur_qty = 0;
-		if not cn_qty: pur_qty = 0;	
+		if not pur_qty[0].Purchase is None:
+			pur_qty=pur_qty[0].Purchase
+		else:
+			pur_qty=0;
+			pass;
+		
+		if not sale_qty[0].Sale is None:
+			sale_qty=sale_qty[0].Sale
+		else:
+			sale_qty=0;
+			pass;
+		
+		if not sample_qty[0].Sample is None:
+			sample_qty=sample_qty[0].Sample
+		else:
+			sample_qty=0;
+			pass;
+		
+		if not cn_qty[0].Credit_Note is None:
+			cn_qty=pur_qty[0].Credit_Note
+		else:
+			cn_qty=0;
+			pass;
+		
+		
+		
+		
+			
 				
 		
 		
 		bal_nqty = pur_qty[0].Purchase_Qty-(sale_qty[0].Sale+sample_pqty[0].Sample) + cn_qty[0].Credit_Note;
 		
 		datasets1.append(f);
-		datasets1.append(if not pur_qty[0].Purchase: 0);
-		datasets1.append(if not sale_qty[0].Sale: 0);
-		datasets1.append(if not sample_pqty[0].Sample: 0);
-		datasets1.append(if not cn_qty[0].Credit_Note: 0);
+		datasets1.append(pur_qty);
+		datasets1.append(sale_qty);
+		datasets1.append(sample_qty);
+		datasets1.append(cn_qty);
 		datasets1.append(bal_nqty);
 		data.append(datasets1);
 		pass;
