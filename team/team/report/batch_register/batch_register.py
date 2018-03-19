@@ -83,7 +83,7 @@ def _execute(filters=None,  additional_query_columns=None):
 			datasets1.append(sale_qty);
 			datasets1.append(sample_qty);
 			datasets1.append(cn_qty);
-			datasets1.append(bal);
+			datasets1.append(bal_qty);
 			datasets1.append(gg);
 			data.append(datasets1);
 			pass;
