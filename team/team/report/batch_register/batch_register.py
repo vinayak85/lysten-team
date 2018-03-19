@@ -19,8 +19,8 @@ def _execute(filters=None,  additional_query_columns=None):
 	datasets1 = [];
 	batches=get_batches();
 	for batch in batches:
-		batch="'" + batch.batch_id + "'";
-		frappe.msgprint(_(batch));
+		gg="'" + batch.batch_id + "'";
+		frappe.msgprint(_(gg));
 		for f in monthss:
 			datasets1 = [];
 			ss = "'" + f + "%'";
@@ -112,5 +112,5 @@ def get_months():
 	return ['2016-03','2016-04','2016-05']
 
 def get_batches():
-	return frappe.db.sql("""SELECT batch_id FROM 1bd3e0294da19198.tabBatch as bb where bb.docstatus<>2 """, as_dict=0)
+	return frappe.db.sql("""SELECT batch_id FROM 1bd3e0294da19198.tabBatch as bb where bb.docstatus<>2 """, as_dict=1)
 	
