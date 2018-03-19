@@ -78,7 +78,7 @@ def _execute(filters=None,  additional_query_columns=None):
 				
 		
 		
-		bal_nqty = pur_qty[0].Purchase_Qty-(sale_qty[0].Sale+sample_pqty[0].Sample) + cn_qty[0].Credit_Note;
+		bal_nqty = pur_qty-(sale_qty+sample_qty) + cn_qty;
 		
 		datasets1.append(f);
 		datasets1.append(pur_qty);
