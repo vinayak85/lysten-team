@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Secondary"] = {
+frappe.query_reports["Batch Register"] = {
 	"filters": [
 
 	]
