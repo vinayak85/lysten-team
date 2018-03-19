@@ -9,6 +9,9 @@ from frappe.model.meta import get_field_precision
 from frappe.utils.xlsxutils import handle_html
 
 def execute(filters=None):
+	return _execute(filters)
+
+def _execute(filters=None, additional_table_columns=None, additional_query_columns=None):
 	columns, data = [], []
 	if not filters: filters = {}
 	columns = get_columns(additional_table_columns)	
