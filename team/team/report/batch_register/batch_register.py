@@ -14,7 +14,10 @@ def execute(filters=None):
 def _execute(filters=None,  additional_query_columns=None):
 	columns, data = [], []
 	if not filters: filters = {}
-	columns = get_columns()	
+	columns = get_columns()
+	monthss=get_months();
+	for f in monthss:
+		frappe.msgprint(_("mm: "+" "+f));
 	return columns, data
 
 def get_columns():
@@ -26,7 +29,13 @@ def get_columns():
 		_("Credit Note") + "::120",
 		_("Sample") + "::120",
 		_("Balance") + "::120"
+		_("Batch No") + "::120"
 		
-	]
+	]	
 
 	return columns
+
+def get_months():
+	retrun ['2016-03%','2016-04%','2016-05%']
+
+
