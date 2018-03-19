@@ -26,11 +26,13 @@ def _execute(filters=None,  additional_query_columns=None):
 		ON pi.name = pii.parent where pi.docstatus <> 2 and pii.batch_no='AC6080' and pi.delivery_date 
 		like concat({0})""".format(ss), as_dict=1)
 		
+		
 		sale_qty = frappe.db.sql("""select sum(sii.stock_qty) as 'Sale',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
 		as si LEFT JOIN 1bd3e0294da19198.`tabSales Invoice Item` sii ON si.name = sii.parent where si.docstatus <> 2
 		and sii.batch_no='AC6080'  and 
 		(si.name like 'Pre-SI-0%' or si.name like 'SI-0%')
 		and si.posting_date like concat({0})""".format(ss), as_dict=1)
+		
 		
 		sample_pqty = frappe.db.sql("""select sum(sii.stock_qty) as 'Sample',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
 		as si LEFT JOIN 1bd3e0294da19198.`tabSales Invoice Item` sii ON si.name = sii.parent where si.docstatus <> 2
@@ -38,11 +40,18 @@ def _execute(filters=None,  additional_query_columns=None):
 		(si.name like 'SS-%')
 		and si.posting_date like concat({0})""".format(ss), as_dict=1)
 		
+		
 		cn_qty = frappe.db.sql("""select sum(sii.stock_qty) as 'Credit_Note',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
 		as si LEFT JOIN 1bd3e0294da19198.`tabSales Invoice Item` sii ON si.name = sii.parent where si.docstatus <> 2
 		and sii.batch_no='AC6080'  and 
 		(si.name like 'Pre-R%' or si.name like 'SR-0%')
 		and si.posting_date like concat({0})""".format(ss), as_dict=1)
+		
+		if not pur_qty: pur_qty = 0;
+		if not sale_qty: pur_qty = 0;
+		if not sample_pqty: pur_qty = 0;
+		if not cn_qty: pur_qty = 0;	
+				
 		
 		
 		bal_nqty = pur_qty[0].Purchase_Qty-(sale_qty[0].Sale+sample_pqty[0].Sample) + cn_qty[0].Credit_Note;
