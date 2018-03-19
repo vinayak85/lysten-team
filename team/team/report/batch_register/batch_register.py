@@ -111,5 +111,5 @@ def get_months():
 	return ['2016-03','2016-04','2016-05']
 
 def get_batches():
-	return frappe.db.sql("""SELECT batch_id FROM 1bd3e0294da19198.tabBatch as bb where bb.docstatus """, as_dict=1)
+	return frappe.db.sql("""SELECT batch_id FROM 1bd3e0294da19198.tabBatch as bb where bb.docstatus<>2 """, as_dict=1)
 	
