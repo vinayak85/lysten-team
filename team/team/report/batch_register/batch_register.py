@@ -18,6 +18,13 @@ def _execute(filters=None,  additional_query_columns=None):
 	monthss=get_months();
 	for f in monthss:
 		frappe.msgprint(_("mm: "+" "+f));
+		op = frappe.db.sql("""select sum(pii.stock_qty) as 'Purchase_Qty',batch_no
+		FROM 1bd3e0294da19198.`tabPurchase Invoice` as pi LEFT JOIN 1bd3e0294da19198.`tabPurchase Invoice Item` pii
+		ON pi.name = pii.parent where pi.docstatus <> 2 and pii.batch_no='AC6080' and pi.delivery_date 
+		like concat({0})""".format(f), as_dict=1)
+        
+        datasets1.append(f);      
+        datasets1.append(op[0].Purchase_Qty);
 	return columns, data
 
 def get_columns():
