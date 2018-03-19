@@ -20,7 +20,7 @@ def _execute(filters=None,  additional_query_columns=None):
 	batches=get_batches();
 	for batch in batches:
 		gg="'" + batch.batch_id + "'";
-		#frappe.msgprint(_(gg));
+		frappe.msgprint(_(gg));
 		for f in monthss:
 			datasets1 = [];
 			ss = "'" + f + "%'";
