@@ -18,6 +18,7 @@ def _execute(filters=None,  additional_query_columns=None):
 	monthss=get_months();
 	datasets1 = [];
 	batches=get_batches();
+	frappe.msgprint(_(filters.get("from_date")));
 	for batch in batches:
 		gg= "'" +batch.batch_id+ "'";
 		#frappe.msgprint(_(gg));
