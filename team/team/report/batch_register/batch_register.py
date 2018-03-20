@@ -18,8 +18,14 @@ def _execute(filters=None,  additional_query_columns=None):
 	monthss=get_months();
 	datasets1 = [];
 	batches=get_batches();
+	'''
 	from_month=filters.get("from_date");
-	frappe.msgprint(_(from_month[:-2]));
+	from_month=from_month[:-3];
+	from_month=filters.get("to_date");
+	from_month=from_month[:-3];
+	batch=filters.get("batch");
+	'''
+	
 	for batch in batches:
 		gg= "'" +batch.batch_id+ "'";
 		#frappe.msgprint(_(gg));
@@ -30,8 +36,8 @@ def _execute(filters=None,  additional_query_columns=None):
 			ss = "'" + f + "%'";
 			pur_qty = frappe.db.sql("""select sum(pii.stock_qty) as 'Purchase',batch_no
 		FROM 1bd3e0294da19198.`tabPurchase Invoice` as pi LEFT JOIN 1bd3e0294da19198.`tabPurchase Invoice Item` pii
-		ON pi.name = pii.parent where pi.docstatus <> 2 and  pi.delivery_date 
-		like concat({0}) and  pii.batch_no=concat({1})""".format(ss, gg), as_dict=1);
+		ON pi.name = pii.parent where pi.docstatus <> 2   
+		and pi.delivery_date like concat({0}) and  pii.batch_no=concat({2})""".format(ss, gg), as_dict=1);
 			
 			
 			sale_qty = frappe.db.sql("""select sum(sii.stock_qty) as 'Sale',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
