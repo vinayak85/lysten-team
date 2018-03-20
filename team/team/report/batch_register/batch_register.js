@@ -16,6 +16,12 @@ frappe.query_reports["Batch Register"] = {
 			"label": __("To Date"),
 			"fieldtype": "Date",
 			"default": frappe.datetime.get_today()
+		},
+		{
+			"fieldname":"batch",
+			"label": __("Batch"),
+			"fieldtype": "Link",
+			"options": "Batch"
 		}
 
 	]
