@@ -42,10 +42,17 @@ def _execute(filters=None,  additional_query_columns=None):
 		and (si.name like 'SS-%')
 		and si.posting_date like concat({0}) and  sii.batch_no={1}""".format(ss, gg), as_dict=1)
 			
-			cn_qty = frappe.db.sql("""select sum(sii.stock_qty) as 'Credit_Note',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
+			cn_qty_old = frappe.db.sql("""select sum(sii.stock_qty) as 'Credit_Note',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
 		as si LEFT JOIN 1bd3e0294da19198.`tabSales Invoice Item` sii ON si.name = sii.parent where si.docstatus <> 2
-		and (si.name like 'Pre-R%' or si.name like 'SR-0%')
+		and (si.name like 'Pre-R%' )
 		and si.posting_date like concat({0}) and  sii.batch_no={1}""".format(ss, gg), as_dict=1)
+			
+			cn_qty_new = frappe.db.sql("""select sum(sii.stock_qty) as 'Credit_Note',batch_no FROM 1bd3e0294da19198.`tabSales Invoice`
+		as si LEFT JOIN 1bd3e0294da19198.`tabSales Invoice Item` sii ON si.name = sii.parent where si.docstatus <> 2
+		and ( si.name like 'SR-0%')
+		and si.posting_date like concat({0}) and  sii.batch_no={1}""".format(ss, gg), as_dict=1)
+			
+			
 			
 			if not pur_qty[0].Purchase is None:
 				pur_qty = pur_qty[0].Purchase;
@@ -71,12 +78,21 @@ def _execute(filters=None,  additional_query_columns=None):
 				pass;
 			
 			
-			if not cn_qty[0].Credit_Note is None:				
-				cn_qty = cn_qty[0].Credit_Note;
+			if not cn_qty_old[0].Credit_Note is None:				
+				cn_qty_old = cn_qty_old[0].Credit_Note;
 				pass;
 			else:
-				cn_qty = 0;
+				cn_qty_old = 0;
 				pass;
+			
+			if not cn_qty_new[0].Credit_Note is None:				
+				cn_qty_new = cn_qty_new[0].Credit_Note;
+				pass;
+			else:
+				cn_qty_new = 0;
+				pass;
+			
+			cn_qty=-(cn_qty_old)+cn_qty_new
 			
 			bal_qty = pur_qty - (sale_qty + sample_qty) + cn_qty;
 			bal=bal-bal_qty;
