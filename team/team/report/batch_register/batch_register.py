@@ -95,7 +95,13 @@ def _execute(filters=None,  additional_query_columns=None):
 			cn_qty=-(cn_qty_old)+cn_qty_new
 			
 			bal_qty = pur_qty - (sale_qty + sample_qty) + cn_qty;
-			bal=-(bal-bal_qty);
+			bal=(bal-bal_qty);
+			balance=0;
+			balance=(bal);
+			if(bal<0):
+				balance=-(bal);
+				pass;
+			
 			datasets1.append(f);
 			datasets1.append(pur_qty);
 			datasets1.append(sale_qty);
