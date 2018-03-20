@@ -20,7 +20,7 @@ def _execute(filters=None,  additional_query_columns=None):
 	batches=get_batches();
 	for batch in batches:
 		gg= "'" +batch.batch_id+ "'";
-		frappe.msgprint(_(gg));
+		#frappe.msgprint(_(gg));
 		bal_qty=0;
 		bal=0;
 		for f in monthss:
@@ -95,7 +95,7 @@ def _execute(filters=None,  additional_query_columns=None):
 			cn_qty=-(cn_qty_old)+cn_qty_new
 			
 			bal_qty = pur_qty - (sale_qty + sample_qty) + cn_qty;
-			bal=bal-bal_qty;
+			bal=-(bal-bal_qty);
 			datasets1.append(f);
 			datasets1.append(pur_qty);
 			datasets1.append(sale_qty);
