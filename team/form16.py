@@ -44,7 +44,7 @@ def form16_allowance(employee,from_date,to_date):
         #employee="'"+employee+"'";
 	
         paid_month_count= frappe.db.sql("""select  ifnull(count(name),0)as paid_month_count from `tabSalary Slip` where
-	employee={0} and start_date between {1} and {2} and end_date between {1} and {2} ;
+	employee={0} and start_date between {1} and {2} and end_date between {1} and {2} and status IN ('Draft', 'Submitted');
 	""".format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
 	
         allowance= frappe.db.sql("""select ifnull(sum(sd.amount),0)as convenience_allowance from `tabSalary Detail` sd 
