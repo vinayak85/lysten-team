@@ -4,7 +4,7 @@
 frappe.ui.form.on('Standard Tour Plan', {
 	refresh: function(frm) {
 
-	}
+	},
 	setup: function(frm) {
 		frm.set_query("user", function() {		
 
