@@ -16,6 +16,8 @@ frappe.ui.form.on('Standard Tour Plan', {
 				}
 			}
 		});
+
+         }
 });
 
 
