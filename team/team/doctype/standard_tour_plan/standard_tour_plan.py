@@ -31,8 +31,8 @@ def get_dr_and_chem_count_fetch(user):
 	#return c[0].name;
 	dict = {'cnt_doc': 0,
 	        'cnt_chem': 0}
-	dict['cnt_doc'] = c[0].doc;
-	dict['cnt_chem'] = c[0].chem;
+	dict['cnt_doc'] = doc[0].name;
+	dict['cnt_chem'] = chem[0].name;
 	return dict;
 	
 	
