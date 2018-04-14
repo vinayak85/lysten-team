@@ -76,7 +76,7 @@ function loadjscssfile(filename, filetype) {
     if (filetype == "js") { //if filename is a external JavaScript file
         var fileref = document.createElement('script')
         fileref.setAttribute("type", "text/javascript")
-        fileref.setAttribute("defer src", filename)
+        fileref.setAttribute("src", filename)
     } else if (filetype == "css") { //if filename is an external CSS file
         var fileref = document.createElement("link")
         fileref.setAttribute("rel", "stylesheet")
