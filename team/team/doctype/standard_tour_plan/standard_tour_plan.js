@@ -8,17 +8,7 @@ loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZa
 	setup: function(frm) {
 		//create autocomplete objects for all inputs
 		
-		var options = {
-   			 types: ['(cities)']
-			 }
-
-		//from_location
-		//to_location
-		var input1 = frm.doc.from_location;
-		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
-
-		var input2 = frm.doc.to_location;
-		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+		
 		
 		frm.set_query("user", function() {		
 
@@ -87,6 +77,17 @@ function loadjscssfile(filename, filetype) {
         document.getElementsByTagName("head")[0].appendChild(fileref)
 }
 
+var options = {
+   			 types: ['(cities)']
+			 }
+
+		//from_location
+		//to_location
+		var input1 = frm.doc.from_location;
+		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+
+		var input2 = frm.doc.to_location;
+		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 //loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
 
 
