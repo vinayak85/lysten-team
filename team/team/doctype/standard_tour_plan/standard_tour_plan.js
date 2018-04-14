@@ -26,11 +26,11 @@ loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZa
  frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
  {
 	 alert("hi");
-	 calcRoute();
+	 calcRoute(frm);
  });
 
 //define calcRoute function
-function calcRoute() {
+function calcRoute(frm) {
     //create request
     var request = {
         origin: 'Kolhapur',
