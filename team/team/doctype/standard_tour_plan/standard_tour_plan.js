@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('Standard Tour Plan', {
 	refresh: function(frm) {
-		load_autocomplete(frm);
+		
             
 
 		frm.set_query("user", function() {		
@@ -20,12 +20,12 @@ frappe.ui.form.on('Standard Tour Plan', {
 	setup: function(frm) {
 		//create autocomplete objects for all inputs
 		
-		load_autocomplete(frm);
+		
 		
 
          },
  	onload: function(frm) {
-		load_autocomplete(frm);
+		
 		alert("onload");
 	},
 	
