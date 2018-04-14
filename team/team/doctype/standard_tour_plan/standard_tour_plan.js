@@ -59,6 +59,18 @@ function calcRoute() {
             //$("#output").html("<div class='alert-danger'>Could not retrieve driving distance.</div>");
         }
     });
+	var options = {
+   			 types: ['(cities)']
+			 }
+
+		//from_location
+		//to_location
+		var input1 = frm.doc.from_location;
+		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+
+		var input2 = frm.doc.to_location;
+		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+//loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
 
 }
 
