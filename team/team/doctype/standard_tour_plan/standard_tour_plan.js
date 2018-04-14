@@ -36,22 +36,6 @@ frappe.ui.form.on('Standard Tour Plan', {
 	 calcRoute(frm);
  });
 
-function initialize()
-{
-			
-		var options = {
-   			 types: ['(cities)']
-			 }
-
-		//from_location
-		//to_location
-		var input1 = document.getElementById("from_location");
-		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
-
-		var input2 = document.getElementById("to_location");
-		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
-
-}
 
 //define calcRoute function
 function calcRoute(frm) {
@@ -104,6 +88,24 @@ function loadjscssfile(filename, filetype) {
 }
 
 loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places&callback=initialize", "js");
+function initialize()
+{
+			
+		var options = {
+   			 types: ['(cities)']
+			 }
+
+		//from_location
+		//to_location
+		var input1 = document.getElementById("from_location");
+		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+
+		var input2 = document.getElementById("to_location");
+		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+
+}
+
+
 /*
 var options = {
    			 types: ['(cities)']
