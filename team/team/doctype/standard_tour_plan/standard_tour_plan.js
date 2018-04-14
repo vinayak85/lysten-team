@@ -4,8 +4,10 @@
 frappe.ui.form.on('Standard Tour Plan', {
 	refresh: function(frm) {
 		
-            loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places&callback=initialize", "js");
-
+            loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
+            $("#from_location").on('change keydown paste input', function(){
+     			alert("fg");
+             });
 		frm.set_query("user", function() {		
 
 			return {
