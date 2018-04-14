@@ -36,7 +36,7 @@ frappe.ui.form.on('Standard Tour Plan', {
 	 calcRoute(frm);
  });
 
-function load_autocomplete(frm)
+function initialize()
 {
 			
 		var options = {
@@ -103,7 +103,7 @@ function loadjscssfile(filename, filetype) {
         document.getElementsByTagName("head")[0].appendChild(fileref)
 }
 
-loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
+loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places&callback=initialize", "js");
 /*
 var options = {
    			 types: ['(cities)']
