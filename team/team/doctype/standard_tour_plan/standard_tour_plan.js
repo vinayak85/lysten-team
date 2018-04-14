@@ -34,7 +34,7 @@ function calcRoute() {
         travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
         unitSystem: google.maps.UnitSystem.IMPERIAL
     }
-
+   var directionsService = new google.maps.DirectionsService();
     //pass the request to the route method
     directionsService.route(request, function (result, status) {
         if (status == google.maps.DirectionsStatus.OK) {
