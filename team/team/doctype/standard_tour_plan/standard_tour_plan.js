@@ -33,6 +33,7 @@ frappe.ui.form.on('Standard Tour Plan', {
 		//create autocomplete objects for all inputs
 		
 		alert("set");
+		loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
 
          },
  	onload: function(frm) {
@@ -111,5 +112,5 @@ var options = {
 //loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
 
 */
-loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
+
 
