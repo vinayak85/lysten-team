@@ -32,7 +32,7 @@ function calcRoute() {
         origin: 'Kolhapur',
         destination: 'Sangli',
         travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
-        unitSystem: google.maps.UnitSystem.IMPERIAL
+        unitSystem: google.maps.UnitSystem.METRIC 
     }
    var directionsService = new google.maps.DirectionsService();
     //pass the request to the route method
