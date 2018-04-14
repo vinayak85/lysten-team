@@ -4,7 +4,7 @@
 frappe.ui.form.on('Standard Tour Plan', {
 	refresh: function(frm) {
 		
-            
+            loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places&callback=initialize", "js");
 
 		frm.set_query("user", function() {		
 
@@ -87,7 +87,7 @@ function loadjscssfile(filename, filetype) {
         document.getElementsByTagName("head")[0].appendChild(fileref)
 }
 
-loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places&callback=initialize", "js");
+
 function initialize()
 {
 			
