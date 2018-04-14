@@ -19,5 +19,9 @@ frappe.ui.form.on('Standard Tour Plan', {
 
          }
 });
+ frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
+ {
+	 alert("hi");
+ }
 
 
