@@ -76,7 +76,7 @@ function loadjscssfile(filename, filetype) {
     if (typeof fileref != "undefined")
         document.getElementsByTagName("head")[0].appendChild(fileref)
 }
-
+/*
 var options = {
    			 types: ['(cities)']
 			 }
@@ -90,5 +90,5 @@ var options = {
 		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 //loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
 
-
+*/
 
