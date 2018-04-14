@@ -5,7 +5,7 @@ frappe.ui.form.on('Standard Tour Plan', {
 	refresh: function(frm) {
 		alert("ref");
             
-		var directionsService = new google.maps.DirectionsService();/*
+		/*
 		var options = {
    			 types: ['(cities)']
 			 }
@@ -31,7 +31,7 @@ frappe.ui.form.on('Standard Tour Plan', {
 	},
 	setup: function(frm) {
 		//create autocomplete objects for all inputs
-		
+		var directionsService = new google.maps.DirectionsService();
 		alert("set");
 
          },
