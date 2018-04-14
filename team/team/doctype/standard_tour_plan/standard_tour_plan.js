@@ -6,6 +6,19 @@ frappe.ui.form.on('Standard Tour Plan', {
 
 	},
 	setup: function(frm) {
+		//create autocomplete objects for all inputs
+		var options = {
+   			 types: ['(cities)']
+			 }
+
+		//from_location
+		//to_location
+		var input1 = frm.doc.from_location;
+		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+
+		var input2 = frm.doc.to_location;
+		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+		
 		frm.set_query("user", function() {		
 
 			return {
