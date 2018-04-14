@@ -3,8 +3,9 @@
 
 frappe.ui.form.on('Standard Tour Plan', {
 	refresh: function(frm) {
-		var directionsService = new google.maps.DirectionsService();
+		
             loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
+		var directionsService = new google.maps.DirectionsService();
 		var options = {
    			 types: ['(cities)']
 			 }
