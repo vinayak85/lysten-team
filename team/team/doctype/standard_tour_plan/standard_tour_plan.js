@@ -27,7 +27,7 @@ frappe.ui.form.on('Standard Tour Plan', {
  	onload: function(frm) {
 		
 		alert("onload");
-	},
+	}
 	
 });
  frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
