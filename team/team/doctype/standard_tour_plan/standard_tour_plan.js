@@ -3,13 +3,24 @@
 
 frappe.ui.form.on('Standard Tour Plan', {
 	refresh: function(frm) {
-loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
+
 	},
 	setup: function(frm) {
 		//create autocomplete objects for all inputs
 		
-		
-		
+		loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
+		var options = {
+   			 types: ['(cities)']
+			 }
+
+		//from_location
+		//to_location
+		var input1 = document.getElementById("from_location");
+		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
+
+		var input2 = document.getElementById("to_location");
+		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+
 		frm.set_query("user", function() {		
 
 			return {
@@ -93,16 +104,5 @@ var options = {
 //loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
 
 */
- var directionsService = new google.maps.DirectionsService();
-var options = {
-   			 types: ['(cities)']
-			 }
 
-		//from_location
-		//to_location
-		var input1 = document.getElementById("from_location");
-		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
-
-		var input2 = document.getElementById("to_location");
-		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
