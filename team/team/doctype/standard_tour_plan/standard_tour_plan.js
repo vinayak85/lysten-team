@@ -31,11 +31,12 @@ frappe.ui.form.on('Standard Tour Plan', {
 	},
 	setup: function(frm) {
 		//create autocomplete objects for all inputs
-		var directionsService = new google.maps.DirectionsService();
+		
 		alert("set");
 
          },
  	onload: function(frm) {
+		var directionsService = new google.maps.DirectionsService();
 		alert("onload");
 	},
 	
