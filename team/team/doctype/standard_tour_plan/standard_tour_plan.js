@@ -48,6 +48,7 @@ frappe.ui.form.on('Standard Tour Plan', {
 //define calcRoute function
 function calcRoute(frm) {
     //create request
+	alert(document.getElementById("from_location").value)
     var request = {
         origin: 'Kolhapur',
         destination: 'Sangli',
