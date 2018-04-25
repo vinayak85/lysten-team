@@ -37,10 +37,10 @@ def check_branch(userid,employee):
             temp_flag='0' 
         elif(e_branch == u_branch):
             msg='Match Branch In Both Form...'
-            temp_flag='0'            
+            temp_flag='1'            
         else:
             msg='Wrong Branch In Employee,User Form; Inform To Office For Correction...'
-            temp_flag='1'
+            temp_flag='0'
         
     dict = {'veri_flag': '',
             'message': ''
