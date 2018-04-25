@@ -15,8 +15,8 @@ def lock_master_forms(userid,employee):
     if(employee == ''):
         msg='Empty Employee Code or Branch In Profile ???Contact With Office...'      
     else:
-        emp_branch = frappe.db.sql("""select branch from 1bd3e0294da19198.`tabEmployee` where name= {0} """.format(employee), as_dict=1)
-        user_branch = frappe.db.sql("""select branch from 1bd3e0294da19198.`tabUser` where name= {0} """.format(userid), as_dict=1)
+        emp_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 1bd3e0294da19198.`tabEmployee` where name= {0} """.format(employee), as_dict=1)
+        user_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 1bd3e0294da19198.`tabUser` where name= {0} """.format(userid), as_dict=1)
       if(emp_branch == 'profile'):
         lock_flag = frappe.db.sql("""select m_pro from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
         if lock_flag[0].m_pro > 0:
