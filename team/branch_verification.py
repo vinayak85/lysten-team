@@ -13,47 +13,31 @@ def lock_master_forms(userid,employee):
     msg=''
     test=''
     if(employee == ''):
-        msg='Empty Employee Code or Branch In Profile ???Contact With Office...'      
+        msg='Empty Employee Code or Branch In Profile ??? Contact With Office...'      
     else:
-        emp_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 1bd3e0294da19198.`tabEmployee` where name= {0} """.format(employee), as_dict=1)
-        user_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 1bd3e0294da19198.`tabUser` where name= {0} """.format(userid), as_dict=1)
-      if(emp_branch == 'profile'):
-        lock_flag = frappe.db.sql("""select m_pro from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        if lock_flag[0].m_pro > 0:
-          msg='Oops !!! Locked Profile...'
+        emp_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 
+        1bd3e0294da19198.`tabEmployee` where name= {0} """.format(employee), as_dict=1)
+        user_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 
+        1bd3e0294da19198.`tabUser` where name= {0} """.format(userid), as_dict=1)
+        
+        e_branch=str(emp_branch[0].branch)
+        u_branch=str(user_branch[0].branch)
+        
+        if(e_branch == '' and u_branch == ''):
+            msg='Empty Branch In Employee,User Form; Inform To Office For Fiil Up...'
+            temp_flag='0'
+        elif(e_branch == '' and u_branch != ''):
+            msg='Empty Branch In Employee Form; Inform To Office For Fiil Up...'
+            temp_flag='0'        
+        elif(e_branch != '' and u_branch == ''):
+            msg='Empty Branch In User Form; Inform To Office For Fiil Up...'
+            temp_flag='0'
+        elif(e_branch != u_branch):
+            msg='Miss Match Branch In Employee,User Form; Inform To Office For Correction...'
+            temp_flag='0'      
         else:
-            msg='Unlock Profile'
-        temp_flag=str(lock_flag[0].m_pro)
-
-      elif formname == "patch":
-        lock_flag = frappe.db.sql(""" select m_pat from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        if lock_flag[0].m_pat > 0:
-          msg='Oops !!! Locked Patch...'
-        else:
-            msg='Unlock Patch'
-        temp_flag=str(lock_flag[0].m_pat)
-
-      elif formname == "doctor":
-        lock_flag = frappe.db.sql(""" select m_doc from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        if lock_flag[0].m_doc > 0:
-          msg='Oops !!! Locked Doctor...'
-        else:
-          msg='Unlock Doctor'
-        temp_flag=str(lock_flag[0].m_doc)
-
-      elif formname == "chemist":
-        lock_flag = frappe.db.sql(""" select m_che from 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-        if lock_flag[0].m_che > 0:
-          msg='Oops !!! Locked Chemist...'
-        else:
-          msg='Unlock Chemist'
-        temp_flag=str(lock_flag[0].m_che)
-
-      else:
-        lock_flag = '0'
-        msg='Empty Employee Code or Branch In Profile ???Contact With Office...'
-        temp_flag='0'
-        #return lock_flag
+            msg='Miss Match Branch In Employee,User Form; Inform To Office For Correction...'
+            temp_flag='1'
         
     dict = {'veri_flag': '',
             'message': ''
