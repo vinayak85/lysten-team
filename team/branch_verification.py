@@ -7,7 +7,7 @@ __version__ = '0.0.1'
 # this method is used for android heirachy get Hq based on user territory
 #it will featch all HQ of related to the user
 @frappe.whitelist()
-def lock_master_forms(userid,employee):
+def check_branch(userid,employee):
     lock_flag='0'
     temp_flag=''
     msg=''
