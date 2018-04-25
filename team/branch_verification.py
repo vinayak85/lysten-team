@@ -24,13 +24,13 @@ def check_branch(userid,employee):
         u_branch=str(user_branch[0].branch)
         
         if(e_branch == '' and u_branch == ''):
-            msg='Empty Branch In Employee,User Form; Inform To Office For Fiil Up...'
+            msg='Empty Branch In Employee,User Form; Inform To Office For Fill Up...'
             temp_flag='0'
         elif(e_branch == '' and u_branch != ''):
-            msg='Empty Branch In Employee Form; Inform To Office For Fiil Up...'
+            msg='Empty Branch In Employee Form; Inform To Office For Fill Up...'
             temp_flag='0'        
         elif(e_branch != '' and u_branch == ''):
-            msg='Empty Branch In User Form; Inform To Office For Fiil Up...'
+            msg='Empty Branch In User Form; Inform To Office For Fill Up...'
             temp_flag='0'
         elif(e_branch != u_branch):
             msg='Miss Match Branch In Employee,User Form; Inform To Office For Correction...'
