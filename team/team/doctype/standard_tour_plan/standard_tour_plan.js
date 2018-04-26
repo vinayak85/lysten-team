@@ -43,9 +43,6 @@ frappe.ui.form.on('Standard Tour Plan', {
 	                	alert("change");
 	          }
 		 });
-	},
-	onload_post_render: function(frm, cdt, cdn) {
-		calcRoute(frm);
 	}
 	
 });
