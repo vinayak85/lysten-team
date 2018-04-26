@@ -41,7 +41,8 @@ frappe.ui.form.on('Standard Tour Plan', {
 		 {
 		
 		 patch_fetch(frm, cdt, cdn);
-            	 dr_and_chem_count_fetch(frm, cdt, cdn);alcRoute(frm);
+            	 dr_and_chem_count_fetch(frm, cdt, cdn);
+		 calcRoute(frm);
  		 });
        	         frappe.ui.form.on("Standard Tour Plan", "from_location",  {
 	          onchange: function(frm) {
