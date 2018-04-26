@@ -17,7 +17,7 @@ from frappe.model.mapper import get_mapped_doc
 
 class StandardTourPlan(Document):
 	def validate(self):
-		frappe.msgprint(_("validate"));
+		 #frappe.msgprint(_("validate"));
 		pass;
 	pass;
 
