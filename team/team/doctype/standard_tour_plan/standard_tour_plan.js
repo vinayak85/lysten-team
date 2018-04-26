@@ -25,7 +25,7 @@ frappe.ui.form.on('Standard Tour Plan', {
 
          },
  	onload: function(frm, cdt, cdn) {
-		calcRoute(frm);
+		
 		frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
 		 {
 		// alert("hi");
@@ -38,6 +38,9 @@ frappe.ui.form.on('Standard Tour Plan', {
 	                	alert("change");
 	          }
 		 });
+	},
+	onload_post_render: function(frm, cdt, cdn) {
+		calcRoute(frm);
 	}
 	
 });
