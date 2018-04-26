@@ -28,7 +28,8 @@ frappe.ui.form.on('Standard Tour Plan', {
 		
 		frappe.ui.form.on("Standard Tour Plan", "user", function(frm, cdt, cdn)  
 		 {
-		
+		  frm.doc.of_tbm=frm.doc.user;
+		  frm.refresh_field('two_way');
 		 calcRoute(frm);
  		 });
 		frappe.ui.form.on("Standard Tour Plan", "user_hq_name", function(frm, cdt, cdn)  
@@ -51,7 +52,6 @@ frappe.ui.form.on('Standard Tour Plan', {
 		 });
 		 frappe.ui.form.on("Standard Tour Plan", "one_way", function(frm, cdt, cdn)  
 		 {
-			 alert("ggg");
 		  frm.doc.two_way=frm.doc.one_way*2;
 		  frm.refresh_field('two_way');
  		 });
