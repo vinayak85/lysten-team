@@ -29,7 +29,7 @@ frappe.ui.form.on('Standard Tour Plan', {
 		frappe.ui.form.on("Standard Tour Plan", "user", function(frm, cdt, cdn)  
 		 {
 		  frm.doc.of_tbm=frm.doc.user;
-		  frm.refresh_field('two_way');
+		  frm.refresh_field('of_tbm');
 		 calcRoute(frm);
  		 });
 		frappe.ui.form.on("Standard Tour Plan", "user_hq_name", function(frm, cdt, cdn)  
