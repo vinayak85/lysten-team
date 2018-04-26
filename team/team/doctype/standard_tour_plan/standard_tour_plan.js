@@ -40,8 +40,8 @@ frappe.ui.form.on('Standard Tour Plan', {
 		frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
 		 {
 		
-		 c patch_fetch(frm, cdt, cdn);
-            dr_and_chem_count_fetch(frm, cdt, cdn);alcRoute(frm);
+		 patch_fetch(frm, cdt, cdn);
+            	 dr_and_chem_count_fetch(frm, cdt, cdn);alcRoute(frm);
  		 });
        	         frappe.ui.form.on("Standard Tour Plan", "from_location",  {
 	          onchange: function(frm) {
