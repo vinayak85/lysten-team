@@ -27,7 +27,7 @@ frappe.ui.form.on('Standard Tour Plan', {
  	onload: function(frm, cdt, cdn) {
 		frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
 		 {
-		 alert("hi");
+		// alert("hi");
 		 calcRoute(frm);
  		 });
 
@@ -47,10 +47,10 @@ frappe.ui.form.on('Standard Tour Plan', {
 //define calcRoute function
 function calcRoute(frm) {
     //create request
-	alert(document.getElementById("from_location").value)
+	//alert(document.getElementById("from_location").value)
     var request = {
-        origin: 'Kolhapur',
-        destination: 'Sangli',
+        origin: document.getElementById("from_location").value,
+        destination: document.getElementById("to_location").value,
         travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
         unitSystem: google.maps.UnitSystem.METRIC 
     }
