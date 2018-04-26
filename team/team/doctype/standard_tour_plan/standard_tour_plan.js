@@ -40,7 +40,8 @@ frappe.ui.form.on('Standard Tour Plan', {
 		frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
 		 {
 		
-		 calcRoute(frm);
+		 c patch_fetch(frm, cdt, cdn);
+            dr_and_chem_count_fetch(frm, cdt, cdn);alcRoute(frm);
  		 });
        	         frappe.ui.form.on("Standard Tour Plan", "from_location",  {
 	          onchange: function(frm) {
@@ -125,20 +126,42 @@ function initialize()
 }
 
 
-/*
-var options = {
-   			 types: ['(cities)']
-			 }
+function patch_fetch(frm, cdt, cdn) {
+    frappe.call({
+        method: 'team.team.doctype.standard_tour_plan.standard_tour_plan.get_patches_doc_and_chem_cnt',
+        args: {
+            user: frm.doc.of_tbm
+        },
+        callback: function(r) {
+            var tbl_patches = $.map(frm.doc.tbl_patches, function(d) {
+                return d.STP_Patches
+            });
+            for (var i = 0; i < r.message.length; i++) {
+                if (tbl_patches.indexOf(r.message[i].name) === -1) {
+                    var row = frappe.model.add_child(frm.doc, frm.fields_dict.tbl_patches.df.options, frm.fields_dict.tbl_patches.df.fieldname);
+                    row.patch_name = r.message[i].name;
+                    row.patch = r.message[i].patch_name;
+                    row.user_name = r.message[i].user_name;
+                    row.user_email = r.message[i].user;
+                }
+            }
+            frm.refresh_field('tbl_patches');
+        }
+    });
+}
 
-		//from_location
-		//to_location
-		var input1 = frm.doc.from_location;
-		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
-
-		var input2 = frm.doc.to_location;
-		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
-//loadjscssfile("https://maps.googleapis.com/maps/api/js?key=AIzaSyAy01k6-CrPpjZZaBp1Rw0ELflgI-5ZbjI&libraries=places", "js");
-
-*/
-
+function dr_and_chem_count_fetch(frm, cdt, cdn) {
+    frappe.call({
+        method: 'team.team.doctype.standard_tour_plan.standard_tour_plan.get_dr_and_chem_count_fetch',
+        args: {
+            user: frm.doc.of_tbm
+        },
+        callback: function(r) {
+            frm.doc.no_of_dr = r.message.cnt_doc;
+            frm.doc.no_chemist = r.message.cnt_chem;
+            frm.refresh_field('no_of_dr');
+            frm.refresh_field('no_chemist');
+        }
+    });
+}
 
