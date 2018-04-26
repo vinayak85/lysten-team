@@ -68,8 +68,10 @@ function calcRoute(frm) {
     //create request
 	//alert(document.getElementById("from_location").value)
     var request = {
-        origin: document.getElementById("from_location").value,
-        destination: document.getElementById("to_location").value,
+        //origin: document.getElementById("from_location").value,
+        //destination: document.getElementById("to_location").value,
+	origin: frm.doc.from_location,
+        destination: frm.doc.to_location,
         travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
         unitSystem: google.maps.UnitSystem.METRIC 
     }
@@ -127,10 +129,10 @@ function initialize()
 
 		//from_location
 		//to_location
-		var input1 = document.getElementById("from_location");
+		var input1 = frm.doc.from_location;
 		var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
 
-		var input2 = document.getElementById("to_location");
+		var input2 = frm.doc.from_location;
 		var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
 }
