@@ -74,7 +74,9 @@ function calcRoute(frm) {
             //Get distance and time
             //$("#output").html("<div class='alert-info'>From: " + document.getElementById("from").value + ".<br />To: " 
 		//	      + document.getElementById("to").value + ".<br /> Driving distance: " + result.routes[0].legs[0].distance.text + ".<br />Duration: " + result.routes[0].legs[0].duration.text + ".</div>");
-            alert(result.routes[0].legs[0].distance.text);
+           // alert(result.routes[0].legs[0].distance.text);
+	   frm.doc.google_distance = result.routes[0].legs[0].distance.text;
+	  frm.refresh_field('google_distance');
             //display route
             //directionsDisplay.setDirections(result);
         } else {
