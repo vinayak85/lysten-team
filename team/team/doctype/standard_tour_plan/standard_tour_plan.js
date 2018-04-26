@@ -141,7 +141,7 @@ function patch_fetch(frm, cdt, cdn) {
             });
             for (var i = 0; i < r.message.length; i++) {
                 if (tbl_patches.indexOf(r.message[i].name) === -1) {
-		    if(check_duplicate(frm,r.message[i].name) != false){					        {
+		    if(check_duplicate(frm,r.message[i].name) != false){
                     var row = frappe.model.add_child(frm.doc, frm.fields_dict.tbl_patches.df.options, frm.fields_dict.tbl_patches.df.fieldname);
                     row.patch_name = r.message[i].name;
                     row.patch = r.message[i].patch_name;
