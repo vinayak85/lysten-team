@@ -49,6 +49,13 @@ frappe.ui.form.on('Standard Tour Plan', {
 	          
 	          }
 		 });
+		 frappe.ui.form.on("Standard Tour Plan", "one_way", function(frm, cdt, cdn)  
+		 {
+			 alert("ggg");
+		  frm.doc.two_way=frm.doc.one_way*2;
+		  frm.refresh_field('two_way');
+ 		 });
+		
 	}
 	
 });
