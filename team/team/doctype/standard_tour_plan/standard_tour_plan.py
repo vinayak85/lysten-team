@@ -16,7 +16,11 @@ from frappe.model.mapper import get_mapped_doc
 
 
 class StandardTourPlan(Document):
-	pass
+	def validate(self):
+		frappe.msgprint(_("validate"));
+		pass;
+	pass;
+
 
 @frappe.whitelist()
 #get patches details of specific user with doctor count and chemist count ,this method use in STP after buton clicl
