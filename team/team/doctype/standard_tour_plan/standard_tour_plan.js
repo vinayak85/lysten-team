@@ -56,9 +56,10 @@ function calcRoute(frm) {
     }
    var directionsService = new google.maps.DirectionsService();
     //pass the request to the route method
+	initialize();
     directionsService.route(request, function (result, status) {
         if (status == google.maps.DirectionsStatus.OK) {
-	     initialize();
+	     
             //Get distance and time
             //$("#output").html("<div class='alert-info'>From: " + document.getElementById("from").value + ".<br />To: " 
 		//	      + document.getElementById("to").value + ".<br /> Driving distance: " + result.routes[0].legs[0].distance.text + ".<br />Duration: " + result.routes[0].legs[0].duration.text + ".</div>");
