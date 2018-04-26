@@ -141,11 +141,13 @@ function patch_fetch(frm, cdt, cdn) {
             });
             for (var i = 0; i < r.message.length; i++) {
                 if (tbl_patches.indexOf(r.message[i].name) === -1) {
+		    if(check_duplicate(frm,r.message[i].name) != false){					        {
                     var row = frappe.model.add_child(frm.doc, frm.fields_dict.tbl_patches.df.options, frm.fields_dict.tbl_patches.df.fieldname);
                     row.patch_name = r.message[i].name;
                     row.patch = r.message[i].patch_name;
                     row.user_name = r.message[i].user_name;
                     row.user_email = r.message[i].user;
+		    }
                 }
             }
             frm.refresh_field('tbl_patches');
@@ -167,4 +169,23 @@ function dr_and_chem_count_fetch(frm, cdt, cdn) {
         }
     });
 }
+
+function check_duplicate(frm,check_item_name) {
+		//alert("hii");
+		//var sec_items_qty = $.map(frm.doc.sec_items_qty, function(d) { return d.sec_item_qty });
+		flag=true;
+		var tbl1 = frm.doc.sec_items_qty || [];
+		var strr="";
+		//var total_earn = 0; var total_ded = 0;
+	        for(var i = 0; i < tbl1.length; i++)
+		{
+			if(check_item_name==tbl1[i].patch_name)
+				flag=false;;
+			
+		  //strr=strr+" ... "+ tbl1[i].item_code;
+	        }
+		return flag;
+		
+		
+	};
 
