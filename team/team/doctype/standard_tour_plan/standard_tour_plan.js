@@ -24,24 +24,23 @@ frappe.ui.form.on('Standard Tour Plan', {
 		
 
          },
- 	onload: function(frm) {
-		
-		alert("onload");
+ 	onload: function(frm, cdt, cdn) {
+		frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
+		 {
+		 alert("hi");
+		 calcRoute(frm);
+ 		 });
+
+
+       	         frappe.ui.form.on("Standard Tour Plan", "from_location",  {
+	          onchange: function(frm) {
+	                	alert("change");
+	          }
+		 });
 	}
 	
 });
- frappe.ui.form.on("Standard Tour Plan", "fetch_and_add_in_your_plan", function(frm, cdt, cdn)  
- {
-	 alert("hi");
-	 calcRoute(frm);
- });
 
-
- frappe.ui.form.on("Standard Tour Plan", "from_location",  {
-	onchange: function(frm) {
-		alert("change");
-	}
- });
 
 
 
