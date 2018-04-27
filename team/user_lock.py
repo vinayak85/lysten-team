@@ -116,7 +116,7 @@ def lock_check_with_std_lock(user):
 def update_user_lock_time_and_date(send_opr_flag):
 	ff='Y';
 	flag=0;
-	ss=";
+	ss="";
 	if(send_opr_flag == ff):
 		std_lock = frappe.db.sql("""select profile_master,patch_master,doctor_master,chemist_master,objective_lock_time,doctor_start_time,chemist_start_time from `tabStandard Lock` order by modified limit 1;""", as_dict=1)
 		ss="update `tabUser` set m_pro="+std_lock[0].profile_master+",m_pat="+std_lock[0].patch_master+",m_doc="+std_lock[0].doctor_master+",m_che="+std_lock[0].chemist_master+",t_obj_time="+std_lock[0].objective_lock_time+",t_drc_s_time="+std_lock[0].doctor_start_time+",t_chc_s_time="+std_lock[0].chemist_start_time+",t_drc1=NULL,t_drc2=NULL,t_obj1=NULL,t_obj2=NULL,t_chc1=NULL,t_chc2=NULL where enabled=1 and designation in (TBM,ABM,RBM,SM,NBM)"		
