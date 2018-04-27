@@ -141,6 +141,27 @@ def update_user_lock_time_and_date(send_opr_flag):
 	
 	return dict
 
+
+@frappe.whitelist()
+def update_reset_user_lock_time_and_date(send_opr_flag):
+	ff='Y';
+	flag=0;
+	ss="";
+	if(send_opr_flag == ff):				
+		frappe.db.sql("""update `tabUser` set m_pat={1},m_doc={2},m_che={3} where enabled=1 
+		and designation 
+		in ('TBM','ABM','RBM','SM','NBM') 
+		;""".format(0,0,0), as_dict=1)		
+		flag=1;
+	else:
+		flag=0;
+	
+	dict = {'flag': 0}
+	dict['flag'] = flag;
+	
+	return dict
+
+
 @frappe.whitelist()
 def retrun_user_list_with_lock_flag(limit, offset):
 	return frappe.db.sql("""Select name,concat(first_name," ",last_name) as full_name,
