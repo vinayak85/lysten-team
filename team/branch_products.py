@@ -11,7 +11,7 @@ def product_list(branch):
     temp_flag=''
     msg=''
     test=''
-    if(employee == ''):
+    if(branch == ''):
         msg='Empty Branch...'      
     else:
         msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
