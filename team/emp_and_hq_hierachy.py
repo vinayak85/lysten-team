@@ -73,7 +73,7 @@ def tree_user(employee, designation,limit, offset):
  where `tabUser`.`enabled`=1 and `tabUser`.`crm`={0}
  LIMIT {1}  OFFSET {2} """.format(employee,limit,offset),as_dict=True)
  
- elif (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
+ elif (designation == "Head of Marketing and Sales"):
   branch = frappe.db.sql("""select branch from 1bd3e0294da19198.`tabUser` 
   where name={0} and enabled=1""".format("'"+employee+"'"), as_dict=1)
   
@@ -93,7 +93,7 @@ def tree_user(employee, designation,limit, offset):
    where `tabUser`.`enabled`=1 and branch={0} and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
    LIMIT {1}  OFFSET {2} """.format("'"+branch[0].branch+"'",limit,offset),as_dict=True)  ''' 
   
- elif (designation == "HR Manager" designation == "Admin"):
+ elif (designation == "HR Manager" or designation == "Admin"):
   return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,
   modified from 1bd3e0294da19198.`tabUser` 
   where `tabUser`.`enabled`=1 and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
