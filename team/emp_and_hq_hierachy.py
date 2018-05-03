@@ -73,7 +73,7 @@ def tree_user(employee, designation,limit, offset):
  where `tabUser`.`enabled`=1 and `tabUser`.`crm`={0}
  LIMIT {1}  OFFSET {2} """.format(employee,limit,offset),as_dict=True)
  
- elif (designation == "Head of Marketing and Sales"):
+ elif (designation == "Sales Head"):
   branch = frappe.db.sql("""select branch from 1bd3e0294da19198.`tabUser` 
   where name={0} and enabled=1""".format("'"+employee+"'"), as_dict=1)
   
