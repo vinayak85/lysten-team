@@ -9,6 +9,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ve
  #frappe.msgprint(_(tree_user_bottom(employee, designation)))
  #return tree_user_bottom(employee, designation)
  email_list=""
+ objective=""
  email_list_only_TBM=""
  count_of_emp=0
  count_of_emp_tbm=0
