@@ -46,7 +46,7 @@ def presenty_daily_call_count(fromdate,todate, designation,branch):
    where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM') and select_date between {0} and {1} 
    order by select_date desc,FIELD(`designation`,'NBM','SM','RBM','ABM','TBM') 
     """.format(fromdate,todate),as_dict=True)
-elif(designation == "NBM" or designation == "Head of Marketing and Sales"):
+  elif(designation == "NBM" or designation == "Head of Marketing and Sales"):
    return frappe.db.sql(""" Select distinct 
    obj.select_date,
    concat(first_name,' ',last_name,' (',designation,' )')as emp_name,
