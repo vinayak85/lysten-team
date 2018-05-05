@@ -276,6 +276,7 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
  
  
  return dict
+   
 #return email_list
 # qry='SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective where 1bd3e0294da19198.tabObjective.select_date=' + ''' +  str(today_date) + ''' + ' and 1bd3e0294da19198.tabObjective.user in (' + str(email_list) + ')' 
 #where 1bd3e0294da19198.tabObjective.select_date={0} and
@@ -283,7 +284,7 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
 #it will featch all top and down users of selected user
 def tree_user_bottom(employee, designation):
  emp_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 
- 1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
+ 1bd3e0294da19198.`tabUser` where name= {0} """.format("'"+employee+"'"), as_dict=1)
    
  if designation == 'TBM':
    return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
@@ -293,37 +294,37 @@ def tree_user_bottom(employee, designation):
  ,(select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ) """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ ) """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
   
  elif designation == "ABM":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`abm`={0} """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`abm`={0} """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
  
  elif designation == "RBM":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`rbm`={0} """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`rbm`={0} """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
  
  elif designation == "ZBM":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`zbm`={0} """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`zbm`={0} """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
  
  elif designation == "SM":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`sm`={0} """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`sm`={0} """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
  
  elif designation == "NBM":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`nbm`={0} """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`nbm`={0} """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
  
  elif designation == "CRM":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
  where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`crm`={0}
- """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
  
  elif (designation == "Head of Marketing and Sales"):
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
  where `tabUser`.`enabled`=1 and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
- """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
 
  elif (designation == "HR Manager" or designation == "Admin"):
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
