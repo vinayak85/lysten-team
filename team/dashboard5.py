@@ -282,6 +282,8 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
 #where 1bd3e0294da19198.tabObjective.select_date={0} and
 # this method is used for android heirachy user
 #it will featch all top and down users of selected user
+
+@frappe.whitelist()
 def tree_user_bottom(employee, designation):
  emp_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 
  1bd3e0294da19198.`tabUser` where name= {0} """.format("'"+employee+"'"), as_dict=1)
