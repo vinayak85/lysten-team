@@ -42,67 +42,55 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ve
  #presenty details for dashboard
  if (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
   presenty=frappe.db.sql(""" Select distinct select_date,
-
 (
 Select count(name) from 1bd3e0294da19198.tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM')
 )as 'M_active_emp',
-
 (
 Select count(name) from 1bd3e0294da19198.tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM')
 )as 'D_active_emp',
-
 (
 Select count(name) from 1bd3e0294da19198.tabObjective  where select_date=obj.select_date
 and user in (select name from tabUser where enabled=1 and branch='Main'
 and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'M_tot_obj',
-
 (
 Select count(name) from 1bd3e0294da19198.tabObjective  where select_date=obj.select_date
 and user in (select name from tabUser where enabled=1 and branch='Derby'
 and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'D_tot_obj',
-
 (Select count(name) from 1bd3e0294da19198.tabObjective
 where select_date=obj.select_date
 and (tabObjective.doctor_flag=1 or tabObjective.meeting_flag=1 or tabObjective.camp_flag=1)
 and user in (select name from tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'M_Present',
-
 (Select count(name) from 1bd3e0294da19198.tabObjective
 where select_date=obj.select_date
 and (tabObjective.doctor_flag=1 or tabObjective.meeting_flag=1 or tabObjective.camp_flag=1)
 and user in (select name from tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'D_Present',
-
 (Select count(name) from 1bd3e0294da19198.tabObjective
 where select_date=obj.select_date and tabObjective.leave_flag=1 
 and user in (select name from tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'M_Leave',
-
 (Select count(name) from 1bd3e0294da19198.tabObjective
 where select_date=obj.select_date and tabObjective.leave_flag=1 
 and user in (select name from tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'D_Leave',
-
 (
 (Select count(name)from 1bd3e0294da19198.tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM')) -
 (Select count(name) from 1bd3e0294da19198.tabObjective where select_date=obj.select_date 
 and user in (select name from tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM')))
 )as 'M_miss_obj',
-
 (
 (Select count(name)from 1bd3e0294da19198.tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM')) -
 (Select count(name) from 1bd3e0294da19198.tabObjective where select_date=obj.select_date 
 and user in (select name from tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM')))
 )as 'D_miss_obj',
-
 (
 Select count(name)from 1bd3e0294da19198.tabUser 
 where enabled=1 and branch is null 
 and designation in('TBM','ABM','RBM','SM','NBM')
 )as 'miss_branch'
-
 from 1bd3e0294da19198.tabObjective obj where select_date between {0} and {1} ;""".format(today_date,today_date), as_dict=1) 
  
  if(len(email_list)>0):
