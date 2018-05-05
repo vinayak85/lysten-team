@@ -38,7 +38,7 @@ def get_count_of_objectives_of_bottom_emp(employee, designation,date_pass,app_ve
  #frappe.msgprint(_(email_list_only_TBM))
  
  report_ip= frappe.db.sql("""select report_ip from 1bd3e0294da19198.`tabreport ip address`""", as_dict=1)
- allow_user_for_user_form= frappe.db.sql("""select allow_for_app_user_change from `tabUser` where name={0} and enabled=1""".format(employee), as_dict=1)
+ allow_user_for_user_form= frappe.db.sql("""select allow_for_app_user_change from `tabUser` where name={0} and enabled=1""".format("'"+employee+"'"), as_dict=1)
  #presenty details for dashboard
  if (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
   presenty=frappe.db.sql(""" Select distinct select_date,
