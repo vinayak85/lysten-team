@@ -325,7 +325,7 @@ def tree_user_bottom(employee, designation):
  
  elif designation == "Head of Marketing and Sales":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
- where `tabUser`.`enabled`=1 and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
+ where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
  """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
 
  elif (designation == "HR Manager" or designation == "Admin"):
