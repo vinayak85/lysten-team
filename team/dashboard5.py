@@ -284,11 +284,10 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
 # this method is used for android heirachy user
 #it will featch all top and down users of selected user
 
-@frappe.whitelist()
 def tree_user_bottom(employee, designation):
  emp_branch = frappe.db.sql("""select ifnull(branch,"") as branch  from 
  1bd3e0294da19198.`tabUser` where name= {0} """.format(employee), as_dict=1)
-   
+ 
  if designation == 'TBM':
    return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
  where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`abm`={0}  or `tabUser`.`name` in(
@@ -324,7 +323,7 @@ def tree_user_bottom(employee, designation):
  where `tabUser`.`enabled`=1 and branch={1} and `tabUser`.`crm`={0}
  """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
  
- elif (designation == "Head of Marketing and Sales"):
+ elif designation == "Head of Marketing and Sales":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
  where `tabUser`.`enabled`=1 and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
  """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
