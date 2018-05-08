@@ -298,7 +298,7 @@ def tree_user_bottom(employee, designation):
  ,(select crm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select sm from 1bd3e0294da19198.`tabUser` where `name`={0})
  ,(select nbm from 1bd3e0294da19198.`tabUser` where `name`={0})
- ) """.format(employee,str(emp_branch[0].branch)), as_dict=1)
+ ) """.format(employee,"'"+str(emp_branch[0].branch)+"'"), as_dict=1)
   
  elif designation == "ABM":
   return frappe.db.sql(""" select name,designation from 1bd3e0294da19198.`tabUser` 
