@@ -68,7 +68,7 @@ def presenty_daily_call_count(fromdate,todate, designation,branch):
    tabObjective `obj` on obj.`user`=tu.`name` 
    where enabled=1 and designation in('TBM','ABM','RBM','SM','NBM')and `tu`.branch={2} and select_date between {0} and {1} 
    order by select_date desc,FIELD(`designation`,'NBM','SM','RBM','ABM','TBM') 
-    """.format(fromdate,todate,branch),as_dict=True)  
+    """.format(fromdate,todate,"'"+branch+"'"),as_dict=True)  
   
   #LIMIT {2}  OFFSET {3} """.format(fromdate,todate,limit,offset),as_dict=True)
    
