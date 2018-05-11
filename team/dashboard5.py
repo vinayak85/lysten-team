@@ -261,7 +261,7 @@ camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.
  dict['report_ip']=report_ip[0].report_ip;
  dict['allow_user_for_user_form']=allow_user_for_user_form[0].allow_for_app_user_change;
  
- if (designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
+ if (designation == "NBM" or designation == "HR Manager" or designation == "Head of Marketing and Sales" or designation == "Admin"):
     dict['M_active_emp']=presenty[0].M_active_emp;
     dict['D_active_emp']=presenty[0].D_active_emp;    
     dict['M_tot_obj']=presenty[0].M_tot_obj;
