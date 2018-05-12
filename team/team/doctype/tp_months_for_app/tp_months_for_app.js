@@ -9,14 +9,22 @@ frappe.ui.form.on('TP Months for App', {
 		frappe.ui.form.on("TP Months for App", "add_users", function(frm, cdt, cdn) 
 		{
 			if(frm.doc.active==true){
-			test(frm,cdt,cdn);
+			add_user(frm,cdt,cdn);
 			}
+			
+				
+		});
+		frappe.ui.form.on("TP Months for App", "temp_btn", function(frm, cdt, cdn) 
+		{
+			
+			test(frm,cdt,cdn);
+			
 			
 				
 		});
 	}
 });
-test= function(frm,cdt,cdn) {
+add_user= function(frm,cdt,cdn) {
 		frappe.call({
 			method:'team.team.doctype.tp_months_for_app.tp_months_for_app.get_user',
 			args:{
@@ -72,5 +80,20 @@ check_duplicate= function(frm,check_user_id) {
 		
 	};
 			
-			
+	
+test= function(frm,cdt,cdn) {
+		frappe.call({
+			method:'team.team.doctype.tp_months_for_app.tp_months_for_app.test',
+			args:{
+				test_email: frm.doc.test_email,
+				
+			},
+			callback:function (r) {
+				
+				frappe.msgprint(__(r));	
+			}
+		});
+		
+		
+};
 
