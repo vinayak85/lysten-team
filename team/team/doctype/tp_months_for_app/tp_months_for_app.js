@@ -6,10 +6,11 @@ frappe.ui.form.on('TP Months for App', {
 
 	},
 	onload: function(frm) {
-		frappe.ui.form.on("TP Months for App", "active", function(frm, cdt, cdn) 
+		frappe.ui.form.on("TP Months for App", "add_users", function(frm, cdt, cdn) 
 		{
-			
+			if(frm.doc.active==true){
 			test(frm,cdt,cdn);
+			}
 			
 				
 		});
