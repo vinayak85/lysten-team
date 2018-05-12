@@ -11,5 +11,6 @@ class TPMonthsforApp(Document):
 
 @frappe.whitelist()
 def get_user(branch):
+	branch="'"+branch+"'";
 	return frappe.db.sql("""SELECT name,full_name FROM 1bd3e0294da19198.tabUser
 where enabled=1 and branch={1}""".format(branch), as_dict=1);
