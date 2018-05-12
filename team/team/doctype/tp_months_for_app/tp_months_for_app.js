@@ -28,7 +28,7 @@ test= function(frm,cdt,cdn) {
 				//alert(sec_items_qty );
 				for (var i=0; i< r.message.length; i++) {
 					
-					if (sec_items_qty.indexOf(r.message[i].name) === -1) {
+					if (active_users.indexOf(r.message[i].name) === -1) {
 						
 						
 					        if(check_duplicate(frm,r.message[i].name) != false)
@@ -44,7 +44,7 @@ test= function(frm,cdt,cdn) {
 					}
 				}
 						
-				
+				frm.refresh_field('active_users');
 			}
 		});
 		
