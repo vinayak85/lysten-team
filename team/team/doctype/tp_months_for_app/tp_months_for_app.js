@@ -90,7 +90,7 @@ test= function(frm,cdt,cdn) {
 			},
 			callback:function (r) {
 				
-				frappe.msgprint(__(r));	
+				alert(r.message);
 			}
 		});
 		
