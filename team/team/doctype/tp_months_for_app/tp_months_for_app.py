@@ -28,7 +28,7 @@ def test(test_email):
 	
 	for f in tp_months_found:
 		datasets1=[];		
-        	frappe.msgprint(_(f[0].ym));
+        	frappe.msgprint(_(f.ym));
 		pass;
 	
         
