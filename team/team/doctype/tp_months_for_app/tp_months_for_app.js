@@ -42,6 +42,7 @@ test= function(frm,cdt,cdn) {
 							
 						}
 					}
+				}
 						
 				
 			}
