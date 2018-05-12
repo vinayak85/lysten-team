@@ -28,9 +28,15 @@ def test(test_email):
 	
 	for f in tp_months_found:
 		datasets1=[];		
-        	frappe.msgprint(_(f.ym));
+        	#frappe.msgprint(_(f.ym));
+		datasets1.append(f.ym);
+		ym="'"+f.ym+"'";
+		days=frappe.db.sql(""" SELECT DAY(LAST_DAY(concat({0}','-01'))) as "dd" """.format(ym), as_dict=1);
+		datasets1.append(days[0].dd); 
+		datasets.append(datasets1);
+		
 		pass;
-	
+	frappe.msgprint(_(datasets));
         
     
 
