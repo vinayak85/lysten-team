@@ -32,7 +32,10 @@ def test(test_email):
 		datasets1.append(f.ym);
 		ym="'"+f.ym+"'";
 		days=frappe.db.sql(""" SELECT DAY(LAST_DAY(concat({0},'-01'))) as "dd" """.format(ym), as_dict=1);
+		holiday_sun_cnt=frappe.db.sql("""SELECT count(case when description='Sunday' then 1 end)as "sunday",count(case when description!='Sunday' then 1 end)as "holiday_day" FROM 1bd3e0294da19198.`tabHoliday` where parent=(select holiday_list from tabEmployee where name =(SELECT employee_code from tabUser where name={0})) and holiday_date like ={1} """.format(test_email,ym), as_dict=1);
 		datasets1.append(days[0].dd); 
+		datasets1.append(holiday_sun_cnt[0].sunday);
+		datasets1.append(holiday_sun_cnt[0].holiday_day);
 		datasets.append(datasets1);
 		
 		pass;
