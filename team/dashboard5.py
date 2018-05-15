@@ -53,48 +53,48 @@ Select count(name) from 1bd3e0294da19198.tabUser where enabled=1 and branch='Der
 )as 'D_active_emp',
 
 (
-Select count(distinct user) from 1bd3e0294da19198.tabObjective  where select_date=obj.select_date
+Select count(distinct user) from 1bd3e0294da19198.tabObjective  where select_date=obj.select_date and tp_flag=0
 and user in (select name from tabUser where enabled=1 and branch='Main'
 and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'M_tot_obj',
 
 (
-Select count(distinct user) from 1bd3e0294da19198.tabObjective  where select_date=obj.select_date
+Select count(distinct user) from 1bd3e0294da19198.tabObjective  where select_date=obj.select_date and tp_flag=0
 and user in (select name from tabUser where enabled=1 and branch='Derby'
 and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'D_tot_obj',
 
 (Select count(distinct user) from 1bd3e0294da19198.tabObjective
-where select_date=obj.select_date
+where select_date=obj.select_date and tp_flag=0
 and (tabObjective.doctor_flag=1 or tabObjective.meeting_flag=1 or tabObjective.camp_flag=1)
 and user in (select name from tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'M_Present',
 
 (Select count(distinct user) from 1bd3e0294da19198.tabObjective
-where select_date=obj.select_date
+where select_date=obj.select_date and tp_flag=0
 and (tabObjective.doctor_flag=1 or tabObjective.meeting_flag=1 or tabObjective.camp_flag=1)
 and user in (select name from tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'D_Present',
 
 (Select count(distinct user) from 1bd3e0294da19198.tabObjective
-where select_date=obj.select_date and tabObjective.leave_flag=1 
+where select_date=obj.select_date and tp_flag=0 and tabObjective.leave_flag=1 
 and user in (select name from tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'M_Leave',
 
 (Select count(distinct user) from 1bd3e0294da19198.tabObjective
-where select_date=obj.select_date and tabObjective.leave_flag=1 
+where select_date=obj.select_date and tp_flag=0 and tabObjective.leave_flag=1 
 and user in (select name from tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM'))
 )as 'D_Leave',
 
 (
 (Select count(name)from 1bd3e0294da19198.tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM')) -
-(Select count(distinct user) from 1bd3e0294da19198.tabObjective where select_date=obj.select_date 
+(Select count(distinct user) from 1bd3e0294da19198.tabObjective where select_date=obj.select_date and tp_flag=0 
 and user in (select name from tabUser where enabled=1 and branch='Main' and designation in('TBM','ABM','RBM','SM','NBM')))
 )as 'M_miss_obj',
 
 (
 (Select count(name)from 1bd3e0294da19198.tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM')) -
-(Select count(distinct user) from 1bd3e0294da19198.tabObjective where select_date=obj.select_date 
+(Select count(distinct user) from 1bd3e0294da19198.tabObjective where select_date=obj.select_date and tp_flag=0
 and user in (select name from tabUser where enabled=1 and branch='Derby' and designation in('TBM','ABM','RBM','SM','NBM')))
 )as 'D_miss_obj',
 
@@ -104,11 +104,11 @@ where enabled=1 and branch is null
 and designation in('TBM','ABM','RBM','SM','NBM')
 )as 'miss_branch'
 
-from 1bd3e0294da19198.tabObjective obj where select_date between {0} and {1} ;""".format(today_date,today_date), as_dict=1) 
+from 1bd3e0294da19198.tabObjective obj where select_date and tp_flag=0 between {0} and {1} ;""".format(today_date,today_date), as_dict=1) 
  
  if(len(email_list)>0):
   count_of_emp_objective= frappe.db.sql("""SELECT count(*) as cnt_ob FROM 1bd3e0294da19198.tabObjective
-where 1bd3e0294da19198.tabObjective.user in ({0}) and
+where 1bd3e0294da19198.tabObjective.user in ({0}) and tp_flag=0 and
 1bd3e0294da19198.tabObjective.select_date={1}""".format(email_list,today_date), as_dict=1)
  #return (today_date, str(count_of_emp) as cnt_emp,count_of_emp_objective)
  
@@ -131,7 +131,7 @@ where 1bd3e0294da19198.tabObjective.user in ({0}) and
 
   objective= frappe.db.sql(""" SELECT doctor_flag as dc,camp_flag as cm,meeting_flag as mt,leave_flag as lv,call_agenda as dc_a,
 camp_agenda as cm_a,meeting_agenda as mt_a,reason as lv_a FROM 1bd3e0294da19198.`tabObjective` where 
-1bd3e0294da19198.`tabObjective`.user = {0} and 
+1bd3e0294da19198.`tabObjective`.user = {0} and tp_flag=0 and 
 1bd3e0294da19198.`tabObjective`.`select_date`={1} """.format(employee,today_date), as_dict=1)
 
  ## TBM calculation
