@@ -34,9 +34,22 @@ def test(test_email):
 		ym_="'"+f.ym+"-%'";
 		days=frappe.db.sql(""" SELECT DAY(LAST_DAY(concat({0},'-01'))) as "dd" """.format(ym), as_dict=1);
 		holiday_sun_cnt=frappe.db.sql("""SELECT count(case when description='Sunday' then 1 end)as "sunday",count(case when description!='Sunday' then 1 end)as "holiday_day" FROM 1bd3e0294da19198.`tabHoliday` where parent=(select holiday_list from tabEmployee where name =(SELECT employee_code from tabUser where name={0})) and holiday_date like {1} """.format(test_email,ym_), as_dict=1);
+		tp_days_cnt=frappe.db.sql(""" select ifnull(count(case when tp_flag=1 then 1 end),0)as tp_days_cnt,
+		ifnull(count(case when doctor_flag=1 then 1 end),0)as cnt_dcr,
+		ifnull(count(case when meeting_flag=1 then 1 end),0)as cnt_meeting,
+		ifnull(count(case when camp_flag=1 then 1 end),0)as cnt_camp,
+		ifnull(count(case when leave_flag=1 then 1 end),0)as cnt_leave 
+		from 1bd3e0294da19198.`tabObjective` 
+		where select_date like {0}
+		and user= {1} and tp_flag=1 
+		group by user  ORDER BY `tabObjective`.`name` DESC LIMIT 1""".format(ym_,test_email), as_dict=1);
 		datasets1.append(days[0].dd); 
 		datasets1.append(holiday_sun_cnt[0].sunday);
 		datasets1.append(holiday_sun_cnt[0].holiday_day);
+		datasets1.append(tp_days_cnt[0].tp_days_cnt);
+		datasets1.append(tp_days_cnt[0].cnt_dcr);
+		datasets1.append(tp_days_cnt[0].cnt_meeting);
+		datasets1.append(tp_days_cnt[0].cnt_leave);
 		datasets.append(datasets1);
 		
 		pass;
