@@ -21,6 +21,7 @@ where enabled=1 and branch={0}""".format(branch), as_dict=1);
 @frappe.whitelist()
 def test(test_email):
 	datasets = []; 
+	lst = [];
 	test_email="'"+test_email+"'";
 	tp_months_found=frappe.db.sql("""select concat(year,"-",if(month<10,concat('0',month),month))as "ym" 
 	from `tabTP Months for App` where active=1 and name in(select parent from `tabTP Months Active user`
@@ -45,8 +46,7 @@ def test(test_email):
 		dict['cnt_meeting'] ='';
 		dict['cnt_leave'] ='';
 		
-		datasets1=[];	
-		lst = [];
+		datasets1=[];			
         	#frappe.msgprint(_(f.ym));
 		#datasets1.append(f.ym);
 		dict['ym'] = 'ym' + '":' + '"' + str(f.ym) ;#'"' ++ '"'
