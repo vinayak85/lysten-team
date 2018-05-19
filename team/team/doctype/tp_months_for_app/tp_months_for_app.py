@@ -26,7 +26,11 @@ def test(test_email):
 	from `tabTP Months for App` where active=1 and name in(select parent from `tabTP Months Active user`
 	where user_id={0})""".format(test_email), as_dict=1);
 	
+	dict = {'days': ''
+           }
+	
 	for f in tp_months_found:
+		dict['days'] ='';
 		datasets1=[];		
         	#frappe.msgprint(_(f.ym));
 		datasets1.append(f.ym);
@@ -43,7 +47,8 @@ def test(test_email):
 		where select_date like {0}
 		and user= {1} and tp_flag=1
 		ORDER BY `tabObjective`.`name` DESC LIMIT 1""".format(ym_,test_email), as_dict=1);''', as_dict=1'''
-		datasets1.append(days[0].dd); 
+		dict['days']=days[0].dd;
+		datasets1.append(dict['days']); 
 		datasets1.append(holiday_sun_cnt[0].sunday);
 		datasets1.append(holiday_sun_cnt[0].holiday_day);
 		datasets1.append(tp_days_cnt[0].tp_days_cnt);
