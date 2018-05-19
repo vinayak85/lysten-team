@@ -90,7 +90,7 @@ def test(test_email):
 		datasets1.append(tp_days_cnt[0].cnt_leave);'''
 		datasets.append(datasets1);	
 		pass;
-	return (datasets);''', as_dict=1 '''
+	return (dict);''', as_dict=1 datasets'''
 	
         
     
