@@ -49,7 +49,7 @@ def test(test_email):
 		ORDER BY `tabObjective`.`name` DESC LIMIT 1""".format(ym_,test_email), as_dict=1);''', as_dict=1'''
 		dict['days']=days[0].dd;
 		#frappe.msgprint(_("'" + 'days' + "':" + "'" + str(dict['days']) + "'"));
-		frappe.msgprint(_('"' + 'days' + '":' + '"' + str(dict['days']) + '"'));
+		frappe.msgprint(_('"' + 'days' + '":' + '"' + str(days[0].dd) + '"'));
 		datasets1.append(dict['days']); 
 		datasets1.append(holiday_sun_cnt[0].sunday);
 		datasets1.append(holiday_sun_cnt[0].holiday_day);
