@@ -83,13 +83,13 @@ def test(test_email):
 		dict['cnt_meeting']=tp_days_cnt[0].cnt_meeting ;
 		dict['cnt_leave']= tp_days_cnt[0].cnt_leave ;
 		
-		datasets1.append(dict['days']);
+		'''datasets1.append(dict['days']);
 		datasets1.append(dict['sunday']);
 		datasets1.append(dict['holiday_day']);
 		datasets1.append(dict['tp_days_cnt']);
 		datasets1.append(dict['cnt_dcr']);
 		datasets1.append(dict['cnt_meeting']);
-		datasets1.append(dict['cnt_leave']);
+		datasets1.append(dict['cnt_leave']);'''
 		'''datasets1.append(days[0].dd); 
 		datasets1.append(holiday_sun_cnt[0].sunday);
 		datasets1.append(holiday_sun_cnt[0].holiday_day);
@@ -97,7 +97,7 @@ def test(test_email):
 		datasets1.append(tp_days_cnt[0].cnt_dcr);
 		datasets1.append(tp_days_cnt[0].cnt_meeting);
 		datasets1.append(tp_days_cnt[0].cnt_leave);'''
-		datasets.append(datasets1);	
+		#datasets.append(datasets1);	
 		pass;
 	return (dict);''', as_dict=1 datasets'''
 	
