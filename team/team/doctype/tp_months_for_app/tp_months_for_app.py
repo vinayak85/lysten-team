@@ -36,10 +36,21 @@ def test(test_email):
            }
 	
 	for f in tp_months_found:
+		dict['ym'] ='';
 		dict['days'] ='';
+		dict['sunday'] ='';
+		dict['holiday_day'] ='';
+		dict['tp_days_cnt'] ='';
+		dict['cnt_dcr'] ='';
+		dict['cnt_meeting'] ='';
+		dict['cnt_leave'] ='';
+		
 		datasets1=[];		
         	#frappe.msgprint(_(f.ym));
-		datasets1.append(f.ym);
+		#datasets1.append(f.ym);
+		dict['ym'] ='"' + 'ym' + '":' + '"' + str(f.ym) + '"';;
+		datasets1.append(dict['ym']);
+		
 		ym="'"+f.ym+"'";
 		ym_="'"+f.ym+"-%'";
 		days=frappe.db.sql(""" SELECT DAY(LAST_DAY(concat({0},'-01'))) as "dd" """.format(ym), as_dict=1);
