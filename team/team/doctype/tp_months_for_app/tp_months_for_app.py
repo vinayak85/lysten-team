@@ -45,7 +45,8 @@ def test(test_email):
 		dict['cnt_meeting'] ='';
 		dict['cnt_leave'] ='';
 		
-		datasets1=[];		
+		datasets1=[];	
+		lst = [];
         	#frappe.msgprint(_(f.ym));
 		#datasets1.append(f.ym);
 		dict['ym'] = 'ym' + '":' + '"' + str(f.ym) ;#'"' ++ '"'
@@ -88,9 +89,12 @@ def test(test_email):
 		datasets1.append(tp_days_cnt[0].cnt_dcr);
 		datasets1.append(tp_days_cnt[0].cnt_meeting);
 		datasets1.append(tp_days_cnt[0].cnt_leave);'''
-		datasets.append(datasets1);		
+		datasets.append(datasets1);	
+		
+		lst.append({'fn':'b','ln':'d'});
+		lst.append({'fn':'a', 'ln':'c'})
 		pass;
-	return (datasets);''', as_dict=1'''
+	return (lst);''', as_dict=1 datasets'''
 	
         
     
