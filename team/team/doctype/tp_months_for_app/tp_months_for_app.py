@@ -84,8 +84,18 @@ def test(test_email):
 		dict['cnt_meeting']=tp_days_cnt[0].cnt_meeting ;
 		dict['cnt_leave']= tp_days_cnt[0].cnt_leave ;
 		
-		lst.append({'fn':'b','ln':'d'});
-		lst.append({'fn':'a', 'ln':'c'});
+		
+		datasets1.append({ 'days':str(days[0].dd),
+				  'sunday':str(holiday_sun_cnt[0].sunday)
+				  ,'holiday_day':str(holiday_sun_cnt[0].holiday_day)
+				  ,'tp_days_cnt':str(tp_days_cnt[0].tp_days_cnt)
+				 ,'cnt_dcr':str(tp_days_cnt[0].cnt_dcr)
+				 ,'cnt_meeting':str(tp_days_cnt[0].cnt_meeting)
+				 ,'cnt_leave':str(tp_days_cnt[0].cnt_leave)
+				 ,'ym':str(f.ym)}); 		
+		
+		#lst.append({'fn':'b','ln':'d'});
+		#lst.append({'fn':'a', 'ln':'c'});
 		
 		'''datasets1.append(dict['days']);
 		datasets1.append(dict['sunday']);
@@ -101,9 +111,9 @@ def test(test_email):
 		datasets1.append(tp_days_cnt[0].cnt_dcr);
 		datasets1.append(tp_days_cnt[0].cnt_meeting);
 		datasets1.append(tp_days_cnt[0].cnt_leave);'''
-		#datasets.append(datasets1);	
+		datasets.append(datasets1);	
 		pass;
-	return (lst);''', as_dict=1 datasets'''
+	return (datasets);''', as_dict=1 datasets'''
 	
         
     
