@@ -48,7 +48,7 @@ def test(test_email):
 		datasets1=[];		
         	#frappe.msgprint(_(f.ym));
 		#datasets1.append(f.ym);
-		dict['ym'] ='"' + 'ym' + '":' + '"' + str(f.ym) + '"';;
+		dict['ym'] ='"' + 'ym' + '":' + '"' + str(f.ym) + '"';
 		datasets1.append(dict['ym']);
 		
 		ym="'"+f.ym+"'";
