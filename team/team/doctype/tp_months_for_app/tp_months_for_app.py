@@ -26,7 +26,13 @@ def test(test_email):
 	from `tabTP Months for App` where active=1 and name in(select parent from `tabTP Months Active user`
 	where user_id={0})""".format(test_email), as_dict=1);
 	
-	dict = {'days': ''
+	dict = {'days': '',
+		'sunday':'',
+		'holiday_day': '',
+		'tp_days_cnt':'',
+		'cnt_dcr': '',
+		'cnt_meeting':'',
+		'cnt_leave': ''
            }
 	
 	for f in tp_months_found:
@@ -51,13 +57,26 @@ def test(test_email):
 		#frappe.msgprint(_("'" + 'days' + "':" + "'" + str(dict['days']) + "'"));
 		#frappe.msgprint(_('"' + 'days' + '":' + '"' + str(days[0].dd) + '"'));
 		dict['days']='"' + 'days' + '":' + '"' + str(days[0].dd) + '"';
-		datasets1.append(dict['days']); 
+		dict['sunday']='"' + 'sunday' + '":' + '"' + str(holiday_sun_cnt[0].sunday) + '"';
+		dict['holiday_day']='"' + 'holiday_day' + '":' + '"' + str(holiday_sun_cnt[0].holiday_day) + '"';
+		dict['tp_days_cnt']='"' + 'tp_days_cnt' + '":' + '"' + str(tp_days_cnt[0].tp_days_cnt) + '"';
+		dict['cnt_dcr']='"' + 'cnt_dcr' + '":' + '"' + str(tp_days_cnt[0].cnt_dcr) + '"';
+		dict['cnt_meeting']='"' + 'cnt_meeting' + '":' + '"' + str(tp_days_cnt[0].cnt_meeting) + '"';
+		dict['cnt_leave']='"' + 'cnt_leave' + '":' + '"' + str(tp_days_cnt[0].cnt_leave) + '"';
+		datasets1.append(dict['days']);
+		datasets1.append(dict['sunday']);
+		datasets1.append(dict['holiday_day']);
+		datasets1.append(dict['tp_days_cnt']);
+		datasets1.append(dict['cnt_dcr']);
+		datasets1.append(dict['cnt_meeting']);
+		datasets1.append(dict['cnt_leave']);
+		'''datasets1.append(days[0].dd); 
 		datasets1.append(holiday_sun_cnt[0].sunday);
 		datasets1.append(holiday_sun_cnt[0].holiday_day);
 		datasets1.append(tp_days_cnt[0].tp_days_cnt);
 		datasets1.append(tp_days_cnt[0].cnt_dcr);
 		datasets1.append(tp_days_cnt[0].cnt_meeting);
-		datasets1.append(tp_days_cnt[0].cnt_leave);
+		datasets1.append(tp_days_cnt[0].cnt_leave);'''
 		datasets.append(datasets1);		
 		pass;
 	return (datasets);''', as_dict=1'''
