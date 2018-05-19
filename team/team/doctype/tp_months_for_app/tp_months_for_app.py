@@ -35,7 +35,7 @@ def test(test_email):
 		'cnt_meeting':'',
 		'cnt_leave': ''
            }
-	
+	datasets1=[];
 	for f in tp_months_found:
 		dict['ym'] ='';
 		dict['days'] ='';
@@ -46,11 +46,11 @@ def test(test_email):
 		dict['cnt_meeting'] ='';
 		dict['cnt_leave'] ='';
 		
-		datasets1=[];			
+		###datasets1=[];			
         	#frappe.msgprint(_(f.ym));
 		#datasets1.append(f.ym);
 		dict['ym'] = 'ym' + '":' + '"' + str(f.ym) ;#'"' ++ '"'
-		datasets1.append(dict['ym']);
+		###datasets1.append(dict['ym']);
 		
 		ym="'"+f.ym+"'";
 		ym_="'"+f.ym+"-%'";
@@ -113,7 +113,7 @@ def test(test_email):
 		datasets1.append(tp_days_cnt[0].cnt_leave);'''
 		datasets.append(datasets1);	
 		pass;
-	return (datasets);''', as_dict=1 datasets'''
+	return (datasets1);''', as_dict=1 datasets'''
 	
         
     
