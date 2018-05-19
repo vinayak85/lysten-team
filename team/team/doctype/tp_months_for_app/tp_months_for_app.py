@@ -42,7 +42,7 @@ def test(test_email):
 		from 1bd3e0294da19198.`tabObjective` 
 		where select_date like {0}
 		and user= {1} and tp_flag=1
-		ORDER BY `tabObjective`.`name` DESC LIMIT 1""".format(ym_,test_email));''', as_dict=1'''
+		ORDER BY `tabObjective`.`name` DESC LIMIT 1""".format(ym_,test_email), as_dict=1);''', as_dict=1'''
 		datasets1.append(days[0].dd); 
 		datasets1.append(holiday_sun_cnt[0].sunday);
 		datasets1.append(holiday_sun_cnt[0].holiday_day);
@@ -52,7 +52,7 @@ def test(test_email):
 		datasets1.append(tp_days_cnt[0].cnt_leave);
 		datasets.append(datasets1);		
 		pass;
-	return (datasets, as_dict=1);
+	return (datasets);''', as_dict=1'''
 	
         
     
