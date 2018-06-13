@@ -6,7 +6,7 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
-def get_date_and_app_support(user,from_date,to_date,headquarter,branch,designation):
+def get_date_and_app_support(User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation):
   if(designation=='ABM'):
     msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
     select territory_name from `tabTerritory` where parent_territory={0}""".format("'"+headquarter+"'"), as_dict=1)    
