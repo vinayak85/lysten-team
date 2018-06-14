@@ -6,8 +6,8 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
-def get_date_and_app_support(User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation):
-	
+def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
+	#User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation
 	branch_p=frappe.db.sql("""select branch from `tabUser` 
 	where name='kasimmevekari@gmail.com' and enabled=1;""".format("'"+User+"'"), as_dict=1)
 	
