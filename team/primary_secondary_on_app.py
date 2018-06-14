@@ -7,6 +7,8 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def get_date_and_app_support(User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation):
+	branch=frappe.db.sql("""select branch from `tabUser` 
+	where name='kasimmevekari@gmail.com' and enabled=1;""".format("'"+User+"'"), as_dict=1)
   if(designation=='ABM'):
     msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
     select territory_name from `tabTerritory` where parent_territory={0}""".format("'"+headquarter+"'"), as_dict=1)    
