@@ -15,7 +15,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	frappe.msgprint(_(branch));
 	product_list=[];
 	product_list=branch.split (',')
-	for pp in product_list:
+	#for pp in product_list:
 		#frappe.msgprint(_(pp));
 	
 	'''if(designation=='ABM'):
