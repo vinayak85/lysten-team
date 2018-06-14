@@ -12,7 +12,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	where name='kasimmevekari@gmail.com' and enabled=1;""".format("'"+User+"'"), as_dict=1)
 	
 	branch=product_list(branch_p[0].branch)
-	frappe.msgprint(_(branch[0].branch));
+	frappe.msgprint(_(branch[0].comma_product));
 	
 	'''if(designation=='ABM'):
 		msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
