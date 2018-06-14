@@ -26,7 +26,7 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
 	
 	emp_of_stockist=frappe.db.sql("""select GROUP_CONCAT(parent)as emp,count(parent)as tot_emp 
 	from  `tabStockist For User` 
-	where stockist={0}""".format("'"+Stockist+"'"), as_dict=1)
+	where stockist={0} and enable=1""".format("'"+Stockist+"'"), as_dict=1)
 	
 	datasets1.append({ 'Stockist':Stockist
 				  ,'product':Product
