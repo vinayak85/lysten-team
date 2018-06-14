@@ -7,12 +7,16 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def get_date_and_app_support(User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation):
+	
 	branch=frappe.db.sql("""select branch from `tabUser` 
 	where name='kasimmevekari@gmail.com' and enabled=1;""".format("'"+User+"'"), as_dict=1)
-  if(designation=='ABM'):
-    msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
-    select territory_name from `tabTerritory` where parent_territory={0}""".format("'"+headquarter+"'"), as_dict=1)    
-    frappe.msgprint(_(msg));
+	
+	
+	
+	if(designation=='ABM'):
+		msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
+		select territory_name from `tabTerritory` where parent_territory={0}""".format("'"+headquarter+"'"), as_dict=1)    
+		frappe.msgprint(_(msg));
 
     
 
@@ -48,3 +52,22 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
 """.format("'"+Product+"'","'"+Stockist+"'","'"+FromDate+"'","'"+ToDate+"'"), as_dict=1)    
   #frappe.msgprint(_(msg));
   return msg;
+
+
+@frappe.whitelist()
+def product_list(branch):   
+    temp_flag=''
+    msg=''
+    test=''
+    if(branch == ''):
+        msg='Empty Branch...'      
+    else:
+        msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
+        where branch={0} group by branch""".format(branch), as_dict=1)        
+        
+    dict = {'msg': ''
+           }
+
+    dict['msg'] = msg[0].comma_product;
+    
+    return dict
