@@ -26,7 +26,7 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
   datasets1.append({ 'Stockist':Stockist
 				  ,'product':Product
 				  ,'qty':str(msg[0].qty)
-				  ,'tp_days_cnt':str(msg[0].value)				
+				  ,'value':str(msg[0].value)				
 				 ,'flag':'S'});
   return (datasets1);
   
