@@ -16,7 +16,7 @@ def get_date_and_app_support(User,Branch,Stockist,FromDate,ToDate,Products,flag_
 
 
 @frappe.whitelist()
-def get_sale_data_for_select_stockist(Stockist,FromDate,ToDate,Products):
+def get_sale_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
   msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)' 
   select territory_name from `tabTerritory` where parent_territory={0}""".format("'"+headquarter+"'"), as_dict=1)    
   frappe.msgprint(_(msg));  
@@ -24,7 +24,7 @@ def get_sale_data_for_select_stockist(Stockist,FromDate,ToDate,Products):
   
 
 @frappe.whitelist()
-def get_return_data_for_select_stockist(Stockist,FromDate,ToDate,Products):
+def get_return_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
   msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)' 
   select territory_name from `tabTerritory` where parent_territory={0}""".format("'"+headquarter+"'"), as_dict=1)    
   frappe.msgprint(_(msg));
