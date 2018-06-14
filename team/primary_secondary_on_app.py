@@ -13,10 +13,10 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	
 	branch=product_list(branch_p[0].branch)
 	frappe.msgprint(_(branch));
-	#prod_list=[];
-	#prod_list=branch.split (',')
-	#for pp in prod_list:
-		#frappe.msgprint(_(pp));
+	prod_list=[];
+	prod_list=branch.split (',')
+	for pp in prod_list:
+		frappe.msgprint(_(pp));
 	
 	'''if(designation=='ABM'):
 		msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
@@ -70,4 +70,4 @@ def product_list(branch):
         msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
         where branch={0} group by branch""".format("'"+branch+"'"), as_dict=1)        
     
-    return msg;
+    return msg[0].comma_product ;
