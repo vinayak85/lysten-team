@@ -27,5 +27,5 @@ def get_sale_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
 def get_return_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
   msg = frappe.db.sql("""select ifnull(sum(`qty`),0) as "qty",ifnull(sum(`net_amount`),0) as "value" from `tabSales Invoice Item` 
 where `item_code`={0} and parent in(select name from `tabSales Invoice` where name like "SI-%" and status in('Draft','Unpaid','Overdue') and `tabSales Invoice`.`customer_name`={1} and posting_date between {2} and {3});
-""".format("'"+Product+"'","'"+Stockist+"'","'"+FromDate+"'","'"+ToDate+"'"), as_dict=1)    
+""".format(Product,"'"+Stockist+"'","'"+FromDate+"'","'"+ToDate+"'"), as_dict=1)    
   frappe.msgprint(_(msg));
