@@ -63,22 +63,22 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
 def product_list(branch): 
     msg=''
     if(branch == ''):
-        msg='Empty Branch...'      
+        msg=''      
     else:
         msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
         where branch={0} group by branch""".format("'"+branch+"'"), as_dict=1)        
     
     return msg[0].comma_product ;
 
-def user_list(branch): 
-    msg=''
+def user_list(stockist_name): 
+    users=''
     if(branch == ''):
-        msg='Empty Branch...'      
+        users=''      
     else:
-        msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
-        where branch={0} group by branch""".format("'"+branch+"'"), as_dict=1)        
+        users = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
+        where branch={0} group by branch""".format("'"+stockist_name+"'"), as_dict=1)        
     
-    return msg[0].comma_product ;
+    return users[0].comma_product ;
 
 def stockist_list(branch): 
     msg=''
