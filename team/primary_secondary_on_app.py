@@ -25,6 +25,7 @@ def get_sale_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
 
 @frappe.whitelist()
 def get_return_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
-  msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)' 
-  select territory_name from `tabTerritory` where parent_territory={0}""".format("'"+headquarter+"'"), as_dict=1)    
+  msg = frappe.db.sql("""select ifnull(sum(`qty`),0) as "qty" from `tabSales Invoice Item` 
+where `item_code`={0} and parent in(select name from `tabSales Invoice` where name like "SI-%" and status in('Draft','Unpaid','Overdue') and `tabSales Invoice`.`customer_name`={1} and posting_date between {2} and {3});
+""".format("'"+Product+"'","'"+Stockist+"'","'"+FromDate+"'","'"+ToDate+"'"), as_dict=1)    
   frappe.msgprint(_(msg));
