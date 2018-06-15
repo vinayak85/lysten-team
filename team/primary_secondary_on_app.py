@@ -11,12 +11,25 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	branch_p=frappe.db.sql("""select branch from `tabUser` 
 	where name='kasimmevekari@gmail.com' and enabled=1;""".format("'"+User+"'"), as_dict=1)
 	
+	'''Stockist Section For Given User'''
+	stockist_with_commas=frappe.db.sql("""select GROUP_CONCAT(stockist) as comma_stock from  `tabStockist For User` 
+	where parent={0} and enable=1;""".format("'"+User+"'"), as_dict=1)
+	
+	stockist_with_commas=stockist_with_commas[0].comma_stock;
+	
+	list_of_stockist=[];
+	list_of_stockist=stockist_with_commas.split (',');
+	
+	for pp in list_of_stockist:
+		frappe.msgprint(_(pp));
+	
+	'''Product Section For Branch'''
 	branch=product_list(branch_p[0].branch)
 	#frappe.msgprint(_(branch));
 	prod_list=[];
 	prod_list=branch.split (',')
-	for pp in prod_list:
-		frappe.msgprint(_(pp));
+	#for pp in prod_list:
+		#frappe.msgprint(_(pp));
 	
 	'''if(designation=='ABM'):
 		msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
