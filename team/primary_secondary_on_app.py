@@ -52,12 +52,12 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				});
 			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
 			pass
-		datasets1.append({ 'Stockist':User
-			  	  ,'Stockist':pp,
-				  'product':qq
+		datasets1.append({ 'User':User
+			  	  ,'Stockist':pp
+				  ,'product':qq
 				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
 			  	  ,'emp':str(emp_of_stockist[0].emp)
-				  ,'product_data':[datasets2]				  		    		  				 
+				  ,'product_data':datasets2				  		    		  				 
 				});
 		pass
 	return datasets1;
