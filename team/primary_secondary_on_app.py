@@ -20,16 +20,17 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	list_of_stockist=[];
 	list_of_stockist=stockist_with_commas.split (',');
 	
-	for pp in list_of_stockist:
-		frappe.msgprint(_(pp));
+	#for pp in list_of_stockist:
+		#frappe.msgprint(_(pp));
 	
 	'''Product Section For Branch'''
 	branch=product_list(branch_p[0].branch)
 	#frappe.msgprint(_(branch));
 	prod_list=[];
 	prod_list=branch.split (',')
-	#for pp in prod_list:
-		#frappe.msgprint(_(pp));
+	for pp in list_of_stockist:
+		for qq in prod_list:
+			frappe.msgprint(_(pp+" "+qq));
 	
 	'''if(designation=='ABM'):
 		msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
