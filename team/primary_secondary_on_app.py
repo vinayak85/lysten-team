@@ -32,10 +32,10 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	for pp in list_of_stockist:
 		emp_of_stockist=count_employee_of_stockist(pp)
 		#frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
-		datasets1.append('Stockist':User
-			  	  ,'Stockist':pp
-				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
-				  ,'emp':str(emp_of_stockist[0].emp)
+		datasets1.append('User:'+User
+			  	  ,'Stockist:'+pp
+				  ,'tot_emp:'+str(emp_of_stockist[0].tot_emp)
+				  ,'emp:'+str(emp_of_stockist[0].emp)
 				);
 		for qq in prod_list:
 			prod_sale_data = get_return_data_for_select_stockist(pp,FromDate,ToDate,qq);
