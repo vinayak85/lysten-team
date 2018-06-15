@@ -29,17 +29,19 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	prod_list=[];
 	prod_list=branch.split (',')
 	datasets1=[];
-	for pp in list_of_stockist:
+	datasets2=[];
+	datasets3=[];
+	for pp in list_of_stockist:		
+		datasets2=[];
 		emp_of_stockist=count_employee_of_stockist(pp)
 		#frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
-		datasets1.append('User:'+User);
+		'''datasets1.append('User:'+User);
 		datasets1.append('Stockist:'+pp);
 		datasets1.append('tot_emp:'+str(emp_of_stockist[0].tot_emp));
-		datasets1.append('emp:'+str(emp_of_stockist[0].emp));
+		datasets1.append('emp:'+str(emp_of_stockist[0].emp));'''
 		for qq in prod_list:
-			prod_sale_data = get_return_data_for_select_stockist(pp,FromDate,ToDate,qq);
-			
-			datasets1.append({ #'Stockist':User
+			prod_sale_data = get_return_data_for_select_stockist(pp,FromDate,ToDate,qq);			
+			datasets2.append({ #'Stockist':User
 			  	  #,'Stockist':pp,
 				  'product':qq
 				  ,'sale_qty':str(prod_sale_data[0].qty)
@@ -50,6 +52,13 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				});
 			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
 			pass
+		datasets1.append({ 'Stockist':User
+			  	  ,'Stockist':pp,
+				  'product':qq
+				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
+			  	  ,'emp':str(emp_of_stockist[0].emp)
+				  ,'product_data':[datasets2]				  		    		  				 
+				});
 		pass
 	return datasets1;
 
