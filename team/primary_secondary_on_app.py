@@ -29,13 +29,10 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	prod_list=[];
 	prod_list=branch.split (',')
 	for pp in list_of_stockist:
-		for qq in prod_list:
-			frappe.msgprint(_(pp+" "+qq+" "+User));
-	
-	'''if(designation=='ABM'):
-		msg = frappe.db.sql("""select group_concat(territory_name) from `tabTerritory` where parent_territory='Ichalkaranji(Area)'
-		select territory_name from `tabTerritory` where parent_territory={0}""".format("'"+headquarter+"'"), as_dict=1)    
-		frappe.msgprint(_(msg));'''
+		emp_of_stockist=count_employee_of_stockist(pp)
+		frappe.msgprint(_(pp+" "+emp_of_stockist[0].tot_emp+" "+emp_of_stockist[0].emp));
+		#for qq in prod_list:
+			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
 
     
 
@@ -72,6 +69,11 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
   #frappe.msgprint(_(msg));
   return msg;
 
+
+def count_employee_of_stockist(Stockist):
+	emp_of_stockist=frappe.db.sql("""select GROUP_CONCAT(parent)as emp,count(parent)as tot_emp 
+	from  `tabStockist For User` where stockist={0} and enable=1""".format("'"+Stockist+"'"), as_dict=1)
+	return emp_of_stockist;
 
 #@frappe.whitelist()
 def product_list(branch): 
