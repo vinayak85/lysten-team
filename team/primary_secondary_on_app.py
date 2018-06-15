@@ -30,7 +30,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	prod_list=branch.split (',')
 	for pp in list_of_stockist:
 		emp_of_stockist=count_employee_of_stockist(pp)
-		frappe.msgprint(_(pp+" "+emp_of_stockist[0].tot_emp+" "+emp_of_stockist[0].emp));
+		frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
 		#for qq in prod_list:
 			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
 
