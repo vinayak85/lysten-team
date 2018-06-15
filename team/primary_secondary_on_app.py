@@ -28,11 +28,25 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	#frappe.msgprint(_(branch));
 	prod_list=[];
 	prod_list=branch.split (',')
+	datasets1=[];
 	for pp in list_of_stockist:
 		emp_of_stockist=count_employee_of_stockist(pp)
-		frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
-		#for qq in prod_list:
+		#frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
+		for qq in prod_list:
+			prod_data = get_return_data_for_select_stockist(pp,FromDate,ToDate,qq);
+			
+			datasets1.append({ 'Stockist':User
+			  	  ,'Stockist':pp
+				  ,'product':qq
+				  ,'qty':str(prod_data[0].qty)
+				  ,'value':str(prod_data[0].value)
+		    		  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
+			  	  ,'emp':str(emp_of_stockist[0].emp)
+				 ,'flag':'S'});
 			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
+			pass
+		pass
+	return datasets1;
 
     
 
