@@ -111,8 +111,12 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
   return msg;
 
 def count_employee_of_stockist(Stockist):
-	emp_of_stockist=frappe.db.sql("""select GROUP_CONCAT(parent)as emp,count(parent)as tot_emp 
-	from  `tabStockist For User` where stockist={0} and enable=1""".format("'"+Stockist+"'"), as_dict=1)
+	'''emp_of_stockist=frappe.db.sql("""select GROUP_CONCAT(parent)as emp,count(parent)as tot_emp 
+	from  `tabStockist For User` where stockist={0} and enable=1""".format("'"+Stockist+"'"), as_dict=1)'''
+	emp_of_stockist=frappe.db.sql("""select group_concat(full_name)as emp,count(name)as tot_emp from `tabUser` 
+	where branch='Main' and designation='TBM'and 
+	name in(select parent from `tabStockist For User` 
+	where stockist={0} and enable=1)""".format("'"+Stockist+"'"), as_dict=1)
 	return emp_of_stockist;
 
 #@frappe.whitelist()
