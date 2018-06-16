@@ -9,7 +9,7 @@ __version__ = '0.0.1'
 def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	#User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation
 	branch_p=frappe.db.sql("""select branch from `tabUser` 
-	where name='kasimmevekari@gmail.com' and enabled=1;""".format("'"+User+"'"), as_dict=1)
+	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
 	
 	'''Stockist Section For Given User'''
 	stockist_with_commas=frappe.db.sql("""select GROUP_CONCAT(stockist) as comma_stock from  `tabStockist For User` 
