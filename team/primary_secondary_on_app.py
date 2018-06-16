@@ -21,10 +21,11 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	list_of_stockist=stockist_with_commas.split (',');
 	
 	'''Product Section For Branch'''
-	branch=product_list(branch_p[0].branch)
+	branch=branch_p[0].branch;
+	branch_product=product_list(branch_p[0].branch)
 	#frappe.msgprint(_(branch));
 	prod_list=[];
-	prod_list=branch.split (',')
+	prod_list=branch_product.split (',')
 	datasets1=[];
 	datasets2=[];
 	for pp in list_of_stockist:		
