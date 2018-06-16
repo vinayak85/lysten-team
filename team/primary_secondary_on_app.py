@@ -20,9 +20,6 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	list_of_stockist=[];
 	list_of_stockist=stockist_with_commas.split (',');
 	
-	#for pp in list_of_stockist:
-		#frappe.msgprint(_(pp));
-	
 	'''Product Section For Branch'''
 	branch=product_list(branch_p[0].branch)
 	#frappe.msgprint(_(branch));
@@ -30,19 +27,16 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	prod_list=branch.split (',')
 	datasets1=[];
 	datasets2=[];
-	datasets3=[];
 	for pp in list_of_stockist:		
 		datasets2=[];
 		tot_sale_qty=0;
 		tot_sale_value=0;
+		tot_ret_qty=0;
+		tot_ret_value=0;
 		emp_of_stockist=count_employee_of_stockist(pp)
 		#frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
-		'''datasets1.append('User:'+User);
-		datasets1.append('Stockist:'+pp);
-		datasets1.append('tot_emp:'+str(emp_of_stockist[0].tot_emp));
-		datasets1.append('emp:'+str(emp_of_stockist[0].emp));'''
 		for qq in prod_list:
-			prod_sale_data = get_return_data_for_select_stockist(pp,FromDate,ToDate,qq);
+			prod_sale_data = get_sale_data_for_select_stockist(pp,FromDate,ToDate,qq);
 			tot_sale_qty+=prod_sale_data[0].qty;
 			tot_sale_value+=prod_sale_data[0].value;
 			datasets2.append({ #'Stockist':User
@@ -50,6 +44,8 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				  'product':qq
 				  ,'sale_qty':str(prod_sale_data[0].qty)
 				  ,'sale_value':str(prod_sale_data[0].value)
+				  ,'ret_qty':str(0)
+				  ,'ret_value':str(0)
 		    		  #,'tot_emp':str(emp_of_stockist[0].tot_emp)
 			  	  #,'emp':str(emp_of_stockist[0].emp)
 				 #,'flag':'S'
@@ -62,6 +58,8 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 			  	  ,'emp':str(emp_of_stockist[0].emp)
 				  ,'tot_sale_qty':tot_sale_qty
 				  ,'tot_sale_value':tot_sale_value
+				  ,'tot_ret_qty':tot_ret_qty
+				  ,'tot_ret_value':tot_ret_value
 				  ,'from_date':FromDate
 				  ,'to_date':ToDate
 				  ,'product_data':datasets2				  		    		  				 
@@ -73,7 +71,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 
 
 @frappe.whitelist()
-def get_sale_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
+def get_sale_data_for_select_stockist_no_important(Stockist,FromDate,ToDate,Product):
 	datasets1=[];
 	msg = get_return_data_for_select_stockist(Stockist,FromDate,ToDate,Product);  
 	'''frappe.db.sql("""select ifnull(sum(`qty`),0) as "qty",ifnull(sum(`net_amount`),0) as "value" from `tabSales Invoice Item` 
@@ -97,13 +95,20 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
   
 
 #@frappe.whitelist()
-def get_return_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
+def get_sale_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
   msg = frappe.db.sql("""select ifnull(sum(`qty`),0) as "qty",ifnull(sum(`net_amount`),0) as "value" from `tabSales Invoice Item` 
 where `item_code`={0} and parent in(select name from `tabSales Invoice` where name like "SI-%" and status in('Draft','Unpaid','Overdue') and `tabSales Invoice`.`customer_name`={1} and posting_date between {2} and {3});
 """.format("'"+Product+"'","'"+Stockist+"'","'"+FromDate+"'","'"+ToDate+"'"), as_dict=1)    
   #frappe.msgprint(_(msg));
   return msg;
 
+#@frappe.whitelist()
+def get_return_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
+  msg = frappe.db.sql("""select ifnull(sum(`qty`),0) as "qty",ifnull(sum(`net_amount`),0) as "value" from `tabSales Invoice Item` 
+where `item_code`={0} and parent in(select name from `tabSales Invoice` where name like "SI-%" and status in('Draft','Unpaid','Overdue') and `tabSales Invoice`.`customer_name`={1} and posting_date between {2} and {3});
+""".format("'"+Product+"'","'"+Stockist+"'","'"+FromDate+"'","'"+ToDate+"'"), as_dict=1)    
+  #frappe.msgprint(_(msg));
+  return msg;
 
 def count_employee_of_stockist(Stockist):
 	emp_of_stockist=frappe.db.sql("""select GROUP_CONCAT(parent)as emp,count(parent)as tot_emp 
