@@ -63,8 +63,8 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				  ,'tot_ret_value':tot_ret_value
 				  ,'from_date':FromDate
 				  ,'to_date':ToDate
-				  				  		    		  				 
-				});#,'product_data':datasets2
+				  ,'product_data':datasets2			  		    		  				 
+				});#
 		pass
 	return datasets1;
 
