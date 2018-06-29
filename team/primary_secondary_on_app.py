@@ -58,7 +58,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
 			
 			pass
-		ab=ab[:-1];
+		#ab=ab[:-1];
 		datasets1.append({ 'employee':User
 			  	  ,'stockist':pp				  
 				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
