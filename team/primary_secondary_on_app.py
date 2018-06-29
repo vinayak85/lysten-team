@@ -54,10 +54,11 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				 #,'flag':'S'
 				});
 			
-			ab+='{'+'product:'+qq+',sale_qty:'+str(prod_sale_data[0].qty)+'},';
+			ab+='{'+'product:'+qq+',sale_qty:'+str(prod_sale_data[0].qty)+',sale_value:'+str(prod_sale_data[0].value)+',ret_qty:0,ret_value:0'+'},';
 			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
 			
 			pass
+		ab=ab[:-1];
 		datasets1.append({ 'employee':User
 			  	  ,'stockist':pp				  
 				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
