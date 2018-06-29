@@ -37,7 +37,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 		emp_of_stockist=count_employee_of_stockist(pp,branch)
 		#frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
 		
-		ab="";
+		#ab="";
 		for qq in prod_list:
 			prod_sale_data = get_sale_data_for_select_stockist(pp,FromDate,ToDate,qq);
 			tot_sale_qty+=prod_sale_data[0].qty;
@@ -54,7 +54,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				 #,'flag':'S'
 				});
 			
-			ab+='{'+'product:'+qq+',sale_qty:'+str(prod_sale_data[0].qty)+',sale_value:'+str(prod_sale_data[0].value)+',ret_qty:0,ret_value:0'+'},';
+			#ab+='{'+'product:'+qq+',sale_qty:'+str(prod_sale_data[0].qty)+',sale_value:'+str(prod_sale_data[0].value)+',ret_qty:0,ret_value:0'+'},';
 			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
 			
 			pass
@@ -69,7 +69,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				  ,'tot_ret_value':tot_ret_value
 				  ,'from_date':FromDate
 				  ,'to_date':ToDate
-				  ,'product_data':ab			  		    		  				 
+				  ,'product_data':datasets2			  		    		  				 
 				});#datasets2
 		pass
 	return datasets1;
