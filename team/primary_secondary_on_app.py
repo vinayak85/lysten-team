@@ -54,7 +54,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				 #,'flag':'S'
 				});
 			
-			ab+='{'+'product:'+qq+',sale_qty:'str(prod_sale_data[0].qty)+'},';
+			ab+='{'+'product:'+qq+',sale_qty:'+str(prod_sale_data[0].qty)+'},';
 			#frappe.msgprint(_(pp+" "+qq+" "+User+" "+));
 			
 			pass
