@@ -15,6 +15,9 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 	stockist_with_commas=frappe.db.sql("""select GROUP_CONCAT(stockist) as comma_stock from  `tabStockist For User` 
 	where parent={0} and enable=1;""".format("'"+User+"'"), as_dict=1)
 	
+	full_name=frappe.db.sql("""select full_name from `tabUser` 
+	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
+	
 	stockist_with_commas=stockist_with_commas[0].comma_stock;
 	
 	list_of_stockist=[];
@@ -60,6 +63,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 			pass
 		#ab=ab[:-1];
 		datasets1.append({ 'employee':User
+				  ,'full_name':str(full_name[0].full_name)
 			  	  ,'stockist':pp				  
 				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
 			  	  ,'emp':str(emp_of_stockist[0].emp)
@@ -70,7 +74,7 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 				  ,'from_date':FromDate
 				  ,'to_date':ToDate
 				  ,'product_data':datasets2			  		    		  				 
-				});#datasets2
+				});
 		pass
 	return datasets1;
 
