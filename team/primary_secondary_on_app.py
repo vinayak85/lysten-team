@@ -185,15 +185,15 @@ def stockist_list_for_top_hierarchy(employee, designation,limit, offset):
   FROM 1bd3e0294da19198.`tabStockist For User` 
   where parent in(Select name from `tabUser` 
   where abm={0} and enabled=1) and enable=1
-  LIMIT {1}  OFFSET {2} ;""".format(employee,limit,offset),as_dict=True)
- 
+ """.format(employee),as_dict=True)
+ # LIMIT {1}  OFFSET {2} ;,limit,offset
  elif designation == "RBM":
   return frappe.db.sql(""" SELECT distinct stockist,full_name 
   FROM 1bd3e0294da19198.`tabStockist For User` 
   where parent in(Select name from `tabUser` 
   where rbm={0} and enabled=1) and enable=1 
-  LIMIT {1}  OFFSET {2} ;""".format(employee,limit,offset),as_dict=True)
- 
+  """.format(employee),as_dict=True)
+ #LIMIT {1}  OFFSET {2} ;,limit,offset
  elif designation == "ZBM":
   return frappe.db.sql(""" SELECT distinct stockist,full_name 
   FROM 1bd3e0294da19198.`tabStockist For User` 
