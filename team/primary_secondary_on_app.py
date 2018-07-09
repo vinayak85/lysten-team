@@ -180,18 +180,14 @@ SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` 
 
 @frappe.whitelist()
 def stockist_list_for_top_hierarchy(employee, designation,limit, offset):
-	#frappe.msgprint(_(employee+'  '+designation))
-	return frappe.db.sql(""" SELECT distinct stockist,full_name 
-		FROM 1bd3e0294da19198.`tabStockist For User` 
-		where parent in(Select name from `tabUser` 
-		where rbm={0} and enabled=1) and enable=1 """.format(employee),as_dict=True)
+	#frappe.msgprint(_(employee+'  '+designation))	
 	if designation == "ABM":
 		return frappe.db.sql(""" SELECT distinct stockist,full_name 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
 		where abm={0} and enabled=1) and enable=1""".format(employee),as_dict=True)
 	
-	elif designation == "RBM":
+	elif designation == 'RBM':
 		return frappe.db.sql(""" SELECT distinct stockist,full_name 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
