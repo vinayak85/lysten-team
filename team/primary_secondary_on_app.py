@@ -238,15 +238,12 @@ def stockist_list_for_top_hierarchy(employee, designation,limit, offset):
   branch = frappe.db.sql("""select branch from 1bd3e0294da19198.`tabUser` 
   where name={0} and enabled=1""".format(employee), as_dict=1)
   
-  return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,
-  modified from 1bd3e0294da19198.`tabUser` 
-  where `tabUser`.`enabled`=1 and branch={0} and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
+  return frappe.db.sql(""" SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` where parent in(select name from 1bd3e0294da19198.`tabUser` 
+  where `tabUser`.`enabled`=1 and branch={0} and `tabUser`.`designation` in('TBM')) and enable=1
   LIMIT {1}  OFFSET {2} """.format("'"+branch[0].branch+"'",limit,offset),as_dict=True)
 
  elif (designation == "HR Manager" or designation == "Admin"):
-  return frappe.db.sql(""" select name,username,full_name,first_name,middle_name,last_name,designation,mobile_no1,email,
-  modified from 1bd3e0294da19198.`tabUser` 
-  where `tabUser`.`enabled`=1 and `tabUser`.`designation` in('TBM','ABM','RBM','ZBM','SM','NBM','CRM')
+  return frappe.db.sql(""" SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` where enable=1
   LIMIT {1}  OFFSET {2} """.format(employee,limit,offset),as_dict=True) 
  
  else:
