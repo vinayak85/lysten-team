@@ -160,3 +160,20 @@ def stockist_list(branch):
         where branch={0} group by branch""".format("'"+branch+"'"), as_dict=1)        
     
     return msg[0].comma_product ;
+
+
+'''
+
+SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` where parent in(Select name from `tabUser` where abm='amolrmohite@gmail.com' and enabled=1) and enable=1;//'rushikeshkamble905@gmail.com','KASIMMEVEKARI@GMAIL.COM','SACHINKORE5501@GMAIL.COM') and enable=1;
+
+SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` where parent in(Select name from `tabUser` where rbm='amolrmohite@gmail.com' and enabled=1) and enable=1;
+
+SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` where parent in(Select name from `tabUser` where sm='amolrmohite@gmail.com' and enabled=1) and enable=1;
+
+SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` where parent in(Select name from `tabUser` where zbm='amolrmohite@gmail.com' and enabled=1) and enable=1;
+
+SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` where parent in(Select name from `tabUser` where crm='amolrmohite@gmail.com' and enabled=1) and enable=1;
+
+SELECT distinct stockist,full_name FROM 1bd3e0294da19198.`tabStockist For User` where parent in(Select name from `tabUser` where nbm='amolrmohite@gmail.com' and enabled=1) and enable=1;
+
+'''
