@@ -124,11 +124,21 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
 def count_employee_of_stockist(Stockist,branch):
 	'''emp_of_stockist=frappe.db.sql("""select GROUP_CONCAT(parent)as emp,count(parent)as tot_emp 
 	from  `tabStockist For User` where stockist={0} and enable=1""".format("'"+Stockist+"'"), as_dict=1)'''
-	emp_of_stockist=frappe.db.sql("""select group_concat(full_name)as emp,count(name)as tot_emp from `tabUser` 
-	where branch={0} and designation='TBM'and 
-	name in(select parent from `tabStockist For User` 
-	where stockist={1} and enable=1)""".format("'"+branch+"'","'"+Stockist+"'"), as_dict=1)
+	emp_of_stockist=null;
+	if(branch == "Main" or branch == "Derby"):
+		emp_of_stockist=frappe.db.sql("""select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as emp,count(name)as tot_emp from `tabUser` 
+		where branch={0} and designation='TBM'and 
+		name in(select parent from `tabStockist For User` 
+		where stockist={1} and enable=1)""".format("'"+branch+"'","'"+Stockist+"'"), as_dict=1)
+	else:
+		emp_of_stockist=frappe.db.sql("""select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as emp,count(name) as tot_emp from `tabUser` 
+		where branch in('Main','Derby') and designation='TBM' and 
+		name in(select parent from `tabStockist For User` 
+		where stockist={1} and enable=1)""".format("'"+branch+"'","'"+Stockist+"'"), as_dict=1)
 	return emp_of_stockist;
+
+#select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as emp,count(name) as tot_emp from 1bd3e0294da19198.`tabUser` 
+#  where `tabUser`.`enabled`=1 and name in (SELECT parent FROM 1bd3e0294da19198.`tabStockist For User` where stockist='Drug Distributor' and enable=1) and branch='Main' and `tabUser`.`designation` in('TBM');
 
 #@frappe.whitelist()
 def product_list(branch): 
@@ -233,13 +243,13 @@ def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products):
 	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
 	
 	'''Stockist Section For Given User'''
-	stockist_with_commas=frappe.db.sql("""select GROUP_CONCAT(stockist) as comma_stock from  `tabStockist For User` 
-	where parent={0} and enable=1;""".format("'"+User+"'"), as_dict=1)
+	#stockist_with_commas=frappe.db.sql("""select GROUP_CONCAT(stockist) as comma_stock from  `tabStockist For User` 
+	#where parent={0} and enable=1;""".format("'"+User+"'"), as_dict=1)
 	
 	full_name=frappe.db.sql(""" SELECT distinct full_name FROM 1bd3e0294da19198.`tabStockist For User` 
 	where enable=1 and stockist={0};""".format("'"+stockist+"'"), as_dict=1)
 	
-	stockist_with_commas=stockist_with_commas[0].comma_stock;
+	stockist_with_commas=Stockist;#stockist_with_commas[0].comma_stock;
 	
 	list_of_stockist=[];
 	list_of_stockist=stockist_with_commas.split (',');
