@@ -136,8 +136,12 @@ def product_list(branch):
     if(branch == ''):
         msg=''      
     else:
-        msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
-        where branch={0} group by branch""".format("'"+branch+"'"), as_dict=1)        
+	if(branch == "Main" or branch == "Derby"):
+		msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
+		where branch={0} group by branch""".format("'"+branch+"'"), as_dict=1)
+	else:
+		msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
+		where branch in('Main','Derby')""".format("'"+branch+"'"), as_dict=1)
     
     return msg[0].comma_product ;
 
