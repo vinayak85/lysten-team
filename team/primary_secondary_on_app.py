@@ -163,25 +163,25 @@ def stockist_list(branch):
 
 
 @frappe.whitelist()
-def stockist_list_for_top_hierarchy(employee,designation,limit,offset):
+def stockist_list_for_top_hierarchy(employee,designation,limit, offset):
 	#frappe.msgprint(_(employee+'  '+designation))	
-	if designation == "'ABM'":
+	if designation == "ABM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
 		where abm={0} and enabled=1) and enable=1""".format(employee),as_dict=True)
-	elif designation == "'RBM'":
+	elif designation == "RBM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
 		where rbm={0} and enabled=1) and enable=1 """.format(employee),as_dict=True)
-	elif designation == "'ZBM'":
+	elif designation == "ZBM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
 		where zbm={0} and enabled=1) and enable=1 
 		LIMIT {1}  OFFSET {2} ;""".format(employee,limit,offset),as_dict=True)
-	elif designation == "'SM'":
+	elif designation == "SM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
