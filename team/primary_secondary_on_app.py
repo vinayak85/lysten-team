@@ -214,3 +214,77 @@ def stockist_list_for_top_hierarchy(employee,designation,limit, offset):
 	else:
 		frappe.msgprint(_("No entry"))
 
+
+
+@frappe.whitelist()
+def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products):
+	'''
+	Employee List For Given Stockist:
+	select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as user from 1bd3e0294da19198.`tabUser` 
+  where `tabUser`.`enabled`=1 and name in (SELECT parent FROM 1bd3e0294da19198.`tabStockist For User` where stockist='Drug Distributor' and enable=1) and branch='Main' and `tabUser`.`designation` in('TBM');
+  '''
+	
+	#User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation
+	branch_p=frappe.db.sql("""select branch from `tabUser` 
+	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
+	
+	'''Stockist Section For Given User'''
+	stockist_with_commas=frappe.db.sql("""select GROUP_CONCAT(stockist) as comma_stock from  `tabStockist For User` 
+	where parent={0} and enable=1;""".format("'"+User+"'"), as_dict=1)
+	
+	full_name=frappe.db.sql("""select full_name from `tabUser` 
+	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
+	
+	stockist_with_commas=stockist_with_commas[0].comma_stock;
+	
+	list_of_stockist=[];
+	list_of_stockist=stockist_with_commas.split (',');
+	
+	'''Product Section For Branch'''
+	branch=branch_p[0].branch;
+	branch_product=product_list(branch_p[0].branch)
+	#frappe.msgprint(_(branch));
+	prod_list=[];
+	prod_list=branch_product.split (',')
+	datasets1=[];
+	datasets2=[];
+	for pp in list_of_stockist:		
+		datasets2=[];
+		tot_sale_qty=0;
+		tot_sale_value=0;
+		tot_ret_qty=0;
+		tot_ret_value=0;
+		emp_of_stockist=count_employee_of_stockist(pp,branch)
+		#frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
+		
+		#ab="";
+		for qq in prod_list:
+			prod_sale_data = get_sale_data_for_select_stockist(pp,FromDate,ToDate,qq);
+			tot_sale_qty+=prod_sale_data[0].qty;
+			tot_sale_value+=prod_sale_data[0].value;			
+			datasets2.append({ #'Stockist':User
+			  	  #,'Stockist':pp,
+				  'product':qq
+				  ,'sale_qty':str(prod_sale_data[0].qty)
+				  ,'sale_value':str(prod_sale_data[0].value)
+				  ,'ret_qty':str(0)
+				  ,'ret_value':str(0)
+				});
+			
+			pass
+		datasets1.append({ 'employee':User
+				  ,'full_name':str(full_name[0].full_name)
+			  	  ,'stockist':pp				  
+				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
+			  	  ,'emp':str(emp_of_stockist[0].emp)
+				  ,'tot_sale_qty':tot_sale_qty
+				  ,'tot_sale_value':tot_sale_value
+				  ,'tot_ret_qty':tot_ret_qty
+				  ,'tot_ret_value':tot_ret_value
+				  ,'from_date':FromDate
+				  ,'to_date':ToDate
+				  ,'product_data':datasets2			  		    		  				 
+				});
+		pass
+	return datasets1;
+
