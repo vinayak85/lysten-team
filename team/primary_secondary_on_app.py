@@ -220,13 +220,8 @@ def stockist_list_for_top_hierarchy(employee,designation,limit, offset):
 
 
 @frappe.whitelist()
-def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products):
-	'''
-	Employee List For Given Stockist:
-	select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as user from 1bd3e0294da19198.`tabUser` 
-  where `tabUser`.`enabled`=1 and name in (SELECT parent FROM 1bd3e0294da19198.`tabStockist For User` where stockist='Drug Distributor' and enable=1) and branch='Main' and `tabUser`.`designation` in('TBM');
-  '''
-	
+def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products,branch):
+		
 	#User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation
 	branch_p=frappe.db.sql("""select branch from `tabUser` 
 	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
@@ -244,29 +239,30 @@ def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products):
 	list_of_stockist=stockist_with_commas.split (',');
 	
 	'''Product Section For Branch'''
-	branch=branch_p[0].branch;
-	branch_product=product_list(branch_p[0].branch)
-	#frappe.msgprint(_(branch));
+	
+	if(branch=="NO"):
+		branch=branch_p[0].branch;
+		
+	branch_product=product_list(branch)#branch_p[0].branch
+	
 	prod_list=[];
 	prod_list=branch_product.split (',')
 	datasets1=[];
 	datasets2=[];
+	
 	for pp in list_of_stockist:		
 		datasets2=[];
 		tot_sale_qty=0;
 		tot_sale_value=0;
 		tot_ret_qty=0;
 		tot_ret_value=0;
-		emp_of_stockist=count_employee_of_stockist(pp,branch)
-		#frappe.msgprint(_(pp+" "+str(emp_of_stockist[0].tot_emp)+" "+emp_of_stockist[0].emp));
+		emp_of_stockist=count_employee_of_stockist1(pp,branch)
 		
-		#ab="";
 		for qq in prod_list:
 			prod_sale_data = get_sale_data_for_select_stockist(pp,FromDate,ToDate,qq);
 			tot_sale_qty+=prod_sale_data[0].qty;
 			tot_sale_value+=prod_sale_data[0].value;			
-			datasets2.append({ #'Stockist':User
-			  	  #,'Stockist':pp,
+			datasets2.append({ 
 				  'product':qq
 				  ,'sale_qty':str(prod_sale_data[0].qty)
 				  ,'sale_value':str(prod_sale_data[0].value)
@@ -275,9 +271,10 @@ def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products):
 				});
 			
 			pass
+		#,'stockist':pp
 		datasets1.append({ 'employee':Stockist
 				  ,'full_name':str(full_name[0].full_name)
-			  	  ,'stockist':pp				  
+			  	  ,'stockist':str(emp_of_stockist[0].emp)				  
 				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
 			  	  ,'emp':str(emp_of_stockist[0].emp)
 				  ,'tot_sale_qty':tot_sale_qty
@@ -292,36 +289,10 @@ def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products):
 	return datasets1;
 
 
-def count_employee_of_stockist11(Stockist,branch):
-	'''emp_of_stockist=frappe.db.sql("""select GROUP_CONCAT(parent)as emp,count(parent)as tot_emp 
-	from  `tabStockist For User` where stockist={0} and enable=1""".format("'"+Stockist+"'"), as_dict=1)'''
-	emp_of_stockist=null;
-	if(branch == "Main" or branch == "Derby"):
-		emp_of_stockist=frappe.db.sql("""select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as emp,count(name)as tot_emp from `tabUser` 
-		where branch={0} and designation='TBM'and 
-		name in(select parent from `tabStockist For User` 
-		where stockist={1} and enable=1)""".format("'"+branch+"'","'"+Stockist+"'"), as_dict=1)
-	else:
-		emp_of_stockist=frappe.db.sql("""select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as emp,count(name) as tot_emp from `tabUser` 
-		where branch in('Main','Derby') and designation='TBM' and 
-		name in(select parent from `tabStockist For User` 
-		where stockist={1} and enable=1)""".format("'"+branch+"'","'"+Stockist+"'"), as_dict=1)
+def count_employee_of_stockist1(Stockist,branch):
+	
+	emp_of_stockist=frappe.db.sql("""select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as emp,count(name)as tot_emp 
+	from `tabUser` where branch={0} and designation='TBM'and 
+	name in(select parent from `tabStockist For User` 
+	where stockist={1} and enable=1)""".format("'"+branch+"'","'"+Stockist+"'"), as_dict=1)
 	return emp_of_stockist;
-
-#select Group_Concat(full_name,concat(' [ ',headquarter,' ]')) as emp,count(name) as tot_emp from 1bd3e0294da19198.`tabUser` 
-#  where `tabUser`.`enabled`=1 and name in (SELECT parent FROM 1bd3e0294da19198.`tabStockist For User` where stockist='Drug Distributor' and enable=1) and branch='Main' and `tabUser`.`designation` in('TBM');
-
-#@frappe.whitelist()
-def product_list11(branch): 
-    msg=''
-    if(branch == ''):
-        msg=''      
-    else:
-	if(branch == "Main" or branch == "Derby"):
-		msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
-		where branch={0} group by branch""".format("'"+branch+"'"), as_dict=1)
-	else:
-		msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
-		where branch in('Main','Derby')""".format("'"+branch+"'"), as_dict=1)
-    
-    return msg[0].comma_product ;
