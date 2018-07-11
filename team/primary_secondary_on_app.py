@@ -231,7 +231,7 @@ def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products,branch):
 	#where parent={0} and enable=1;""".format("'"+User+"'"), as_dict=1)
 	
 	full_name=frappe.db.sql(""" SELECT distinct full_name FROM 1bd3e0294da19198.`tabStockist For User` 
-	where enable=1 and stockist={0};""".format("'"+stockist+"'"), as_dict=1)
+	where enable=1 and stockist={0};""".format("'"+Stockist+"'"), as_dict=1)
 	
 	stockist_with_commas=Stockist;#stockist_with_commas[0].comma_stock;
 	
