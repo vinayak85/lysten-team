@@ -33,7 +33,7 @@ def product_list1(branch):
         msg='Empty Branch...'      
     elif(branch == 'ALL Branch'):
         msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
-        where branch in('','')""".format(branch), as_dict=1)
+        where branch in('Main','Derby')""".format(branch), as_dict=1)
     else:
         msg = frappe.db.sql("""select GROUP_CONCAT(name) as comma_product from `tabItem` 
         where branch={0} group by branch""".format(branch), as_dict=1)        
