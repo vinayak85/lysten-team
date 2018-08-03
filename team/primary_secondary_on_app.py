@@ -43,15 +43,21 @@ def get_date_and_app_support(User,Stockist,FromDate,ToDate,Products):
 		#ab="";
 		for qq in prod_list:
 			prod_sale_data = get_sale_data_for_select_stockist(pp,FromDate,ToDate,qq);
+			prod_ret_data = get_return_data_for_select_stockist(pp,FromDate,ToDate,qq);
+			
 			tot_sale_qty+=prod_sale_data[0].qty;
-			tot_sale_value+=prod_sale_data[0].value;			
+			tot_sale_value+=prod_sale_data[0].value;
+			
+			tot_ret_qty+=prod_ret_data[0].qty;
+			tot_ret_value+=prod_ret_data[0].value;
+			
 			datasets2.append({ #'Stockist':User
 			  	  #,'Stockist':pp,
 				  'product':qq
 				  ,'sale_qty':str(prod_sale_data[0].qty)
 				  ,'sale_value':str(prod_sale_data[0].value)
-				  ,'ret_qty':str(0)
-				  ,'ret_value':str(0)
+				  ,'ret_qty':str(prod_ret_data[0].qty)
+				  ,'ret_value':str(prod_ret_data[0].value)
 		    		  #,'tot_emp':str(emp_of_stockist[0].tot_emp)
 			  	  #,'emp':str(emp_of_stockist[0].emp)
 				 #,'flag':'S'
@@ -116,7 +122,8 @@ where `item_code`={0} and parent in(select name from `tabSales Invoice` where na
 #@frappe.whitelist()
 def get_return_data_for_select_stockist(Stockist,FromDate,ToDate,Product):
   msg = frappe.db.sql("""select ifnull(sum(`qty`),0) as "qty",ifnull(sum(`net_amount`),0) as "value" from `tabSales Invoice Item` 
-where `item_code`={0} and parent in(select name from `tabSales Invoice` where name like "SI-%" and status in('Draft','Unpaid','Overdue') and `tabSales Invoice`.`customer_name`={1} and posting_date between {2} and {3});
+where `item_code`={0} and parent in(select name from `tabSales Invoice` where name like "SR-%" and 
+status in('Draft','Unpaid','Overdue') and `tabSales Invoice`.`customer_name`={1} and posting_date between {2} and {3} order by name);
 """.format("'"+Product+"'","'"+Stockist+"'","'"+FromDate+"'","'"+ToDate+"'"), as_dict=1)    
   #frappe.msgprint(_(msg));
   return msg;
@@ -263,14 +270,20 @@ def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products,branch):
 		
 		for qq in prod_list:
 			prod_sale_data = get_sale_data_for_select_stockist(pp,FromDate,ToDate,qq);
+			prod_ret_data = get_return_data_for_select_stockist(pp,FromDate,ToDate,qq);
+			
 			tot_sale_qty+=prod_sale_data[0].qty;
-			tot_sale_value+=prod_sale_data[0].value;			
+			tot_sale_value+=prod_sale_data[0].value;
+			
+			tot_ret_qty+=prod_ret_data[0].qty;
+			tot_ret_value+=prod_ret_data[0].value;
+			
 			datasets2.append({ 
 				  'product':qq
 				  ,'sale_qty':str(prod_sale_data[0].qty)
 				  ,'sale_value':str(prod_sale_data[0].value)
-				  ,'ret_qty':str(0)
-				  ,'ret_value':str(0)
+				  ,'ret_qty':str(prod_ret_data[0].qty)
+				  ,'ret_value':str(prod_ret_data[0].value)
 				});
 			
 			pass
