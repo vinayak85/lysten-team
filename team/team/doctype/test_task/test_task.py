@@ -12,6 +12,10 @@ class test_task(Document):
 
 @frappe.whitelist()
 def test_start():
-	frappe.msgprint(_("arjun"));
+	'''INSERT INTO 1bd3e0294da19198.tabtest_task (note)
+   VALUES
+   ('');'''
+	op = frappe.db.sql("""INSERT INTO 1bd3e0294da19198.tabtest_task (note) VALUES ('aaaaa');
+	frappe.msgprint(_("arjun "+str(op)));
 
 
