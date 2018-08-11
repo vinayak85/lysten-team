@@ -34,7 +34,7 @@ def test_start():
 	today_date = frappe.utils.data.get_datetime().strftime('%Y-%m-%d')
 	current_time = local_time()
 	
-	td_entry = frappe.new_doc("tabtest_task_child")
+	td_entry = frappe.new_doc("test_task_child")
 	#td_entry.name = 'test_task/' + '000001'
 	td_entry.note = 'aaaaaaaa'
 	td_entry.date = str(today_date)
