@@ -44,31 +44,31 @@ def form16_allowance(employee,from_date,to_date):
         #employee="'"+employee+"'";
 	
         paid_month_count= frappe.db.sql("""select  ifnull(count(name),0)as paid_month_count from `tabSalary Slip` where
-	employee={0} and start_date between {1} and {2} and end_date between {1} and {2} ;
+	employee={0} and start_date between {1} and {2} and end_date between {1} and {2} and status IN ('Draft', 'Submitted');
 	""".format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
 	
         allowance= frappe.db.sql("""select ifnull(sum(sd.amount),0)as convenience_allowance from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
 	where sd.salary_component='Conveyance Allowance' and ss.employee={0} and 
-	ss.start_date between {1} and {2}; 
+	ss.start_date between {1} and {2} and ss.status IN ('Draft', 'Submitted'); 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
 	
         perform_allowance= frappe.db.sql("""select ifnull(sum(sd.amount),0)as perform_allow from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
 	where sd.salary_component='Performance Allowance' and ss.employee={0} and 
-	ss.start_date between {1} and {2}; 
+	ss.start_date between {1} and {2} and ss.status IN ('Draft', 'Submitted'); 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)	
 	
 	prof_tax= frappe.db.sql("""select ifnull(sum(sd.amount),0)as professional_tax from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
 	where sd.salary_component='Professional Tax' and ss.employee={0} and 
-	ss.start_date between {1} and {2}; 
+	ss.start_date between {1} and {2} and ss.status IN ('Draft', 'Submitted'); 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
 	
 	prov_fund= frappe.db.sql("""select ifnull(sum(sd.amount),0)as provident_fund from `tabSalary Detail` sd 
 	left outer join `tabSalary Slip` ss on	sd.parent=ss.name 
 	where sd.salary_component='Provident Fund' and ss.employee={0} and 
-	ss.start_date between {1} and {2}; 
+	ss.start_date between {1} and {2} and ss.status IN ('Draft', 'Submitted'); 
         """.format("'"+employee+"'","'"+from_date+"'","'"+to_date+"'"), as_dict=1)
 	
 	gross_amt_wot_exp= frappe.db.sql("""SELECT Months,EMP_NAME as "EmployeeName",EMP as "EmployeeCode",

@@ -112,28 +112,55 @@ def lock_check_with_std_lock(user):
     
     return dict
 
+@frappe.whitelist()
+def update_user_lock_time_and_date(send_opr_flag):
+	ff='Y';
+	flag=0;
+	ss="";
+	if(send_opr_flag == ff):
+		std_lock = frappe.db.sql("""select profile_master,patch_master,doctor_master,chemist_master,objective_lock_time,doctor_start_time,chemist_start_time from `tabStandard Lock` order by modified limit 1;""", as_dict=1)		
+		'''
+		ss="update `tabUser` set m_pro="+str(std_lock[0].profile_master)+",m_pat="+str(std_lock[0].patch_master)+",m_doc="+str(std_lock[0].doctor_master)+",m_che="+str(std_lock[0].chemist_master)+",t_obj_time='"+str(std_lock[0].objective_lock_time)+"',t_drc_s_time='"+str(std_lock[0].doctor_start_time)+"',t_chc_s_time='"+str(std_lock[0].chemist_start_time)+"',t_drc1=NULL,t_drc2=NULL,t_obj1=NULL,t_obj2=NULL,t_chc1=NULL,t_chc2=NULL where enabled=1 and designation in (\'TBM\',\'ABM\',\'RBM\',\'SM\',\'NBM\')"		
+		'''		
+		frappe.db.sql("""update `tabUser` set m_pro={0},m_pat={1},m_doc={2},
+		m_che={3},t_obj_time={4},t_drc_s_time={5},t_chc_s_time={6},
+		t_drc1=NULL,t_drc2=NULL,t_obj1=NULL,t_obj2=NULL,t_chc1=NULL,
+		t_chc2=NULL where enabled=1 
+		and designation 
+		in ('TBM','ABM','RBM','SM','NBM') 
+		;""".format(std_lock[0].profile_master,std_lock[0].patch_master,std_lock[0].doctor_master,
+			    std_lock[0].chemist_master,"'"+str(std_lock[0].objective_lock_time)+"'",
+			    "'"+str(std_lock[0].doctor_start_time)+"'","'"+str(std_lock[0].chemist_start_time)+"'"), as_dict=1)
+		
+		flag=1;
+	else:
+		flag=0;
+	
+	dict = {'flag': 0}
+	dict['flag'] = flag;
+	
+	return dict
+
 
 @frappe.whitelist()
-def update_user_lock_time_and_date(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time):
-    flag=0;
-    frappe.msgprint(_("a"));
-    if(m_pro!="" and m_pat!="" and m_doc!="" and m_che!="" and t_obj_time!="" and t_drc_s_time!="" and t_chc_s_time!=""):
-        frappe.msgprint(_(m_pro));#m_pro+" "+m_pat+" "+m_doc+" "+m_che+" "+
-        frappe.db.sql("""update `tabUser` set m_pro=%s,m_pat=%s,m_doc=%s,m_che=%s,
-        t_obj_time=%s,t_drc_s_time=%s,t_chc_s_time=%s,t_drc1=NULL,t_drc2=NULL,t_obj1=NULL,
-        t_obj2=NULL,t_chc1=NULL,t_chc2=NULL where enabled=1 and 
-        designation in ('TBM','ABM','RBM','SM','NBM') """,(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time))  
-        
-        #frappe.db.sql("""update `tabSalary Detail` set abbr = %s where name = %s""",(salary_component_abbr, salary_detail.name))
-        
-        flag=1;
-    else:
-        frappe.msgprint(_("c"));
-        flag=0;
-        
-    dict = {'flag': 0}
-    dict['flag'] = flag;
-    return dict
+def update_reset_user_lock_time_and_date(send_opr_flag):
+	ff='Y';
+	flag=0;
+	ss="";
+	if(send_opr_flag == ff):				
+		frappe.db.sql("""update `tabUser` set m_pat={1},m_doc={2},m_che={3} where enabled=1 
+		and designation 
+		in ('TBM','ABM','RBM','SM','NBM') 
+		;""".format(0,0,0), as_dict=1)		
+		flag=1;
+	else:
+		flag=0;
+	
+	dict = {'flag': 0}
+	dict['flag'] = flag;
+	
+	return dict
+
 
 @frappe.whitelist()
 def retrun_user_list_with_lock_flag(limit, offset):
@@ -148,3 +175,18 @@ def retrun_user_list_with_lock_flag(limit, offset):
 	&& t_chc_s_time=(select chemist_start_time from `tabStandard Lock` order by modified desc limit 1),1,0) as trans_flag 
 	from `tabUser` where designation in('TBM','ABM','RBM','ZBM','SM','NBM','CRM') order by modified desc 
 	LIMIT {0}  OFFSET {1};""".format(limit, offset),as_dict=True);
+
+
+
+
+
+
+
+	''''m_pro!="" and m_pat!="" and m_doc!="" and m_che!="" and t_obj_time!="" and t_drc_s_time!="" and t_chc_s_time!=""
+        frappe.msgprint(_(m_pro));
+        frappe.db.sql("""update `tabUser` set m_pro=%s,m_pat=%s,m_doc=%s,m_che=%s,
+        t_obj_time=%s,t_drc_s_time=%s,t_chc_s_time=%s,t_drc1=NULL,t_drc2=NULL,t_obj1=NULL,
+        t_obj2=NULL,t_chc1=NULL,t_chc2=NULL where enabled=1 and 
+        designation in ('TBM','ABM','RBM','SM','NBM') """,(m_pro,m_pat,m_doc,m_che,t_obj_time,t_drc_s_time,t_chc_s_time))  '''
+        
+        #frappe.db.sql("""update `tabSalary Detail` set abbr = %s where name = %s""",(salary_component_abbr, salary_detail.name))
