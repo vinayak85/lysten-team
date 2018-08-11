@@ -65,8 +65,9 @@ schedule.every().day.at("22:17").do(job)
 schedule.every(10).seconds.do(job)
 
 while 1:
-schedule.run_pending()
-time.sleep(1)
+	schedule.run_pending()
+	time.sleep(1)
+	
 #################
 	
 def local_time(zone='Asia/Kolkata'):
