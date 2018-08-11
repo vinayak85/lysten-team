@@ -6,7 +6,16 @@ frappe.ui.form.on('test_task', {
 
 	},
 	btn1: function (frm) {
-		alert('hii');
+		
+		frappe.call({
+			method:'team.team.doctype.test_task.test_task.test_start',
+			args:{
+				
+			},
+			callback:function (r) {
+				alert('hii');	
+			});
+		         
 	}
 
 });
