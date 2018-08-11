@@ -44,6 +44,27 @@ def test_start():
 	#aop = frappe.db.sql(""" INSERT INTO 1bd3e0294da19198.tabtest_task (note) VALUES ('aaaaa');""");
 	frappe.msgprint(_("arjun "));
 
+
+######################################
+import urllib
+import re
+import schedule
+import time
+import datetime import datetime
+
+def job():
+
+
+schedule.every(10).minutes.do(job)
+schedule.every().hour.do(job)
+schedule.every().day.at("22:17").do(job)
+schedule.every().seconds.do(job)
+
+while 1:
+schedule.run_pending()
+time.sleep(1)
+#################
+	
 def local_time(zone='Asia/Kolkata'):
     other_zone = timezone(zone)
     other_zone_time = datetime.now(other_zone)
