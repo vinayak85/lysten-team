@@ -19,7 +19,7 @@ def test_start():
 	#td_entry.name = 'test_task/' + '000001'
 	td_entry.note = 'aaaaa'
 	'''td_entry.salary_slip = ss.name'''
-	td_entry.docstatus = 1
+	#td_entry.docstatus = 1
 	td_entry.save()
 	
 	#op = frappe.db.sql(""" INSERT INTO 1bd3e0294da19198.tabtest_task (note) VALUES ('aaaaa');""");
