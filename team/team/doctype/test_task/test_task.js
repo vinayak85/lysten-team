@@ -4,5 +4,9 @@
 frappe.ui.form.on('test_task', {
 	refresh: function(frm) {
 
+	},
+	btn1: function (frm) {
+		alert('hii');
 	}
+
 });
