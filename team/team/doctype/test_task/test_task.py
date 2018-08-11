@@ -10,6 +10,7 @@ from frappe import msgprint, _
 class test_task(Document):
 	pass
 
+@frappe.whitelist()
 def test_start():
 	frappe.msgprint(_("arjun"));
 
