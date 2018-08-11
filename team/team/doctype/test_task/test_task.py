@@ -23,6 +23,6 @@ def test_start():
 	td_entry.save()
 	
 	#op = frappe.db.sql(""" INSERT INTO 1bd3e0294da19198.tabtest_task (note) VALUES ('aaaaa');""");
-	frappe.msgprint(_("arjun "+str(op)));
+	frappe.msgprint(_("arjun "));
 
 
