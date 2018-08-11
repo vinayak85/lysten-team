@@ -15,6 +15,10 @@ class test_task(Document):
 
 @frappe.whitelist()
 def test_start():
+	schedule.clear()
+	
+@frappe.whitelist()
+def test_start1():
 	'''INSERT INTO 1bd3e0294da19198.tabtest_task (note)
    VALUES
    ('');
@@ -53,7 +57,7 @@ import time
 import datetime import datetime
 
 def job():
-
+	frappe.msgprint(_("arjun "));
 
 schedule.every(10).minutes.do(job)
 schedule.every().hour.do(job)
