@@ -10,11 +10,16 @@ import frappe
 from frappe.model.document import Document
 from frappe import msgprint, _
 
+import urllib
+import re
+import schedule
+import time
+
 class test_task(Document):
 	pass
 
 @frappe.whitelist()
-def test_start():
+def btn_2_job():
 	schedule.clear()
 	
 @frappe.whitelist()
@@ -50,23 +55,19 @@ def test_start1():
 
 
 ######################################
-import urllib
-import re
-import schedule
-import time
+
 #import datetime import datetime
+
+def btn_1_job():
+	schedule.every(10).seconds.do(job)
+	while 1:
+		schedule.run_pending()
+		time.sleep(5)
 
 def job():
 	frappe.msgprint(_("arjun "));
 
-schedule.every(10).minutes.do(job)
-schedule.every().hour.do(job)
-schedule.every().day.at("22:17").do(job)
-schedule.every(10).seconds.do(job)
 
-while 1:
-	schedule.run_pending()
-	time.sleep(1)
 	
 #################
 	
