@@ -16,7 +16,7 @@ def test_start():
    VALUES
    ('');'''
 	td_entry = frappe.new_doc("test_task")
-	td_entry.name = 'test_task/' + '000001'
+	#td_entry.name = 'test_task/' + '000001'
 	td_entry.note = 'aaaaa'
 	'''td_entry.salary_slip = ss.name'''
 	td_entry.docstatus = 1
