@@ -5,6 +5,12 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+from frappe import msgprint, _
 
 class test_task(Document):
 	pass
+
+def test_start():
+	frappe.msgprint(_("arjun"));
+
+
