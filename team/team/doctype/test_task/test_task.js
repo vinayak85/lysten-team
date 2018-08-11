@@ -8,7 +8,20 @@ frappe.ui.form.on('test_task', {
 	btn1: function (frm) {
 		
 		frappe.call({
-			method:'team.team.doctype.test_task.test_task.test_start',
+			method:'team.team.doctype.test_task.test_task.btn_1_job',
+			args:{
+				
+			},
+			callback:function (r) {
+				alert('hii');	
+			}
+		});
+		         
+	},
+	btn2: function (frm) {
+		
+		frappe.call({
+			method:'team.team.doctype.test_task.test_task.btn_2_job',
 			args:{
 				
 			},
