@@ -59,10 +59,11 @@ def test_start1():
 #import datetime import datetime
 @frappe.whitelist()
 def btn_1_job():
-	schedule.every(10).seconds.do(job)
+	job()
+	'''schedule.every(10).seconds.do(job)
 	while 1:
 		schedule.run_pending()
-		time.sleep(5)
+		time.sleep(5)'''
 
 def job():
 	frappe.msgprint(_("arjun "));
