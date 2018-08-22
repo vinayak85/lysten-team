@@ -60,14 +60,14 @@ def test_start1():
 @frappe.whitelist()
 def btn_1_job():
 	#job()
-	schedule.every(1).seconds.do(job)
-	schedule.clear()
+	schedule.every(1).seconds.do(job)	
 	'''while 1:
 		schedule.run_pending()
 		time.sleep(5)'''
 
 def job():
 	frappe.msgprint(_("arjun "));
+	schedule.clear()
 
 
 	
