@@ -26,7 +26,7 @@ frappe.ui.form.on('test_task', {
 				
 			},
 			callback:function (r) {
-				alert(r);	
+				//alert(r);	
 			}
 		});
 		         
