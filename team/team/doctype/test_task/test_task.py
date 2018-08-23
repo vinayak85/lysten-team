@@ -66,9 +66,8 @@ def btn_1_job():
 		time.sleep(5)'''
 
 def job():
-	#frappe.msgprint(_("arjun "));
+	frappe.msgprint(_("arjun "));
 	#schedule.clear()
-	print("arjun ");
 
 
 	
