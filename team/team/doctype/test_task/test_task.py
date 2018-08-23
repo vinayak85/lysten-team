@@ -59,9 +59,9 @@ def test_start1():
 #import datetime import datetime
 @frappe.whitelist()
 def btn_1_job():
-	#job()
-	schedule.every(1).seconds.do(job)	
-	'''while 1:
+	job()
+	'''schedule.every(1).seconds.do(job)	
+	while 1:
 		schedule.run_pending()
 		time.sleep(5)'''
 
