@@ -192,12 +192,17 @@ def get_primary_data_of_stockist_top_hierarchy(User,FromDate,ToDate,branch):
 	branch_p=frappe.db.sql("""select branch from `tabUser` 
 	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
 	
+	designation=frappe.db.sql("""select designation from `tabUser` 
+	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
+	
 	'''Stockist Section For Given User'''
+	''' Call Method For get all stockist for that user'''
+	stockist_with_commas=stockist_list_for_top_hierarchy(employee,designation[0].designation)
 	
-	full_name=frappe.db.sql(""" SELECT distinct full_name FROM 1bd3e0294da19198.`tabStockist For User` 
-	where enable=1 and stockist={0};""".format("'"+Stockist+"'"), as_dict=1)
+	full_name=frappe.db.sql("""select full_name from `tabUser` 
+	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
 	
-	stockist_with_commas=Stockist;
+	stockist_with_commas=stockist_with_commas[0].comma_stock;
 	
 	list_of_stockist=[];
 	list_of_stockist=stockist_with_commas.split (',');
@@ -242,7 +247,7 @@ def get_primary_data_of_stockist_top_hierarchy(User,FromDate,ToDate,branch):
 			
 			pass
 		#,'stockist':pp
-		datasets1.append({ 'employee':Stockist
+		datasets1.append({ 'employee':User
 				  ,'full_name':str(full_name[0].full_name)
 			  	  ,'stockist':str(emp_of_stockist[0].emp)				  
 				  ,'tot_emp':str(emp_of_stockist[0].tot_emp)
