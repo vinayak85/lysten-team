@@ -219,6 +219,9 @@ def get_primary_data_of_stockist_top_hierarchy(User,FromDate,ToDate,branch):
 	datasets1=[];
 	datasets2=[];
 	
+	tot_amt_of_sale=0;
+	tot_amt_of_ret=0;	
+	
 	for pp in list_of_stockist:		
 		datasets2=[];
 		tot_sale_qty=0;
