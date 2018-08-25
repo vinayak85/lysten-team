@@ -185,7 +185,6 @@ def stockist_list_for_top_hierarchy(employee,designation,limit, offset):
 		frappe.msgprint(_("No entry"))
 
 
-
 @frappe.whitelist()
 def get_primary_data_of_stockist_top_hierarchy(User,FromDate,ToDate,branch):
 		
