@@ -133,42 +133,42 @@ def stockist_list(branch):
     return msg[0].comma_product ;
 
 
-def stockist_list_for_top_hierarchy(employee,designation,limit, offset):
-	#frappe.msgprint(_(employee+'  '+designation))	
+def stockist_list_for_top_hierarchy(employee,designation):
+	
 	if designation == "ABM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
-		where abm={0} and enabled=1) and enable=1 LIMIT {1} offset {2}""".format(employee,limit,offset),as_dict=True)
+		where abm={0} and enabled=1) and enable=1 LIMIT {1} offset {2}""".format(employee),as_dict=True)
 	elif designation == "RBM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
-		where rbm={0} and enabled=1) and enable=1 LIMIT {1} offset {2}""".format(employee,limit,offset),as_dict=True)
+		where rbm={0} and enabled=1) and enable=1 LIMIT {1} offset {2}""".format(employee),as_dict=True)
 	elif designation == "ZBM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
 		where zbm={0} and enabled=1) and enable=1 
-		LIMIT {1}  OFFSET {2} ;""".format(employee,limit,offset),as_dict=True)
+		LIMIT {1}  OFFSET {2} ;""".format(employee),as_dict=True)
 	elif designation == "SM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
 		where sm={0} and enabled=1) and enable=1 
-		LIMIT {1}  OFFSET {2} ;""".format(employee,limit,offset),as_dict=True)
+		LIMIT {1}  OFFSET {2} ;""".format(employee),as_dict=True)
 	elif designation == "NBM":
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory 
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
 		where nbm={0} and enabled=1) and enable=1 
-		LIMIT {1}  OFFSET {2} ;""".format(employee,limit,offset),as_dict=True)
+		LIMIT {1}  OFFSET {2} ;""".format(employee),as_dict=True)
 	elif designation == "CRM": 
 		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(Select name from `tabUser` 
 		where crm={0} and enabled=1) and enable=1 
-		LIMIT {1}  OFFSET {2} ;""".format(employee,limit,offset),as_dict=True)
+		LIMIT {1}  OFFSET {2} ;""".format(employee),as_dict=True)
 	elif (designation == "Head of Marketing and Sales"):#Sales Head 
 		branch = frappe.db.sql("""select branch from 1bd3e0294da19198.`tabUser` 
 		where name={0} and enabled=1""".format(employee), as_dict=1) 
@@ -177,10 +177,11 @@ def stockist_list_for_top_hierarchy(employee,designation,limit, offset):
 		FROM 1bd3e0294da19198.`tabStockist For User` 
 		where parent in(select name from 1bd3e0294da19198.`tabUser` 
 		where `tabUser`.`enabled`=1 and branch={0} and `tabUser`.`designation` in('TBM')) and enable=1
-		LIMIT {1}  OFFSET {2} ;""".format("'"+branch[0].branch+"'",limit,offset),as_dict=True)
+		;""".format("'"+branch[0].branch+"'"),as_dict=True)
 	elif (designation == "HR Manager" or designation == "Admin"):
-		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory FROM 1bd3e0294da19198.`tabStockist For User` where enable=1 
-		LIMIT {1}  OFFSET {2} ;""".format(employee,limit,offset),as_dict=True)
+		return frappe.db.sql(""" SELECT distinct stockist as name,full_name,territory FROM 1bd3e0294da19198.`tabStockist 
+		For User` where enable=1 
+		;""".format(employee),as_dict=True)
 	else:
 		frappe.msgprint(_("No entry"))
 
