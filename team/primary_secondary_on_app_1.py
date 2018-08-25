@@ -133,7 +133,6 @@ def stockist_list(branch):
     return msg[0].comma_product ;
 
 
-@frappe.whitelist()
 def stockist_list_for_top_hierarchy(employee,designation,limit, offset):
 	#frappe.msgprint(_(employee+'  '+designation))	
 	if designation == "ABM":
@@ -188,20 +187,17 @@ def stockist_list_for_top_hierarchy(employee,designation,limit, offset):
 
 
 @frappe.whitelist()
-def get_primary_data_of_stockist(User,Stockist,FromDate,ToDate,Products,branch):
+def get_primary_data_of_stockist_top_hierarchy(User,FromDate,ToDate,branch):
 		
-	#User,Branch,Stockist,FromDate,ToDate,Products,flag_of_operation
 	branch_p=frappe.db.sql("""select branch from `tabUser` 
 	where name={0} and enabled=1;""".format("'"+User+"'"), as_dict=1)
 	
 	'''Stockist Section For Given User'''
-	#stockist_with_commas=frappe.db.sql("""select GROUP_CONCAT(stockist) as comma_stock from  `tabStockist For User` 
-	#where parent={0} and enable=1;""".format("'"+User+"'"), as_dict=1)
 	
 	full_name=frappe.db.sql(""" SELECT distinct full_name FROM 1bd3e0294da19198.`tabStockist For User` 
 	where enable=1 and stockist={0};""".format("'"+Stockist+"'"), as_dict=1)
 	
-	stockist_with_commas=Stockist;#stockist_with_commas[0].comma_stock;
+	stockist_with_commas=Stockist;
 	
 	list_of_stockist=[];
 	list_of_stockist=stockist_with_commas.split (',');
