@@ -212,7 +212,7 @@ def get_primary_data_of_stockist_top_hierarchy(User,FromDate,ToDate,branch):
 	if(branch=="NO"):
 		branch=branch_p[0].branch;
 		
-	branch_product=product_list(branch)#branch_p[0].branch
+	branch_product=product_list(branch)
 	
 	prod_list=[];
 	prod_list=branch_product.split (',')
@@ -240,6 +240,9 @@ def get_primary_data_of_stockist_top_hierarchy(User,FromDate,ToDate,branch):
 			tot_ret_qty+=prod_ret_data[0].qty;
 			tot_ret_value+=prod_ret_data[0].value;
 			
+			tot_amt_of_sale+=tot_sale_value;
+			tot_amt_of_ret+=tot_ret_value;
+			
 			datasets2.append({ 
 				  'product':qq
 				  ,'sale_qty':str(prod_sale_data[0].qty)
@@ -261,7 +264,9 @@ def get_primary_data_of_stockist_top_hierarchy(User,FromDate,ToDate,branch):
 				  ,'tot_ret_value':tot_ret_value
 				  ,'from_date':FromDate
 				  ,'to_date':ToDate
-				  ,'product_data':datasets2			  		    		  				 
+				  ,'product_data':datasets2
+				  ,'tot_amt_of_sale':tot_amt_of_sale
+				  ,'tot_amt_of_ret':tot_amt_of_ret
 				});
 		pass
 	return datasets1;
