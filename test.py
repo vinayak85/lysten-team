@@ -1,0 +1,2 @@
+import schedule
+schedul.clear()
