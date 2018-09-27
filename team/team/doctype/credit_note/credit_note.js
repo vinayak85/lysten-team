@@ -23,7 +23,8 @@ cur_frm.pformat.print_heading = 'Invoice';
 cur_frm.add_fetch('customer', 'tax_id', 'tax_id');
 
 frappe.provide("erpnext.accounts");
- frappe.ui.form.on('credit_note', {
+ 
+frappe.ui.form.on('credit_note', {
 	setup: function(doc) {
 		this.setup_posting_date_time_check();
 		this._super(doc);
@@ -52,32 +53,12 @@ frappe.provide("erpnext.accounts");
 
 	refresh: function(doc, dt, dn) {
 		this._super();
-		
-		//var d = locals[dt][dn];
-		//alert(d[0].item_code);
-		
+
 		if(cur_frm.msgbox && cur_frm.msgbox.$wrapper.is(":visible")) {
 			// hide new msgbox
 			cur_frm.msgbox.hide();
 		}
-		
-		//arjun code start
-		if(doc.is_return) {
-			//cur_frm.fields_dict.items.grid.fields_map.against_invoice_1.hidden = 1;
-			//cur_frm.refresh_field(“items”);
-			
-			var df = frappe.meta.get_docfield(this.frm.doctype + " Item","against_invoice_1", cur_frm.doc.name);		
-			df.hidden = 0; 
-			
-			//frm.fields_dict["items"].grid.set_column_disp(df, enabled);
-			
-			//frm.fields_dict["attributes"].grid.set_column_disp("attribute_value", true)
-			
-			//alert(df);//cur_frm.doc.items);			
-			
-		}
-		//arjun code end
-		
+				
 		this.frm.toggle_reqd("due_date", !this.frm.doc.is_return);
 
 		this.show_general_ledger();
@@ -244,10 +225,10 @@ frappe.provide("erpnext.accounts");
 		if(cint(this.frm.doc.write_off_outstanding_amount_automatically)) {
 			frappe.model.round_floats_in(this.frm.doc, ["grand_total", "paid_amount"]);
 			// this will make outstanding amount 0
-			this.frm.set_value("write_off_amount",
+			/*this.frm.set_value("write_off_amount",
 				flt(this.frm.doc.grand_total - this.frm.doc.paid_amount - this.frm.doc.total_advance, precision("write_off_amount"))
 			);
-			this.frm.toggle_enable("write_off_amount", false);
+			this.frm.toggle_enable("write_off_amount", false);*/
 
 		} else {
 			this.frm.toggle_enable("write_off_amount", true);
