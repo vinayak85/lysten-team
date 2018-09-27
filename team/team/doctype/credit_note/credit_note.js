@@ -510,11 +510,11 @@ cur_frm.set_query("asset", "items", function(doc, cdt, cdn) {
 	}
 });
 
-frappe.ui.form.on('Sales Invoice', {
+frappe.ui.form.on('credit_note', {
 	setup: function(frm){
 		frm.custom_make_buttons = {
 			'Delivery Note': 'Delivery',
-			'Sales Invoice': 'Sales Return',
+			'credit_note': 'Sales Return',
 			'Payment Request': 'Payment Request',
 			'Payment': 'Payment Entry'
 		},
