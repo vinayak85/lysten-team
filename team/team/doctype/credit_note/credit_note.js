@@ -1,14 +1,15 @@
 // Copyright (c) 2018, Vinayak Patil and contributors
 // For license information, please see license.txt
 
+/*
 frappe.ui.form.on('credit_note', {
 	refresh: function(frm) {
 
 	}
 });
+*/
 
 
-/*
 //Arjun Code Start
 
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
@@ -609,4 +610,4 @@ var calculate_total_billing_amount =  function(frm) {
 }
 
 //Arjun Code END
-*/
+
