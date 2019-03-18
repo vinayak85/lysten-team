@@ -6,4 +6,4 @@ __version__ = '0.0.1'
 
 @frappe.whitelist()
 def test():
-frappe.msgprint(_("hi"))
+  frappe.msgprint(_("hi"))
