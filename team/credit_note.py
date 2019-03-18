@@ -5,5 +5,5 @@ from frappe import msgprint, _
 __version__ = '0.0.1'
 
 @frappe.whitelist()
-def test():
-  frappe.msgprint(_("hi"))
+def test(against_inv,sr):
+  frappe.msgprint(_(against_inv + "," + sr))
