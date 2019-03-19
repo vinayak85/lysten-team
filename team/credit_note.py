@@ -12,5 +12,5 @@ def test(against_inv,sr):
   ret_date= frappe.db.sql(""" select ifnull(posting_date,'-') as posting_date from 1bd3e0294da19198.`tabSales Invoice`
   where `tabSales Invoice`.`docstatus`< 2 and `name`={0}""".format(sr), as_dict=1)
   dict = {'count': 0}
-  dict['count'] = c[0].posting_date;
+  dict['count'] = ret_date[0].posting_date;
   return dict;
