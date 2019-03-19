@@ -18,6 +18,10 @@ def test(against_inv,sr):
     ret_date = ''
     pass
   
-  dict = {'count': ''}
-  dict['count'] = ret_date;
+  sr_items=frappe.db.sql(""" SELECT item_code,batch_no,qty,free_quantity FROM 1bd3e0294da19198.`tabSales Invoice Item`
+where parent={0} and against_invoice_={1}""".format(sr,against_inv), as_dict=1)
+  dict = {'ret_date': '',
+          'sr_items':''}
+  dict['ret_date'] = ret_date;
+  dict['sr_items'] = sr_items;
   return dict;
