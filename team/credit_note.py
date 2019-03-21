@@ -15,14 +15,17 @@ def test(against_inv,sr):
   note=''
   qry= frappe.db.sql(""" select posting_date,note,transporter_id  from 1bd3e0294da19198.`tabSales Invoice`
   where `tabSales Invoice`.`docstatus`< 2 and `name`={0}""".format(sr), as_dict=1)
-  if len(ret_date) > 0:
-    ret_date = qry[0].posting_date
+  if len(qry) > 0:
+    ret_date = qry[0].posting_date;
+    transporter_id= qry[0].transporter_id;
+    note= qry[0].note;
     pass
   else:
     ret_date = ''
+    transporter_id= '';
+    note= '';
     pass
-  transporter_id= qry[0].transporter_id;
-  note= qry[0].note
+
   
   sr_items=frappe.db.sql(""" SELECT item_code,batch_no,qty,free_quantity FROM 1bd3e0294da19198.`tabSales Invoice Item`
 where parent={0} and against_invoice_={1}""".format(sr,against_inv), as_dict=1)
