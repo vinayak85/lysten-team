@@ -21,8 +21,21 @@ where docstatus<2 and `name`={0}""".format(sr), as_dict=1)
 		pass
 	
 	details='';
-	details= frappe.db.sql(""" SELECT name,branch,rounded_total,posting_date ,rounded_total FROM 1bd3e0294da19198.`tabSales Invoice`
-where docstatus<2 and `name`={0}""".format(sr), as_dict=1)
+	details= frappe.db.sql(""" SELECT distinct(against_invoice_) as ai FROM 1bd3e0294da19198.`tabSales Invoice Item`
+where parent={0}""".format(sr), as_dict=1)
+	datasets = [];
+	datasets1 = [];
+	
+	for f in details[0].ai
+        datasets1=[];
+	cnt1 = frappe.db.sql(""" SELECT count(against_invoice_) as ai FROM 1bd3e0294da19198.`tabSales Invoice Item`
+where parent={0}""".format(sr), as_dict=1)
+	
+	
+	
+	
+	
+	
 	dict = {'details': '',
 		'sr_amount': '' 
           }
