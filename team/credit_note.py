@@ -66,11 +66,11 @@ where  ref_return={0}""".format(sr), as_dict=1)
 where parent={0} and against_invoice_={1}""".format(sr,against_inv), as_dict=1)
   dict = {'ret_date': '',
           'transporter_id': '',
-          'transporter_name'= '',
-          'transporter_address'= '',
-          'transporter_gst_no'= '',
-          'transporter_state_code'= '',
-          'transporter_pan_no'= '',
+          'transporter_name': '',
+          'transporter_address': '',
+          'transporter_gst_no': '',
+          'transporter_state_code': '',
+          'transporter_pan_no': '',
           'note': '',
           'sr_items':'',
           'if_existed':''}
