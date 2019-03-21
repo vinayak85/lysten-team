@@ -28,14 +28,13 @@ def test(against_inv,sr):
     pass
   
   if_existed= frappe.db.sql(""" select name    from 1bd3e0294da19198.`tabSales Invoice` where return_against={0} and ref_return={1}""".format(against_inv,sr), as_dict=1)
-  if(len(if_existed) > 0:
-     if_existed = qry[0].name;
-     pass;\
+  if len(if_existed) > 0:
+    if_existed = qry[0].name;
+    pass
   else:
-     ret_date = ''
-     pass  
-     
-
+    ret_date = ''
+    pass
+  
   
   sr_items=frappe.db.sql(""" SELECT item_code,batch_no,qty,free_quantity FROM 1bd3e0294da19198.`tabSales Invoice Item`
 where parent={0} and against_invoice_={1}""".format(sr,against_inv), as_dict=1)
