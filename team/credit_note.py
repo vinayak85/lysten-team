@@ -13,7 +13,7 @@ def test(against_inv,sr):
   ret_date='';
   transporter_id='';
   note=''
-  qry= frappe.db.sql(""" select posting_date,note,transporter_id  from 1bd3e0294da19198.`tabSales Invoice`
+  qry= frappe.db.sql(""" select posting_date,note,transporter_id,transporter_address ,transporter_gst_no,transporter_state_code,transporter_pan_no  from 1bd3e0294da19198.`tabSales Invoice`
   where `tabSales Invoice`.`docstatus`< 2 and `name`={0}""".format(sr), as_dict=1)
   if len(qry) > 0:
     ret_date = qry[0].posting_date;
