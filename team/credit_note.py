@@ -53,7 +53,7 @@ def test(against_inv,sr):
     pass
   
   qry2= frappe.db.sql(""" select new_credit_note_number    from 1bd3e0294da19198.`tabSales Invoice`
-where  ref_return={0}""".format,sr), as_dict=1)
+where  ref_return={0}""".format(sr), as_dict=1)
   if len(qry2) > 0:
     new_crn = qry1[0].name;
     pass
