@@ -13,6 +13,7 @@ def test(against_inv,sr):
   ret_date='';
   transporter_id='';
   note=''
+  if_existed=''
   qry= frappe.db.sql(""" select posting_date,note,transporter_id,transporter_address ,transporter_gst_no,transporter_state_code,transporter_pan_no  from 1bd3e0294da19198.`tabSales Invoice`
   where `tabSales Invoice`.`docstatus`< 2 and `name`={0}""".format(sr), as_dict=1)
   if len(qry) > 0:
@@ -25,6 +26,15 @@ def test(against_inv,sr):
     transporter_id= '';
     note= '';
     pass
+  
+  if_existed= frappe.db.sql(""" select name    from 1bd3e0294da19198.`tabSales Invoice` where return_against={0} and ref_return={1}""".format(against_inv,sr), as_dict=1)
+  if(len(if_existed) > 0:
+     if_existed = qry[0].name;
+     pass;\
+  else:
+     ret_date = ''
+     pass  
+     
 
   
   sr_items=frappe.db.sql(""" SELECT item_code,batch_no,qty,free_quantity FROM 1bd3e0294da19198.`tabSales Invoice Item`
