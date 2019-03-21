@@ -52,14 +52,15 @@ def test(against_inv,sr):
     if_existed = 'no'
     pass
   
-  qry2= frappe.db.sql(""" select new_credit_note_number    from 1bd3e0294da19198.`tabSales Invoice`
-where  ref_return={0}""".format(sr), as_dict=1)
-  if len(qry2) > 0:
-    new_crn = qry1[0].name;
-    pass
-  else:
-    new_crn = sr+'-1'
-    pass
+  #qry2= frappe.db.sql(""" select new_credit_note_number    from 1bd3e0294da19198.`tabSales Invoice`
+#where  ref_return={0}""".format(sr), as_dict=1)
+  #if len(qry2) > 0:
+   # new_crn = qry1[0].name;
+    #new_crn=
+    #pass
+  #else:
+   # new_crn = sr+'--1'
+   # pass
   
   
   sr_items=frappe.db.sql(""" SELECT item_code,batch_no,qty,free_quantity FROM 1bd3e0294da19198.`tabSales Invoice Item`
@@ -73,7 +74,8 @@ where parent={0} and against_invoice_={1}""".format(sr,against_inv), as_dict=1)
           'transporter_pan_no': '',
           'note': '',
           'sr_items':'',
-          'if_existed':''}
+          'if_existed':''
+          }
   dict['ret_date'] = ret_date;
   dict['transporter_id'] = transporter_id;
   dict['transporter_name'] = transporter_name;
@@ -84,4 +86,5 @@ where parent={0} and against_invoice_={1}""".format(sr,against_inv), as_dict=1)
   dict['note'] = note;
   dict['sr_items'] = sr_items;
   dict['if_existed'] = if_existed;
+    
   return dict;
