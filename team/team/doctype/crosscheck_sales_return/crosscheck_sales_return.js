@@ -23,6 +23,8 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 				frm.refresh_field('credit_notes_sum_amount');
 				frm.doc.match=r.message.match;				
 				frm.refresh_field('match');
+				frm.refresh_field('br');
+
 				
 			}
 		      }); 
