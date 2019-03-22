@@ -61,7 +61,8 @@ test= function(frm,dt) {
         }
         tr +='</tr>';
     test += tr;*/
-    document.getElementById('vv').innerHTML = "hello vinayak" ;
+   // document.getElementById('vv').innerHTML = "hello vinayak" ;
+	$(frm.fields_dict.tm.wrapper).html("hello vinayak")
 	//frm.refresh_field('tm');
 	//frm.reload_doc();
 	   
