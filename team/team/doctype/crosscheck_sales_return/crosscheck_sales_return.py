@@ -28,7 +28,7 @@ where parent={0}""".format(sr), as_dict=1)
 	
 	for f in details:
 		datasets1=[];
-		f=f[0];
+		f=f.ai;
 		f="'"+f+"'";
 		cnt1 = frappe.db.sql(""" SELECT count(name) as cnt1 FROM 1bd3e0294da19198.`tabSales Invoice Item`
 		where against_invoice_={0}""".format(f), as_dict=1)
