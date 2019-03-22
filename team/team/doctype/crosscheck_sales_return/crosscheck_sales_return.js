@@ -36,11 +36,11 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 });
 
 test= function(frm,dt) {
-		//var tbl1 = frm.doc.table_4 || [];
-	      if(frm.doc.table_4.length>0){
-		frm.doc.table_4.splice(0,frm.doc.table_4.length);
+		var tbl1 = frm.doc.table_4 || [];
+	      
+		frm.doc.table_4.splice(0,tbl1.length);
 	        frm.refresh_field('table_4');
-	      }
+	      
 	
 	        alert( dt.length);
 	
