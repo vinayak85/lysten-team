@@ -31,7 +31,7 @@ where parent={0}""".format(sr), as_dict=1)
 		f=f.ai;
 		f="'"+f+"'";
 		cnt1 = frappe.db.sql(""" SELECT count(name) as cnt1 FROM 1bd3e0294da19198.`tabSales Invoice Item`
-		where against_invoice_={0}""".format(f), as_dict=1)
+		where against_invoice_={0} and name={1}""".format(f,sr), as_dict=1)
 		
 		crn=frappe.db.sql(""" select name,new_credit_note_number,rounded_total  FROM 1bd3e0294da19198.`tabSales Invoice` where ref_return={0}
 		and return_against={1} and docstatus < 2""".format(sr,f), as_dict=1)
@@ -41,7 +41,8 @@ where parent={0}""".format(sr), as_dict=1)
 			rounded_total=crn[0].rounded_total
 			name="'"+crn[0].name+"'"
 			cnt2 = frappe.db.sql(""" SELECT count(name) as cnt1 FROM 1bd3e0294da19198.`tabSales Invoice Item`
-		where against_invoice_={0}""".format(name), as_dict=1)
+		where name={0} """.format(name), as_dict=1)
+			cnt2=cnt2[0].cnt1
 			pass
 		else:
 			crn_number="-"
