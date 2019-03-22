@@ -39,8 +39,9 @@ where parent={0}""".format(sr), as_dict=1)
 		if len(crn) > 0:
 			crn_number = crn[0].new_credit_note_number+" ("+crn[0].name+")";
 			rounded_total=crn[0].rounded_total
+			name="'"+crn[0].name+"'"
 			cnt2 = frappe.db.sql(""" SELECT count(name) as cnt1 FROM 1bd3e0294da19198.`tabSales Invoice Item`
-		where against_invoice_={0}""".format(crn[0].name), as_dict=1)
+		where against_invoice_={0}""".format(name), as_dict=1)
 			pass
 		else:
 			crn_number="-"
