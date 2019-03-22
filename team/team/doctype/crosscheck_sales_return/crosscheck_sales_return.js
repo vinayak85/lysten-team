@@ -24,6 +24,7 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 				frm.doc.match=r.message.match;				
 				frm.refresh_field('match');
 				frm.refresh_field('br');
+				 frm.reload_doc();
 
 				
 			}
