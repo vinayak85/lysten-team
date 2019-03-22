@@ -38,28 +38,19 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 test= function(frm,dt) {
 		//var tbl1 = frm.doc.table_4 || [];
 		//frm.doc.table_4.splice(0,frm.doc.table_4.length);
-	       
-		var tbl = frm.doc.table_4 || [];	
-		for(var i = 0; i < tbl.length; i++)
-		{
-		if(tbl[i].field_name == '')
-		{
-			cur_frm.get_field('table_4').grid.grid_rows[i].remove()
-		}
-		}
-		cur_frm.refresh();
+	 
 	
 	 var test = '<table border="1px"><thead><tr><th><</th><th colspan="2">2015-2016</th><th>></th><tr></thead><tbody>';
-    var tr='';
-    for(var i=0;i<4;i++){
-        tr += '<tr>';
-        for(var j=0;j<4;j++){
-            tr += '<td>'+2015+'</td>';
-            }
+   	 var tr='';
+   	 for(var i=0;i<4;i++){
+      		  tr += '<tr>';
+        		for(var j=0;j<4;j++){
+        			    tr += '<td>'+2015+'</td>';
+           			 }
         }
-        tr +='</tr>';
-    test += tr;
-    frm.doc.htm = test;
+           tr +='</tr>';
+        test += tr;
+        frm.doc.htm = test;
 	frm.refresh_field('htm');
 		
 		
