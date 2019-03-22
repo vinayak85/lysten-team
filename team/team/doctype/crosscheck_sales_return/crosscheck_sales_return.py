@@ -46,10 +46,10 @@ where parent={0}""".format(sr), as_dict=1)
 			cnt2=cnt2[0].cnt1
 			
 			if(cnt1==cnt2):
-				match_in=yes
+				match_in='yes'
 				pass
 			else:
-				match_in=no
+				match_in='no'
 				pass
 						
 			pass
@@ -81,10 +81,10 @@ where parent={0}""".format(sr), as_dict=1)
           }
 	match='';
 	if((sr_amount+sum_rounded_total) ==0):
-		match=yes;
+		match='yes';
 		pass
 	else:
-		match=no;
+		match='no';
 		pass
 	
 	
