@@ -43,14 +43,25 @@ test= function(frm,dt) {
 	      
 	
 	        alert( dt.length);
-		var table_4 = $.map(frm.doc.table_4, function(d) { return d.table_4 });
-		for(var i = 0; i < dt.length; i++)
-		{
-			var row = frappe.model.add_child(frm.doc, frm.fields_dict.table_4.df.options, frm.fields_dict.table_4.df.fieldname);
-			row.against_invoice =dt[i][0];
-			
-		}
-	  frm.refresh_field('table_4');
+		//var table_4 = $.map(frm.doc.table_4, function(d) { return d.table_4 });
+		//for(var i = 0; i < dt.length; i++)
+		//{
+		//	var row = frappe.model.add_child(frm.doc, frm.fields_dict.table_4.df.options, frm.fields_dict.table_4.df.fieldname);
+		//	row.against_invoice =dt[i][0];
+		//	
+		//}
+	  //frm.refresh_field('table_4');
+	var test = '<table border="1px"><thead><tr><th><</th><th colspan="2">2015-2016</th><th>></th><tr></thead><tbody>';
+    var tr='';
+    for(var i=0;i<4;i++){
+        tr += '<tr>';
+        for(var j=0;j<4;j++){
+            tr += '<td>'+2015+'</td>';
+            }
+        }
+        tr +='</tr>';
+    test += tr;
+    return document.getElementById('vv').innerHTML = test;
 	
 	   
 	 
