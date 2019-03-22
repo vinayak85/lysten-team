@@ -45,7 +45,9 @@ test= function(frm,dt) {
 	        alert( dt.length);
 		for(var i = 0; i < dt.length; i++)
 		{
-			tbl1[i].against_invoice =dt[i][0];
+			var row = frappe.model.add_child(frm.doc, frm.fields_dict.table_4.df.options, frm.fields_dict.table_4.df.fieldname);
+			row.against_invoice =dt[i][0];
+			
 		}
 	  frm.refresh_field('table_4');
 	
