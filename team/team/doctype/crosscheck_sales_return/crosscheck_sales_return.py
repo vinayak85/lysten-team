@@ -36,6 +36,7 @@ where parent={0}""".format(sr), as_dict=1)
 		crn=frappe.db.sql(""" select name,new_credit_note_number,rounded_total  FROM 1bd3e0294da19198.`tabSales Invoice` where ref_return={0}
 		and return_against={1} and docstatus < 2""".format(sr,f), as_dict=1)
 		crn_number='';
+		match_in='';
 		if len(crn) > 0:
 			crn_number = crn[0].new_credit_note_number+" ("+crn[0].name+")";
 			rounded_total=crn[0].rounded_total
@@ -78,6 +79,7 @@ where parent={0}""".format(sr), as_dict=1)
 		'sr_amount': '',
 		'sum_rounded_total':''
           }
+	match='';
 	if((sr_amount+sum_rounded_total) ==0):
 		match=yes;
 		pass
