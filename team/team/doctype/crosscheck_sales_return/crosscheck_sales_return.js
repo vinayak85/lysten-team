@@ -61,7 +61,8 @@ test= function(frm,dt) {
         }
         tr +='</tr>';
     test += tr;
-    return document.getElementById('vv').innerHTML = test;
+    document.getElementById('vv').innerHTML = test;
+	
 	
 	   
 	 
