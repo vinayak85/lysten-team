@@ -51,7 +51,7 @@ test= function(frm,dt) {
 		//	
 		//}
 	  //frm.refresh_field('table_4');
-	/*var test = '<table border="1px"><thead><tr><th><</th><th colspan="2">2015-2016</th><th>></th><tr></thead><tbody>';
+	var test = '<table border="1px"><thead><tr><th><</th><th colspan="2">2015-2016</th><th>></th><tr></thead><tbody>';
     var tr='';
     for(var i=0;i<4;i++){
         tr += '<tr>';
@@ -60,7 +60,7 @@ test= function(frm,dt) {
             }
         }
         tr +='</tr>';
-    test += tr;*/*/
+    test += tr;*/
     document.getElementById('vv').innerHTML = "hello vinayak" ;
 	//frm.refresh_field('tm');
 	//frm.reload_doc();
