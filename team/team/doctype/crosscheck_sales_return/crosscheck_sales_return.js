@@ -45,7 +45,7 @@ test= function(frm,dt) {
 	        alert( dt.length);
 		for(var i = 0; i < dt.length; i++)
 		{
-			tbl1[i].against_invoice =dt[0].[0];
+			tbl1[i].against_invoice =dt[i][0];
 		}
 	  frm.refresh_field('table_4');
 	
