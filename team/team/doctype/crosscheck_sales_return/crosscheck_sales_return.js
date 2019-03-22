@@ -38,7 +38,7 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 test= function(frm,dt) {
 		var tbl1 = frm.doc.table_4 || [];
 	      
-		tbl1(0,tbl1.length);
+		tbl1.splice(0,tbl1.length);
 	        frm.refresh_field('table_4');
 	      
 	
