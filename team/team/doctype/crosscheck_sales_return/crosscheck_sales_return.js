@@ -43,6 +43,7 @@ test= function(frm,dt) {
 	      
 	
 	        alert( dt.length);
+		var table_4 = $.map(frm.doc.table_4, function(d) { return d.table_4 });
 		for(var i = 0; i < dt.length; i++)
 		{
 			var row = frappe.model.add_child(frm.doc, frm.fields_dict.table_4.df.options, frm.fields_dict.table_4.df.fieldname);
