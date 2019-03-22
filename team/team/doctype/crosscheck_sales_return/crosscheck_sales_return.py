@@ -11,7 +11,7 @@ class CrossCheckSalesReturn(Document):
 	pass
 
 @frappe.whitelist()
-def get_date_and_app_support(sr):
+def get_crosscheck_data(sr):
 	sr="'"+sr+"'"
 	sr_amount='';
 	qry= frappe.db.sql(""" SELECT name,branch,rounded_total,posting_date ,rounded_total FROM 1bd3e0294da19198.`tabSales Invoice`
@@ -26,10 +26,14 @@ where parent={0}""".format(sr), as_dict=1)
 	datasets = [];
 	datasets1 = [];
 	
-	for f in details[0].ai
-        datasets1=[];
-	cnt1 = frappe.db.sql(""" SELECT count(against_invoice_) as ai FROM 1bd3e0294da19198.`tabSales Invoice Item`
-where parent={0}""".format(sr), as_dict=1)
+	for f in details[0].ai:
+		datasets1=[];	
+		cnt1 = frappe.db.sql(""" SELECT count(name) as cnt1 FROM 1bd3e0294da19198.`tabSales Invoice Item`
+		where against_invoice_={0}""".format(f), as_dict=1)
+		datasets1.append(f);      
+     	   	datasets1.append(cnt1[0].cnt1);
+		datasets.append(datasets1);
+		pass;
 	
 	
 	
@@ -39,7 +43,7 @@ where parent={0}""".format(sr), as_dict=1)
 	dict = {'details': '',
 		'sr_amount': '' 
           }
-	dict['details'] = details;
+	dict['details'] = datasets;
 	dict['sr_amount'] = sr_amount;
 	return dict;
 	
