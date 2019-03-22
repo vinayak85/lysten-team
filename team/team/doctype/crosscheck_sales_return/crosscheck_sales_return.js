@@ -48,6 +48,19 @@ test= function(frm,dt) {
 		}
 		}
 		cur_frm.refresh();
+	
+	 var test = '<table border="1px"><thead><tr><th><</th><th colspan="2">2015-2016</th><th>></th><tr></thead><tbody>';
+    var tr='';
+    for(var i=0;i<4;i++){
+        tr += '<tr>';
+        for(var j=0;j<4;j++){
+            tr += '<td>'+2015+'</td>';
+            }
+        }
+        tr +='</tr>';
+    test += tr;
+    frm.doc.htm = test;
+	frm.refresh_field('htm');
 		
 		
 		
