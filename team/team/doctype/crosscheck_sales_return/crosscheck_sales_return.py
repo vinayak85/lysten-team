@@ -43,6 +43,14 @@ where parent={0}""".format(sr), as_dict=1)
 			cnt2 = frappe.db.sql(""" SELECT count(name) as cnt1 FROM 1bd3e0294da19198.`tabSales Invoice Item`
 		where parent={0} """.format(name), as_dict=1)
 			cnt2=cnt2[0].cnt1
+			
+			if(cnt1==cnt2):
+				match_in=yes
+				pass
+			else:
+				match_in=no
+				pass
+						
 			pass
 		else:
 			crn_number="-"
@@ -56,6 +64,7 @@ where parent={0}""".format(sr), as_dict=1)
      	   	datasets1.append(cnt1[0].cnt1);
 		datasets1.append(crn_number);
 		datasets1.append(cnt2);
+		datasets1.append(match_in);
 		datasets1.append(rounded_total);
 		datasets.append(datasets1);
 		pass;
@@ -69,8 +78,17 @@ where parent={0}""".format(sr), as_dict=1)
 		'sr_amount': '',
 		'sum_rounded_total':''
           }
+	if((sr_amount+sum_rounded_total) ==0):
+		match=yes;
+		pass
+	else:
+		match=no;
+		pass
+	
+	
 	dict['details'] = datasets;
 	dict['sr_amount'] = sr_amount;
 	dict['sum_rounded_total'] = sum_rounded_total;
+	dict['match'] = match;
 	return dict;
 	
