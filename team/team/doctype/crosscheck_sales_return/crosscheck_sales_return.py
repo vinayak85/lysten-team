@@ -25,7 +25,7 @@ where docstatus<2 and `name`={0}""".format(sr), as_dict=1)
 where parent={0}""".format(sr), as_dict=1)
 	datasets = [];
 	datasets1 = [];
-	
+	sum_rounded_total=0
 	for f in details:
 		datasets1=[];
 		f=f.ai;
@@ -38,16 +38,18 @@ where parent={0}""".format(sr), as_dict=1)
 		crn_number='';
 		if len(crn) > 0:
 			crn_number = crn[0].new_credit_note_number+" ("+crn[0].name+")";
+			rounded_total=crn[0].rounded_total
 			cnt2 = frappe.db.sql(""" SELECT count(name) as cnt1 FROM 1bd3e0294da19198.`tabSales Invoice Item`
 		where against_invoice_={0}""".format(crn[0].name), as_dict=1)
 			pass
 		else:
 			crn_number="-"
 			cnt2 = '0'
+			rounded_total=0
 			pass
 		
 		
-		
+		sum_rounded_total=sum_rounded_total+rounded_total;
 		datasets1.append(f);      
      	   	datasets1.append(cnt1[0].cnt1);
 		datasets1.append(crn_number);
@@ -62,9 +64,11 @@ where parent={0}""".format(sr), as_dict=1)
 	
 	
 	dict = {'details': '',
-		'sr_amount': '' 
+		'sr_amount': '',
+		'sum_rounded_total':''
           }
 	dict['details'] = datasets;
 	dict['sr_amount'] = sr_amount;
+	dict['sum_rounded_total'] = sum_rounded_total;
 	return dict;
 	
