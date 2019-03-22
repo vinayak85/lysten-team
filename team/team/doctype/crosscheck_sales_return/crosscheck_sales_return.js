@@ -25,7 +25,7 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 				frm.refresh_field('match');
 				frm.refresh_field('br');
 				 frm.reload_doc();
-
+				test(frm,'aa');
 				
 			}
 		      }); 
@@ -34,4 +34,11 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 		});
 	}
 });
+
+test= function(frm,check_item_name) {
+		alert(check_item_name);
+		
+		
+	};
+
 
