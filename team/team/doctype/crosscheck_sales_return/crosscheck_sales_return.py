@@ -32,8 +32,12 @@ where parent={0}""".format(sr), as_dict=1)
 		f="'"+f+"'";
 		cnt1 = frappe.db.sql(""" SELECT count(name) as cnt1 FROM 1bd3e0294da19198.`tabSales Invoice Item`
 		where against_invoice_={0}""".format(f), as_dict=1)
+		
+		crn=frappe.db.sql(""" select name,new_credit_note_number  FROM 1bd3e0294da19198.`tabSales Invoice` where ref_return={0}
+		and return_against={1} and docstatus < 2""".format(sr,f), as_dict=1)
 		datasets1.append(f);      
      	   	datasets1.append(cnt1[0].cnt1);
+		datasets1.append(crn[0].name);
 		datasets.append(datasets1);
 		pass;
 	
