@@ -19,7 +19,7 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 				//alert(JSON.stringify(r.message));
 				frm.doc.sr_amount=r.message.sum_rounded_total;
 				//alert(r.message.sum_rounded_total);
-				frm.refresh_field('sec_items_qty');
+				frm.refresh_field('sr_amount');
 				
 			}
 		      }); 
