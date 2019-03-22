@@ -44,7 +44,7 @@ where parent={0}""".format(sr), as_dict=1)
 		
 		datasets1.append(f);      
      	   	datasets1.append(cnt1[0].cnt1);
-		datasets1.append(crn[0].name);
+		datasets1.append(crn_number);
 		datasets.append(datasets1);
 		pass;
 	
