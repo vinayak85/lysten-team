@@ -16,7 +16,7 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 				sr:frm.doc.enter_sales_return				
 			},
 			callback:function (r) {	
-				alert(JSON.stringify(r.message[0]["values"]));		
+				alert(JSON.stringify(r.message));		
 				
 			}
 		      }); 
