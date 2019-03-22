@@ -24,8 +24,8 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 				frm.doc.match=r.message.match;				
 				frm.refresh_field('match');
 				frm.refresh_field('br');
-				 frm.reload_doc();
-				test(frm,'aa');
+				frm.reload_doc();
+				test(frm,=r.message.details);
 				
 			}
 		      }); 
@@ -35,8 +35,16 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 	}
 });
 
-test= function(frm,check_item_name) {
-		alert(check_item_name);
+test= function(frm,dt) {
+		var tbl1 = frm.doc.table_4 || [];
+		/*for(var i = 0; i < tbl1.length; i++)
+		{
+			frm.doc.table_4[i]		
+		  
+	        }*/
+	    frm.doc.table_4.splice(0,tbl1.length);
+	    frm.refresh_field('table_4');
+		
 		
 		
 	};
