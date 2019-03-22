@@ -62,7 +62,7 @@ test= function(frm,dt) {
         tr +='</tr>';
     test += tr;
     document.getElementById('vv').innerHTML = test;
-	
+	frm.refresh_field('tm');
 	
 	   
 	 
