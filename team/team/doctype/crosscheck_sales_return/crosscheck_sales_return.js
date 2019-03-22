@@ -8,7 +8,18 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 	onload: function(frm) {
 	frappe.ui.form.on("CrossCheck Sales Return", "crosscheck", function(frm, cdt, cdn) 
 		{
-			alert("ttt");
+		//get_crosscheck_data
+		alert("ttt");
+		frappe.call({
+			method:'team.team.doctype.crosscheck_sales_return.crosscheck_sales_return.get_crosscheck_data',
+			args:{
+				sr:frm.doc.enter_sales_return				
+			},
+			callback:function (r) {	
+				alert(JSON.stringify(r.message[0]["values"]));		
+				
+			}
+		      }); 
 			
 			
 		});
