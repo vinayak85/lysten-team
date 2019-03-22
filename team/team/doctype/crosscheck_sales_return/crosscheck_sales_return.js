@@ -39,15 +39,15 @@ test= function(frm,dt) {
 		//var tbl1 = frm.doc.table_4 || [];
 		//frm.doc.table_4.splice(0,frm.doc.table_4.length);
 	       
-		var tbl = doc.table_4 || [];	
+		var tbl = frm.doc.table_4 || [];	
 		for(var i = 0; i < tbl.length; i++)
 		{
-		if(tbl[i].field_name == ‘’)
+		if(tbl[i].field_name == '')
 		{
-			cur_frm.get_field(“table_4”).grid.grid_rows[i].remove()
+			cur_frm.get_field('table_4').grid.grid_rows[i].remove()
 		}
 		}
-		cur_frm.refresh()
+		cur_frm.refresh();
 		
 		
 		
