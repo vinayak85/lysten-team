@@ -35,6 +35,13 @@ where parent={0}""".format(sr), as_dict=1)
 		
 		crn=frappe.db.sql(""" select name,new_credit_note_number  FROM 1bd3e0294da19198.`tabSales Invoice` where ref_return={0}
 		and return_against={1} and docstatus < 2""".format(sr,f), as_dict=1)
+		crn_number='';
+		if len(crn) > 0:
+			crn_number = crn[0].new_credit_note_number+" ("+crn[0].name+")";
+			pass
+		else:
+			crn_number="-"
+		
 		datasets1.append(f);      
      	   	datasets1.append(cnt1[0].cnt1);
 		datasets1.append(crn[0].name);
