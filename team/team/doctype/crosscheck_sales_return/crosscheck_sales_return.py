@@ -97,7 +97,7 @@ where parent={0}""".format(sr), as_dict=1)
 	return dict;
 
 def get_unmatched_items(f,sr,name,datasets_no_match):
-	//frappe.msgprint(_(f+" , "+sr+" , "+name));
+	#frappe.msgprint(_(f+" , "+sr+" , "+name));
 	sr=frappe.db.sql(""" SELECT item_code,batch_no FROM 1bd3e0294da19198.`tabSales Invoice Item`
 where parent={0} and against_invoice_={1}; """.format(sr,f), as_dict=1)
 	cn=frappe.db.sql(""" SELECT item_code,batch_no FROM 1bd3e0294da19198.`tabSales Invoice Item`
