@@ -24,6 +24,7 @@ where docstatus<2 and `name`={0}""".format(sr), as_dict=1)
 	details= frappe.db.sql(""" SELECT distinct(against_invoice_) as ai FROM 1bd3e0294da19198.`tabSales Invoice Item`
 where parent={0}""".format(sr), as_dict=1)
 	datasets = [];
+	datasets_no_match = [];
 	datasets1 = [];
 	sum_rounded_total=0
 	for f in details:
@@ -50,6 +51,7 @@ where parent={0}""".format(sr), as_dict=1)
 				pass
 			else:
 				match_in='no'
+				datasets_no_match=get_unmatched_items(f,sr,name)
 				pass
 						
 			pass
@@ -93,4 +95,8 @@ where parent={0}""".format(sr), as_dict=1)
 	dict['sum_rounded_total'] = sum_rounded_total;
 	dict['match'] = match;
 	return dict;
+
+def get_unmatched_items(f,sr,name):
+	frappe.msgprint(_(f+" , "+sr+" , "+nam));
+	return []
 	
