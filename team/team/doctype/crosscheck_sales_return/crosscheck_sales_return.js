@@ -40,12 +40,12 @@ test= function(frm,dt) {
 	      
 		//tbl1.splice(0,tbl1.length);
 	        //frm.refresh_field('table_4');
-	      var test = '<table border="1px"><thead><tr><th><</th><th colspan="2">2015-2016</th><th>></th><tr></thead><tbody>';
+	      var test = '<table border="1px"><thead><tr><th><</th><th colspan="5">2015-2016</th><th>></th><tr></thead><tbody>';
     var tr='';
-    for(var i=0;i<4;i++){
+    for(var i=0;i<dt.length;i++){
         tr += '<tr>';
-        for(var j=0;j<4;j++){
-            tr += '<td>'+2015+'</td>';
+        for(var j=0;j<5;j++){
+            tr += '<td>'+dt[i][j]+'</td>';
             }
         }
         tr +='</tr>';
