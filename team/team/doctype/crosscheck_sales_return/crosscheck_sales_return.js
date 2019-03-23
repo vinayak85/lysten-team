@@ -36,22 +36,11 @@ frappe.ui.form.on('CrossCheck Sales Return', {
 });
 
 test= function(frm,dt) {
-		/*var tbl1 = frm.doc.table_4 || [];
+		//var tbl1 = frm.doc.table_4 || [];
 	      
-		tbl1.splice(0,tbl1.length);
-	        frm.refresh_field('table_4');
-	      
-	
-	        alert( dt.length);
-		//var table_4 = $.map(frm.doc.table_4, function(d) { return d.table_4 });
-		//for(var i = 0; i < dt.length; i++)
-		//{
-		//	var row = frappe.model.add_child(frm.doc, frm.fields_dict.table_4.df.options, frm.fields_dict.table_4.df.fieldname);
-		//	row.against_invoice =dt[i][0];
-		//	
-		//}
-	  //frm.refresh_field('table_4');
-	var test = '<table border="1px"><thead><tr><th><</th><th colspan="2">2015-2016</th><th>></th><tr></thead><tbody>';
+		//tbl1.splice(0,tbl1.length);
+	        //frm.refresh_field('table_4');
+	      var test = '<table border="1px"><thead><tr><th><</th><th colspan="2">2015-2016</th><th>></th><tr></thead><tbody>';
     var tr='';
     for(var i=0;i<4;i++){
         tr += '<tr>';
@@ -60,9 +49,10 @@ test= function(frm,dt) {
             }
         }
         tr +='</tr>';
-    test += tr;*/
-   // document.getElementById('vv').innerHTML = "hello vinayak" ;
-	$(frm.fields_dict.tm.wrapper).html("hello vinayak")
+    test += tr;
+	
+	     
+	$(frm.fields_dict.tm.wrapper).html(test)
 	//frm.refresh_field('tm');
 	//frm.reload_doc();
 	   
