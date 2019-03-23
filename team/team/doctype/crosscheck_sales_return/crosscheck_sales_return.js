@@ -40,7 +40,7 @@ test= function(frm,dt) {
 	      
 		//tbl1.splice(0,tbl1.length);
 	        //frm.refresh_field('table_4');
-	      var test = '<table style="width:400px" border="1px"><thead><tr><th style="width:20%">1</th> <th style="width:20%">2</th> <th style="width:20%">3</th> <th style="width:20%">4</th> <th style="width:20%">5</th> <tr></thead><tbody>';
+	      var test = '<table style="width:600px" border="1px"><thead><tr><th style="width:35%">Against Invoice </th> <th style="width:5%">Items</th> <th style="width:35%">Credit Note</th> <th style="width:5%">Items</th> <th style="width:20%">Match</th> <tr></thead><tbody>';
     var tr='';
     for(var i=0;i<dt.length;i++){
         tr += '<tr>';
