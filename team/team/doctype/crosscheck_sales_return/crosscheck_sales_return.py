@@ -102,7 +102,7 @@ def get_unmatched_items(f,sr,name,datasets_no_match):
 where parent={0} and against_invoice_={1}; """.format(sr,f), as_dict=1)
 	cn=frappe.db.sql(""" SELECT item_code,batch_no FROM 1bd3e0294da19198.`tabSales Invoice Item`
 where parent={} """.format(name), as_dict=1)
-	if len(crn) > 0:
+	if len(cn) > 0:
 		for sr_row in sr:
 			flag =false;
 			for cn_row in cn:
