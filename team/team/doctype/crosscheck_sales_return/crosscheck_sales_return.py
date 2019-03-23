@@ -97,6 +97,6 @@ where parent={0}""".format(sr), as_dict=1)
 	return dict;
 
 def get_unmatched_items(f,sr,name):
-	frappe.msgprint(_(f+" , "+sr+" , "+nam));
+	frappe.msgprint(_(f+" , "+sr+" , "+name));
 	return []
 	
