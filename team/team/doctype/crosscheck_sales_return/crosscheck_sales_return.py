@@ -51,7 +51,7 @@ where parent={0}""".format(sr), as_dict=1)
 				pass
 			else:
 				match_in='no'
-				datasets_no_match=get_unmatched_items(f,sr,name)
+				datasets_no_match=get_unmatched_items(f,sr,name,datasets_no_match)
 				pass
 						
 			pass
@@ -96,7 +96,25 @@ where parent={0}""".format(sr), as_dict=1)
 	dict['match'] = match;
 	return dict;
 
-def get_unmatched_items(f,sr,name):
-	frappe.msgprint(_(f+" , "+sr+" , "+name));
-	return []
+def get_unmatched_items(f,sr,name,datasets_no_match):
+	//frappe.msgprint(_(f+" , "+sr+" , "+name));
+	sr=frappe.db.sql(""" SELECT item_code,batch_no FROM 1bd3e0294da19198.`tabSales Invoice Item`
+where parent={0} and against_invoice_={1}; """.format(sr,f), as_dict=1)
+	cn=frappe.db.sql(""" SELECT item_code,batch_no FROM 1bd3e0294da19198.`tabSales Invoice Item`
+where parent={} """.format(name), as_dict=1)
+	if len(crn) > 0:
+		for sr_row in sr:
+			flag =false;
+			for cn_row in cn:
+				if((sr_row.item_code == cn_row.item_code) and (sr_row.batch_no == cn_row.batch_no)):
+					flag=true;
+					pass	
+				pass
+			if flag ==false:
+				frappe.msgprint(_(f+" , "+sr_row.item_code+" , "+sr_row.batch_no));
+				flag =false;
+			
+	
+	
+	return datasets_no_match
 	
